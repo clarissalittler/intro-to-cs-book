@@ -1,0 +1,1275 @@
+#+LATEX_CLASS: book
+#+LATEX_HEADER: \usepackage{proof}
+#+AUTHOR: Clarissa Littler
+#+TITLE: Introduction to Computer Science in Python
+#+OPTIONS: toc:nil
+:META:
+ starting words: 12527
+:END:
+
+:META:
+ GRARRRR WE NEED TO FIX THE FACT THAT PRINT ISN'T A STATEMENT ANYMORE IN CURRENT PYTHON 
+:END:
+
+:META:
+   I feel like I just don't know the thread of what I'm trying to explain and all of that. Baahhhhhhh.
+:END:
+
+:META:
+Okay, so my current issue here is that I'm still not sure how to work back into the narrative the whole idea of /operational semantics/. I'm really not sure how to do it. I want to introduce something like 
+
+#+BEGIN_SRC python
+  if x:
+      print(1)
+  else:
+      print(2)
+#+END_SRC
+
+first we evaluate x to something which we can do as something kinda like ~x --> True~ and then there's
+
+#+BEGIN_SRC python
+  if True:
+      print(1)
+  else:
+      print(2)
+#+END_SRC
+which evaluates to 
+#+BEGIN_SRC python
+  print(1)
+
+#+END_SRC
+which then will print 1 out.
+
+Ugh the problem is that if you're going to actually do all of this correctly I worry it'll just be /so/ unwieldy in generic. I'm not sure how we're supposed to make sense of operational semantics. It's all just really frustrating. The problem is that there's this tension between wanting to explain things with small step semantics vs. the clarity of large step. Hrmm, well, actually large step is probably the best in terms of conceptual clarity. The problem though is that there's a few things that we need in terms of 
+
+ + some kinda dictionary for classes that is modified every time we declare a new class
+ + a dictionary that contains all the scopes of variables
+   + basically we need to have something like the scope of our variables
+
+
+:END:
+      
+* Introduction
+** The Goals of This Book
+   The fundamental goal of this book is to teach the basic ideas of programming and computation in a way that's both mathematically rigorous and still understandable to anyone who's had even a single term of algebra. 
+
+   My goal in /writing/ this book is to try and demystify the process of programming. I basically want to write the book I had wished I'd had more than a decade ago when I was first learning to write code. Back then, I was working on my master's degree in physics and I needed to modify some programs for a simulation we were running. I read some online tutorials for C++ and Fortran, the two languages we used, and managed to eventually lurch my way to my first working code. Even though I ended up writing working programs, I still didn't understand /why/ the lines of code needed to look the way they did or why all the previous attempts I'd muddled through /didn't/ work. I had no way of predicting what a program was going to do until I ran it.
+
+   It wasn't until a number of years later, as I started teaching myself other programming languages such as Common Lisp and Haskell, that I began to understand the fundamentally mathematical nature of programs. I learned that programs /have/ rules and they're not (entirely) arbitrary. I learned that I could predict what a program was going to do even before I ran it. I figured out how to evaluate pieces of code with pen and paper before even typing anything. Finally, I discovered that not only are there rules behind every programming language, but there are in fact meta-principles that govern most programming languages and how to learn them. There are underlying principles behind /computation/ and different styles of programming languages merely take different perspectives on how to describe those underlying computations.
+
+   To this end, I take a mostly neutral stance on choice of programming languages and styles of programming. I don't believe that there's a "best language" for everyone, but I do think any given person or team may find that a particular language is best for the way they think and the way they conceive of computation. 
+
+   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Python programming language. There are a few advantages to Python as I see it:
+
+  1. it's a fairly widely used language
+  2. it's a language with a large community
+  3. it's a simple language
+
+Ultimately it is my hope that after reading this book it should be relatively simple task to learn any language you want and know how to write the programs you want to write in it.
+** Outline of The Book
+   Part 1 of the book proper is going to be centered on the basic built in operations and kinds of data that exist in Python and the /structure/ of programs themselves. We'll be covering
+  + basic operations on numbers
+  + how to makes choices
+  + how to define functions
+  + reading input into a program
+  + printing output from a program
+  + how to repeat actions
+  + how to use lists in Python
+  + how to use dictionaries in Python
+After that, we'll explore several small projects that will test out those abilities. 
+
+  In part 2 of the book, we'll be looking more at practical programming skills. We'll be covering object oriented programming in Python, defining your own datastructures using objects, and more on structuring code.
+
+  Finally, in part 3 we're going to finish off by covering modules, concurrent programming, how to debug your code and write tests, and finally finish off with a series of small projects. 
+** Getting Started with Python
+   In order to get started with Python, first follow the official instructions for your operating system listed on the official Python wiki https://wiki.python.org/moin/BeginnersGuide/Download to install the most recent stable release of Python. After downloading and installing Python, you can continue following along in this chapter. If you already are comfortable with interpreters and have Python installed, feel free to completely skip this section.
+
+   Now if you start up your local Python interpreter you should see something like
+#+BEGIN_EXAMPLE
+Python 3.4.0 (default, Apr 11 2014, 13:05:11) 
+[GCC 4.8.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+#+END_EXAMPLE
+with possible differences due to the particular version of the interpreter. Now, what /is/ an interpreter? It's a program you can use to run Python programs. We'll explain what we mean by that later, but for now just try entering "3" at the prompt and hitting enter. You should see something akin to this
+#+BEGIN_EXAMPLE
+Python 3.4.0 (default, Apr 11 2014, 13:05:11) 
+[GCC 4.8.2] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 3
+3
+>>> 
+#+END_EXAMPLE 
+which means that you fed the interpreter the number 3 and then the interpreter responded with the value of the number 3 which, in this case, is simply 3. If you want to close down the interpreter, just press ~Ctrl-d~ to signal that you are done entering commands.
+* The Basics of Programming
+** What Computation Is
+   Before we start explaining the details of Python we first need to give a basic explanation of what we /mean/ by computation. 
+
+   Essentially, a /computation/ is a process that takes a finite number of steps to perform an action. In its most general form, a computation is allowed to be interactive, receiving input at a number of points and returning output. 
+
+   Now, we mostly associate computations with /computers/ but a computer is to computation as a calculator is to arithmetic. It's convenient to use, but not strictly necessary. Consider how we add two numbers together. If we were to describe the finite /process/ of adding two generic numbers it might go something like "to add ~m~ and ~n~ we add 1 to ~n~ a total of ~m~ times". This gives us a procedure that describes what addition means, assuming that we know how to add 1 to a number. Similarly, we can describe multiplication as a finite process by appealing to addition "to multiply ~m~ and ~n~ we add ~n~ to ~n~ a total of ~m~ times".  So for example with this definition of multiplication we can describe 3*5 as 
+
+#+BEGIN_LaTeX
+  \begin{align*}
+    3 * 5 &= 5 + 2*5 \\
+          &= 10 + 1*5 \\
+          &= 15 + 0*5 \\
+          &= 15 \\
+  \end{align*}
+#+END_LaTeX
+Now this might sound a little unnatural but if you squint at it it's basically just counting by fives, the way you learned how to do as a child. That's because counting by ~n~ is a /computation/ and takes a finite number of steps. 
+
+Other things that count as computations would be
+  + sorting your music collection alphabetically
+  + keeping score in cribbage
+  + balancing your checkbook
+  + transcribing a conversation
+
+If it's starting to sound like almost /everything/ counts as a computation, that's because most things are. There's even a hypothesis that every physical process in the universe is, on some level, a computable process. 
+
+Even if that hypothesis isn't true, the purview of computation is still very large and covers a great many things. A good rule of thumb is that any process that can be described as using 
+  + a finite number of rule
+  + a finite amount of data
+  + and a finite amount of time to finish succesfully
+is probably computable. If you look at all the previous examples, they fit into those three criterion. 
+
+What kinds of problems /aren't/ computable? One example would be "add up all the numbers in an infinite list and return their sum". It takes an infinite amount of time add up all the numbers in the infinite list, and unless all but a finite number of elements of the list are 0 then it will also take an infinite amount of /data/. Another would example would be creating a table that lists every digit of \pi. This would require an infinite amount of data, and so couldn't possibly be computable. The common theme of all the things that are /not/ computable is that they are /infinite/ in some way. A more pragmatic example actually is inspired by understanding computer programs themselves! It turns out that trying to determine, with perfect accuracy, whether or not a program has a virus is /not computable/, which means that there's no possible way to write a perfect anti-virus scanner.   
+
+On a theoretical level, the fact that so many things are computable is the reason why computers have proven themselves to be so useful to us. 
+
+That's a lot of description of what kinds of things /are/ computable, but what does it actually mean to describe a computation? The rule of thumb we've given is just an informal way to guess if something is computable. We don't know how to /define/ computations.
+
+To define computations, we'll need some kind of formal language much like we had when learning algebra. The language of algebra gave us the ability to write things such as
+#+BEGIN_LaTeX
+  \begin{align*} 
+    f(x) &:= 3*x \\
+    g(x) &:= f(x) + 10 \\
+    h(x,y) &:= x^2 + y^2 \\
+  \end{align*}
+#+END_LaTeX
+and have these functions be well defined. We know how to apply these functions by /substituting/ in numbers for the variables in the equations as in the following examples.
+#+BEGIN_LaTeX
+  \begin{align*}
+    f(3) &= 3*3 = 9 \\
+    g(10) &= 3*10 + 10 = 40 \\
+    h(3,4) &= 3^2 + 4^2 = 25 \\
+  \end{align*}
+#+END_LaTeX
+
+In addition to the ability to functionally define equations, we also have, built-in, all the arithmetic operations such as +,*,-, and the exponential operations. At this point, we need to make a distinction between syntax and semantics. By syntax we mean the literal symbols themselves, as in 
+#+BEGIN_LaTeX
+  \begin{align*}
+    3*4 + 10 \\
+    x^2 + y \\
+    f(10) \\
+  \end{align*}
+#+END_LaTeX
+Now, if you look at those symbols you can probably guess what they /mean/ when interpreted as numbers but what's literally there are just symbols. + is just +, * is just *, etc. They don't have meaning until they've been /evaluated/. This meaning of the symbols, that assigns the meaning of /addition/ to the symbol +, multiplication to the symbol *, is the semantics of the formal language of algebra. Every formal language has both a /syntax/ and a /semantics/ and our general procedure from here on is to introduce pieces of syntax along with their semantics, so that you may in principle evaluate your programs by hand. 
+
+While we can define many arithmetic functions using this equational algebra and while all of these arithmetic functions are computable [fn:: At least when restricted to a suitable subset of the real numbers], there's many things that this language of functions cannot define. For example, we can only define functions on numbers. We also cannot define functions that are fundamentally interactive, asking for input from some other source.
+
+In order to define general computation, we need a language that is far more complex than just having equations and operations on numbers. Unsurprisingly, this will be our /programming/ language. 
+*** Turing's Conception of Computation
+    Alan Turing is, arguably, the first person who came up with an easy to understand model of computation. In Turing's day, "computer" was a job title rather than a device. Computers worked out computations, by hand, such as firing solutions for the military. Turing was inspired by the way that these computers worked, where they had a finite but /arbitrary/ amount of scratch paper for their calculations and were able to stop their computation at any point, take a break, and come back to their work later. Abstracting away from these observations, Turing came up with the notion of a Turing machine. A Turing machine is a device that has an infinite roll of tape that it can write on, divided into individual cells where a single character can be written, and a movable head that can move around the tape. 
+
+    A given Turing machine is hard wired to be able to read a single character off the tape and then decide to 
+   + terminate succesfully
+   + terminate unsuccesfully
+   + write a new character into that cell
+   + move the head left or right on the tape
+   + enter one of a finite number of pre-defined configurations for deciding the next action
+The way a Turing machine operates is that it's input is written onto the tape in advance, then it continues to process the input according to its hard-wiring until it either terminates succesfully, with the output written on the tape, or terminates unsuccessfully because the input was ill-formed. 
+
+Given our informal definition of computation above, we can see that this matches what something /computable/ should be. There's a finite amount of data that's used on the tape at any finite time. There's a finite number of rules in that there's only a finite number of things the Turing machine can do in any configuration. Also, if the Turing machine finishes successfully it must only take a finite number of operations.
+
+Turing's machines were not the first or only way to conceptualize computation, there were also the partially-recursive functions and the lambda calculus, but these were very abstract tools for mathematicians that, while they do describe all computations, don't characterize an intuition for what computable things are "like". Turing machines on the other hand give us this intuitive feel for the finite nature of something that is computable. 
+
+** What Programs Are
+   We've tried to define what computation is, on some level, but we haven't answered the obvious question on the nature of /programs/. 
+
+   A program is a piece of text in a formal language that defines a computation. I think a good analogy is to consider the computation itself as the process of cooking a meal. A program, then, is the written recipe that describes how to perform this process correctly. You are playing the role of the interpreter, in this case, reading the instructions and figuring out what they mean and carrying them out. 
+
+   There's a major difference, though, between a recipe or directions to a friend's house and a program. The difference is that /you/ are much, much smarter than a computer. A recipe doesn't have to explain every tiny detail of how you boil water, turn on a stove, pulling ingredients out of the fridge, or what "to taste" means for a seasoning. On the other hand, /you/ have to describe in painful detail how to do almost everything for a computer. A good programming language will have a wide variety of built-in kinds of data and operations whose meaning the programming language designer has already defined for you. They work as building blocks that can fit together to make whatever you want. The process of building can still be very, very complicated and tedious and difficult.
+
+   Programming requires a level of precision in thinking and clarity in writing that normal life doesn't require, because in general we're communicating with each other and it's usually quite clear to someone else what you mean even if you misspoke. Computers can't figure those things out. If you misspeak when programming, the computer will do the wrong thing. That is what we call a bug in a program, and they're very easy to cause. If anything, I want to impress on you that programming can be difficult at first simply because for many people it's not a natural way to think. So don't be discouraged if it takes some time to /think/ like a programmer. It wasn't something that came easily to me at first, since I came from mostly a pure mathematics background, but over the years I've grown very confident in my abilities. 
+*** A Mathematical Aside On Programs and Infinity
+    This is an optional section that is not necessary to understand the text of this book, but presents an argument that I think is fairly useful for understanding the limitations of what a computer can do. 
+
+    We need to introduce a few mathematical constructs that may be unfamiliar. The first of these is a "set". A set in mathematics is an abstract collection of things. Examples of well-defined sets in mathematics are
+    + the set of all real numbers
+    + the set of all grammatically correct sentences in English
+    + the set of chickens named Belina
+    + the set of recipes that I've used in the past year
+Some of these sets are /finite/, by which we mean we can count them in a finite amount of time. The set of chickens named Belina and the set of recipes I've used are both finite. Some of these sets are /infinite/, such as the set of all grammatically correct sentences and the set of all numbers. 
+
+There's a distinction though between the set of all sentences and the set of all numbers. The set of all sentences is /countable/ in the sense that we can count all of them if we give ourselves an /infinite/ amount of time. On the other hand, the set of all real numbers is /so large/ that even with an infinite amount of time you couldn't possibly count all of them. In fact, you can't even count all of the real numbers between 0 and 1! This means that the set of all real numbers is /uncountable/. 
+
+The most important countable set is the set of /natural numbers/, which are formally defined as being either 0 or one plus a natural number. So the natural numbers consist of 0,1,2, etc. The natural numbers /are/ the counting numbers.
+
+Another important uncountable set is the set of all functions that take in a natural numbewr and give you back a natural number. We won't prove that here, but rather just assume it as a fact.
+
+A rather interesting set is the /set of all programs/ for a given programming language. Is this set countable or uncountable? A program is a finite piece of text with a finite set of symbols. Again, we'll skip the proof but it turns out to be true that if you're dealing with /finite/ texts over a /finite/ alphabet then there's at most a /countable/ number of texts. A countable number of texts means a countable number of /programs/. A countable number of programs can't possibly encode an /uncountable/ number of functions.
+
+This means that of all of the mathematically definable functions from the natural numbers to the natural numbers, a programming language can only describe at most a countable fraction of these functions. 
+
+What does this mean for computer science and how it relates to programming? It means that there's an absurdly infinite number of things mathematics that cannot be described as computations. So even though a lot of the processes that we deal with every day make sense as computations, most of the things mathematicians do every day are much harder to describe computably. 
+
+The essential thing to take from this digression is that there's a theoretical /reason/ why writing the right program to solve a problem can be very difficult. The most obvious way to try and solve a problem might not even be computable.
+** First Steps In Python
+ The /very/ first piece of syntax we're going to introduce in Python is how to print out values within a Python program. 
+
+ Write the following lines of code in a file called ~FirstSteps.py~.
+ #+BEGIN_SRC python :exports code :results output :tangle FirstSteps.py
+   print(10)
+   print(10)
+   print(300)
+ #+END_SRC
+
+ #+RESULTS:
+ : 10
+ : 100
+ : 300
+
+If you run this file using the following command you should see the output indicated.
+#+BEGIN_SRC sh :exports both :results output
+  python FirstSteps.py
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 100
+: 300
+
+We need to discuss what's happened here. First off, we've introduced the syntax ~print(v)~, whose semantics is to print out to the console the value of its argument, this means that it prints out the result of Python evaluating ~v~ and not just the literal syntax of ~v~ as we'll see shortly. This will be very useful for us in testing out our programs and checking that we understand the semantics of our constructs.
+
+The second piece of syntax we've implicitly introduced is the /line break/. Python separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ is an expression but ~print(10)~ is a statement. We can run a series of statements by separting them as new lines in the program. As a side note, there are a number of programming languages that separate statements by some other character such as a semicolon rather than just having a line break. For example, you're very likely to use Javascript at some point in your career and in Javascript the above three lines of code is written as 
+
+#+BEGIN_SRC js :exports code :results output
+  console.log(10);
+  console.log(100);
+  console.log(300);
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 100
+: 300
+
+with each statement separated by a semicolon. Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. As such, Python doesn't use the semicolon convention and instead just uses linebreaks and indentation to naturally divide code. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~print(v)~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
+
+Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in Python all the basic operations you're familiar with, including +,*,-, and exponents. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.py
+
+#+BEGIN_SRC python :exports code :results output  :tangle ArithmeticExpressions.py
+  print(10 + 10)
+  print(10 * 10)
+  print(10 - 10)
+  print(10 / 10)
+  print( 10 ** 2)
+#+END_SRC
+
+#+RESULTS:
+: 20
+: 100
+: 0
+: 1
+: 100
+
+The only symbol that might not be intuitively obvious is that ~**~ rather than ~^~ is the exponentiation operation. If you run this code with the following snippet then you should see the same results as below.
+
+#+BEGIN_SRC sh :exports both :results output
+  python ArithmeticExpressions.py
+#+END_SRC
+
+#+RESULTS:
+: 20
+: 100
+: 0
+: 1
+: 100
+
+It's important to note that the number that's printed out is the /result/ of the expression that's passed into the ~print~ statement. 
+*** Evaluating Code By Hand
+    One of the themes of this book is going to be how to take a pen and paper and evaluate your code. This might seem like an odd skill to learn, but it's useful for getting rid of some of the "magic" feeling that comes with writing code for the first time. If you're not sure how a piece of code works, it's really helpful to be able to sit down and go through it step-by-step for yourself. 
+
+    So far, 
+** Strings
+   An important kind of data in programming languages, other than numbers, are pieces of text. There are a few reasons for this. First, that we want our programs to be able to meaningfully communicate with us. We want to be able to get error messages if something goes wrong, we want to be able to send each other emails, etc. Another very important reason is that we want to be able to run our programs! Any program is, in fact, a piece of text. If we want to run our programs, first we need to read in the text of the program and then do something with it. This process of "running" a program from a piece of text is called "interpreting" it. 
+
+ Historically these pieces of text are called strings. In Python, as in most languages, strings are designated by quotation marks. So while you can't say ~print(This is not a string)~ without getting an error, you can say ~print("This is totally a string")~ and have it work fine. 
+ 
+ We'll say a few things about writing strings in Python and operations on them because there's a lot of little details that you'll end up needing over the course of this text. First off, as we've said a basic string is simply the text between two quotation marks as in this code:
+#+BEGIN_SRC python :exports both :results output
+  print("This is a string")
+#+END_SRC
+
+#+RESULTS:
+: This is a string
+
+and by running this code we can see that it does exactly what is expected. What if we want a message that stretches across multiple lines? We could just have multiple calls to "print" but that's not every elegant
+#+BEGIN_SRC python :exports both :results output
+  print("A message that spans")
+  print("multiple lines")
+#+END_SRC
+
+#+RESULTS:
+: A message that spans
+: multiple lines
+
+since it's a property of the /message/ that it has linebreaks not just of how it's printed. We can include the linebreaks within the string using special /escaped/ characters like so
+#+BEGIN_SRC python :exports both :results output
+  print("A message that spans\nmultiple lines")
+#+END_SRC
+
+#+RESULTS:
+: A message that spans
+: multiple lines
+
+In this case the ~\n~ is a special newline character that tells the print function that here, indeed, is a linebreak. We can also include quotation marks within a string by escaping them as well.
+
+#+BEGIN_SRC python :exports both :results output
+  print("Here's a message that \"has quotes\"")
+#+END_SRC
+
+#+RESULTS:
+: Here's a message that "has quotes"
+Escaping characters is a trick that essentially every programming language uses in order to allow the programmer to format their messages in a readable way. 
+
+There's also a different kind of quotation marks you can use in Python specifically, though, and those are the triple-quotes as in the following example
+#+BEGIN_SRC python :exports both :results output
+  print("""This is a message that spans 
+  multiple lines and contains "quotes" """)
+#+END_SRC
+
+#+RESULTS:
+: This is a message that spans 
+: multiple lines and contains "quotes" 
+
+Note that in this case we can simply include line breaks and quotation marks naturally within the triple quoted string. For the remainder of this text we'll be mostly using the more compact single quoted string syntax, unless there are messages that would be particularly messy to write without using triple quotes. 
+
+Finally, we need to discuss some of the operations on strings. First, we can /concatenate/, or glue, them together with the ~+~ symbol.
+
+#+BEGIN_SRC python :exports both :results output
+  print("this string" + " is broken" + " into multiple pieces")
+#+END_SRC
+
+#+RESULTS:
+: this string is broken into multiple pieces
+
+We can also access parts of strings using ~[:]~
+#+BEGIN_SRC python :exports both :results output
+  print("We only want a little piece of this string"[8:21])
+#+END_SRC
+
+#+RESULTS:
+: want a little
+
+In this case we take everything from the *eighth* character up to, but not including, the *twenty-first* character of the string, starting at zero. This is called /slicing/ the string.
+
+We can also access just a single character of a string using ~[]~
+#+BEGIN_SRC python :exports both :results output
+  print("We just want a single character"[1])
+#+END_SRC
+
+#+RESULTS:
+: e
+
+in this case we print out just the first character, counting from zero, of the string. 
+
+** Comments
+   We would be remiss if we didn't say at least a few words about commenting your code. First off, what we mean by a "comment" is a piece of text that can't influence the running of the program in any way. It's text that can be safely ignored by the computer when it runs the program, but it carries information that is useful to whoever is reading it. The syntax of comments is fairly simple: any line starting with a ~#~ is a comment and will be ignored
+#+BEGIN_SRC python :exports both :results output
+  # these lines are just
+  # comments that can be
+  # ignored and it doesn't matter what
+  # I write here
+  # print(10)
+
+  print(30)
+#+END_SRC
+
+#+RESULTS:
+: 30
+
+running this example we can see that the ~print(10)~ was completely ignored. 
+
+Commenting your code is important not just so that others can read the code and understand what it does, but also because *you* need to be able to read your own code in the future and remember what you were trying to do. Comments are useful in outlining the specification of the code, explaining exactly what it's supposed to do and how it's supposed to work. Code without comments is like driving directions without the destination written down. Technically you can use it to get somewhere, but you really want to know where you're going before you start driving. 
+
+** More On Input and Output   
+We've shown that we can print out data, but what about taking /in/ data? We can do that with the input command as follows, giving us a chance to also show how variables work as well. Go ahead and put this code in a file called ~InputExample.py~ and run it. 
+#+BEGIN_SRC python :exports code :tangle InputExample.py
+  x = input("Enter a string:")
+  print(x)
+#+END_SRC
+You should see a prompt in the console that says "Enter a string:" and then if you enter a number at the prompt it should look something like
+#+BEGIN_EXAMPLE
+python InputExample.py 
+Enter a string:10
+10
+#+END_EXAMPLE
+
+Now, ~input~ reads a /string/ from input. Even if it looks like you're entering in a number, Python is going to treat this as "10" and not 10. In order to turn a string into a number, we need to use the ~int~ function that performs this conversion.
+
+There's also a slightly more convenient syntax for using the ~print~ function that allows us to merge multiple things together in output
+
+#+BEGIN_SRC python :exports both :results output 
+  print("This is","a string","broken into pieces")
+#+END_SRC
+
+#+RESULTS:
+: This is a string broken into pieces
+
+Note that each comma separated pieces ends up being separated by a space in the output of the string. We can also put arbitrary values into the sequence of prints as in
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5 + 5,"But did it?"
+#+END_SRC
+
+#+RESULTS:
+: This should print 10: 10 But did it?
+
+That output looks a little ugly and we /could/ just add a new print line like this
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5+5
+  print "But did it?"
+#+END_SRC
+but we can also use the newline character "\n" within a string, which tells the ~print~ statement to make a new line.
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5+5,"\nBut did it?"
+#+END_SRC
+
+#+RESULTS:
+: This should print 10: 10 
+: But did it?
+** Function Calls and Declarations
+  Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
+#+BEGIN_LaTeX
+  \[
+    f(x) := 10 + x
+  \]
+#+END_LaTeX
+we can see that the fundamental pieces of how functions are declared are
+  + the function is given a name
+  + the arguments to the function are given names
+  + the body of the function is given
+
+We'll start by showing the syntax of defining a function and then we'll show what pieces of syntax correspond to each of these three things. 
+
+#+BEGIN_SRC python :exports code :results output :tangle FirstFunction.py :session fun
+  def function1(x):
+      print(x)
+      print(x)
+
+  function1(10)
+#+END_SRC
+
+#+RESULTS:
+: 
+: >>> >>> ... ... ... >>> 10
+: 10
+
+and put that code in FirstFunction.py
+
+Now if we go ahead and put this code in a file and run it 
+#+BEGIN_SRC sh :exports both :results output
+  python FirstFunction.py
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 10
+
+we should see that when the function ~function1~ is called with the argument ~10~ then it prints ~10~ twice. Looking at the /definition/ of the function we can see that we defined it by starting a line with ~def~, then the name of the function which in this case was ~function1~, the argument that was provided was ~x~ and then the /body/ of the function are the indented lines after the ~:~ symbol. The indentation is important. Since we separate statements by line breaks there'd be an ambiguity if Python allowed something akin to
+
+#+BEGIN_SRC python :exports code
+  def function1(x):
+  print(x)
+  print(x)
+#+END_SRC
+because it wouldn't be clear to the computer if
+  + this was a function with no body followed by two print statements
+  + the function is supposed to include the first ~print(x)~ but not the second
+  + the function is supposed to include both of the ~print(x)~ statements.
+so, instead, since the body of a function can be a sequence of statements then we signify the statements that belong to the function body by indenting them.
+
+There's a couple of things we haven't explained about functions in Python yet. First, we're used to a function /returning a value/ after it's called. Our earlier example function would return 20 when passed 10. Let us check what the value of our function after it's called is.
+#+BEGIN_SRC python :exports both :results output :session fun
+  print(function1(10))
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 10
+: None
+
+Notice that the final value returned was ~None~. ~None~ is actually a special value in Python that means that there was no data. In order to make our function /return/ a value we need to use the ~return~ keyword as follows
+
+#+BEGIN_SRC python :exports both :results output 
+  def function2(x):
+      return 10 + x
+
+  print(function2(10))
+#+END_SRC
+
+#+RESULTS:
+: 20
+
+Now this actually corresponds to our function 
+#+BEGIN_LaTeX
+  \[
+    f(x) := x + 10
+  \]
+#+END_LaTeX
+
+In summary, 
+  + functions in Python are defined with
+    + the keyword ~def~
+    + the name of the function
+    + its arguments, separated by commas just like in high school algebra
+    + the body of the function as an indented sequence of statements
+  + a Python function always returns a value
+    + if you don't specify /what/ value then it will return ~None~
+    + you can specify what value it returns with ~return~
+
+** Two Senses of Variables
+   We've seen that variables as we're used to them in mathematics exist in Python. These are the variables that are the arguments to a function. They have a single value for the duration of the function in which they are used.
+
+   Unfortunately, there is another use of the word variable in computer science, which is to mean a /named container/ for data whose contents can change over the course of a program. These kinds of variables are brought into existence just by giving them a value using the ~=~ operator.
+
+   Consider the following code 
+#+BEGIN_SRC python :results output :exports code 
+  x = 10
+  print(x)
+  x = 20
+  print(x)
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 20
+
+The first ~x=10~ line brings the container ~x~ into existence and fills it with the value ~10~, which means that the first thing we print out is ~10~. Then the next line of code says that we put 20 in the container named ~x~, not creating a new container, but replacing the contents already in ~x~. We can see then in the following print statement that the current value of ~x~ is 20 as of the last line of code.
+
+These variables-as-containers are thus /very/ different than any kind of variables used in mathematics and it's important to distinguish them in form. It's more accurate to call variables-as-containers /references/, but for historical reasons most languages don't actually do this and so we will stick to calling simply calling them variables. 
+*** Exercises
+   1. Write a program that will
+      1. Ask for a name with the message "How may I address you?"
+      2. Read in the name and store it in a variable
+      3. Ask for a preferred title
+      4. Print out the title and the name concatenated together with proper spacing, e.g. "Ms. Clarissa Littler"
+   2. Write a function that will
+      1. take in two arguments
+      2. the first argument can be assumed to be another function
+      3. the second argument can be assumed to be a string
+      4. print a message that informs the user what function will be applied to what argument
+      5. print the result of applying the function to the string
+      6. Test your function
+   3. Write a function that will
+      1. Take in two arguments that can be assumed to be numbers
+      2. Print out the sum of the squares of these numbers
+** Computers and Memory
+   Here we're going to begin a slight digression from describing Python to describing how memory works in computers and how your programs use memory. You've probably all heard that your computer has a certain amount of RAM, or Random Access Memory. This memory is used to hold data that the computer is working with. So when we talk about variables-as-containers, the place where these containers live is /in memory/ [fn::This is a slight simplification. Sometimes the contents of a variable-as-container or a variable-as-parameter can be stored in a more efficient place than RAM]. The amount of memory your computer or cell phone or tablet has is what limits how much data a program can manipulate at once. 
+   
+** More on Numbers
+   So far we've just been dealing with natural numbers in our examples, but Python can handle other kinds of numbers than that and actually has a large number of operations on numbers. We can use a small subset of the real numbers, called the floating point numbers, as well. 
+
+   For example if we take the square root of 2 we'll get 
+#+BEGIN_SRC python :exports both :results output
+  print(2**0.5)
+#+END_SRC
+
+#+RESULTS:
+: 1.41421356237
+
+Now the square root of 2 has an /infinite/ decimal expansion, so technically speaking this isn't the square root but a close approximation of it. In general the /real/ numbers as we've seen them in mathematics can't be completely described by a computer because they may have infinitely many decimal places. 
+** Booleans
+   There are a few more pieces that we need to deal with before we can actually start showing what real programs look like. In this section we'll talk about a kind of data called /booleans/ and how they can be used to make choices in a program.
+   
+   We're all familiar with making decisions based upon whether or not some /condition/ is true. For example, you leave the brownies in the oven *until* a toothpick comes out clean. If the game costs *less* than $20, then you know you can buy it, but if it's over $20 then you have to pass on it. If you're *over* 21, then you don't have to use a fake ID to get a beer, but if you're under 21 then you probably shouldn't break the law. 
+
+   The common thing in all of these is that /if/ something is true, then you perform an action, and if it's not true you perform a different action. 
+
+   In order to describe using these kinds of conditions in programming, we need a kind of data that corresponds to something being /true/ or /false. In Python, as in most programming languages, this is called a Boolean. There are only two Booleans, called ~True~ and ~False~.
+
+  In order to actually /make/ a choice based upon a condition, we introduce another piece of syntax: the if-statement.
+
+  Here's an example of an if-statement
+#+BEGIN_SRC python :exports both :results output
+  if True:
+      print(True)
+  else:
+      print(False)
+#+END_SRC
+
+#+RESULTS:
+: True
+This is a very /trivial/ if-statement but it gives us the basic syntax since all if-statements must have the following form
+#+BEGIN_SRC python :exports code
+  if condition:
+      sequence of statements
+  else:
+      another sequence of statements
+#+END_SRC
+Similarly to function bodies, we have an /indented/ sequence of statements that are the things to do if the condition is ~True~ or if it evaluates to ~False~. Notice, though, that the ~print(False)~ in the ~else~ branch never actually printed anything. Whichever branch of the if-statement the program ends up taking, the other branch will never actually run. 
+
+What if we want to do nothing special if the condition isn't ~True~ and, instead, just keep running the program as normal? In that case, we can leave off the ~else~ part of the if-statement. Consider the following piece of code that uses both functions and if-statements:
+#+BEGIN_SRC python :exports both :results output
+  def boolFun(b):
+      if b:
+          print("The if statement ran")
+      print("This is after the if statement")
+
+  boolFun(True)
+  print("")
+  boolFun(False)
+#+END_SRC 
+
+#+RESULTS:
+: The if statement ran
+: This is after the if statement
+: 
+: This is after the if statement
+
+Now if you look at the output of this code, you can see that it's exactly what we expect. In the first case both of the ~print~ statements run and in the second only the last print statement, outside of the if-statement, runs. 
+
+    If the only thing we could put into conditions of an if-statement were literally ~True~ and ~False~ then they wouldn't be very interesting. In this section we'll talk about some of the built-in operations in Python that are /Boolean-valued/, that is that they return a Boolean. 
+
+    First, we have the basic comparison operations on numbers. There's the basic ~<~, ~>~, ~<=~, and ~>=~. We can see them in the following function
+
+    #+BEGIN_SRC python :exports both :results output
+      def usesLessThan(number1, number2):
+          if number1 <= number2:
+              print("number1 was less than or equal to number2")
+          else:
+              print("number2 was greater than number1")
+
+      usesLessThan(10,20)
+    #+END_SRC
+
+    #+RESULTS:
+    : number1 was less than or equal to number2
+
+    We also have the rather important comparison operations ~==~ and ~!=~, which tells us whether or not two things are equal. We can use ~==~ and ~!=~ on any type, and ~==~ will return ~True~ if two things are equal and ~False~ if they are not and ~!=~ does the exact opposite. 
+
+    This means we can do things like 
+#+BEGIN_SRC python :exports code :tangle ComparisonExample.py
+  number = input("Enter a number:")
+  if int(number)==5:
+      print("You entered 5")
+  else: 
+      print("You entered something that wasn't 5'")
+#+END_SRC
+
+
+Finally, we have enough pieces that we can show the last variant we need of the if-statement: the else-if. Consider the following, somewhat poorly structured, code that makes multiple comparisons
+
+#+BEGIN_SRC python :exports code :tangle ComparisonExample2.py
+  number = input("Enter a number: ")
+  if int(number)==5:
+      print "You entered 5"
+  else:
+      if int(number)==10:
+          print "You entered 10"
+      else:
+          print "You entered something else"
+#+END_SRC
+
+
+If we have to make a new if-statement for each different choice then that means that our code is going to get very unwieldy very quickly.
+
+Instead, we can use the else-if this way
+#+BEGIN_SRC python :exports code :tangle ComparisonExample3.py
+  number = input("Enter a number: ")
+  if int(number)==5:
+      print "You entered 5"
+  elif int(number)==10:
+      print "You entered 10"
+  else:
+      print "You entered something else"
+#+END_SRC
+
+This allows us to be much clearer in the meaning of our code. 
+*** Exercises
+   1. Write a function that
+      1. Takes in a string as an argument
+      2. Checks that the first character of the string is capitalized and that the last character is a punctuation mark. (You will find the ~.len()~ method on strings helpful)
+   2. Write a function that
+      1. 
+** Lists
+   Another kind of data that's important in Python are /lists/. A list is a sequence of arbitrary things. We can have booleans, numbers, other lists, etc. in our list. An example of a list would be something like
+   #+BEGIN_SRC python :exports both :results output
+     myFavoriteAlbums = ["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
+     print(myFavoriteAlbums)
+   #+END_SRC
+
+   #+RESULTS:
+   : ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories']
+
+A list can be created by including a comma-delimited sequence of expressions between two square brackets. The above is the Python equivalent of the following text
+
+  + "Fables from a Mayfly"
+  + "Anchors and Arrows"
+  + "Random Access Memories"
+
+Once a list is made, there are obvious things you might want to do with it such as
+  + access the n-th memmber of the list
+  + change an element of the list
+  + add a new item to the list
+  + take an item off of the list
+
+The first of those we can do with the following bit of syntax
+#+BEGIN_SRC python :exports both :results output 
+  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
+
+  print(myFavoriteAlbums)
+  print(myFavoriteAlbums[0])
+#+END_SRC
+
+#+RESULTS:
+: ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories']
+: Fables From a Mayfly
+
+When we run these print statements we can see that the expression ~myFavoriteAlbums[0]~ pulls out the first element of the list. This tells us that lists are indexed by /0/. This is true in most programming languages, actually, that we start counting at 0 and work our way up, as opposed to informal conversation where we tend to start counting with 1.
+
+Next, we come to changing elements of a list once they're made. We can also do that with the ~[]~ syntax that we've just introduced, as follows.
+
+#+BEGIN_SRC python :exports both :results output
+  myFavoriteChickens = ["Beleena", "Nimbus"]
+  # oh no, it turns out that I spelled Billina wrong
+  myFavoriteChickens[0] = "Billina"
+  print(myFavoriteChickens)
+#+END_SRC
+
+#+RESULTS:
+: ['Billina', 'Nimbus']
+
+We can see that the name of the first chicken in our list has, in fact, changed! The underlying metaphor behind the ~[]~ syntax is that a list isn't just a list-of-things, it's actually a list-of-containers. You can actually change what's in those containers without even making a whole new list. Now, that's useful now but we'll also see situations where that can be slightly dangerous if we're not careful on how we treat these containers. If it helps, thinking of how you would write a bulleted list by hand: when you decide to change one of the entries in the list, you don't also erase the bullet point rather just the text next to the bullet point, i.e. the contents of the container as opposed to the container itself. 
+
+Can we modify random points in a list? What if we try accessing or modifying large indexes? Try running the following pieces of code 
+#+BEGIN_SRC python :exports both :results output 
+  myFavoriteChickens = ["Billina", "Nimbus"]
+
+  print(myFavoriteChickens[10])
+#+END_SRC
+
+then we'll get the output
+#+BEGIN_EXAMPLE
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+IndexError: list index out of range
+#+END_EXAMPLE
+which means that we're not allowed to access further than end of the list. 
+
+There are a few ways to add items to a list. The first one is the ~.append~ method, which conceptually corresponds to adding a new thing to the /end/ of a list of things. 
+
+#+BEGIN_SRC python :exports both :results output
+  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
+
+  myFavoriteAlbums.append("Fumbling Towards Ecstasy")
+  print(myFavoriteAlbums)
+#+END_SRC
+
+#+RESULTS:
+: ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories', 'Fumbling Towards Ecstasy']
+
+Here we've introduced a new piece of syntax: the method call. Methods are /like/ functions, but they're attached to a particular kinda of data. In this case, the ~append~ method is attached to lists themselves and can't be used on just anything. Indeed, if you were to try to ~.append~ something to a number you'd get an error like this snippet of a Python session
+
+#+BEGIN_EXAMPLE
+>>> x = 10
+>>> x.append("a thing to append")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'int' object has no attribute 'append'
+#+END_EXAMPLE
+
+Methods are all called with the ~.~ syntax, where the name of the method being called comes /after/ the ~.~ but otherwise the syntax behaves the same as functions.
+
+If you can add to the list, you'd expect that you can also take away from the list. We can remove elements from the list a few different ways. The first is the ~pop~ method, which removes an item from the end of the list. By "remove" here we mean that it completely removes the /container/ at the end of the list. 
+
+#+BEGIN_SRC python :exports both :results output
+  myList = [1,2,3]
+  myList.pop()
+  print(myList)
+#+END_SRC
+
+#+RESULTS:
+: [1, 2]
+
+Continuing our metaphor of lists as pen-and-paper lists, using ~.pop~ corresponds to erasing the entire bullet point at the end of the list. Not just the data is gone, but the entire place for it is gone. 
+
+*** An Aside on Indexes and Counting
+    You will have undoubtedly noticed that when we're counting places in a list, we're starting our count at 0 and working our way up from there. This might feel a bit unnatural at first, since it leads to statements such as "the first element of the list ~a~ is at ~a[0]~", but it's a convention in computer science that is almost universal at this point. 
+
+    There's also some theoretical justification for starting to count at 0! In mathematics, we sometimes define the natural numbers as a set generated by the recursive relation that says "a natural number is either 0 or it is one plus another natural number". This definition probably seems weird but (TODO: fix this section, or maybe just leave it out) 
+** Iteration
+   The other major tool that we need to control the flow of a program is the ability to repeat an action an arbitrary number of times. For example, when we're dealing with directions we may need to follow something like "keep driving /until/ you see the fifth exist" or "head 20 miles north". These express the idea not just of /choice/ but of continuing a process until some condition is met. The equivalent of that in Python is the while-statement. 
+*** While Loops
+A typical while-statement will look like
+#+BEGIN_SRC python :results output :exports both :tangle FirstWhile.py
+  x = 0
+  while x < 10:
+      print("Still running")
+      x = x + 1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+#+end_example
+
+We see again the typical pattern that one of these special statement forms starts with a keyword, in this case ~while~, some extra information after the keyword, which in this case is the condition to /keep/ running, a ~:~ and then the sequence of statements that should run.
+
+In words, what this code means is that we start with the variable ~x~ be set to ~0~ and, then, every time the body of the while-statement is run it will 
+  + print the string "Still running"
+  + increment the value of the number held by the container ~x~
+and the body will run a total of *10* times, once for ~x=0~, ~x=1~, etc. up through ~x=9~. When ~x=10~ then the condition in the while-statement will return ~False~ and the body of the loop is skipped. 
+
+Here's another example of a while loop, one that involves interactive input
+#+BEGIN_SRC python :exports code :tangle WhileAsk.py
+  x = input("Enter a string: ")
+  while x != "quit":
+      print(x)
+      x = input("Enter another string: ")
+#+END_SRC
+
+this code will keep asking us to enter a string until we give the program the string "quit".
+
+Of course, while loops can be somewhat dangerous since they can potentially run /forever/. For example, if we write a loop such as
+#+BEGIN_SRC python :exports code :tangle BadWhile1.py
+  while True:
+      print("Still running")
+#+END_SRC
+and attempt to run it, then it will end up running forever. Now, this is a somewhat obviously trivial infinite loop but it's also possible to write infinite loops that are less obviously wrong. Try to figure out what the problem is with this loop before reading on
+#+BEGIN_SRC python :exports code :tangle BadWhile2.py
+  x = 10
+  while (x != 0):
+      print("Still running")
+      print(x)
+      x = x - 3
+#+END_SRC
+
+The idea behind this code is fairly straightfoward. Counting down from 10, we want to print all the numbers that are from 10 on down to 1, counting down by 3 each time. The problem with this code, and what you'll see if you attempt to run it, is that it won't actually stop running! 
+
+The reason why is that we hit a state where ~x=1~, then we run the body of the loop again and end with ~x=-2~. Once ~x=-2~, we hit the body of the loop again and then check to see if ~-2 != 0~, which is ~True~, and thus the loop continues. The condition to terminate the loop, that ~x==0~, will never actually happen. In order to fix this loop we'd need to do something like
+
+#+BEGIN_SRC python :exports code :tangle FixedWhile.py
+  x = 10
+  while (x > 0):
+      print("Still running")
+      print(x)
+      x = x - 3
+#+END_SRC
+and we can see that this version works exactly as intended. 
+
+*** For Loops
+The other kind of loop that exists in Python is the ability to do something for a set number of times. For example, if I need to crack six eggs then for /each/ egg I need to crack it into the bowl. If I need to grade 30 assignments, then for /each/ assignment I need to grade it. These are tasks where there are /items/ in a /collection/ where for /each/ item we /do/ something. Corresponding to this kind of iteration we have for-loops in Python. The basic syntax of a for-loop looks something like 
+
+#+BEGIN_SRC python :exports both :results output
+  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
+
+  for album in myFavoriteAlbums:
+      print("I like this: " + album)
+#+END_SRC
+
+#+RESULTS:
+: I like this: Fables From a Mayfly
+: I like this: Anchors and Arrows
+: I like this: Random Access Memories
+
+The syntax follows the basic idea that /for/ each item /in/ a collection of things, we perform some sequence of actions. As with all the syntactic forms we've seen before, we follow the ~:~ character with an indented sequence of statements. 
+
+What if, though, we want to do something a particular number of times rather than over a concrete number of things. A real life example would be something like weight training, where you have a particular /number of repetitions/ for some action. We mimic this style of iteration by using the normal for-loop syntax, but with a special kind of list we generate with the ~range~ function. The ~range~ function will return a list of numbers within the specified range, as in the following code
+#+BEGIN_SRC python :exports both :results output
+  for num in range(10):
+      print(num)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+#+end_example
+
+We can also be more specific by specifying both the top and bottom of the range:
+
+#+BEGIN_SRC python :exports both :results output
+  for num in range(5,10):
+      print(num)
+#+END_SRC
+
+#+RESULTS:
+: 5
+: 6
+: 7
+: 8
+: 9
+
+Note, though, that this defines an interval of numbers that is /closed/ on the bottom of the range but /open/ on the top of the range. 
+
+*** Loop Unrolling
+    We haven't talked much about the /semantics/ of loops to this point, either the while statement or the for statement. Probably the best way to describe the meaning of iteration is to explain /loop unrolling/, which is also sometimes used as an optimization by some programming languages. 
+**** Unrolling While Loops
+
+#+BEGIN_SRC python :results output :exports both 
+  x = 0
+  while x < 10:
+      print("Still running")
+      x = x + 1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+Still running
+#+end_example
+
+it's actually equivalent to the following piece of code
+
+#+BEGIN_SRC python :results output :exports both
+  x = 0
+  print("Still running")
+  x = x + 1
+  while x < 10:
+      print("Still running")
+      x = x + 1
+#+END_SRC
+
+**** Unrolling For Loops
+     When we're unrolling our for loops 
+*** Loop Invariants
+  
+** Tuples
+   A tuple is a way of grouping of data, giving us the ability to pass multiple pieces of data into one variable. 
+
+   For example, we might want to store something like user names and passwords together, or names of recipes, the actual ingredients used, and the directions as a group of data. 
+
+   A tuple is made by including a comma separated list of data inside parentheses. For example, we can make a tuple ~("ldiane","HorseStapleBatteryCorrect")~ that contains both someone's username and password.
+
+   If you recall high school math, you used pairs of numbers to describe points in a plane, one being the value on the x-axis and the other number being the value on the y-axis. Tuples are the way we would use pairs like this in Python. For example, if we wanted to write a function that found the distance between two points we could do it like so:
+   #+BEGIN_SRC python :exports both :results output
+     def dist(point1,point2):
+         x = point1[0] - point2[0]
+         y = point1[1] - point2[1]
+         return (x**2 + y**2)**0.5
+
+     p1 = (1,2)
+     p2 = (3,4)
+
+     print(dist(p1,p2))
+   #+END_SRC
+
+   #+RESULTS:
+   : 2.8284271247461903
+
+Note that we access the "slots" in the tuple just like accessing places in a string or a list: with the ~[ ]~ syntax, but like a string and unlike a list we cannot /modify/ the place of a tuple. The following code, for example, 
+
+#+BEGIN_SRC python :exports code
+  # should throw an error
+  testtuple = (1,2,3)
+
+  testtuple[0] = 10
+#+END_SRC
+
+will throw an error, ~TypeError: 'tuple' object does not support item assignment~. 
+
+We also, like lists and strings have the ability to use the ~in~ predicate with our if-statements.
+
+#+BEGIN_SRC python :exports both :results output
+  if 10 in (1,2,3):
+      print("10 was found")
+  else:
+      print("10 wasn't found'")
+#+END_SRC
+
+#+RESULTS:
+: 10 wasn't found'
+
+We can also use for-loops over tuples to do something for each item in a tuple:
+
+#+BEGIN_SRC python :exports both :results output
+  for i in (1,2,3,4):
+      print(i)
+#+END_SRC
+
+#+RESULTS:
+: 1
+: 2
+: 3
+: 4
+
+Another use for tuples is in grouping results together. For example, let's say that we wanted to 
+
+*** Exercises
+    1. Write a function that will calculate the slope of the line between two points in the plane. 
+       + It should take in two tuples as arguments
+       + The tuples may assumed to consist of two numbers each
+    2. Write a function that uses your answer to the previous problem to write a function that can determine if any three points are colinear
+** Dictionaries
+   Another kind of datastructure we need to deal with in Python is the dictionary. Lists correspond to written numbered lists and are good for storing a variable number of things, tuples correspond to a general form of the pairs and triples we learned in algebra and are good for holding fixed data that we need to keep together, but what about collections of data that /associate/ things together? The canonical example would be something like an actual dictionary or an encyclopedia, a collection of information that maps a word to an explanation. 
+
+   In Python, dictionaries are general maps from strings to any kind of data. We make dictionaries with the following syntax 
+
+   #+BEGIN_SRC python :exports both :results output
+     myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
+
+     print(myDictionary)
+   #+END_SRC
+
+   #+RESULTS:
+   : {'cadabra': ['This is a list'], 'abra': (10, 20), 'key1': 0, 'key2': 1}
+
+and we can iterate over dictionaries with the for-loop, but there's some subtleties here that we need to discuss:
+
+#+BEGIN_SRC python :exports both :results output
+  myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
+
+  for key in myDictionary:
+      print("This is the key in the dictionary:", key)
+      print("This is the value corresponding to the key",key,":", myDictionary[key])
+     
+#+END_SRC
+
+#+RESULTS:
+: This is the key in the dictionary: abra
+: This is the value corresponding to the key abra : (10, 20)
+: This is the key in the dictionary: key2
+: This is the value corresponding to the key key2 : 1
+: This is the key in the dictionary: key1
+: This is the value corresponding to the key key1 : 0
+: This is the key in the dictionary: cadabra
+: This is the value corresponding to the key cadabra : ['This is a list']
+
+So by default the for-loop will iterate through the keys of the dictionary only, but we can easily write it slightly differently, using the dictionary method ~items~, to give us both pieces of data at once:
+
+#+BEGIN_SRC python :exports both :results output
+  myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
+
+  for key, val in myDictionary.items():
+      print("This is the key in the dictionary:", key)
+      print("This is the value corresponding to the key",key,":", val)
+#+END_SRC
+
+#+RESULTS:
+: This is the key in the dictionary: key2
+: This is the value corresponding to the key key2 : 1
+: This is the key in the dictionary: abra
+: This is the value corresponding to the key abra : (10, 20)
+: This is the key in the dictionary: key1
+: This is the value corresponding to the key key1 : 0
+: This is the key in the dictionary: cadabra
+: This is the value corresponding to the key cadabra : ['This is a list']
+
+** An Aside on Types and Hidden Errors
+   At this point we've had some exercises, we've introduced a number of kinds of data, and we've seen that there's a basic notion of "type" of data at play here. What this means is that you can't, for example, use a number as a string. Running
+
+#+BEGIN_SRC python :exports none :results output
+  print(3[2:5])
+#+END_SRC
+
+will result in getting an error ~TypeError: 'int' object is not subscriptable~, which is just a fancy way of saying that numbers aren't in the set of kinds of data that you can use the ~[ ]~ or ~[ : ]~ notation on. Now, of course we only see these errors if we actually run /the/ line of code that has the problem. For example, in the following file we'll never actually hit an error
+
+#+BEGIN_SRC python :exports both :results output
+  if False:
+      print(3[2:5])
+  else:
+      print("This is okay!")
+#+END_SRC
+
+#+RESULTS:
+: This is okay!
+
+when we run the code, but what if something changes and our conditional stops being false? Then we'll hit the error without having realized it. The same thing is true for the following program, which defines a function that has a type error in it but doesn't use it /yet/
+
+#+BEGIN_SRC python :exports both :results output
+
+#+END_SRC
+
+The point of all these examples is that just because a Python program runs the first time doesn't mean that it's actually error free. This is because Python is an "untyped" language, a language where programs with typing errors are still valid programs in the language. Practically, the difference between a typed and an untyped language is that typed languages have some form of "type checking" phase that rejects a program that has type errors and doesn't allow it to be run. 
+
+What this means for you as a Python programmer is that *you* need to do the actual work of ensuring that your code doesn't contain type errors. It's a good practice to make sure that you include some comments to yourself about the type of data you expect to be passed into functions and to also not /change/ the type of data that a variable holds over the course of the program.  For example, I'd argue that the following program is rather bad style
+
+#+BEGIN_SRC python :exports both :results output
+  myDictionary = {}
+
+  def myFun(d): 
+#+END_SRC
+
+because we're trying to be "cute" and save space by 
+
+** Functions as Values
+   One thing that may not have been obvious yet in Python is that /functions/ are just another value, like numbers or lists or strings. We can pass functions into other functions like the following fairly silly example 
+#+BEGIN_SRC python :exports code :results output
+  def doublefun(function,argument):
+      return (function(function(argument)))
+
+  def sillyfunction(x):
+      return 2*x
+
+  print(doublefun(sillyfunction,10))
+#+END_SRC
+
+#+RESULTS:
+: 40
+
+which should print out the number ~40~ at the end of the code. Now, how did it get the number 40? The definition of ~doublefun~ takes in two arguments, a /function/ and an argument to /pass/ the function. We then call the function twice on the provided argument, so when we pass in ~sillyfunction~ as our function argument then we can roughly see the progression of the code as
+#+BEGIN_EXAMPLE
+print(doublefun(sillyfunction,10)) -->
+v = sillyfunction(sillyfunction(10))
+print(v) -->
+v = sillyfunction(2*10)
+print(v) -->
+v = sillyfunction(20)
+print(v) -->
+v = 2*20
+print(v) -->
+print(40)
+#+END_EXAMPLE
+:META:
+ This really needs to be cleaned up, but I'm trying to experiment here with how to actually write all of this stuff.  
+:END:
+When taken apart it's probably less intimidating than it seems at first, but we simply are able to 
+
+* Specifications
+  An important skill that we need to practice is obeying a specification. Essentially what we need to learn and practice is the distinction between a specification and a computation. Computations, like we've seen so far are the actual /directions/ for how to do something. The specification, though, is the actual /goal/ of our computation. 
+
+  For example, the directions to my house from your house are the description of the /computation/ given by travelling from your house to mine. On the other hand, the specification is so obvious it's almost not worth stating: "travel from your house to mine". 
+
+  The specification gets more complicated once we're trying to solve problems a little less obvious. Consider something like a web server. The specification is exactly what the website is supposed to do for every possible HTTP request it can receive. If any of you reading this have industry experience, when was the last time you had a precise description of what the website was supposed to do? In my experience it's not terribly common, and that's a shame.
+
+  We often define the specification by "I wrote this code, and what it does is what it's supposed to do" but that's really not a proper specification. To do programming correctly, you should know what you're trying to do before you do it. That's not to say that exploratory programming is bad per se, because one of the best ways to figure out what problem you're trying to solve can simply be trying to write code that does something and then figure out if that's what you're trying to do in the first place. 
+
+  The key components of any specification is explaining what the /domain/ of data is. For example, if I want to 
+* A First Project
+  The first project we're going to try is to recreate a classic program called "Eliza". [[http://en.wikipedia.org/wiki/ELIZA][Eliza]] was a fake "psychiatric" program that was one of the first chatterbots. Eliza operates by rather simple pattern matching, so we'll walk you through, piece-by-piece how to make this program for yourself.
+ (TODO: Insert a transcript from the completed program here)
+** A Basic Interface
+   The first piece you should write is to make a simple interface for experience. This interface should obey the following specification
+
+* Advanced Topics
+** Anonymous Functions
+   To this point we've been dealing with functions as declarations, and in Python that's the main way that they're used. At the same time, there's another limited way in which we can define functions with /expressions/ rather statements. These are the so-called anonymous---that is, unnamed---functions, also called lambda functions. Here's a quick example of making a function that squares a number 
+   #+BEGIN_SRC python :exports both :results output
+     sqr = lambda n: n*n
+
+     print(sqr(10)) # should print 100!
+   #+END_SRC
+
+   #+RESULTS:
+   : 100
+
+The syntax of this is a little bit different than normal function definitions. The basic differences are below:
+
+   + lambda expressions can't use statements. The body of a lambda is allowed to be a /single/ expression.
+   + Because lambda expressions have only a single expression, there's no ~return~ statement needed. A function built from a lambda expression returns the value of this /single/ expression
+   + A lambda expression can be directly passed in as an argument
+
+Now, why do we care about this? We already have "first class" functions in Python: we can pass functions by name to other functions, we can assign functions to variables, we can /return/ functions like any other value. In Python, lambda expressions are mostly a matter of convenience. Sometimes you don't need or even want to name a function because naming a function takes up a perfectly good name and is simply more work. For example, what if we wanted to operate on all the possible 
+** List Comprehensions
+   One of the tools that we'll be using a good bit in Python are /list comprehensions/. List comprehensions gives us ways to act on collections
+** Objects
+   At this point, we've shown that we can do an awful lot with just the kinds of data that are built into Python but, of course, that's not all we're going to want to do. We'll need to "package up" data into collections. For example, if we were writing even a small video game it would start becoming incredibly unwieldly to store the state of the game as a giant tuple of other tuples, lists, and dictionaries. We'd end up repeating a lot of code in order to try and access and modify data in the ways that we want. 
+
+   Instead, what we need to be able to do is make new /kinds/ of data that package up the information that we need /as well as/ the ways that we're allowed to work with this data. Consider lists, for example. Lists contain certain data within them, but you can only access it in the ways that the list /allows/ you to do. Adding an element to the end of the list had to be done using the operations defined, such as the ~append~ method. You can't simply "open up" the list and see how it is actually represented internally to Python. This combination of data store and control over how that data can be accessed is what is accomplished by the object system of Python. 
+
+A little bit of terminology first, though, in that there's a distinction between a /class/ and an /object/. A particular list is an /object/, but the kind of object it is is a /class/. So when we declare new kinds of objects, we're actually declaring a class that we can use to make objects. 
+
+  At this point some examples are in order. Here's the declaration for a class that will make objects that have a /single/ piece of data that we can access. 
+
+#+BEGIN_SRC python :results output :exports both
+  class FirstClass: 
+      def __init__(self):
+         self.attribute = 10
+
+  y = FirstClass()
+  print(y.attribute)
+#+END_SRC
+
+#+RESULTS:
+: 10
+
+Picking apart what this syntax means, we are declaring first the /name/ of our class, which is FirstClass, and then defining a very special function called ~__init__~. This function plays the special role of telling the Python implementation how to make an object from the class definition ~FirstClass~. The ~__init__~ function takes, as a special argument, the argument ~self~. ~self~ functions as a stand in for the object that's being made. Here, we can use the ~.~ syntax to not just modify attributes that already exist but to /define/ what attributes objects made from this class have. For example, the following code will throw an error if you run it
+#+BEGIN_SRC python :results output :exports both
+  class FirstClass:
+      def __init__(self):
+          return None
+
+  y = FirstClass()
+  y.attribute = 10
+  print(y.attribute)
+#+END_SRC
+
+#+RESULTS:
+: 10
+
+*** Objects as Containers
+    The first use we'll see of objects is as specialized containers. So far we've seen dictionaries, tuples, and lists which all have had the property that they contain-containers, slots into which we can put data. If Python didn't already /have/ tuples and lists and dictionaries could we make them ourselves? Yes, we could, using objects! Indeed, in a sense all the types we've seen to this point /are/ objects that just have special primacy within Python and special syntax built into the language. 
+
+The very thing we'll be showing is how to declare a class, similar to how we declared functions much earlier in the text. 
+
+#+BEGIN_SRC python :exports both :results output
+
+#+END_SRC
+
+For example, if we didn't already /have/ a list we could implement one 
+*** On Object Oriented Programming and Paradigms: A Polemic
+    Sometimes you will hear about "paradigms" of programming. These tend to have names such as "object oriented programming", "functional programming", "aspect oriented programming", and the like. Different programming languages will fall in different camps, sometimes more than one at a time, and programmers argue incessantly about which language is better and which paradigm is better and tend to make overblown statements about there being One Right Way to write code.
+
+    I argue that most of these discussions are entirely foolishness. Different styles of programming and different programming languages lend themselves to different kinds of thinking. My brain does not work the same as yours, the reader, and there is no reasonable way that what metaphors I find easiest for expressing computation could universally be the best for all of you to learn. I think there can be arguments made over the advantages and disadvantages of different programming languages for different kinds of tasks and style of programming, but on a fundamental level they are just different formal systems for expressing the same universal objects: computations. Computations have meaning independent of particular programming languages and programming paradigms. 
+    
+    So while I may be explaining how objects work, I am not going to wholesale teach "object oriented programming" in this book because I don't particularly think in terms of organizing all of computation as objects. My silent goal up until this point has been to try and teach programming in terms of a variety of styles, explaining various tools and ways that you can approach problems, because my fundamental concern is how to express computation and how the programming constructs of Python are connected to intuitive notions of computation and how manipulating data "should" work.  
+
+    Ultimately, I ask you to not accept the notion that one's choice of programming language or paradigm is reflective of one's intelligence, skill, or value. For most people, the choice of language and paradigm is determined in very much the same way that one's natural language is determined: through environment and culture. If you learn how to code at a school that mostly teaches object oriented programming then you will probably be most comfortable with object oriented programming. If your first languages were mostly functional programming languages, then that is what you will be most familiar with. The people you work with, the kinds of computations you need to deal with (e.g. if you're writing numerical simulation code for scientists you'll quite likely be using C or Fortran), and the pre-existing resources for what you want to work on, are going to have a vast influence on your choice of programming language. I firmly believe you can be a good programmer in any language, and I hope you can believe that as well and reject the ever-changing hierarchy of who is A Real Programmer. 
+
+    If I were to make any recommendation about programming languages to learn, I would actually argue that you should try to be fluent in as many as possible. In my own experience, I've found that the more programming languages I learn the more I'm able to isolate the ways that the underlying themes of computation are expressed in that language. 
+
+    
+*** Objects as Organization and Privacy
+*** Inheritance
+** Error Handling
+   So far we've been dealing with some conceptual error handling that isn't particularly useful: when we have errors in the program we just /fail/. For example, when you do something like 
+
+   #+BEGIN_SRC python
+     print(asdf)
+   #+END_SRC
+we then see something like 
+
+#+BEGIN_EXAMPLE
+Traceback (most recent call last):
+  File "<stdin>", line 5, in <module>
+  File "<stdin>", line 3, in main
+NameError: name 'asdf' is not defined
+#+END_EXAMPLE
+
+but what exactly is that ~NameError~. Given the capitalization it looks an awful lot like a class name, which it actually is. A rather special kind of class used for reporting errors. 
+
+** Modules
+   So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code 
+** Using Libraries
+*** Plotting Data
+    In this section we're going to acknowledge
+*** 
+* A Second Project
+  For our second major project in this course, we'll create a client/server pair that can handle basic networking. We're going to do something similar to 
