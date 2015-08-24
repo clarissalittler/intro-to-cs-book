@@ -1,53 +1,8 @@
 #+LATEX_CLASS: book
 #+LATEX_HEADER: \usepackage{proof}
 #+AUTHOR: Clarissa Littler
-#+TITLE: Introduction to Computer Science in Python
+#+TITLE: Introduction to Computer Science in Javascript
 #+OPTIONS: toc:nil
-:META:
- starting words: 12527
-:END:
-
-:META:
- GRARRRR WE NEED TO FIX THE FACT THAT PRINT ISN'T A STATEMENT ANYMORE IN CURRENT PYTHON 
-:END:
-
-:META:
-   I feel like I just don't know the thread of what I'm trying to explain and all of that. Baahhhhhhh.
-:END:
-
-:META:
-Okay, so my current issue here is that I'm still not sure how to work back into the narrative the whole idea of /operational semantics/. I'm really not sure how to do it. I want to introduce something like 
-
-#+BEGIN_SRC python
-  if x:
-      print(1)
-  else:
-      print(2)
-#+END_SRC
-
-first we evaluate x to something which we can do as something kinda like ~x --> True~ and then there's
-
-#+BEGIN_SRC python
-  if True:
-      print(1)
-  else:
-      print(2)
-#+END_SRC
-which evaluates to 
-#+BEGIN_SRC python
-  print(1)
-
-#+END_SRC
-which then will print 1 out.
-
-Ugh the problem is that if you're going to actually do all of this correctly I worry it'll just be /so/ unwieldy in generic. I'm not sure how we're supposed to make sense of operational semantics. It's all just really frustrating. The problem is that there's this tension between wanting to explain things with small step semantics vs. the clarity of large step. Hrmm, well, actually large step is probably the best in terms of conceptual clarity. The problem though is that there's a few things that we need in terms of 
-
- + some kinda dictionary for classes that is modified every time we declare a new class
- + a dictionary that contains all the scopes of variables
-   + basically we need to have something like the scope of our variables
-
-
-:END:
       
 * Introduction
 ** The Goals of This Book
@@ -59,51 +14,30 @@ Ugh the problem is that if you're going to actually do all of this correctly I w
 
    To this end, I take a mostly neutral stance on choice of programming languages and styles of programming. I don't believe that there's a "best language" for everyone, but I do think any given person or team may find that a particular language is best for the way they think and the way they conceive of computation. 
 
-   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Python programming language. There are a few advantages to Python as I see it:
-
-  1. it's a fairly widely used language
-  2. it's a language with a large community
-  3. it's a simple language
+   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Javascript programming language. 
 
 Ultimately it is my hope that after reading this book it should be relatively simple task to learn any language you want and know how to write the programs you want to write in it.
 ** Outline of The Book
-   Part 1 of the book proper is going to be centered on the basic built in operations and kinds of data that exist in Python and the /structure/ of programs themselves. We'll be covering
+   Part 1 of the book proper is going to be centered on the basic built in operations and kinds of data that exist in Javascript and the /structure/ of programs themselves. We'll be covering
   + basic operations on numbers
   + how to makes choices
   + how to define functions
   + reading input into a program
   + printing output from a program
   + how to repeat actions
-  + how to use lists in Python
-  + how to use dictionaries in Python
-After that, we'll explore several small projects that will test out those abilities. 
+  + how to use objects to store data
+  + how to encapsulate data using functions and scope
 
-  In part 2 of the book, we'll be looking more at practical programming skills. We'll be covering object oriented programming in Python, defining your own datastructures using objects, and more on structuring code.
+Part 2 of the book will be more advanced topics including:
+  + advanced use of closures
+  + prototypes, inheritance, and object oriented programming
+  + the use of data structures such as dequeues, graphs, and heaps
 
-  Finally, in part 3 we're going to finish off by covering modules, concurrent programming, how to debug your code and write tests, and finally finish off with a series of small projects. 
-** Getting Started with Python
-   In order to get started with Python, first follow the official instructions for your operating system listed on the official Python wiki https://wiki.python.org/moin/BeginnersGuide/Download to install the most recent stable release of Python. After downloading and installing Python, you can continue following along in this chapter. If you already are comfortable with interpreters and have Python installed, feel free to completely skip this section.
-
-   Now if you start up your local Python interpreter you should see something like
-#+BEGIN_EXAMPLE
-Python 3.4.0 (default, Apr 11 2014, 13:05:11) 
-[GCC 4.8.2] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> 
-#+END_EXAMPLE
-with possible differences due to the particular version of the interpreter. Now, what /is/ an interpreter? It's a program you can use to run Python programs. We'll explain what we mean by that later, but for now just try entering "3" at the prompt and hitting enter. You should see something akin to this
-#+BEGIN_EXAMPLE
-Python 3.4.0 (default, Apr 11 2014, 13:05:11) 
-[GCC 4.8.2] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> 3
-3
->>> 
-#+END_EXAMPLE 
-which means that you fed the interpreter the number 3 and then the interpreter responded with the value of the number 3 which, in this case, is simply 3. If you want to close down the interpreter, just press ~Ctrl-d~ to signal that you are done entering commands.
+Part 3 of the book will be a sequence of programming projects that will help connect all of the main topics together.
+** Getting Started in Javascript
 * The Basics of Programming
 ** What Computation Is
-   Before we start explaining the details of Python we first need to give a basic explanation of what we /mean/ by computation. 
+   Before we start explaining the details of Javascript we first need to give a basic explanation of what we /mean/ by computation. 
 
    Essentially, a /computation/ is a process that takes a finite number of steps to perform an action. In its most general form, a computation is allowed to be interactive, receiving input at a number of points and returning output. 
 
@@ -215,14 +149,14 @@ This means that of all of the mathematically definable functions from the natura
 What does this mean for computer science and how it relates to programming? It means that there's an absurdly infinite number of things mathematics that cannot be described as computations. So even though a lot of the processes that we deal with every day make sense as computations, most of the things mathematicians do every day are much harder to describe computably. 
 
 The essential thing to take from this digression is that there's a theoretical /reason/ why writing the right program to solve a problem can be very difficult. The most obvious way to try and solve a problem might not even be computable.
-** First Steps In Python
- The /very/ first piece of syntax we're going to introduce in Python is how to print out values within a Python program. 
+** First Steps
+ The /very/ first piece of syntax we're going to introduce in Javascript is how to print out values within a program. 
 
- Write the following lines of code in a file called ~FirstSteps.py~.
- #+BEGIN_SRC python :exports code :results output :tangle FirstSteps.py
-   print(10)
-   print(10)
-   print(300)
+ Write the following lines of code in a file called ~FirstSteps.js~.
+ #+BEGIN_SRC js :exports code :results output :tangle FirstSteps.js
+   console.log(10);
+   console.log(100);
+   console.log(300);
  #+END_SRC
 
  #+RESULTS:
@@ -232,7 +166,7 @@ The essential thing to take from this digression is that there's a theoretical /
 
 If you run this file using the following command you should see the output indicated.
 #+BEGIN_SRC sh :exports both :results output
-  python FirstSteps.py
+  node FirstSteps.js
 #+END_SRC
 
 #+RESULTS:
@@ -240,31 +174,17 @@ If you run this file using the following command you should see the output indic
 : 100
 : 300
 
-We need to discuss what's happened here. First off, we've introduced the syntax ~print(v)~, whose semantics is to print out to the console the value of its argument, this means that it prints out the result of Python evaluating ~v~ and not just the literal syntax of ~v~ as we'll see shortly. This will be very useful for us in testing out our programs and checking that we understand the semantics of our constructs.
+We need to discuss what's happened here. First off, we've introduced the syntax ~console.log(v)~, whose semantics is to print out to the console the value of its argument, this means that it prints out the result of Javascript evaluating ~v~ and not just the literal syntax of ~v~ as we'll see shortly. This will be very useful for us in testing out our programs and checking that we understand the semantics of our constructs.
 
-The second piece of syntax we've implicitly introduced is the /line break/. Python separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ is an expression but ~print(10)~ is a statement. We can run a series of statements by separting them as new lines in the program. As a side note, there are a number of programming languages that separate statements by some other character such as a semicolon rather than just having a line break. For example, you're very likely to use Javascript at some point in your career and in Javascript the above three lines of code is written as 
+The second piece of syntax we've implicitly introduced is the /semi-colon/ and the /line break/. Javascript separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ and ~console.log(10)~ are expressions but ~console.log(10);~ is a statement. We can run a series of statements by separting them as new lines in the program. Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. As such, Python doesn't use the semicolon convention and instead just uses linebreaks and indentation to naturally divide code. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~console.log(v);~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
 
-#+BEGIN_SRC js :exports code :results output
-  console.log(10);
-  console.log(100);
-  console.log(300);
-#+END_SRC
+Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in Python all the basic operations you're familiar with, including +,*, and -. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.js
 
-#+RESULTS:
-: 10
-: 100
-: 300
-
-with each statement separated by a semicolon. Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. As such, Python doesn't use the semicolon convention and instead just uses linebreaks and indentation to naturally divide code. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~print(v)~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
-
-Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in Python all the basic operations you're familiar with, including +,*,-, and exponents. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.py
-
-#+BEGIN_SRC python :exports code :results output  :tangle ArithmeticExpressions.py
-  print(10 + 10)
-  print(10 * 10)
-  print(10 - 10)
-  print(10 / 10)
-  print( 10 ** 2)
+#+BEGIN_SRC js :exports code :results output  :tangle ArithmeticExpressions.js
+  console.log(10 + 10)
+  console.log(10 * 10)
+  console.log(10 - 10)
+  console.log(10 / 10)
 #+END_SRC
 
 #+RESULTS:
@@ -272,12 +192,11 @@ Now that we have a way to print out values and are starting to understand the di
 : 100
 : 0
 : 1
-: 100
 
-The only symbol that might not be intuitively obvious is that ~**~ rather than ~^~ is the exponentiation operation. If you run this code with the following snippet then you should see the same results as below.
+If you run this code with the following snippet then you should see the same results as below.
 
 #+BEGIN_SRC sh :exports both :results output
-  python ArithmeticExpressions.py
+  node ArithmeticExpressions.js
 #+END_SRC
 
 #+RESULTS:
@@ -285,9 +204,8 @@ The only symbol that might not be intuitively obvious is that ~**~ rather than ~
 : 100
 : 0
 : 1
-: 100
 
-It's important to note that the number that's printed out is the /result/ of the expression that's passed into the ~print~ statement. 
+It's important to note that the number that's printed out is the /result/ of the expression that's passed into the ~console.log~. 
 *** Evaluating Code By Hand
     One of the themes of this book is going to be how to take a pen and paper and evaluate your code. This might seem like an odd skill to learn, but it's useful for getting rid of some of the "magic" feeling that comes with writing code for the first time. If you're not sure how a piece of code works, it's really helpful to be able to sit down and go through it step-by-step for yourself. 
 
@@ -961,127 +879,6 @@ it's actually equivalent to the following piece of code
      When we're unrolling our for loops 
 *** Loop Invariants
   
-** Tuples
-   A tuple is a way of grouping of data, giving us the ability to pass multiple pieces of data into one variable. 
-
-   For example, we might want to store something like user names and passwords together, or names of recipes, the actual ingredients used, and the directions as a group of data. 
-
-   A tuple is made by including a comma separated list of data inside parentheses. For example, we can make a tuple ~("ldiane","HorseStapleBatteryCorrect")~ that contains both someone's username and password.
-
-   If you recall high school math, you used pairs of numbers to describe points in a plane, one being the value on the x-axis and the other number being the value on the y-axis. Tuples are the way we would use pairs like this in Python. For example, if we wanted to write a function that found the distance between two points we could do it like so:
-   #+BEGIN_SRC python :exports both :results output
-     def dist(point1,point2):
-         x = point1[0] - point2[0]
-         y = point1[1] - point2[1]
-         return (x**2 + y**2)**0.5
-
-     p1 = (1,2)
-     p2 = (3,4)
-
-     print(dist(p1,p2))
-   #+END_SRC
-
-   #+RESULTS:
-   : 2.8284271247461903
-
-Note that we access the "slots" in the tuple just like accessing places in a string or a list: with the ~[ ]~ syntax, but like a string and unlike a list we cannot /modify/ the place of a tuple. The following code, for example, 
-
-#+BEGIN_SRC python :exports code
-  # should throw an error
-  testtuple = (1,2,3)
-
-  testtuple[0] = 10
-#+END_SRC
-
-will throw an error, ~TypeError: 'tuple' object does not support item assignment~. 
-
-We also, like lists and strings have the ability to use the ~in~ predicate with our if-statements.
-
-#+BEGIN_SRC python :exports both :results output
-  if 10 in (1,2,3):
-      print("10 was found")
-  else:
-      print("10 wasn't found'")
-#+END_SRC
-
-#+RESULTS:
-: 10 wasn't found'
-
-We can also use for-loops over tuples to do something for each item in a tuple:
-
-#+BEGIN_SRC python :exports both :results output
-  for i in (1,2,3,4):
-      print(i)
-#+END_SRC
-
-#+RESULTS:
-: 1
-: 2
-: 3
-: 4
-
-Another use for tuples is in grouping results together. For example, let's say that we wanted to 
-
-*** Exercises
-    1. Write a function that will calculate the slope of the line between two points in the plane. 
-       + It should take in two tuples as arguments
-       + The tuples may assumed to consist of two numbers each
-    2. Write a function that uses your answer to the previous problem to write a function that can determine if any three points are colinear
-** Dictionaries
-   Another kind of datastructure we need to deal with in Python is the dictionary. Lists correspond to written numbered lists and are good for storing a variable number of things, tuples correspond to a general form of the pairs and triples we learned in algebra and are good for holding fixed data that we need to keep together, but what about collections of data that /associate/ things together? The canonical example would be something like an actual dictionary or an encyclopedia, a collection of information that maps a word to an explanation. 
-
-   In Python, dictionaries are general maps from strings to any kind of data. We make dictionaries with the following syntax 
-
-   #+BEGIN_SRC python :exports both :results output
-     myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
-
-     print(myDictionary)
-   #+END_SRC
-
-   #+RESULTS:
-   : {'cadabra': ['This is a list'], 'abra': (10, 20), 'key1': 0, 'key2': 1}
-
-and we can iterate over dictionaries with the for-loop, but there's some subtleties here that we need to discuss:
-
-#+BEGIN_SRC python :exports both :results output
-  myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
-
-  for key in myDictionary:
-      print("This is the key in the dictionary:", key)
-      print("This is the value corresponding to the key",key,":", myDictionary[key])
-     
-#+END_SRC
-
-#+RESULTS:
-: This is the key in the dictionary: abra
-: This is the value corresponding to the key abra : (10, 20)
-: This is the key in the dictionary: key2
-: This is the value corresponding to the key key2 : 1
-: This is the key in the dictionary: key1
-: This is the value corresponding to the key key1 : 0
-: This is the key in the dictionary: cadabra
-: This is the value corresponding to the key cadabra : ['This is a list']
-
-So by default the for-loop will iterate through the keys of the dictionary only, but we can easily write it slightly differently, using the dictionary method ~items~, to give us both pieces of data at once:
-
-#+BEGIN_SRC python :exports both :results output
-  myDictionary = { "key1" : 0, "key2" : 1, "abra" : (10,20), "cadabra" : ["This is a list"]}
-
-  for key, val in myDictionary.items():
-      print("This is the key in the dictionary:", key)
-      print("This is the value corresponding to the key",key,":", val)
-#+END_SRC
-
-#+RESULTS:
-: This is the key in the dictionary: key2
-: This is the value corresponding to the key key2 : 1
-: This is the key in the dictionary: abra
-: This is the value corresponding to the key abra : (10, 20)
-: This is the key in the dictionary: key1
-: This is the value corresponding to the key key1 : 0
-: This is the key in the dictionary: cadabra
-: This is the value corresponding to the key cadabra : ['This is a list']
-
 ** An Aside on Types and Hidden Errors
    At this point we've had some exercises, we've introduced a number of kinds of data, and we've seen that there's a basic notion of "type" of data at play here. What this means is that you can't, for example, use a number as a string. Running
 
