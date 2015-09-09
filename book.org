@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil
 
 :META:
- starting words 13433
+ starting words 14183
 :END:
       
 * Introduction
@@ -229,9 +229,9 @@ Now, we take the pieces of syntax we've seen so far in order:
   3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
 
 ** Strings
-   An important kind of data in programming languages, other than numbers, are pieces of text. There are a few reasons for this. First, that we want our programs to be able to meaningfully communicate with us. We want to be able to get error messages if something goes wrong, we want to be able to send each other emails, etc. Another very important reason is that we want to be able to run our programs! Any program is, in fact, a piece of text. If we want to run our programs, first we need to read in the text of the program and then do something with it. This process of "running" a program from a piece of text is called "interpreting" it. 
+   An important kind of data in programming languages, other than numbers, are pieces of text. There are a few reasons for this. First, that we want our programs to be able to meaningfully communicate with us. We want to be able to get error messages if something goes wrong, we want to be able to send each other emails, etc. Another very important reason is that we want to be able to run our programs! Any program is, in fact, a piece of text. If we want to run our programs, first we need to read in the text of the program and then do something with it. This process of "running" a program from a piece of text is called "interpreting" it. In everyday life, strings are one of those types of data that we transparently use all the time: after all, every piece of writing is an example of a "string". 
 
- Historically these pieces of text are called strings. In Javascript, as in most languages, strings are designated by quotation marks. So while you can't say ~console.log(This is not a string)~ without getting an error, you can say ~console.log("This is totally a string")~ and have it work fine. 
+ Historically these pieces of text are called strings. In Javascript, as in most languages, strings are designated by quotation marks. So while you can't say ~console.log(This is not a string)~ without getting an error, you can say ~console.log("This is totally a string")~ and have it work fine. We use quotation marks to designate strings so that the computer can tell the difference between literal text and text that's Javascript syntax. This is analogous to how, in English, we make distinctions between "between" and the use of "between", as in this very sentence.
  
  We'll say a few things about writing strings in Javascript and operations on them because there's a lot of little details that you'll end up needing over the course of this text. First off, as we've said a basic string is simply the text between two quotation marks as in this code:
 #+BEGIN_SRC js :exports both :results output
@@ -241,7 +241,7 @@ Now, we take the pieces of syntax we've seen so far in order:
 #+RESULTS:
 : This is a string
 
-and by running this code we can see that it does exactly what is expected. What if we want a message that stretches across multiple lines? We could just have multiple calls to "print" but that's not every elegant
+and by running this code we can see that it does exactly what is expected. What if we want a message that stretches across multiple lines? We could just have multiple calls to ~console.log~ but that's not every elegant
 #+BEGIN_SRC js :exports both :results output
   console.log("A message that spans")
   console.log("multiple lines")
@@ -337,51 +337,50 @@ running this example we can see that the ~console.log(10)~ was completely ignore
 Commenting your code is important not just so that others can read the code and understand what it does, but also because *you* need to be able to read your own code in the future and remember what you were trying to do. Comments are useful in outlining the specification of the code, explaining exactly what it's supposed to do and how it's supposed to work. Code without comments is like driving directions without the destination written down. Technically you can use it to get somewhere, but you really want to know where you're going before you start driving. 
 *** Evaluating By Hand
     Comments are completely ignored during evaluation.
-** More On Input and Output					      :tofix:
-We've shown that we can print out data, but what about taking /in/ data? We can do that with the input command as follows, giving us a chance to also show how variables work as well. Go ahead and put this code in a file called ~InputExample.py~ and run it. 
-#+BEGIN_SRC python :exports code :tangle InputExample.py
-  x = input("Enter a string:")
-  print(x)
-#+END_SRC
-You should see a prompt in the console that says "Enter a string:" and then if you enter a number at the prompt it should look something like
-#+BEGIN_EXAMPLE
-python InputExample.py 
-Enter a string:10
-10
-#+END_EXAMPLE
+** Variables
+   A /variable/, in most programming languages, is a way to store and retrieve information over the life of the program. Basically, they function like containers for data in your program. 
 
-Now, ~input~ reads a /string/ from input. Even if it looks like you're entering in a number, Python is going to treat this as "10" and not 10. In order to turn a string into a number, we need to use the ~int~ function that performs this conversion.
+   From the everday point of view, a variable is something like a contact in your phone. You have the /name/ of the contact, which corresponds to the name of the variable, and that name corresponds to a space for data on your phone for full name, phone number, email, etc. Variables in javascript are more general that contacts, but the principle is the same: you have a name and you have a place for data. You can retrieve the data by using its name, the same way you can look up the data for a person you know by using the contact name you gave them. You can also modify this data at a later time if you need to, by using the connection the contact name has with the "container" of data.
 
-There's also a slightly more convenient syntax for using the ~print~ function that allows us to merge multiple things together in output
+   You might remember learning the word variable in algebra, where a variable was a parameter in a polynomial expression such as \( x^2 + x - 10 \) or perhaps a function definition like \( f(x) = x + 20 \). In these cases, the variable ~x~ plays the role of an indeterminate quantity that you can plug a number into and calculate the result of the expression for that number. For example, you can "plug in", or substitute, the number 10 into the polynomial above and then calculate the answer: 100 
 
-#+BEGIN_SRC python :exports both :results output 
-  print("This is","a string","broken into pieces")
-#+END_SRC
+Variables-as-indeterminates *do* appear in Javascript and, indeed, most programming languages in the context of function definitions. For now, though, we'll focus on the view of variables-as-containers. [fn:1]
 
-#+RESULTS:
-: This is a string broken into pieces
+   The way a variable is declared in Javascript is through the keyword ~var~. There are two basic statements to declare functions. The first just creates a container, but puts "nothing" in it. This empty container still has a value, though! It has the value ~undefined~. We'll talk more about ~undefined~ and the ways it is special in a future section. For now, you can simply accept that ~undefined~ means exactly what it says: the value of the variable has not yet been defined. 
 
-Note that each comma separated pieces ends up being separated by a space in the output of the string. We can also put arbitrary values into the sequence of prints as in
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5 + 5,"But did it?"
-#+END_SRC
+   The following is an example of declaring a variable
+   #+BEGIN_SRC js :exports code :results output
+     var x;
+     console.log(x);
+   #+END_SRC
 
-#+RESULTS:
-: This should print 10: 10 But did it?
+   #+RESULTS:
+   : undefined
 
-That output looks a little ugly and we /could/ just add a new print line like this
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5+5
-  print "But did it?"
-#+END_SRC
-but we can also use the newline character "\n" within a string, which tells the ~print~ statement to make a new line.
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5+5,"\nBut did it?"
+and if we run this code we can simply see that we print out ~undefined~, as expected.
+
+How do we actually put something *in* the container once it's made? The basic syntax is ~name = value~, where ~=~ is being used in our expression very similar to $=$ in our formula \(f(x) = x + 20 \). We call this an /assignment/ expression. Assignment, as an expression, returns a /value/. Assignment returns the same value that was assigned to the variable. For example, ~x = 500~ returns 500 and ~x = 20 + 20~ returns 40. 
+
+The other way to declare a variable is to /assign/ it a value as it's declared, using the following syntax
+#+BEGIN_SRC js :exports code :results output
+  var x = 10;
+  console.log(x);
 #+END_SRC
 
-#+RESULTS:
-: This should print 10: 10 
-: But did it?
+Using variables is very simple: to retrieve the value of the variable you merely need to use the variable's name in an expression, which we've implicitly been doing in our examples above. 
+*** Evaluating by Hand
+    Evaluating expressions related to variables come in three phases corresponding to declaration, usage, and assignment. 
+
+    First, scan the program for all variable declaration expressions, whether of the form ~var name;~ or ~var name = value~, and make a two column table with /names/ and /values/ as the two column names, where there is a row for each variable declared in the program. Next, if the declaration was of the assignment form then evaluate the expression on the right hand side and fill that value in the table. 
+
+    When a variable is used as an expression, look up the name of the variable in the table. If there is a value corresponding to that name in the table, then return the value in the table. If there is no value, then return ~undefined~.
+
+    Assignment expressions are evaluated by first evaluating the righthand side to a value, entering that value in the corresponding row of the table, then finally returning the value assigned. 
+*** Variables and Memory					   :tofinish:
+    Now for a small digression, we should discuss what variables are actually doing and where the data they "hold" is located.
+
+    A typical computer has a few different forms of memory. 
+    
 ** Function Calls and Declarations				      :tofix:
   Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
 #+BEGIN_LaTeX
@@ -396,42 +395,36 @@ we can see that the fundamental pieces of how functions are declared are
 
 We'll start by showing the syntax of defining a function and then we'll show what pieces of syntax correspond to each of these three things. 
 
-#+BEGIN_SRC python :exports code :results output :tangle FirstFunction.py :session fun
-  def function1(x):
-      print(x)
-      print(x)
+#+BEGIN_SRC js :exports code :results output :tangle FirstFunction.js
+  function function1 (x) {
+      console.log(x);
+      console.log(x);
+  }
 
-  function1(10)
+  function1(10);
 #+END_SRC
 
 #+RESULTS:
-: 
-: >>> >>> ... ... ... >>> 10
+: 10
 : 10
 
-and put that code in FirstFunction.py
+and put that code in FirstFunction.js
 
 Now if we go ahead and put this code in a file and run it 
 #+BEGIN_SRC sh :exports both :results output
-  python FirstFunction.py
+  node FirstFunction.js
 #+END_SRC
 
 #+RESULTS:
 : 10
 : 10
 
-we should see that when the function ~function1~ is called with the argument ~10~ then it prints ~10~ twice. Looking at the /definition/ of the function we can see that we defined it by starting a line with ~def~, then the name of the function which in this case was ~function1~, the argument that was provided was ~x~ and then the /body/ of the function are the indented lines after the ~:~ symbol. The indentation is important. Since we separate statements by line breaks there'd be an ambiguity if Python allowed something akin to
+we should see that when the function ~function1~ is called with the argument ~10~ then it prints ~10~ twice. Looking at the /definition/ of the function we can see that we defined it by having the keyword ~function~, then the /name/ we were giving to the function, then the name of the /argument/ to the function, followed by a *sequence of statements*. This sequence of statements is what we call the /body/ of the function. This is the first piece of the language where see the pattern of wrapping a sequence of statements in a pair of ~{}~ braces. Languages such as Javascript use braces to make it easy for the implementation to tell if the statements that come after the function definition are all a part of the body of the function or code that comes after the function definition. 
 
-#+BEGIN_SRC python :exports code
-  def function1(x):
-  print(x)
-  print(x)
+For example, with no syntactic indicators of where a function body ends then it's ambiguous whether a piece of code such as
+#+BEGIN_SRC js :exports code
+
 #+END_SRC
-because it wouldn't be clear to the computer if
-  + this was a function with no body followed by two print statements
-  + the function is supposed to include the first ~print(x)~ but not the second
-  + the function is supposed to include both of the ~print(x)~ statements.
-so, instead, since the body of a function can be a sequence of statements then we signify the statements that belong to the function body by indenting them.
 
 There's a couple of things we haven't explained about functions in Python yet. First, we're used to a function /returning a value/ after it's called. Our earlier example function would return 20 when passed 10. Let us check what the value of our function after it's called is.
 #+BEGIN_SRC python :exports both :results output :session fun
@@ -471,43 +464,44 @@ In summary,
   + a Python function always returns a value
     + if you don't specify /what/ value then it will return ~None~
     + you can specify what value it returns with ~return~
+  function function1 (x)
+  console.log(x);
+  console.log(x);
 
-** Two Senses of Variables					      :tofix:
-   We've seen that variables as we're used to them in mathematics exist in Python. These are the variables that are the arguments to a function. They have a single value for the duration of the function in which they are used.
+  function1(10);
+** Functions as Values						      :tofix:
+   One thing that may not have been obvious yet in Python is that /functions/ are just another value, like numbers or lists or strings. We can pass functions into other functions like the following fairly silly example 
+#+BEGIN_SRC python :exports code :results output
+  def doublefun(function,argument):
+      return (function(function(argument)))
 
-   Unfortunately, there is another use of the word variable in computer science, which is to mean a /named container/ for data whose contents can change over the course of a program. These kinds of variables are brought into existence just by giving them a value using the ~=~ operator.
+  def sillyfunction(x):
+      return 2*x
 
-   Consider the following code 
-#+BEGIN_SRC python :results output :exports code 
-  x = 10
-  print(x)
-  x = 20
-  print(x)
+  print(doublefun(sillyfunction,10))
 #+END_SRC
 
 #+RESULTS:
-: 10
-: 20
+: 40
 
-The first ~x=10~ line brings the container ~x~ into existence and fills it with the value ~10~, which means that the first thing we print out is ~10~. Then the next line of code says that we put 20 in the container named ~x~, not creating a new container, but replacing the contents already in ~x~. We can see then in the following print statement that the current value of ~x~ is 20 as of the last line of code.
-
-These variables-as-containers are thus /very/ different than any kind of variables used in mathematics and it's important to distinguish them in form. It's more accurate to call variables-as-containers /references/, but for historical reasons most languages don't actually do this and so we will stick to calling simply calling them variables. 
-*** Exercises
-   1. Write a program that will
-      1. Ask for a name with the message "How may I address you?"
-      2. Read in the name and store it in a variable
-      3. Ask for a preferred title
-      4. Print out the title and the name concatenated together with proper spacing, e.g. "Ms. Clarissa Littler"
-   2. Write a function that will
-      1. take in two arguments
-      2. the first argument can be assumed to be another function
-      3. the second argument can be assumed to be a string
-      4. print a message that informs the user what function will be applied to what argument
-      5. print the result of applying the function to the string
-      6. Test your function
-   3. Write a function that will
-      1. Take in two arguments that can be assumed to be numbers
-      2. Print out the sum of the squares of these numbers
+which should print out the number ~40~ at the end of the code. Now, how did it get the number 40? The definition of ~doublefun~ takes in two arguments, a /function/ and an argument to /pass/ the function. We then call the function twice on the provided argument, so when we pass in ~sillyfunction~ as our function argument then we can roughly see the progression of the code as
+#+BEGIN_EXAMPLE
+print(doublefun(sillyfunction,10)) -->
+v = sillyfunction(sillyfunction(10))
+print(v) -->
+v = sillyfunction(2*10)
+print(v) -->
+v = sillyfunction(20)
+print(v) -->
+v = 2*20
+print(v) -->
+print(40)
+#+END_EXAMPLE
+:META:
+ This really needs to be cleaned up, but I'm trying to experiment here with how to actually write all of this stuff.  
+:END:
+When taken apart it's probably less intimidating than it seems at first, but we simply are able to 
+** Undefined and NaN
 ** Computers and Memory						      :tofix:
    Here we're going to begin a slight digression from describing Python to describing how memory works in computers and how your programs use memory. You've probably all heard that your computer has a certain amount of RAM, or Random Access Memory. This memory is used to hold data that the computer is working with. So when we talk about variables-as-containers, the place where these containers live is /in memory/ [fn::This is a slight simplification. Sometimes the contents of a variable-as-container or a variable-as-parameter can be stored in a more efficient place than RAM]. The amount of memory your computer or cell phone or tablet has is what limits how much data a program can manipulate at once. 
    
@@ -902,8 +896,7 @@ it's actually equivalent to the following piece of code
 
 **** Unrolling For Loops
      When we're unrolling our for loops 
-*** Loop Invariants
-  
+*** Loop Invariants  
 ** An Aside on Types and Hidden Errors				      :tofix:
    At this point we've had some exercises, we've introduced a number of kinds of data, and we've seen that there's a basic notion of "type" of data at play here. What this means is that you can't, for example, use a number as a string. Running
 
@@ -940,39 +933,51 @@ What this means for you as a Python programmer is that *you* need to do the actu
 #+END_SRC
 
 because we're trying to be "cute" and save space by 
+** More On Input and Output					      :tofix:
+We've shown that we can print out data, but what about taking /in/ data? We can do that with the input command as follows, giving us a chance to also show how variables work as well. Go ahead and put this code in a file called ~InputExample.py~ and run it. 
+#+BEGIN_SRC python :exports code :tangle InputExample.py
+  x = input("Enter a string:")
+  print(x)
+#+END_SRC
+You should see a prompt in the console that says "Enter a string:" and then if you enter a number at the prompt it should look something like
+#+BEGIN_EXAMPLE
+python InputExample.py 
+Enter a string:10
+10
+#+END_EXAMPLE
 
-** Functions as Values						      :tofix:
-   One thing that may not have been obvious yet in Python is that /functions/ are just another value, like numbers or lists or strings. We can pass functions into other functions like the following fairly silly example 
-#+BEGIN_SRC python :exports code :results output
-  def doublefun(function,argument):
-      return (function(function(argument)))
+Now, ~input~ reads a /string/ from input. Even if it looks like you're entering in a number, Python is going to treat this as "10" and not 10. In order to turn a string into a number, we need to use the ~int~ function that performs this conversion.
 
-  def sillyfunction(x):
-      return 2*x
+There's also a slightly more convenient syntax for using the ~print~ function that allows us to merge multiple things together in output
 
-  print(doublefun(sillyfunction,10))
+#+BEGIN_SRC python :exports both :results output 
+  print("This is","a string","broken into pieces")
 #+END_SRC
 
 #+RESULTS:
-: 40
+: This is a string broken into pieces
 
-which should print out the number ~40~ at the end of the code. Now, how did it get the number 40? The definition of ~doublefun~ takes in two arguments, a /function/ and an argument to /pass/ the function. We then call the function twice on the provided argument, so when we pass in ~sillyfunction~ as our function argument then we can roughly see the progression of the code as
-#+BEGIN_EXAMPLE
-print(doublefun(sillyfunction,10)) -->
-v = sillyfunction(sillyfunction(10))
-print(v) -->
-v = sillyfunction(2*10)
-print(v) -->
-v = sillyfunction(20)
-print(v) -->
-v = 2*20
-print(v) -->
-print(40)
-#+END_EXAMPLE
-:META:
- This really needs to be cleaned up, but I'm trying to experiment here with how to actually write all of this stuff.  
-:END:
-When taken apart it's probably less intimidating than it seems at first, but we simply are able to 
+Note that each comma separated pieces ends up being separated by a space in the output of the string. We can also put arbitrary values into the sequence of prints as in
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5 + 5,"But did it?"
+#+END_SRC
+
+#+RESULTS:
+: This should print 10: 10 But did it?
+
+That output looks a little ugly and we /could/ just add a new print line like this
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5+5
+  print "But did it?"
+#+END_SRC
+but we can also use the newline character "\n" within a string, which tells the ~print~ statement to make a new line.
+#+BEGIN_SRC python :exports both :results output
+  print "This should print 10:",5+5,"\nBut did it?"
+#+END_SRC
+
+#+RESULTS:
+: This should print 10: 10 
+: But did it?
 
 * Specifications						      :tofix:
   An important skill that we need to practice is obeying a specification. Essentially what we need to learn and practice is the distinction between a specification and a computation. Computations, like we've seen so far are the actual /directions/ for how to do something. The specification, though, is the actual /goal/ of our computation. 
@@ -1086,7 +1091,13 @@ NameError: name 'asdf' is not defined
 but what exactly is that ~NameError~. Given the capitalization it looks an awful lot like a class name, which it actually is. A rather special kind of class used for reporting errors. 
 
 ** Modules
-   So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code 
+   So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code.
+*** Node-style modules
+    :META:
+       Here we explain and demonstrate modules in the node-style
+    :END:
+*** Future 
+    http://jsmodules.io/ <-- the style of modules that *will* be in javascript
 ** Using Libraries
 *** Plotting Data
     In this section we're going to acknowledge
@@ -1288,3 +1299,10 @@ You evaluate this by treating it as equivalent to
      ...
   };
 #+END_SRC
+
+
+* Footnotes
+
+[fn:1] I find it rather unfortunate that the word "variable" has these two, very different, meanings in computer science since variables-as-containers could probably be more accurately called "references", since they are special names that *refer* to a location in memory. 
+
+
