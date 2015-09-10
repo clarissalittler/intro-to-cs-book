@@ -368,6 +368,10 @@ The other way to declare a variable is to /assign/ it a value as it's declared, 
 #+END_SRC
 
 Using variables is very simple: to retrieve the value of the variable you merely need to use the variable's name in an expression, which we've implicitly been doing in our examples above. 
+*** Variables and Memory					   :tofinish:
+    Now for a small digression, we should discuss what variables are actually doing and where the data they "hold" is located.
+
+    A typical computer has a few different forms of memory. 
 *** Evaluating by Hand
     Evaluating expressions related to variables come in three phases corresponding to declaration, usage, and assignment. 
 
@@ -376,11 +380,8 @@ Using variables is very simple: to retrieve the value of the variable you merely
     When a variable is used as an expression, look up the name of the variable in the table. If there is a value corresponding to that name in the table, then return the value in the table. If there is no value, then return ~undefined~.
 
     Assignment expressions are evaluated by first evaluating the righthand side to a value, entering that value in the corresponding row of the table, then finally returning the value assigned. 
-*** Variables and Memory					   :tofinish:
-    Now for a small digression, we should discuss what variables are actually doing and where the data they "hold" is located.
-
-    A typical computer has a few different forms of memory. 
     
+*** Exercises
 ** Function Calls and Declarations				      :tofinish:
   Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
 #+BEGIN_LaTeX
@@ -460,38 +461,17 @@ Now this actually corresponds to our function
   \]
 #+END_LaTeX
 
-** Functions as Values						      :tofix:
-   One thing that may not have been obvious yet in Python is that /functions/ are just another value, like numbers or lists or strings. We can pass functions into other functions like the following fairly silly example 
-#+BEGIN_SRC python :exports code :results output
-  def doublefun(function,argument):
-      return (function(function(argument)))
+(add in section on how lexical scope works with functions)
+*** 
+*** Recursive calls
+*** Evaluating functions by hand
+*** Exercises
+    (all of these should be testing their ability to 
+       + understand the scoping of function bodies
+       + understand how to substitute arguments into function bodies
+       + understand how to evaluate a function and return back to the point of the function call
+    )
 
-  def sillyfunction(x):
-      return 2*x
-
-  print(doublefun(sillyfunction,10))
-#+END_SRC
-
-#+RESULTS:
-: 40
-
-which should print out the number ~40~ at the end of the code. Now, how did it get the number 40? The definition of ~doublefun~ takes in two arguments, a /function/ and an argument to /pass/ the function. We then call the function twice on the provided argument, so when we pass in ~sillyfunction~ as our function argument then we can roughly see the progression of the code as
-#+BEGIN_EXAMPLE
-print(doublefun(sillyfunction,10)) -->
-v = sillyfunction(sillyfunction(10))
-print(v) -->
-v = sillyfunction(2*10)
-print(v) -->
-v = sillyfunction(20)
-print(v) -->
-v = 2*20
-print(v) -->
-print(40)
-#+END_EXAMPLE
-:META:
- This really needs to be cleaned up, but I'm trying to experiment here with how to actually write all of this stuff.  
-:END:
-When taken apart it's probably less intimidating than it seems at first, but we simply are able to 
 ** Undefined and NaN
 ** More on Numbers						      :tofix:
    So far we've just been dealing with natural numbers in our examples, but Python can handle other kinds of numbers than that and actually has a large number of operations on numbers. We can use a small subset of the real numbers, called the floating point numbers, as well. 
@@ -885,6 +865,10 @@ it's actually equivalent to the following piece of code
 **** Unrolling For Loops
      When we're unrolling our for loops 
 *** Loop Invariants  
+** Nested Scope and Closures
+*** Closures as privacy
+*** Closures as factories
+*** Factory patterns
 ** An Aside on Types and Hidden Errors				      :tofix:
    At this point we've had some exercises, we've introduced a number of kinds of data, and we've seen that there's a basic notion of "type" of data at play here. What this means is that you can't, for example, use a number as a string. Running
 
@@ -921,56 +905,9 @@ What this means for you as a Python programmer is that *you* need to do the actu
 #+END_SRC
 
 because we're trying to be "cute" and save space by 
-** More On Input and Output					      :tofix:
-:META:
- Might want to just rip apart this section 
-:END:
-
-We've shown that we can print out data, but what about taking /in/ data? We can do that with the input command as follows, giving us a chance to also show how variables work as well. Go ahead and put this code in a file called ~InputExample.py~ and run it. 
-#+BEGIN_SRC python :exports code :tangle InputExample.py
-  x = input("Enter a string:")
-  print(x)
-#+END_SRC
-You should see a prompt in the console that says "Enter a string:" and then if you enter a number at the prompt it should look something like
-#+BEGIN_EXAMPLE
-python InputExample.py 
-Enter a string:10
-10
-#+END_EXAMPLE
-
-Now, ~input~ reads a /string/ from input. Even if it looks like you're entering in a number, Python is going to treat this as "10" and not 10. In order to turn a string into a number, we need to use the ~int~ function that performs this conversion.
-
-There's also a slightly more convenient syntax for using the ~print~ function that allows us to merge multiple things together in output
-
-#+BEGIN_SRC python :exports both :results output 
-  print("This is","a string","broken into pieces")
-#+END_SRC
-
-#+RESULTS:
-: This is a string broken into pieces
-
-Note that each comma separated pieces ends up being separated by a space in the output of the string. We can also put arbitrary values into the sequence of prints as in
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5 + 5,"But did it?"
-#+END_SRC
-
-#+RESULTS:
-: This should print 10: 10 But did it?
-
-That output looks a little ugly and we /could/ just add a new print line like this
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5+5
-  print "But did it?"
-#+END_SRC
-but we can also use the newline character "\n" within a string, which tells the ~print~ statement to make a new line.
-#+BEGIN_SRC python :exports both :results output
-  print "This should print 10:",5+5,"\nBut did it?"
-#+END_SRC
-
-#+RESULTS:
-: This should print 10: 10 
-: But did it?
-
+** Interactive Programs
+*** Using Node for basic IO
+*** Interactive prompts
 * Specifications						      :tofix:
   An important skill that we need to practice is obeying a specification. Essentially what we need to learn and practice is the distinction between a specification and a computation. Computations, like we've seen so far are the actual /directions/ for how to do something. The specification, though, is the actual /goal/ of our computation. 
 
@@ -987,25 +924,7 @@ but we can also use the newline character "\n" within a string, which tells the 
 ** A Basic Interface
    The first piece you should write is to make a simple interface for experience. This interface should obey the following specification
 
-* Advanced Topics						      :tofix:
-** Anonymous Functions
-   To this point we've been dealing with functions as declarations, and in Python that's the main way that they're used. At the same time, there's another limited way in which we can define functions with /expressions/ rather statements. These are the so-called anonymous---that is, unnamed---functions, also called lambda functions. Here's a quick example of making a function that squares a number 
-   #+BEGIN_SRC python :exports both :results output
-     sqr = lambda n: n*n
-
-     print(sqr(10)) # should print 100!
-   #+END_SRC
-
-   #+RESULTS:
-   : 100
-
-The syntax of this is a little bit different than normal function definitions. The basic differences are below:
-
-   + lambda expressions can't use statements. The body of a lambda is allowed to be a /single/ expression.
-   + Because lambda expressions have only a single expression, there's no ~return~ statement needed. A function built from a lambda expression returns the value of this /single/ expression
-   + A lambda expression can be directly passed in as an argument
-
-Now, why do we care about this? We already have "first class" functions in Python: we can pass functions by name to other functions, we can assign functions to variables, we can /return/ functions like any other value. In Python, lambda expressions are mostly a matter of convenience. Sometimes you don't need or even want to name a function because naming a function takes up a perfectly good name and is simply more work. For example, what if we wanted to operate on all the possible 
+* Intermmediate Topics 						      :tofix:
 ** Objects
    At this point, we've shown that we can do an awful lot with just the kinds of data that are built into Python but, of course, that's not all we're going to want to do. We'll need to "package up" data into collections. For example, if we were writing even a small video game it would start becoming incredibly unwieldly to store the state of the game as a giant tuple of other tuples, lists, and dictionaries. We'd end up repeating a lot of code in order to try and access and modify data in the ways that we want. 
 
@@ -1051,6 +970,8 @@ The very thing we'll be showing is how to declare a class, similar to how we dec
 #+END_SRC
 
 For example, if we didn't already /have/ a list we could implement one 
+    
+*** Objects as Organization and Privacy
 *** On Object Oriented Programming and Paradigms: A Polemic
     Sometimes you will hear about "paradigms" of programming. These tend to have names such as "object oriented programming", "functional programming", "aspect oriented programming", and the like. Different programming languages will fall in different camps, sometimes more than one at a time, and programmers argue incessantly about which language is better and which paradigm is better and tend to make overblown statements about there being One Right Way to write code.
 
@@ -1061,9 +982,6 @@ For example, if we didn't already /have/ a list we could implement one
     Ultimately, I ask you to not accept the notion that one's choice of programming language or paradigm is reflective of one's intelligence, skill, or value. For most people, the choice of language and paradigm is determined in very much the same way that one's natural language is determined: through environment and culture. If you learn how to code at a school that mostly teaches object oriented programming then you will probably be most comfortable with object oriented programming. If your first languages were mostly functional programming languages, then that is what you will be most familiar with. The people you work with, the kinds of computations you need to deal with (e.g. if you're writing numerical simulation code for scientists you'll quite likely be using C or Fortran), and the pre-existing resources for what you want to work on, are going to have a vast influence on your choice of programming language. I firmly believe you can be a good programmer in any language, and I hope you can believe that as well and reject the ever-changing hierarchy of who is A Real Programmer. 
 
     If I were to make any recommendation about programming languages to learn, I would actually argue that you should try to be fluent in as many as possible. In my own experience, I've found that the more programming languages I learn the more I'm able to isolate the ways that the underlying themes of computation are expressed in that language. 
-
-    
-*** Objects as Organization and Privacy
 *** Inheritance
 ** Error Handling
    So far we've been dealing with some conceptual error handling that isn't particularly useful: when we have errors in the program we just /fail/. For example, when you do something like 
@@ -1090,10 +1008,21 @@ but what exactly is that ~NameError~. Given the capitalization it looks an awful
     :END:
 *** Future 
     http://jsmodules.io/ <-- the style of modules that *will* be in javascript
-** Using Libraries
-*** Plotting Data
-    In this section we're going to acknowledge
-*** 
+** Data Structures
+*** Why We Need Them
+*** Abstract Data Structures
+*** Linked Lists
+*** Graphs
+*** Binary Trees
+* Correctness
+** Testing Code
+*** Specifying Your Code
+*** Fuzz Testing
+*** Unit Testing
+*** Test Driven Development
+** Proving Code Correct
+*** Proof Sketches by Hand
+*** Programming Logic: A Brief Introduction
 * A Second Project						      :tofix:
   For our second major project in this course, we'll create a client/server pair that can handle basic networking. We're going to do something similar to 
 * Indices
