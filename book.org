@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil
 
 :META:
- starting words 14183
+ starting words 14053
 :END:
       
 * Introduction
@@ -381,7 +381,7 @@ Using variables is very simple: to retrieve the value of the variable you merely
 
     A typical computer has a few different forms of memory. 
     
-** Function Calls and Declarations				      :tofix:
+** Function Calls and Declarations				      :tofinish:
   Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
 #+BEGIN_LaTeX
   \[
@@ -420,33 +420,38 @@ Now if we go ahead and put this code in a file and run it
 : 10
 
 we should see that when the function ~function1~ is called with the argument ~10~ then it prints ~10~ twice. Looking at the /definition/ of the function we can see that we defined it by having the keyword ~function~, then the /name/ we were giving to the function, then the name of the /argument/ to the function, followed by a *sequence of statements*. This sequence of statements is what we call the /body/ of the function. This is the first piece of the language where see the pattern of wrapping a sequence of statements in a pair of ~{}~ braces. Languages such as Javascript use braces to make it easy for the implementation to tell if the statements that come after the function definition are all a part of the body of the function or code that comes after the function definition. 
+:META:
+   possibly put some examples here of the parsing ambiguity, include some text reinforcing that computers can't read intent in the code only the literal text and not even in particularly complicated ways 
+:END:
 
-For example, with no syntactic indicators of where a function body ends then it's ambiguous whether a piece of code such as
-#+BEGIN_SRC js :exports code
+Now, we've shown functions that *do something* when called but that's not quite what our intuition for functions from algebra is. A function, as we learned in algebra, takes in a number and gives back a number. So we'd expect that functions in Javascript should do something similar: take in arguments and return a value. Indeed, every function *does* return a value as we can see if we replicate our above code
 
-#+END_SRC
+#+BEGIN_SRC js :exports both :results output
+  function function1 (x) {
+      console.log(x);
+      console.log(x);
+  }
 
-There's a couple of things we haven't explained about functions in Python yet. First, we're used to a function /returning a value/ after it's called. Our earlier example function would return 20 when passed 10. Let us check what the value of our function after it's called is.
-#+BEGIN_SRC python :exports both :results output :session fun
-  print(function1(10))
+  console.log(function1(10));
 #+END_SRC
 
 #+RESULTS:
 : 10
 : 10
-: None
+: undefined
 
-Notice that the final value returned was ~None~. ~None~ is actually a special value in Python that means that there was no data. In order to make our function /return/ a value we need to use the ~return~ keyword as follows
+Now, that last printed out value corresponds to what ~function1~ /returns/. In this case, we haven't said in the function body that anything should be /returned/, which means that it /returns/ the special value ~undefined~ just like when we didn't specify the value a variable holds. If we want the function to /return/ a particular value, then we use the keyword ~return~ as in the following example:
 
-#+BEGIN_SRC python :exports both :results output 
-  def function2(x):
-      return 10 + x
+#+BEGIN_SRC js :exports both :results output
+  function mySquare (x) {
+      return x + 10;
+  }
 
-  print(function2(10))
+  console.log(mySquare(5));
 #+END_SRC
 
 #+RESULTS:
-: 20
+: 15
 
 Now this actually corresponds to our function 
 #+BEGIN_LaTeX
@@ -455,20 +460,6 @@ Now this actually corresponds to our function
   \]
 #+END_LaTeX
 
-In summary, 
-  + functions in Python are defined with
-    + the keyword ~def~
-    + the name of the function
-    + its arguments, separated by commas just like in high school algebra
-    + the body of the function as an indented sequence of statements
-  + a Python function always returns a value
-    + if you don't specify /what/ value then it will return ~None~
-    + you can specify what value it returns with ~return~
-  function function1 (x)
-  console.log(x);
-  console.log(x);
-
-  function1(10);
 ** Functions as Values						      :tofix:
    One thing that may not have been obvious yet in Python is that /functions/ are just another value, like numbers or lists or strings. We can pass functions into other functions like the following fairly silly example 
 #+BEGIN_SRC python :exports code :results output
@@ -502,9 +493,6 @@ print(40)
 :END:
 When taken apart it's probably less intimidating than it seems at first, but we simply are able to 
 ** Undefined and NaN
-** Computers and Memory						      :tofix:
-   Here we're going to begin a slight digression from describing Python to describing how memory works in computers and how your programs use memory. You've probably all heard that your computer has a certain amount of RAM, or Random Access Memory. This memory is used to hold data that the computer is working with. So when we talk about variables-as-containers, the place where these containers live is /in memory/ [fn::This is a slight simplification. Sometimes the contents of a variable-as-container or a variable-as-parameter can be stored in a more efficient place than RAM]. The amount of memory your computer or cell phone or tablet has is what limits how much data a program can manipulate at once. 
-   
 ** More on Numbers						      :tofix:
    So far we've just been dealing with natural numbers in our examples, but Python can handle other kinds of numbers than that and actually has a large number of operations on numbers. We can use a small subset of the real numbers, called the floating point numbers, as well. 
 
@@ -934,6 +922,10 @@ What this means for you as a Python programmer is that *you* need to do the actu
 
 because we're trying to be "cute" and save space by 
 ** More On Input and Output					      :tofix:
+:META:
+ Might want to just rip apart this section 
+:END:
+
 We've shown that we can print out data, but what about taking /in/ data? We can do that with the input command as follows, giving us a chance to also show how variables work as well. Go ahead and put this code in a file called ~InputExample.py~ and run it. 
 #+BEGIN_SRC python :exports code :tangle InputExample.py
   x = input("Enter a string:")
