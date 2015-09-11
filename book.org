@@ -5,7 +5,11 @@
 #+OPTIONS: toc:nil
 
 :META:
- starting words 14053
+ starting words 13333
+:END:
+
+:META:
+   need *wayy* more projects and obviously by-hand exercises for each section
 :END:
       
 * Introduction
@@ -462,7 +466,7 @@ Now this actually corresponds to our function
 #+END_LaTeX
 
 (add in section on how lexical scope works with functions)
-*** 
+*** Functions as reified programs
 *** Recursive calls
 *** Evaluating functions by hand
 *** Exercises
@@ -592,12 +596,14 @@ Instead, we can use the else-if this way
 #+END_SRC
 
 This allows us to be much clearer in the meaning of our code. 
+
 *** Exercises
    1. Write a function that
       1. Takes in a string as an argument
       2. Checks that the first character of the string is capitalized and that the last character is a punctuation mark. (You will find the ~.len()~ method on strings helpful)
    2. Write a function that
       1. 
+** Switch Statements
 ** Lists							      :tofix:
    Another kind of data that's important in Python are /lists/. A list is a sequence of arbitrary things. We can have booleans, numbers, other lists, etc. in our list. An example of a list would be something like
    #+BEGIN_SRC python :exports both :results output
@@ -826,45 +832,7 @@ We can also be more specific by specifying both the top and bottom of the range:
 
 Note, though, that this defines an interval of numbers that is /closed/ on the bottom of the range but /open/ on the top of the range. 
 
-*** Loop Unrolling
-    We haven't talked much about the /semantics/ of loops to this point, either the while statement or the for statement. Probably the best way to describe the meaning of iteration is to explain /loop unrolling/, which is also sometimes used as an optimization by some programming languages. 
-**** Unrolling While Loops
-
-#+BEGIN_SRC python :results output :exports both 
-  x = 0
-  while x < 10:
-      print("Still running")
-      x = x + 1
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-#+end_example
-
-it's actually equivalent to the following piece of code
-
-#+BEGIN_SRC python :results output :exports both
-  x = 0
-  print("Still running")
-  x = x + 1
-  while x < 10:
-      print("Still running")
-      x = x + 1
-#+END_SRC
-
-**** Unrolling For Loops
-     When we're unrolling our for loops 
-*** Loop Invariants  
+*** Evaluating By Hand
 ** Nested Scope and Closures
 *** Closures as privacy
 *** Closures as factories
@@ -918,13 +886,13 @@ because we're trying to be "cute" and save space by
   We often define the specification by "I wrote this code, and what it does is what it's supposed to do" but that's really not a proper specification. To do programming correctly, you should know what you're trying to do before you do it. That's not to say that exploratory programming is bad per se, because one of the best ways to figure out what problem you're trying to solve can simply be trying to write code that does something and then figure out if that's what you're trying to do in the first place. 
 
   The key components of any specification is explaining what the /domain/ of data is. For example, if I want to 
-* A First Project						      :tofix:
+* Project: Chat-bot 						      :tofix:
   The first project we're going to try is to recreate a classic program called "Eliza". [[http://en.wikipedia.org/wiki/ELIZA][Eliza]] was a fake "psychiatric" program that was one of the first chatterbots. Eliza operates by rather simple pattern matching, so we'll walk you through, piece-by-piece how to make this program for yourself.
  (TODO: Insert a transcript from the completed program here)
 ** A Basic Interface
    The first piece you should write is to make a simple interface for experience. This interface should obey the following specification
 
-* Intermmediate Topics 						      :tofix:
+* Intermediate Topics 						      :tofix:
 ** Objects
    At this point, we've shown that we can do an awful lot with just the kinds of data that are built into Python but, of course, that's not all we're going to want to do. We'll need to "package up" data into collections. For example, if we were writing even a small video game it would start becoming incredibly unwieldly to store the state of the game as a giant tuple of other tuples, lists, and dictionaries. We'd end up repeating a lot of code in order to try and access and modify data in the ways that we want. 
 
@@ -1006,7 +974,7 @@ but what exactly is that ~NameError~. Given the capitalization it looks an awful
     :META:
        Here we explain and demonstrate modules in the node-style
     :END:
-*** Future 
+*** Future standard modules 
     http://jsmodules.io/ <-- the style of modules that *will* be in javascript
 ** Data Structures
 *** Why We Need Them
@@ -1014,17 +982,44 @@ but what exactly is that ~NameError~. Given the capitalization it looks an awful
 *** Linked Lists
 *** Graphs
 *** Binary Trees
-* Correctness
-** Testing Code
-*** Specifying Your Code
-*** Fuzz Testing
-*** Unit Testing
-*** Test Driven Development
-** Proving Code Correct
-*** Proof Sketches by Hand
-*** Programming Logic: A Brief Introduction
-* A Second Project						      :tofix:
-  For our second major project in this course, we'll create a client/server pair that can handle basic networking. We're going to do something similar to 
+*** Balanced Trees
+
+** Polymorphism
+   (In this section we want to talk about the pattern of dispatching over number and types of arguments)
+* Advanced Topics
+** Correctness
+*** Specification
+*** Testing Code
+**** Specifying Your Code
+**** Fuzz Testing
+**** Unit Testing
+**** Test Driven Development
+*** Proving Code Correct
+**** Proof Sketches by Hand
+**** Programming Logic: A Brief Introduction
+**** Loop Invariants
+** Classic Problems
+*** Oh my goodness I don't know what to put here
+*** Sorting
+*** Search
+** Theory
+*** Models of Computation
+*** Turing Machines
+*** Lambda Calculi
+*** Time-complexity
+**** Memoization
+** Implementing a Turing Machine Simulator
+** Optimizations
+*** Memoization
+* Implementing a Simple Language
+  In this project we're going to be defining a simple programming language, called Biscuit, and develop a program that can
+  + read Biscuit programs
+  + execute the program
+  + print out its results
+
+** Specification of Biscuit
+** Defining the internal representation
+** Parsing
 * Indices
 ** Be The Interpreter
 *** General Rules and Setup for Interpreting a Program
@@ -1220,7 +1215,6 @@ You evaluate this by treating it as equivalent to
      ...
   };
 #+END_SRC
-
 
 * Footnotes
 
