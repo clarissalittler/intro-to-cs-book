@@ -998,21 +998,7 @@ For example, if we didn't already /have/ a list we could implement one
     If I were to make any recommendation about programming languages to learn, I would actually argue that you should try to be fluent in as many as possible. In my own experience, I've found that the more programming languages I learn the more I'm able to isolate the ways that the underlying themes of computation are expressed in that language. 
 *** Inheritance
 ** Error Handling
-   So far we've been dealing with some conceptual error handling that isn't particularly useful: when we have errors in the program we just /fail/. For example, when you do something like 
-
-   #+BEGIN_SRC python
-     print(asdf)
-   #+END_SRC
-we then see something like 
-
-#+BEGIN_EXAMPLE
-Traceback (most recent call last):
-  File "<stdin>", line 5, in <module>
-  File "<stdin>", line 3, in main
-NameError: name 'asdf' is not defined
-#+END_EXAMPLE
-
-but what exactly is that ~NameError~. Given the capitalization it looks an awful lot like a class name, which it actually is. A rather special kind of class used for reporting errors. 
+   (describe try and catch)
 
 ** Modules
    So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code.
@@ -1032,6 +1018,8 @@ but what exactly is that ~NameError~. Given the capitalization it looks an awful
 
 ** Polymorphism
    (In this section we want to talk about the pattern of dispatching over number and types of arguments)
+*** Polymorphism in Types
+*** Polymorphism in Number of Arguments
 * Advanced Topics
 ** Correctness
 *** Specification
@@ -1262,6 +1250,11 @@ You evaluate this by treating it as equivalent to
   };
 #+END_SRC
 
+** The Lambda Calculus
+*** Universal Computation
+*** The Core Language
+*** Data in the Lambda Calculus
+*** An Interpeter in Javascript
 * Footnotes
 
 [fn:1] I find it rather unfortunate that the word "variable" has these two, very different, meanings in computer science since variables-as-containers could probably be more accurately called "references", since they are special names that *refer* to a location in memory. 
