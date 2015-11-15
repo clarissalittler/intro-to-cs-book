@@ -5,12 +5,16 @@
 #+OPTIONS: toc:nil
 
 :META:
- starting words 13333
+ starting words 13134
 :END:
 
 :META:
    need *wayy* more projects and obviously by-hand exercises for each section
 :END:
+
+* ToDos
+** TODO Add in more about scopes and variables to the variable section
+** TODO Add a section explaining types and how typeof works
       
 * Introduction
 ** The Goals of This Book
@@ -386,6 +390,19 @@ Using variables is very simple: to retrieve the value of the variable you merely
     Assignment expressions are evaluated by first evaluating the righthand side to a value, entering that value in the corresponding row of the table, then finally returning the value assigned. 
     
 *** Exercises
+** Undefined
+   There is a small, important, but very strange term that we need to discuss: ~undefined~. ~undefined~ is the value that corresponds to when there is no usable value. For example, if you define a variable but don't assign it to anything then it will have the value ~undefined~, as in the following example.
+
+   #+BEGIN_SRC js :exports code :results output
+     var variable;
+     console.log(variable);
+   #+END_SRC
+
+   #+RESULTS:
+   : undefined
+
+Much like numbers or strings, ~undefined~ evaluates to itself. ~undefined~ is often used as a kind of error value to signal that something has gone wrong, which we'll see as we progress through this text.
+
 ** Function Calls and Declarations				      :tofinish:
   Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
 #+BEGIN_LaTeX
@@ -464,10 +481,53 @@ Now this actually corresponds to our function
     f(x) := x + 10
   \]
 #+END_LaTeX
+*** Nested functions and scope
+Since there can be any sequence of statements once you're inside a function, it is actually possible to define functions within a function. Consider the following example
 
-(add in section on how lexical scope works with functions)
-*** Functions as reified programs
+#+BEGIN_SRC js :exports code 
+  function nestingFuns (x) {
+      function nestedFun (y) {
+          console.log(y);
+      }    
+      return nestedFun;
+  }
+#+END_SRC
+
+which will return the function that we've defined.
+
+What happens then if we reference variables also defined within the function
+#+BEGIN_SRC js :exports code :results output
+  function counterMaker (start){
+      var counter = start
+      return function () {
+          var oldCount = counter;
+          counter = counter + 1;
+          return oldCount;
+      }
+  }
+
+  myCounter = counterMaker(10);
+
+  console.log(myCounter());
+  console.log(myCounter());
+  console.log(myCounter());
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 11
+: 12
+
+and if we run this code we'll see that every time myCounter is called it increments the inner ~counter~ variable. In essence, even though after ~counterMaker~ has returned and we can no longer directly see the ~counter~ variable, it clearly /still exists/ in the program because it is referenced by the inner function. This inner function is what we call a /closure/ because it "closes over" a scope that would otherwise be hidden from the rest of the program. Closures are a concept that we'll be dealing with later in this text because they are *very* powerful.
 *** Recursive calls
+*** Uses of functions
+*** Functions as reified programs
+    We've seen that functions have use in programming, but what *are* they on a fundamental level and why are they different than functions in your math courses?
+    
+    On a basic level, we use functions as "internalized programs". Functions are how programs express the ability to define and run other programs. The same way that you can put your code in a source file and then then run it again and again, you can have a sequence of code within a function that can be run again and again.
+
+    There's the question of *when* you should encapsulate your code in a function. Arguably, any recurring pattern of code that you see more than twice should probably separated out into a function. 
+    
 *** Evaluating functions by hand
 *** Exercises
     (all of these should be testing their ability to 
@@ -475,20 +535,6 @@ Now this actually corresponds to our function
        + understand how to substitute arguments into function bodies
        + understand how to evaluate a function and return back to the point of the function call
     )
-
-** Undefined and NaN
-** More on Numbers						      :tofix:
-   So far we've just been dealing with natural numbers in our examples, but Python can handle other kinds of numbers than that and actually has a large number of operations on numbers. We can use a small subset of the real numbers, called the floating point numbers, as well. 
-
-   For example if we take the square root of 2 we'll get 
-#+BEGIN_SRC python :exports both :results output
-  print(2**0.5)
-#+END_SRC
-
-#+RESULTS:
-: 1.41421356237
-
-Now the square root of 2 has an /infinite/ decimal expansion, so technically speaking this isn't the square root but a close approximation of it. In general the /real/ numbers as we've seen them in mathematics can't be completely described by a computer because they may have infinitely many decimal places. 
 ** Booleans							      :tofix:
    There are a few more pieces that we need to deal with before we can actually start showing what real programs look like. In this section we'll talk about a kind of data called /booleans/ and how they can be used to make choices in a program.
    
