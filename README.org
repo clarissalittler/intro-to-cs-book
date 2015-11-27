@@ -8,3 +8,28 @@
   The reality, though, is that syntax is syntax and semantics is semantics. I don't mean to say that syntax can't and shouldn't convey meaning, but that sometimes syntax is convention or aesthetic or this-would-have-made-the-parser-twice-as-long. If I had had a book that explained the distinction between syntax and semantics and, in particular, the meaning of a program can be understood apart from the mysterious implementation running it, I think I would have started enjoying myself a lot more quickly.
 
 That's the kind of thing I want to write. I want to write a book that ultimately leaves the reader, even without any real programming or mathematics background to speak of, with an understanding of the distinction between the parts of a language and their meaning, the distinction between describing a computation and performing one. I want anyone who makes it through the text to have the ability to quickly understand how to learn other languages by knowing how to break a new language down into familiar computational idioms.
+* What Should Be Included
+   + a description of how to evaluate each piece of syntax by hand
+     + exercises to demonstrate doing just that
+     + a plethora of examples
+       + (this is one place where I currently fall down in my existant rough text)
+   + give a language independent idea of What Programming Is
+     + iteration
+     + recursion
+     + data types
+     + branching
+     + ...
+   + explanation and exercises for learning to *read* code
+     + this is something I've never seen in an intro-to-computer science text
+       + but a skill that's very important
+     + this would include small programs and a series of questions to answer about
+       + what the code does
+       + how it works
+       + its (rough) efficiency on its input
+       + any critiques for the style and possible errors
+     + exercises on how to read code should start with small functions and progress into entire programs
+   + intro topics in cs
+     + adts
+     + sorting
+     + searching
+     
