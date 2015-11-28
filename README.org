@@ -18,7 +18,16 @@ That's the kind of thing I want to write. I want to write a book that ultimately
      + recursion
      + data types
      + branching
-     + ...
+     + these are all topics that should be related to how we describe directions in general
+       + what do I mean by this? I mean that we should appeal to how we specify instructions in the first place.
+       + we know how to follow orders of "if this then that"
+	 + branching
+       + we know how to follow directions that say repeat something n-times
+	 + iteration
+       + we know how to break a problem into sub-problems
+	 + recursion
+       + we know how to learn to associate words or phrases with procedures
+	 + function definitions
    + explanation and exercises for learning to *read* code
      + this is something I've never seen in an intro-to-computer science text
        + but a skill that's very important
@@ -30,6 +39,15 @@ That's the kind of thing I want to write. I want to write a book that ultimately
      + exercises on how to read code should start with small functions and progress into entire programs
    + intro topics in cs
      + adts
+       + lists
+       + trees
+       + graphs
+       + heaps
+       + ...
      + sorting
      + searching
+     + all of these are topics that are like learning your arithmetic skills
+       + they're not the be-all-end-all
+       + but they're good to know and good practice
+   + 
      
