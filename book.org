@@ -4,18 +4,6 @@
 #+TITLE: Introduction to Computer Science in Javascript
 #+OPTIONS: toc:nil
 
-:META:
- starting words 13134
-:END:
-
-:META:
-   need *wayy* more projects and obviously by-hand exercises for each section
-:END:
-
-* ToDos
-** TODO Add in more about scopes and variables to the variable section
-** TODO Add a section explaining types and how typeof works
-      
 * Introduction
 ** The Goals of This Book
    The fundamental goal of this book is to teach the basic ideas of programming and computation in a way that's both mathematically rigorous and still understandable to anyone who's had even a single term of algebra. 
@@ -236,663 +224,93 @@ Now, we take the pieces of syntax we've seen so far in order:
   2. numbers are evaluated simply: a number ~n~ written in decimal notation evaluates to itself, i.e. numbers are already values
   3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
 
-** Strings
-   An important kind of data in programming languages, other than numbers, are pieces of text. There are a few reasons for this. First, that we want our programs to be able to meaningfully communicate with us. We want to be able to get error messages if something goes wrong, we want to be able to send each other emails, etc. Another very important reason is that we want to be able to run our programs! Any program is, in fact, a piece of text. If we want to run our programs, first we need to read in the text of the program and then do something with it. This process of "running" a program from a piece of text is called "interpreting" it. In everyday life, strings are one of those types of data that we transparently use all the time: after all, every piece of writing is an example of a "string". 
-
- Historically these pieces of text are called strings. In Javascript, as in most languages, strings are designated by quotation marks. So while you can't say ~console.log(This is not a string)~ without getting an error, you can say ~console.log("This is totally a string")~ and have it work fine. We use quotation marks to designate strings so that the computer can tell the difference between literal text and text that's Javascript syntax. This is analogous to how, in English, we make distinctions between "between" and the use of "between", as in this very sentence.
- 
- We'll say a few things about writing strings in Javascript and operations on them because there's a lot of little details that you'll end up needing over the course of this text. First off, as we've said a basic string is simply the text between two quotation marks as in this code:
-#+BEGIN_SRC js :exports both :results output
-  console.log("This is a string")
-#+END_SRC
-
-#+RESULTS:
-: This is a string
-
-and by running this code we can see that it does exactly what is expected. What if we want a message that stretches across multiple lines? We could just have multiple calls to ~console.log~ but that's not every elegant
-#+BEGIN_SRC js :exports both :results output
-  console.log("A message that spans")
-  console.log("multiple lines")
-#+END_SRC
-
-#+RESULTS:
-: A message that spans
-: multiple lines
-
-since it's a property of the /message/ that it has linebreaks not just of how it's printed. We can include the linebreaks within the string using special /escaped/ characters like so
-#+BEGIN_SRC js :exports both :results output
-  console.log("A message that spans\nmultiple lines")
-#+END_SRC
-
-#+RESULTS:
-: A message that spans
-: multiple lines
-
-In this case the ~\n~ is a special newline character that tells ~console.log~ function that here, indeed, is a linebreak. We can also include quotation marks within a string by escaping them as well.
-
-#+BEGIN_SRC js :exports both :results output
-  console.log("Here's a message that \"has quotes\"")
-#+END_SRC
-
-#+RESULTS:
-: Here's a message that "has quotes"
-Escaping characters is a trick that essentially every programming language uses in order to allow the programmer to format their messages in a readable way. 
-
-There's an easier way to quote things within strings, however, that's somewhat unusual to Javascript: the interchangeable use of ' and ". Much like you would use nested quotations in English, you can say something like 
-
-#+BEGIN_SRC js :exports both :results output
-  console.log('this is a string "that uses quotes in it"')
-#+END_SRC
-
-#+RESULTS:
-: this is a string "that uses quotes in it"
-
-Conversely, if you want to use single quotes then the following works just fine:
-#+BEGIN_SRC js :exports both :results output
-  console.log("this is a string 'that uses single quotes in it'")
-#+END_SRC
-
-#+RESULTS:
-: this is a string 'that uses single quotes in it'
-
-Finally, we need to discuss some of the operations on strings. First, we can /concatenate/, or glue, them together with the ~+~ symbol.
-
-#+BEGIN_SRC js :exports both :results output
-  console.log("this string" + " is broken" + " into multiple pieces")
-#+END_SRC
-
-#+RESULTS:
-: this string is broken into multiple pieces
-
-We can also access parts of strings using ~.slice(start,end)~
-#+BEGIN_SRC js :exports both :results output
-  console.log("We only want a little piece of this string".slice(8, 21))
-#+END_SRC
-
-#+RESULTS:
-: want a little
-
-In this case we take everything from the *eighth* character up to, but not including, the *twenty-first* character of the string, starting at zero.
-
-We can also access just a single character of a string using ~[]~
-#+BEGIN_SRC js :exports both :results output
-  console.log("We just want a single character"[1])
-#+END_SRC
-
-#+RESULTS:
-: e
-
-in this case we print out just the first character, counting from zero, of the string. 
-*** Evaluating By Hand
-    Much like numbers, strings evaluate to themselves. String concatenation operates by combining the two strings as shown above. String slicing and accessing particular characters operates by returning the smaller string specified by the locations given.
-** Comments
-   We would be remiss if we didn't say at least a few words about commenting your code. First off, what we mean by a "comment" is a piece of text that can't influence the running of the program in any way. It's text that can be safely ignored by the computer when it runs the program, but it carries information that is useful to whoever is reading it. The syntax of comments is fairly simple: any line starting with ~//~ is a comment and will be ignored
-#+BEGIN_SRC js :exports both :results output
-  // these lines are just
-  // comments that can be
-  // ignored and it doesn't matter what
-  // I write here
-  // console.log(10)
-
-  console.log(30);
-#+END_SRC
-
-#+RESULTS:
-: 30
-
-running this example we can see that the ~console.log(10)~ was completely ignored. 
-
-Commenting your code is important not just so that others can read the code and understand what it does, but also because *you* need to be able to read your own code in the future and remember what you were trying to do. Comments are useful in outlining the specification of the code, explaining exactly what it's supposed to do and how it's supposed to work. Code without comments is like driving directions without the destination written down. Technically you can use it to get somewhere, but you really want to know where you're going before you start driving. 
-*** Evaluating By Hand
-    Comments are completely ignored during evaluation.
+** Basic Types
+   (These sections should all be fairly short and to the point. The idea is to simultaneously  be rigorous but get intuition into students right away. There should be a general discussion of why there's different forms of data and how we consider "types of things" all the time informally. Basically, we need to describe how data-are-nouns in this section and really solidify the analogy that you need to learn both the nouns and the verbs of any language)
+*** Strings
+**** Real life examples and analogues
+**** Syntax
+**** Evaluation
+**** Operations
+*** Numbers
+**** Real life examples and analogues
+**** Syntax
+**** Evaluation
+**** Operations
+*** Booleans
+**** Real life examples and analogues
+**** Syntax
+**** Evaluation
+**** Operations
 ** Variables
-   A /variable/, in most programming languages, is a way to store and retrieve information over the life of the program. Basically, they function like containers for data in your program. 
+*** Variables-as-containers
+** Control Flow
+   (We need to explain how control flow constructs are the "verbs" of a programming language, they describe what to do with the data. There's three classes of control flow for the purposes of teaching. 
 
-   From the everday point of view, a variable is something like a contact in your phone. You have the /name/ of the contact, which corresponds to the name of the variable, and that name corresponds to a space for data on your phone for full name, phone number, email, etc. Variables in javascript are more general that contacts, but the principle is the same: you have a name and you have a place for data. You can retrieve the data by using its name, the same way you can look up the data for a person you know by using the contact name you gave them. You can also modify this data at a later time if you need to, by using the connection the contact name has with the "container" of data.
+   1. Branching: choosing between actions 
+   2. Iteration: doing things repeatedly
+   3. Calling functions: switching context to a different piece of code and then coming back to where you were
 
-   You might remember learning the word variable in algebra, where a variable was a parameter in a polynomial expression such as \( x^2 + x - 10 \) or perhaps a function definition like \( f(x) = x + 20 \). In these cases, the variable ~x~ plays the role of an indeterminate quantity that you can plug a number into and calculate the result of the expression for that number. For example, you can "plug in", or substitute, the number 10 into the polynomial above and then calculate the answer: 100 
+   Now I was a little wary about calling functions a control flow construct, but they really are because they're changing the execution context and running code that isn't the next literal line in the textual representation. 
 
-Variables-as-indeterminates *do* appear in Javascript and, indeed, most programming languages in the context of function definitions. For now, though, we'll focus on the view of variables-as-containers. [fn:1]
-
-   The way a variable is declared in Javascript is through the keyword ~var~. There are two basic statements to declare functions. The first just creates a container, but puts "nothing" in it. This empty container still has a value, though! It has the value ~undefined~. We'll talk more about ~undefined~ and the ways it is special in a future section. For now, you can simply accept that ~undefined~ means exactly what it says: the value of the variable has not yet been defined. 
-
-   The following is an example of declaring a variable
-   #+BEGIN_SRC js :exports code :results output
-     var x;
-     console.log(x);
-   #+END_SRC
-
-   #+RESULTS:
-   : undefined
-
-and if we run this code we can simply see that we print out ~undefined~, as expected.
-
-How do we actually put something *in* the container once it's made? The basic syntax is ~name = value~, where ~=~ is being used in our expression very similar to $=$ in our formula \(f(x) = x + 20 \). We call this an /assignment/ expression. Assignment, as an expression, returns a /value/. Assignment returns the same value that was assigned to the variable. For example, ~x = 500~ returns 500 and ~x = 20 + 20~ returns 40. 
-
-The other way to declare a variable is to /assign/ it a value as it's declared, using the following syntax
-#+BEGIN_SRC js :exports code :results output
-  var x = 10;
-  console.log(x);
-#+END_SRC
-
-Using variables is very simple: to retrieve the value of the variable you merely need to use the variable's name in an expression, which we've implicitly been doing in our examples above. 
-*** Variables and Memory					   :tofinish:
-    Now for a small digression, we should discuss what variables are actually doing and where the data they "hold" is located.
-
-    A typical computer has a few different forms of memory. 
-*** Evaluating by Hand
-    Evaluating expressions related to variables come in three phases corresponding to declaration, usage, and assignment. 
-
-    First, scan the program for all variable declaration expressions, whether of the form ~var name;~ or ~var name = value~, and make a two column table with /names/ and /values/ as the two column names, where there is a row for each variable declared in the program. Next, if the declaration was of the assignment form then evaluate the expression on the right hand side and fill that value in the table. 
-
-    When a variable is used as an expression, look up the name of the variable in the table. If there is a value corresponding to that name in the table, then return the value in the table. If there is no value, then return ~undefined~.
-
-    Assignment expressions are evaluated by first evaluating the righthand side to a value, entering that value in the corresponding row of the table, then finally returning the value assigned. 
+   I might end up changing my mind a bit on this at some point, but I think it's a reasonable approximation
+)
+*** If-statements
+**** Real life examples and analogues
+**** Syntax
+**** Evaluation
+*** Iteration
+**** for-statements
+***** Real life examples and analogues
+***** Syntax
+***** Evaluation
+**** while-statements
+***** Real life examples and analogues
+***** Syntax
+***** Evaluation
+*** Functions and Function Calls
+    (we need to talk about how functions are reified programs, but without really saying something that opaque. the idea is that functions can be called within the language the same way we can call programs outside the language)
+**** Declaring functions
+**** Naming functions
+**** Calling functions
+**** Function scope
+** Closures
+*** Closures provide stateful programming
+*** Closures provide privacy
+*** Closures can mimick modules
+** Objects
+*** Objects-as-Containers
+    (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. )
+*** Objects-for-Organizing
+** Testing and Error handling
+*** Checking types
+    (An important way to deal with preventing mistakes is to ensure that you're getting the right kind of data)
+*** Writing specifications
+    (we should cover how to define what your code does before you even get started on writing it, the things to consider about types and errors and what contracts it should enforce. Even just the concept of contracts in general for programming)
+*** Testing behavior
+    (How to write unit tests and describe what your code is supposed to do. Probably include a couple of different libraries for doing this or making a simple one ourselves. In fact, that's a decent project for this section I think: have them use unit testing libraries and then have a walkthrough for writing their own, with optional features and the like)
     
-*** Exercises
-** Undefined
-   There is a small, important, but very strange term that we need to discuss: ~undefined~. ~undefined~ is the value that corresponds to when there is no usable value. For example, if you define a variable but don't assign it to anything then it will have the value ~undefined~, as in the following example.
-
-   #+BEGIN_SRC js :exports code :results output
-     var variable;
-     console.log(variable);
-   #+END_SRC
-
-   #+RESULTS:
-   : undefined
-
-Much like numbers or strings, ~undefined~ evaluates to itself. ~undefined~ is often used as a kind of error value to signal that something has gone wrong, which we'll see as we progress through this text.
-
-** Function Calls and Declarations				      :tofinish:
-  Now we know how to write simple sequences of statements and perform basic arithmetic operations. The next step will be to explain how to define and use functions. Recalling how we define functions in algebra as 
-#+BEGIN_LaTeX
-  \[
-    f(x) := 10 + x
-  \]
-#+END_LaTeX
-we can see that the fundamental pieces of how functions are declared are
-  + the function is given a name
-  + the arguments to the function are given names
-  + the body of the function is given
-
-We'll start by showing the syntax of defining a function and then we'll show what pieces of syntax correspond to each of these three things. 
-
-#+BEGIN_SRC js :exports code :results output :tangle FirstFunction.js
-  function function1 (x) {
-      console.log(x);
-      console.log(x);
-  }
-
-  function1(10);
-#+END_SRC
-
-#+RESULTS:
-: 10
-: 10
-
-and put that code in FirstFunction.js
-
-Now if we go ahead and put this code in a file and run it 
-#+BEGIN_SRC sh :exports both :results output
-  node FirstFunction.js
-#+END_SRC
-
-#+RESULTS:
-: 10
-: 10
-
-we should see that when the function ~function1~ is called with the argument ~10~ then it prints ~10~ twice. Looking at the /definition/ of the function we can see that we defined it by having the keyword ~function~, then the /name/ we were giving to the function, then the name of the /argument/ to the function, followed by a *sequence of statements*. This sequence of statements is what we call the /body/ of the function. This is the first piece of the language where see the pattern of wrapping a sequence of statements in a pair of ~{}~ braces. Languages such as Javascript use braces to make it easy for the implementation to tell if the statements that come after the function definition are all a part of the body of the function or code that comes after the function definition. 
-:META:
-   possibly put some examples here of the parsing ambiguity, include some text reinforcing that computers can't read intent in the code only the literal text and not even in particularly complicated ways 
-:END:
-
-Now, we've shown functions that *do something* when called but that's not quite what our intuition for functions from algebra is. A function, as we learned in algebra, takes in a number and gives back a number. So we'd expect that functions in Javascript should do something similar: take in arguments and return a value. Indeed, every function *does* return a value as we can see if we replicate our above code
-
-#+BEGIN_SRC js :exports both :results output
-  function function1 (x) {
-      console.log(x);
-      console.log(x);
-  }
-
-  console.log(function1(10));
-#+END_SRC
-
-#+RESULTS:
-: 10
-: 10
-: undefined
-
-Now, that last printed out value corresponds to what ~function1~ /returns/. In this case, we haven't said in the function body that anything should be /returned/, which means that it /returns/ the special value ~undefined~ just like when we didn't specify the value a variable holds. If we want the function to /return/ a particular value, then we use the keyword ~return~ as in the following example:
-
-#+BEGIN_SRC js :exports both :results output
-  function mySquare (x) {
-      return x + 10;
-  }
-
-  console.log(mySquare(5));
-#+END_SRC
-
-#+RESULTS:
-: 15
-
-Now this actually corresponds to our function 
-#+BEGIN_LaTeX
-  \[
-    f(x) := x + 10
-  \]
-#+END_LaTeX
-*** Nested functions and scope
-Since there can be any sequence of statements once you're inside a function, it is actually possible to define functions within a function. Consider the following example
-
-#+BEGIN_SRC js :exports code 
-  function nestingFuns (x) {
-      function nestedFun (y) {
-          console.log(y);
-      }    
-      return nestedFun;
-  }
-#+END_SRC
-
-which will return the function that we've defined.
-
-What happens then if we reference variables also defined within the function
-#+BEGIN_SRC js :exports code :results output
-  function counterMaker (start){
-      var counter = start
-      return function () {
-          var oldCount = counter;
-          counter = counter + 1;
-          return oldCount;
-      }
-  }
-
-  myCounter = counterMaker(10);
-
-  console.log(myCounter());
-  console.log(myCounter());
-  console.log(myCounter());
-#+END_SRC
-
-#+RESULTS:
-: 10
-: 11
-: 12
-
-and if we run this code we'll see that every time myCounter is called it increments the inner ~counter~ variable. In essence, even though after ~counterMaker~ has returned and we can no longer directly see the ~counter~ variable, it clearly /still exists/ in the program because it is referenced by the inner function. This inner function is what we call a /closure/ because it "closes over" a scope that would otherwise be hidden from the rest of the program. Closures are a concept that we'll be dealing with later in this text because they are *very* powerful.
-*** Recursive calls
-*** Uses of functions
-*** Functions as reified programs
-    We've seen that functions have use in programming, but what *are* they on a fundamental level and why are they different than functions in your math courses?
-    
-    On a basic level, we use functions as "internalized programs". Functions are how programs express the ability to define and run other programs. The same way that you can put your code in a source file and then then run it again and again, you can have a sequence of code within a function that can be run again and again.
-
-    There's the question of *when* you should encapsulate your code in a function. Arguably, any recurring pattern of code that you see more than twice should probably separated out into a function. 
-    
-*** Evaluating functions by hand
-*** Exercises
-    (all of these should be testing their ability to 
-       + understand the scoping of function bodies
-       + understand how to substitute arguments into function bodies
-       + understand how to evaluate a function and return back to the point of the function call
-    )
-** Booleans							      :tofix:
-   There are a few more pieces that we need to deal with before we can actually start showing what real programs look like. In this section we'll talk about a kind of data called /booleans/ and how they can be used to make choices in a program.
-   
-   We're all familiar with making decisions based upon whether or not some /condition/ is true. For example, you leave the brownies in the oven *until* a toothpick comes out clean. If the game costs *less* than $20, then you know you can buy it, but if it's over $20 then you have to pass on it. If you're *over* 21, then you don't have to use a fake ID to get a beer, but if you're under 21 then you probably shouldn't break the law. 
-
-   The common thing in all of these is that /if/ something is true, then you perform an action, and if it's not true you perform a different action. 
-
-   In order to describe using these kinds of conditions in programming, we need a kind of data that corresponds to something being /true/ or /false. In Python, as in most programming languages, this is called a Boolean. There are only two Booleans, called ~True~ and ~False~.
-
-  In order to actually /make/ a choice based upon a condition, we introduce another piece of syntax: the if-statement.
-
-  Here's an example of an if-statement
-#+BEGIN_SRC python :exports both :results output
-  if True:
-      print(True)
-  else:
-      print(False)
-#+END_SRC
-
-#+RESULTS:
-: True
-This is a very /trivial/ if-statement but it gives us the basic syntax since all if-statements must have the following form
-#+BEGIN_SRC python :exports code
-  if condition:
-      sequence of statements
-  else:
-      another sequence of statements
-#+END_SRC
-Similarly to function bodies, we have an /indented/ sequence of statements that are the things to do if the condition is ~True~ or if it evaluates to ~False~. Notice, though, that the ~print(False)~ in the ~else~ branch never actually printed anything. Whichever branch of the if-statement the program ends up taking, the other branch will never actually run. 
-
-What if we want to do nothing special if the condition isn't ~True~ and, instead, just keep running the program as normal? In that case, we can leave off the ~else~ part of the if-statement. Consider the following piece of code that uses both functions and if-statements:
-#+BEGIN_SRC python :exports both :results output
-  def boolFun(b):
-      if b:
-          print("The if statement ran")
-      print("This is after the if statement")
-
-  boolFun(True)
-  print("")
-  boolFun(False)
-#+END_SRC 
-
-#+RESULTS:
-: The if statement ran
-: This is after the if statement
-: 
-: This is after the if statement
-
-Now if you look at the output of this code, you can see that it's exactly what we expect. In the first case both of the ~print~ statements run and in the second only the last print statement, outside of the if-statement, runs. 
-
-    If the only thing we could put into conditions of an if-statement were literally ~True~ and ~False~ then they wouldn't be very interesting. In this section we'll talk about some of the built-in operations in Python that are /Boolean-valued/, that is that they return a Boolean. 
-
-    First, we have the basic comparison operations on numbers. There's the basic ~<~, ~>~, ~<=~, and ~>=~. We can see them in the following function
-
-    #+BEGIN_SRC python :exports both :results output
-      def usesLessThan(number1, number2):
-          if number1 <= number2:
-              print("number1 was less than or equal to number2")
-          else:
-              print("number2 was greater than number1")
-
-      usesLessThan(10,20)
-    #+END_SRC
-
-    #+RESULTS:
-    : number1 was less than or equal to number2
-
-    We also have the rather important comparison operations ~==~ and ~!=~, which tells us whether or not two things are equal. We can use ~==~ and ~!=~ on any type, and ~==~ will return ~True~ if two things are equal and ~False~ if they are not and ~!=~ does the exact opposite. 
-
-    This means we can do things like 
-#+BEGIN_SRC python :exports code :tangle ComparisonExample.py
-  number = input("Enter a number:")
-  if int(number)==5:
-      print("You entered 5")
-  else: 
-      print("You entered something that wasn't 5'")
-#+END_SRC
-
-
-Finally, we have enough pieces that we can show the last variant we need of the if-statement: the else-if. Consider the following, somewhat poorly structured, code that makes multiple comparisons
-
-#+BEGIN_SRC python :exports code :tangle ComparisonExample2.py
-  number = input("Enter a number: ")
-  if int(number)==5:
-      print "You entered 5"
-  else:
-      if int(number)==10:
-          print "You entered 10"
-      else:
-          print "You entered something else"
-#+END_SRC
-
-
-If we have to make a new if-statement for each different choice then that means that our code is going to get very unwieldy very quickly.
-
-Instead, we can use the else-if this way
-#+BEGIN_SRC python :exports code :tangle ComparisonExample3.py
-  number = input("Enter a number: ")
-  if int(number)==5:
-      print "You entered 5"
-  elif int(number)==10:
-      print "You entered 10"
-  else:
-      print "You entered something else"
-#+END_SRC
-
-This allows us to be much clearer in the meaning of our code. 
-
-*** Exercises
-   1. Write a function that
-      1. Takes in a string as an argument
-      2. Checks that the first character of the string is capitalized and that the last character is a punctuation mark. (You will find the ~.len()~ method on strings helpful)
-   2. Write a function that
-      1. 
-** Arrays 
-** Iteration							      :tofix:
-   The other major tool that we need to control the flow of a program is the ability to repeat an action an arbitrary number of times. For example, when we're dealing with directions we may need to follow something like "keep driving /until/ you see the fifth exist" or "head 20 miles north". These express the idea not just of /choice/ but of continuing a process until some condition is met. The equivalent of that in Python is the while-statement. 
-*** While Loops
-A typical while-statement will look like
-#+BEGIN_SRC python :results output :exports both :tangle FirstWhile.py
-  x = 0
-  while x < 10:
-      print("Still running")
-      x = x + 1
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-Still running
-#+end_example
-
-We see again the typical pattern that one of these special statement forms starts with a keyword, in this case ~while~, some extra information after the keyword, which in this case is the condition to /keep/ running, a ~:~ and then the sequence of statements that should run.
-
-In words, what this code means is that we start with the variable ~x~ be set to ~0~ and, then, every time the body of the while-statement is run it will 
-  + print the string "Still running"
-  + increment the value of the number held by the container ~x~
-and the body will run a total of *10* times, once for ~x=0~, ~x=1~, etc. up through ~x=9~. When ~x=10~ then the condition in the while-statement will return ~False~ and the body of the loop is skipped. 
-
-Here's another example of a while loop, one that involves interactive input
-#+BEGIN_SRC python :exports code :tangle WhileAsk.py
-  x = input("Enter a string: ")
-  while x != "quit":
-      print(x)
-      x = input("Enter another string: ")
-#+END_SRC
-
-this code will keep asking us to enter a string until we give the program the string "quit".
-
-Of course, while loops can be somewhat dangerous since they can potentially run /forever/. For example, if we write a loop such as
-#+BEGIN_SRC python :exports code :tangle BadWhile1.py
-  while True:
-      print("Still running")
-#+END_SRC
-and attempt to run it, then it will end up running forever. Now, this is a somewhat obviously trivial infinite loop but it's also possible to write infinite loops that are less obviously wrong. Try to figure out what the problem is with this loop before reading on
-#+BEGIN_SRC python :exports code :tangle BadWhile2.py
-  x = 10
-  while (x != 0):
-      print("Still running")
-      print(x)
-      x = x - 3
-#+END_SRC
-
-The idea behind this code is fairly straightfoward. Counting down from 10, we want to print all the numbers that are from 10 on down to 1, counting down by 3 each time. The problem with this code, and what you'll see if you attempt to run it, is that it won't actually stop running! 
-
-The reason why is that we hit a state where ~x=1~, then we run the body of the loop again and end with ~x=-2~. Once ~x=-2~, we hit the body of the loop again and then check to see if ~-2 != 0~, which is ~True~, and thus the loop continues. The condition to terminate the loop, that ~x==0~, will never actually happen. In order to fix this loop we'd need to do something like
-
-#+BEGIN_SRC python :exports code :tangle FixedWhile.py
-  x = 10
-  while (x > 0):
-      print("Still running")
-      print(x)
-      x = x - 3
-#+END_SRC
-and we can see that this version works exactly as intended. 
-
-*** For Loops
-The other kind of loop that exists in Python is the ability to do something for a set number of times. For example, if I need to crack six eggs then for /each/ egg I need to crack it into the bowl. If I need to grade 30 assignments, then for /each/ assignment I need to grade it. These are tasks where there are /items/ in a /collection/ where for /each/ item we /do/ something. Corresponding to this kind of iteration we have for-loops in Python. The basic syntax of a for-loop looks something like 
-
-#+BEGIN_SRC python :exports both :results output
-  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
-
-  for album in myFavoriteAlbums:
-      print("I like this: " + album)
-#+END_SRC
-
-#+RESULTS:
-: I like this: Fables From a Mayfly
-: I like this: Anchors and Arrows
-: I like this: Random Access Memories
-
-The syntax follows the basic idea that /for/ each item /in/ a collection of things, we perform some sequence of actions. As with all the syntactic forms we've seen before, we follow the ~:~ character with an indented sequence of statements. 
-
-What if, though, we want to do something a particular number of times rather than over a concrete number of things. A real life example would be something like weight training, where you have a particular /number of repetitions/ for some action. We mimic this style of iteration by using the normal for-loop syntax, but with a special kind of list we generate with the ~range~ function. The ~range~ function will return a list of numbers within the specified range, as in the following code
-#+BEGIN_SRC python :exports both :results output
-  for num in range(10):
-      print(num)
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-#+end_example
-
-We can also be more specific by specifying both the top and bottom of the range:
-
-#+BEGIN_SRC python :exports both :results output
-  for num in range(5,10):
-      print(num)
-#+END_SRC
-
-#+RESULTS:
-: 5
-: 6
-: 7
-: 8
-: 9
-
-Note, though, that this defines an interval of numbers that is /closed/ on the bottom of the range but /open/ on the top of the range. 
-
-*** Evaluating By Hand
-** Nested Scope and Closures
-*** Closures as privacy
-*** Closures as factories
-*** Factory patterns
-** An Aside on Types and Hidden Errors				      :tofix:
-   At this point we've had some exercises, we've introduced a number of kinds of data, and we've seen that there's a basic notion of "type" of data at play here. What this means is that you can't, for example, use a number as a string. Running
-
-#+BEGIN_SRC python :exports none :results output
-  print(3[2:5])
-#+END_SRC
-
-will result in getting an error ~TypeError: 'int' object is not subscriptable~, which is just a fancy way of saying that numbers aren't in the set of kinds of data that you can use the ~[ ]~ or ~[ : ]~ notation on. Now, of course we only see these errors if we actually run /the/ line of code that has the problem. For example, in the following file we'll never actually hit an error
-
-#+BEGIN_SRC python :exports both :results output
-  if False:
-      print(3[2:5])
-  else:
-      print("This is okay!")
-#+END_SRC
-
-#+RESULTS:
-: This is okay!
-
-when we run the code, but what if something changes and our conditional stops being false? Then we'll hit the error without having realized it. The same thing is true for the following program, which defines a function that has a type error in it but doesn't use it /yet/
-
-#+BEGIN_SRC python :exports both :results output
-
-#+END_SRC
-
-The point of all these examples is that just because a Python program runs the first time doesn't mean that it's actually error free. This is because Python is an "untyped" language, a language where programs with typing errors are still valid programs in the language. Practically, the difference between a typed and an untyped language is that typed languages have some form of "type checking" phase that rejects a program that has type errors and doesn't allow it to be run. 
-
-What this means for you as a Python programmer is that *you* need to do the actual work of ensuring that your code doesn't contain type errors. It's a good practice to make sure that you include some comments to yourself about the type of data you expect to be passed into functions and to also not /change/ the type of data that a variable holds over the course of the program.  For example, I'd argue that the following program is rather bad style
-
-#+BEGIN_SRC python :exports both :results output
-  myDictionary = {}
-
-  def myFun(d): 
-#+END_SRC
-
-because we're trying to be "cute" and save space by 
-** Interactive Programs
-*** Using Node for basic IO
-*** Interactive prompts
-* Specifications						      :tofix:
-  An important skill that we need to practice is obeying a specification. Essentially what we need to learn and practice is the distinction between a specification and a computation. Computations, like we've seen so far are the actual /directions/ for how to do something. The specification, though, is the actual /goal/ of our computation. 
-
-  For example, the directions to my house from your house are the description of the /computation/ given by travelling from your house to mine. On the other hand, the specification is so obvious it's almost not worth stating: "travel from your house to mine". 
-
-  The specification gets more complicated once we're trying to solve problems a little less obvious. Consider something like a web server. The specification is exactly what the website is supposed to do for every possible HTTP request it can receive. If any of you reading this have industry experience, when was the last time you had a precise description of what the website was supposed to do? In my experience it's not terribly common, and that's a shame.
-
-  We often define the specification by "I wrote this code, and what it does is what it's supposed to do" but that's really not a proper specification. To do programming correctly, you should know what you're trying to do before you do it. That's not to say that exploratory programming is bad per se, because one of the best ways to figure out what problem you're trying to solve can simply be trying to write code that does something and then figure out if that's what you're trying to do in the first place. 
-
-  The key components of any specification is explaining what the /domain/ of data is. For example, if I want to 
-* Project: Chat-bot 						      :tofix:
-  The first project we're going to try is to recreate a classic program called "Eliza". [[http://en.wikipedia.org/wiki/ELIZA][Eliza]] was a fake "psychiatric" program that was one of the first chatterbots. Eliza operates by rather simple pattern matching, so we'll walk you through, piece-by-piece how to make this program for yourself.
- (TODO: Insert a transcript from the completed program here)
-** A Basic Interface
-   The first piece you should write is to make a simple interface for experience. This interface should obey the following specification
-
-* Intermediate Topics 						      :tofix:
-** Switch Statements
-:META:
-   Part of my problem here is that switch statements in javascript are a pretty weird topic: they don't seem to be particularly idiomatic even though they're useful for "tagged" data, but that's mostly because I think like a functional programmer and like algebraic data types
-:END:
-** Error Handling
-   (describe try and catch)
-** Modules
-   So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code.
-*** Node-style modules
-    :META:
-       Here we explain and demonstrate modules in the node-style
-    :END:
-*** Future standard modules 
-    http://jsmodules.io/ <-- the style of modules that *will* be in javascript
-** Data Structures
-*** Why We Need Them
-*** Abstract Data Structures
+* Advanced Programming Concepts
+** Abstract Data Types
+   (I'm strongly considering moving these to be piecemeal introduced through the text every so often as small projects and to break up the monotony)
 *** Linked Lists
-*** Graphs
-*** Binary Trees
-*** Balanced Trees
+**** Doubly Linked Lists
+*** Stacks
+*** Queues
+*** Trees
+*** Self-balancing Trees
+**** Red-Black
+**** 2-3 Trees
+*** Heaps
+** Reading Code 
+   (In this section we need to discuss how to actually read code and the strategies and exercises for that. 
 
-** Polymorphism
-   (In this section we want to talk about the pattern of dispatching over number and types of arguments)
-*** Polymorphism in Types
-*** Polymorphism in Number of Arguments
-* Advanced Topics
-** Correctness
-*** Specification
-*** Testing Code
-**** Specifying Your Code
-**** Fuzz Testing
-**** Unit Testing
-**** Test Driven Development
-*** Proving Code Correct
-**** Proof Sketches by Hand
-**** Programming Logic: A Brief Introduction
-**** Loop Invariants
-** Classic Problems
-*** Oh my goodness I don't know what to put here
-*** Sorting
-*** Search
-** Theory
-*** Models of Computation
-*** Turing Machines
-*** Lambda Calculi
-*** Time-complexity
-**** Memoization
-** Implementing a Turing Machine Simulator
-** Optimizations
-*** Memoization
-* Implementing a Simple Language
-  In this project we're going to be defining a simple programming language, called Biscuit, and develop a program that can
-  + read Biscuit programs
-  + execute the program
-  + print out its results
-
-** Specification of Biscuit
-** Defining the internal representation
-** Parsing
+   I think my own strategies for this are to skim the code and take notes on it. First, identity the main features of the code: what's the first thing called and what does it call within/after that, then take notes on all the other functions involved in that initial setup and take notes on their signatures and what they appear to do, then look at how the functions are called and the names of variables for clues etc. Whenever you really can't understand what something does, attempt to evaluate pieces of it by hand)
+** Modules
+* Classic Programming Problems
+** Sorting
+** Searching
+** Graph Problems
+   (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding)
 * Indices
 ** Be The Interpreter
 *** General Rules and Setup for Interpreting a Program
