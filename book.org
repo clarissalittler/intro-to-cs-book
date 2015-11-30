@@ -649,113 +649,7 @@ This allows us to be much clearer in the meaning of our code.
       2. Checks that the first character of the string is capitalized and that the last character is a punctuation mark. (You will find the ~.len()~ method on strings helpful)
    2. Write a function that
       1. 
-** Switch Statements
-** Lists							      :tofix:
-   Another kind of data that's important in Python are /lists/. A list is a sequence of arbitrary things. We can have booleans, numbers, other lists, etc. in our list. An example of a list would be something like
-   #+BEGIN_SRC python :exports both :results output
-     myFavoriteAlbums = ["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
-     print(myFavoriteAlbums)
-   #+END_SRC
-
-   #+RESULTS:
-   : ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories']
-
-A list can be created by including a comma-delimited sequence of expressions between two square brackets. The above is the Python equivalent of the following text
-
-  + "Fables from a Mayfly"
-  + "Anchors and Arrows"
-  + "Random Access Memories"
-
-Once a list is made, there are obvious things you might want to do with it such as
-  + access the n-th memmber of the list
-  + change an element of the list
-  + add a new item to the list
-  + take an item off of the list
-
-The first of those we can do with the following bit of syntax
-#+BEGIN_SRC python :exports both :results output 
-  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
-
-  print(myFavoriteAlbums)
-  print(myFavoriteAlbums[0])
-#+END_SRC
-
-#+RESULTS:
-: ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories']
-: Fables From a Mayfly
-
-When we run these print statements we can see that the expression ~myFavoriteAlbums[0]~ pulls out the first element of the list. This tells us that lists are indexed by /0/. This is true in most programming languages, actually, that we start counting at 0 and work our way up, as opposed to informal conversation where we tend to start counting with 1.
-
-Next, we come to changing elements of a list once they're made. We can also do that with the ~[]~ syntax that we've just introduced, as follows.
-
-#+BEGIN_SRC python :exports both :results output
-  myFavoriteChickens = ["Beleena", "Nimbus"]
-  # oh no, it turns out that I spelled Billina wrong
-  myFavoriteChickens[0] = "Billina"
-  print(myFavoriteChickens)
-#+END_SRC
-
-#+RESULTS:
-: ['Billina', 'Nimbus']
-
-We can see that the name of the first chicken in our list has, in fact, changed! The underlying metaphor behind the ~[]~ syntax is that a list isn't just a list-of-things, it's actually a list-of-containers. You can actually change what's in those containers without even making a whole new list. Now, that's useful now but we'll also see situations where that can be slightly dangerous if we're not careful on how we treat these containers. If it helps, thinking of how you would write a bulleted list by hand: when you decide to change one of the entries in the list, you don't also erase the bullet point rather just the text next to the bullet point, i.e. the contents of the container as opposed to the container itself. 
-
-Can we modify random points in a list? What if we try accessing or modifying large indexes? Try running the following pieces of code 
-#+BEGIN_SRC python :exports both :results output 
-  myFavoriteChickens = ["Billina", "Nimbus"]
-
-  print(myFavoriteChickens[10])
-#+END_SRC
-
-then we'll get the output
-#+BEGIN_EXAMPLE
-Traceback (most recent call last):
-  File "<stdin>", line 3, in <module>
-IndexError: list index out of range
-#+END_EXAMPLE
-which means that we're not allowed to access further than end of the list. 
-
-There are a few ways to add items to a list. The first one is the ~.append~ method, which conceptually corresponds to adding a new thing to the /end/ of a list of things. 
-
-#+BEGIN_SRC python :exports both :results output
-  myFavoriteAlbums=["Fables From a Mayfly", "Anchors and Arrows", "Random Access Memories"]
-
-  myFavoriteAlbums.append("Fumbling Towards Ecstasy")
-  print(myFavoriteAlbums)
-#+END_SRC
-
-#+RESULTS:
-: ['Fables From a Mayfly', 'Anchors and Arrows', 'Random Access Memories', 'Fumbling Towards Ecstasy']
-
-Here we've introduced a new piece of syntax: the method call. Methods are /like/ functions, but they're attached to a particular kinda of data. In this case, the ~append~ method is attached to lists themselves and can't be used on just anything. Indeed, if you were to try to ~.append~ something to a number you'd get an error like this snippet of a Python session
-
-#+BEGIN_EXAMPLE
->>> x = 10
->>> x.append("a thing to append")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'int' object has no attribute 'append'
-#+END_EXAMPLE
-
-Methods are all called with the ~.~ syntax, where the name of the method being called comes /after/ the ~.~ but otherwise the syntax behaves the same as functions.
-
-If you can add to the list, you'd expect that you can also take away from the list. We can remove elements from the list a few different ways. The first is the ~pop~ method, which removes an item from the end of the list. By "remove" here we mean that it completely removes the /container/ at the end of the list. 
-
-#+BEGIN_SRC python :exports both :results output
-  myList = [1,2,3]
-  myList.pop()
-  print(myList)
-#+END_SRC
-
-#+RESULTS:
-: [1, 2]
-
-Continuing our metaphor of lists as pen-and-paper lists, using ~.pop~ corresponds to erasing the entire bullet point at the end of the list. Not just the data is gone, but the entire place for it is gone. 
-
-*** An Aside on Indexes and Counting
-    You will have undoubtedly noticed that when we're counting places in a list, we're starting our count at 0 and working our way up from there. This might feel a bit unnatural at first, since it leads to statements such as "the first element of the list ~a~ is at ~a[0]~", but it's a convention in computer science that is almost universal at this point. 
-
-    There's also some theoretical justification for starting to count at 0! In mathematics, we sometimes define the natural numbers as a set generated by the recursive relation that says "a natural number is either 0 or it is one plus another natural number". This definition probably seems weird but (TODO: fix this section, or maybe just leave it out) 
+** Arrays 
 ** Iteration							      :tofix:
    The other major tool that we need to control the flow of a program is the ability to repeat an action an arbitrary number of times. For example, when we're dealing with directions we may need to follow something like "keep driving /until/ you see the fifth exist" or "head 20 miles north". These express the idea not just of /choice/ but of continuing a process until some condition is met. The equivalent of that in Python is the while-statement. 
 *** While Loops
@@ -939,67 +833,12 @@ because we're trying to be "cute" and save space by
    The first piece you should write is to make a simple interface for experience. This interface should obey the following specification
 
 * Intermediate Topics 						      :tofix:
-** Objects
-   At this point, we've shown that we can do an awful lot with just the kinds of data that are built into Python but, of course, that's not all we're going to want to do. We'll need to "package up" data into collections. For example, if we were writing even a small video game it would start becoming incredibly unwieldly to store the state of the game as a giant tuple of other tuples, lists, and dictionaries. We'd end up repeating a lot of code in order to try and access and modify data in the ways that we want. 
-
-   Instead, what we need to be able to do is make new /kinds/ of data that package up the information that we need /as well as/ the ways that we're allowed to work with this data. Consider lists, for example. Lists contain certain data within them, but you can only access it in the ways that the list /allows/ you to do. Adding an element to the end of the list had to be done using the operations defined, such as the ~append~ method. You can't simply "open up" the list and see how it is actually represented internally to Python. This combination of data store and control over how that data can be accessed is what is accomplished by the object system of Python. 
-
-A little bit of terminology first, though, in that there's a distinction between a /class/ and an /object/. A particular list is an /object/, but the kind of object it is is a /class/. So when we declare new kinds of objects, we're actually declaring a class that we can use to make objects. 
-
-  At this point some examples are in order. Here's the declaration for a class that will make objects that have a /single/ piece of data that we can access. 
-
-#+BEGIN_SRC python :results output :exports both
-  class FirstClass: 
-      def __init__(self):
-         self.attribute = 10
-
-  y = FirstClass()
-  print(y.attribute)
-#+END_SRC
-
-#+RESULTS:
-: 10
-
-Picking apart what this syntax means, we are declaring first the /name/ of our class, which is FirstClass, and then defining a very special function called ~__init__~. This function plays the special role of telling the Python implementation how to make an object from the class definition ~FirstClass~. The ~__init__~ function takes, as a special argument, the argument ~self~. ~self~ functions as a stand in for the object that's being made. Here, we can use the ~.~ syntax to not just modify attributes that already exist but to /define/ what attributes objects made from this class have. For example, the following code will throw an error if you run it
-#+BEGIN_SRC python :results output :exports both
-  class FirstClass:
-      def __init__(self):
-          return None
-
-  y = FirstClass()
-  y.attribute = 10
-  print(y.attribute)
-#+END_SRC
-
-#+RESULTS:
-: 10
-
-*** Objects as Containers
-    The first use we'll see of objects is as specialized containers. So far we've seen dictionaries, tuples, and lists which all have had the property that they contain-containers, slots into which we can put data. If Python didn't already /have/ tuples and lists and dictionaries could we make them ourselves? Yes, we could, using objects! Indeed, in a sense all the types we've seen to this point /are/ objects that just have special primacy within Python and special syntax built into the language. 
-
-The very thing we'll be showing is how to declare a class, similar to how we declared functions much earlier in the text. 
-
-#+BEGIN_SRC python :exports both :results output
-
-#+END_SRC
-
-For example, if we didn't already /have/ a list we could implement one 
-    
-*** Objects as Organization and Privacy
-*** On Object Oriented Programming and Paradigms: A Polemic
-    Sometimes you will hear about "paradigms" of programming. These tend to have names such as "object oriented programming", "functional programming", "aspect oriented programming", and the like. Different programming languages will fall in different camps, sometimes more than one at a time, and programmers argue incessantly about which language is better and which paradigm is better and tend to make overblown statements about there being One Right Way to write code.
-
-    I argue that most of these discussions are entirely foolishness. Different styles of programming and different programming languages lend themselves to different kinds of thinking. My brain does not work the same as yours, the reader, and there is no reasonable way that what metaphors I find easiest for expressing computation could universally be the best for all of you to learn. I think there can be arguments made over the advantages and disadvantages of different programming languages for different kinds of tasks and style of programming, but on a fundamental level they are just different formal systems for expressing the same universal objects: computations. Computations have meaning independent of particular programming languages and programming paradigms. 
-    
-    So while I may be explaining how objects work, I am not going to wholesale teach "object oriented programming" in this book because I don't particularly think in terms of organizing all of computation as objects. My silent goal up until this point has been to try and teach programming in terms of a variety of styles, explaining various tools and ways that you can approach problems, because my fundamental concern is how to express computation and how the programming constructs of Python are connected to intuitive notions of computation and how manipulating data "should" work.  
-
-    Ultimately, I ask you to not accept the notion that one's choice of programming language or paradigm is reflective of one's intelligence, skill, or value. For most people, the choice of language and paradigm is determined in very much the same way that one's natural language is determined: through environment and culture. If you learn how to code at a school that mostly teaches object oriented programming then you will probably be most comfortable with object oriented programming. If your first languages were mostly functional programming languages, then that is what you will be most familiar with. The people you work with, the kinds of computations you need to deal with (e.g. if you're writing numerical simulation code for scientists you'll quite likely be using C or Fortran), and the pre-existing resources for what you want to work on, are going to have a vast influence on your choice of programming language. I firmly believe you can be a good programmer in any language, and I hope you can believe that as well and reject the ever-changing hierarchy of who is A Real Programmer. 
-
-    If I were to make any recommendation about programming languages to learn, I would actually argue that you should try to be fluent in as many as possible. In my own experience, I've found that the more programming languages I learn the more I'm able to isolate the ways that the underlying themes of computation are expressed in that language. 
-*** Inheritance
+** Switch Statements
+:META:
+   Part of my problem here is that switch statements in javascript are a pretty weird topic: they don't seem to be particularly idiomatic even though they're useful for "tagged" data, but that's mostly because I think like a functional programmer and like algebraic data types
+:END:
 ** Error Handling
    (describe try and catch)
-
 ** Modules
    So far we've just been writing all of our programs in a single file, which has been sufficient for our purposes so far, but that's not how projects in the real world are made. Instead, we separate out the different components that we need into different files so that we can reuse our code.
 *** Node-style modules

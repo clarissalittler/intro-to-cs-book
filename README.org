@@ -49,5 +49,9 @@ That's the kind of thing I want to write. I want to write a book that ultimately
      + all of these are topics that are like learning your arithmetic skills
        + they're not the be-all-end-all
        + but they're good to know and good practice
-   + 
-     
+   + strategies for writing correct code
+     + tests
+     + types
+     + writing specifications
+     + simple correctness proofs
+       + does this belong in an introductory book? I'd argue it does. If you're going to teach calculational reasoning I think you should also have a way of describing how to use calculations to gain confidence in your code
