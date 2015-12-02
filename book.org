@@ -273,7 +273,9 @@ Now, we take the pieces of syntax we've seen so far in order:
 **** Naming functions
 **** Calling functions
 **** Function scope
+** Project 1
 ** Closures
+   (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
 *** Closures provide stateful programming
 *** Closures provide privacy
 *** Closures can mimick modules
@@ -281,6 +283,16 @@ Now, we take the pieces of syntax we've seen so far in order:
 *** Objects-as-Containers
     (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. )
 *** Objects-for-Organizing
+**** this
+*** Linked Lists
+    (Encode linked lists with objects)
+**** Doubly Linked Lists
+
+** ADTs and Projects
+*** Stacks
+*** Queues
+*** Trees
+
 ** Testing and Error handling
 *** Checking types
     (An important way to deal with preventing mistakes is to ensure that you're getting the right kind of data)
@@ -290,13 +302,7 @@ Now, we take the pieces of syntax we've seen so far in order:
     (How to write unit tests and describe what your code is supposed to do. Probably include a couple of different libraries for doing this or making a simple one ourselves. In fact, that's a decent project for this section I think: have them use unit testing libraries and then have a walkthrough for writing their own, with optional features and the like)
     
 * Advanced Programming Concepts
-** Abstract Data Types
-   (I'm strongly considering moving these to be piecemeal introduced through the text every so often as small projects and to break up the monotony)
-*** Linked Lists
-**** Doubly Linked Lists
-*** Stacks
-*** Queues
-*** Trees
+** Advanced Abstract Data Types
 *** Self-balancing Trees
 **** Red-Black
 **** 2-3 Trees
