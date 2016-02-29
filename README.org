@@ -55,3 +55,9 @@ That's the kind of thing I want to write. I want to write a book that ultimately
      + writing specifications
      + simple correctness proofs
        + does this belong in an introductory book? I'd argue it does. If you're going to teach calculational reasoning I think you should also have a way of describing how to use calculations to gain confidence in your code
+* A Revised Approach
+  I was thinking about why I keep getting stuck with this text and I realized that one of the problems is that of /narrative/ and organizing the text. One of my frustrations with texts and tutorials on programming is that they either
+  + introduce programming constructs with a monkey-see-monkey-do approach
+  + introduce programming with a syntax-first approach
+I'm somewhat guilty of the latter in early attacks on this book, but I think they're both very wrong approaches.
+I think what I've been missing is a need to focus on /informal description/, on how to conceptualize how to solve problems in programming with words rather than just saying "for loops do this" or "if statments do that". Instead, we can start each section of the text with a problem to be solved and a description of how to solve the problem informally, building up each of the pieces we need to solve the problem in the formal syntax and explaining a connection between how we describe the problem in natural language and how the formal syntax works.
