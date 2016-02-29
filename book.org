@@ -149,6 +149,32 @@ This means that of all of the mathematically definable functions from the natura
 What does this mean for computer science and how it relates to programming? It means that there's an absurdly infinite number of things mathematics that cannot be described as computations. So even though a lot of the processes that we deal with every day make sense as computations, most of the things mathematicians do every day are much harder to describe computably. 
 
 The essential thing to take from this digression is that there's a theoretical /reason/ why writing the right program to solve a problem can be very difficult. The most obvious way to try and solve a problem might not even be computable.
+** Informal Descriptions and Algorithms
+   Programming-in-itself can be an enjoyable exercise, but we write code in order to solve a problem. The first part of solving any problem is going to be describe our solution informally, in words, rather than jumping straight into code.
+
+   For example, if our problem is how to put a bookcase into alphabetical order an informal description might sound something like 
+#+BEGIN_QUOTE
+First, remove all the books from the book shelf and put them in piles corresponding to the first letter of the last name of the author. Sort each pile individually into alphabetical order, then put the piles back on the bookshelf in the proper order.
+#+END_QUOTE
+Now, this description leaves out some details but it's a rough description of what to do and how to do it, enough so that later when we're sorting data in a program we'll /implement/ this informal description fairly directly.
+
+There's a couple of reasons why it's best to start with describing the problem in words. First, to clarify to yourself how you want to solve the problem. It's easy to get lost in the woods when you're working on a large program if you're figuring out the details as you go. If you have the big picture in front of you and you've already thought the solution through, you're far less likely to go back to the drawing board in the middle of coding. 
+
+Second, an informal description is more portable. You, or more likely someone else, can implement your solution in a different programming language. Even though programming languages can look very different from each other they all have their own way of describing how to perform computation. 
+
+(insert diagram of one to many to one relationship here)
+
+These informal descriptions of solutions are generally called "algorithms" and the ability to clearly write down an algorithm in an understandable way is a valued skill in both academic and commercial programming.
+
+** A First Problem
+   The very first task we're going try to solve is to ask the user for the title of a book and printing it back out in proper title case. 
+
+   Our informal description of our solution is 
+#+BEGIN_QUOTE
+First we prompt the user for the name of a book. If they didn't enter a title, then we should print "goodbye" and end the program, otherwise we should convert the book into title case. To convert the book into title case, we need to check each letter and, if it starts a word that isn't article, preposition, or conjunction then we capitalize it. When we reach the end of the title we print it out and say "goodbye" to the user.
+#+END_QUOTE
+
+The next several sections are going to outline all the syntax we need in order to implement this algorithm. We'll introduce a number of smaller problems to illustrate how each piece of syntax and we'll tie all of it together by showing how we translate the above description into an actual program.
 ** First Steps
  The /very/ first piece of syntax we're going to introduce in Javascript is how to print out values within a program. 
 
@@ -225,7 +251,7 @@ Now, we take the pieces of syntax we've seen so far in order:
   3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
 
 ** Basic Types
-   (These sections should all be fairly short and to the point. The idea is to simultaneously  be rigorous but get intuition into students right away. There should be a general discussion of why there's different forms of data and how we consider "types of things" all the time informally. Basically, we need to describe how data-are-nouns in this section and really solidify the analogy that you need to learn both the nouns and the verbs of any language)
+We've informally used numbers and arithmetic in the previous section, but now we need to describe what /kinds/ of data that we can use in Javascript. We'll start with the simplest of all kinds of data. 
 *** Strings
 **** Real life examples and analogues
 **** Syntax
@@ -272,7 +298,7 @@ Now, we take the pieces of syntax we've seen so far in order:
 **** Declaring functions
 **** Naming functions
 **** Calling functions
-**** Function scope
+**** Function scop
 ** Project 1
 ** Closures
    (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
