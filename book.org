@@ -253,10 +253,24 @@ Now, we take the pieces of syntax we've seen so far in order:
 ** Basic Types
 We've informally used numbers and arithmetic in the previous section, but now we need to describe what /kinds/ of data that we can use in Javascript. We'll start with the simplest of all kinds of data. 
 *** Strings
-**** Real life examples and analogues
-**** Syntax
+     Even though it's fairly transparent, words themselves are a kind of data we constantly deal with: our texts, our emails, our social media posts are all text-as-data that our computers interact with.
+     
+     Given that our programs are also /text/, we need some way to distinguish between text-as-data and text-as-instructions for the computer. Text-as-data are called /strings/. We denote strings with quotation marks, either "like this" or 'possibly like this'. This mimics what we do in English all the time: there's a difference between this sentence and "this sentence". It's like the old playground joke "Say 'Mississippi five times fast'" to which you're supposed to respond "Mississippi five times fast". In fact, Javascript allows us to do exactly that. If we want to include quotation marks within a string we can either "do something 'like this'" or 'maybe something "like this"'.
 **** Evaluation
+     Strings, like all primitive data evaluate to themselves. You can test this yourself by starting up the Node command line and typing a string, like in the following example
+     #+BEGIN_EXAMPLE
+     clarissa@ramiel ~ $ node
+     > "this is a string"
+     'this is a string'
+     > 'this is also a string'
+     'this is also a string'
+     > 'this is a string "with" quotations'
+     'this is a string "with" quotations'
+     > 
+     #+END_EXAMPLE
+
 **** Operations
+     There's a number of operations on strings in JavaScript. The first one involves connecting strings together, called concatenation. 
 *** Numbers
 **** Real life examples and analogues
 **** Syntax
@@ -268,7 +282,9 @@ We've informally used numbers and arithmetic in the previous section, but now we
 **** Evaluation
 **** Operations
 ** Variables
+   Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
 *** Variables-as-containers
+
 ** Control Flow
    (We need to explain how control flow constructs are the "verbs" of a programming language, they describe what to do with the data. There's three classes of control flow for the purposes of teaching. 
 
@@ -298,7 +314,7 @@ We've informally used numbers and arithmetic in the previous section, but now we
 **** Declaring functions
 **** Naming functions
 **** Calling functions
-**** Function scop
+**** Function scope
 ** Project 1
 ** Closures
    (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
@@ -309,12 +325,10 @@ We've informally used numbers and arithmetic in the previous section, but now we
 *** Objects-as-Containers
     (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. )
 *** Objects-for-Organizing
-**** this
-*** Linked Lists
-    (Encode linked lists with objects)
-**** Doubly Linked Lists
-
+*** this
 ** ADTs and Projects
+*** Importance of Abstraction
+*** Lists and Doubly Linked Lists
 *** Stacks
 *** Queues
 *** Trees
