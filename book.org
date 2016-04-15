@@ -2,6 +2,7 @@
 #+LATEX_HEADER: \usepackage{proof}
 #+AUTHOR: Clarissa Littler
 #+TITLE: Introduction to Computer Science in Javascript
+#+EXCLUDE_TAGS: meta
 #+OPTIONS: toc:nil
 
 * Introduction
@@ -165,7 +166,8 @@ Second, an informal description is more portable. You, or more likely someone el
 (insert diagram of one to many to one relationship here)
 
 These informal descriptions of solutions are generally called "algorithms" and the ability to clearly write down an algorithm in an understandable way is a valued skill in both academic and commercial programming.
-
+*** 								       :meta:
+    We need to flesh this section out with information about keywords. The idea here is that we have simple keywords in our informal descriptions that help us flesh out the structure of our programs. 
 ** A First Problem
    The very first task we're going try to solve is to ask the user for the title of a book and printing it back out in proper title case. 
 
@@ -249,9 +251,10 @@ Now, we take the pieces of syntax we've seen so far in order:
   1. ~console.log(e)~ is evaluated by first evaluating ~e~ until it yields a value ~v~ and then writing that value down under a column labeled "Output" on your paper
   2. numbers are evaluated simply: a number ~n~ written in decimal notation evaluates to itself, i.e. numbers are already values
   3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
-
 ** Basic Types
 We've informally used numbers and arithmetic in the previous section, but now we need to describe what /kinds/ of data that we can use in Javascript. We'll start with the simplest of all kinds of data. 
+*** 								       :meta:
+    Include some text about how this section can be skimmed the first time for reference and then the students can go onto the parts that actually evaluate code
 *** Strings
      Even though it's fairly transparent, words themselves are a kind of data we constantly deal with: our texts, our emails, our social media posts are all text-as-data that our computers interact with.
      
@@ -271,20 +274,58 @@ We've informally used numbers and arithmetic in the previous section, but now we
 
 **** Operations
      There's a number of operations on strings in JavaScript. The first one involves connecting strings together, called concatenation. 
+**** Exercises
+     Short exercises on 
 *** Numbers
 **** Real life examples and analogues
+     We see numbers all the time in our lives
 **** Syntax
+     Syntax of numbers is exactly as we usually use them, also two special numbers Infinity and NaN
 **** Evaluation
+     Numbers evaluate to themselves
 **** Operations
+     +, - , /, %
+**** Exercises
+     Include simple exercises on
+     1. precedence of operations
+     2. Infinity and Nan
+
+     Conceptual questions on the use of NaN and Infinity and why they should or shouldn't be in the language
 *** Booleans
 **** Real life examples and analogues
+     Conditions and questions: is it raining? Am I taller than her? Am I enjoying this book? Yes or no => true/false
 **** Syntax
+     true and false
 **** Evaluation
+     true and false evaluate to themselves
 **** Operations
+     logical operations as well as equality and comparison operators
+     explain only the "triple equals" at first, possibly including a footnote on the "double equals" instead
+***** Shortcircuiting
+      Shortcircuited operations
+**** Truthy and Falsy
+     Discuss what counts as "true" and what counts as "false" to JavaScript
 ** Variables
+*** Variables-as-placeholders
    Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
 *** Variables-as-containers
+    Variables can be used to hold values that are allowed to change later 
+*** Syntax
+    Explain both variable creation and assignment
+*** Evaluation
+    Using the name of a variable means three separate things in the three contexts they can show up
+    1. creation
+    2. assignment
+    3. use
+the first two are pretty similar, and the typical form of =var v = val= is, in some sense, both of those first two at once. 
 
+    The important detail is that there's if the variable is on the left hand side of an equals sign then it's referring to the container, but if the variable name is on the right hand side of an equals or in any other context but variable creation it means the /value/ that's stored in the container. I think that might confuse people when they first see it.
+*** Undefined
+    Undefined comes up naturally when we're discussing variables
+*** Exercises
+    Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
+
+    Short exercises showing that variables can be assigned to each other and quizzing on what the final value is to make sure that the way referencing works is properly understood
 ** Control Flow
    (We need to explain how control flow constructs are the "verbs" of a programming language, they describe what to do with the data. There's three classes of control flow for the purposes of teaching. 
 
@@ -298,11 +339,18 @@ We've informally used numbers and arithmetic in the previous section, but now we
 )
 *** If-statements
 **** Real life examples and analogues
+     If statements are represented by our notion of decisions in our directions. Keywords are /if/ or /when/. Whenever your informal description includes /if/ or /when/, you're going to have some kind of if-statement
 **** Syntax
+     Explain the standard if-else form first, then explain that it can be either just if or if else-if form as well in order to properly chain 
 **** Evaluation
+     if-statements /first/ evaluate their condition, /then/ run the appropriate block of code (if any). This is where truthy and falsy data is important. 
 *** Iteration
+    The idea of doing things multiple times is something we're generally comfortable with. There's two basic kinds of iteration: doing something a set number of times or for each item in a collection  
 **** for-statements
 ***** Real life examples and analogues
+      In real life we do 
+      + dust /each/ shelf on the bookcase
+      + chop /three/ onions
 ***** Syntax
 ***** Evaluation
 **** while-statements
