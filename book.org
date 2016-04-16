@@ -369,7 +369,10 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 *** Closures provide stateful programming
 *** Closures provide privacy
 *** Closures can mimick modules
+    Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
 ** Objects
+*** 								       :meta:
+    This probably needs to be moved earlier
 *** Objects-as-Containers
     (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. )
 *** Objects-for-Organizing
