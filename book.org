@@ -320,6 +320,8 @@ We've informally used numbers and arithmetic in the previous section, but now we
 the first two are pretty similar, and the typical form of =var v = val= is, in some sense, both of those first two at once. 
 
     The important detail is that there's if the variable is on the left hand side of an equals sign then it's referring to the container, but if the variable name is on the right hand side of an equals or in any other context but variable creation it means the /value/ that's stored in the container. I think that might confuse people when they first see it.
+
+    Need to explain by-hand evaluation rules, where you right down on a piece of paper all the variables and make a little table of their values
 *** Undefined
     Undefined comes up naturally when we're discussing variables
 *** Exercises
