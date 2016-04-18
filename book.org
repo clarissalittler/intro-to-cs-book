@@ -405,6 +405,10 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 
    I think my own strategies for this are to skim the code and take notes on it. First, identity the main features of the code: what's the first thing called and what does it call within/after that, then take notes on all the other functions involved in that initial setup and take notes on their signatures and what they appear to do, then look at how the functions are called and the names of variables for clues etc. Whenever you really can't understand what something does, attempt to evaluate pieces of it by hand)
 ** Modules
+   The basic idea of modules and how they show up in computer science
+*** Modules in Node
+*** Modules in Future JavaScript
+*** Faking Modules with Closures
 * Classic Programming Problems
 ** Sorting
 ** Searching
