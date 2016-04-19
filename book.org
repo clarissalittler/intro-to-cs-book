@@ -382,8 +382,10 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 ** ADTs and Projects
 *** Importance of Abstraction
 *** Lists and Doubly Linked Lists
+    So obviously lists can just be arrays in JavaScript, but we can analyze the difference in efficiency between using arrays and using a true linked list implementation that uses objects to hold a value and a pointer to the next object.
 *** Stacks
-*** Queues
+    Stacks as having only push and pop as an interface. We can show a few different ways of implementing stacks. For example, we can do both an array and a linked list implementation.
+*** Queues and Priority Queues
 *** Trees
 
 ** Testing and Error handling
