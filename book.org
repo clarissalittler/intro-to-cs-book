@@ -376,7 +376,8 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 *** 								       :meta:
     This probably needs to be moved earlier
 *** Objects-as-Containers
-    (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. )
+    (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. ) 
+    Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported
 *** Objects-for-Organizing
 *** this
 ** ADTs and Projects
