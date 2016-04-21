@@ -414,6 +414,7 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 *** Faking Modules with Closures
 * Classic Programming Problems
 ** Sorting
+   We should include a few different kinds of sorting algorithms along with visualizations for them and how to analyze them
 ** Searching
 ** Graph Problems
    (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding)
