@@ -366,6 +366,7 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 **** Calling functions
 **** Function scope
 ** Project 1
+   The first project should 
 ** Closures
    (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
 *** Closures provide stateful programming
