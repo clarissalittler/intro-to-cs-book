@@ -15,7 +15,7 @@
 
    To this end, I take a mostly neutral stance on choice of programming languages and styles of programming. I don't believe that there's a "best language" for everyone, but I do think any given person or team may find that a particular language is best for the way they think and the way they conceive of computation. 
 
-   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Javascript programming language. 
+   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Javascript programming language. Why JavaScript? Because at the end of the day JavaScript is a very flexible, popular, language 
 
 Ultimately it is my hope that after reading this book it should be relatively simple task to learn any language you want and know how to write the programs you want to write in it.
 ** Outline of The Book
