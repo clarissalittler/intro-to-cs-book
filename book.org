@@ -381,10 +381,19 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
 
     Other programmers have already figured out how to handle the physics of liquids moving in a video game, or how to securely encrypt data to keep credit card numbers safe in a transaction, or how to render a pie chart in the browser. The details of how to do these tasks are probably not important to you and, in the case of things like cryptography so hard to get right with such a high cost for a mistake, that you ideally want to rely on someone else who's put in the hard work to *get it right*. 
 
-    Thankfully, essentially every programming language has /some way/
-
+    Thankfully, essentially every programming language has /some way/ to include code from different files. We call these /libraries/. [fn:2] 
+*** Libraries in JavaScript: script tags
+*** Libraries in JavaScript: node and =require=
 ** Project 2
-   
+   In this project we'll be writing a program that simulates throwing a ball and plots out the position of the ball over time. We'll be making use of the =flotr2= library in order to make these relatively simple plots [fn:3].
+
+   First, let's give a description in /words/ of what we want our program to do.
+
+   #+BEGIN_QUOTE
+   The program should prompt for the angle (in degrees), the initial speed of the ball (in meters per second), and the 
+   #+END_QUOTE
+
+** Project 2 Redux   
 ** Closures
    (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
 *** Closures provide stateful programming
@@ -393,8 +402,7 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
 ** Objects
 *** Objects-as-Containers
-    (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. ) 
-    Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported
+    Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported.
 *** Objects-for-Organizing
 *** this
 *** Prototypes
@@ -408,7 +416,7 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
 
     We'll be explaining the /interface/ of a list and then we'll talk about the ways to actually implement these interfaces as /arrays/, as /singly linked lists/, and as /doubly linked lists/ and we'll explain the pros and cons of each as well as having programming projects for each of these.
 
-    One thing I want to do in this and the subsequent sections is going to involve )
+    One thing I want to do in this and the subsequent sections is going to involve showing how you can use prototypes in order to organize this code since I don't think there's a lot of good examples of prototypes that aren't just being shoved into class-forms )
 *** Stacks
     Stacks as having only push and pop as an interface. We can show a few different ways of implementing stacks. For example, we can do both an array and a linked list implementation.
 *** Queues
@@ -645,6 +653,10 @@ You evaluate this by treating it as equivalent to
 *** Data in the Lambda Calculus
 *** An Interpeter in Javascript
 * Footnotes
+
+[fn:3] Further information of visualization in JavaScript can be found in the book [[http://jsdatav.is/intro.html][Data Visualization in JavaScript]]
+
+[fn:2] This is a related but distinct concept from another thing you might have heard of: modules. Modules are a common way to /organize/ the code from different files in order to do things such as prevent name clashes between the present code and library code, control what parts of the library code are used, and make it visible at a glance what code is in the current file and what code was written elsewhere and other uses
 
 [fn:1] I find it rather unfortunate that the word "variable" has these two, very different, meanings in computer science since variables-as-containers could probably be more accurately called "references", since they are special names that *refer* to a location in memory. 
 
