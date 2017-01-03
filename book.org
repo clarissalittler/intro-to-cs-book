@@ -15,7 +15,7 @@
 
    To this end, I take a mostly neutral stance on choice of programming languages and styles of programming. I don't believe that there's a "best language" for everyone, but I do think any given person or team may find that a particular language is best for the way they think and the way they conceive of computation. 
 
-   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Javascript programming language. Why JavaScript? Because at the end of the day JavaScript is a very flexible, popular, language 
+   On the other hand, we have to pick a particular language in order to write this book and to that end I've chosen the Javascript programming language. Why JavaScript? Because at the end of the day JavaScript is a very flexible, popular, language that is able to adapt itself to many different styles of programming. It doesn't force you to write your code in /only one way/. 
 
 Ultimately it is my hope that after reading this book it should be relatively simple task to learn any language you want and know how to write the programs you want to write in it.
 ** Outline of The Book
@@ -113,7 +113,7 @@ In order to define general computation, we need a language that is far more comp
    + write a new character into that cell
    + move the head left or right on the tape
    + enter one of a finite number of pre-defined configurations for deciding the next action
-The way a Turing machine operates is that it's input is written onto the tape in advance, then it continues to process the input according to its hard-wiring until it either terminates succesfully, with the output written on the tape, or terminates unsuccessfully because the input was ill-formed. 
+The way a Turing machine operates is that its input is written onto the tape in advance, then it continues to process the input according to its hard-wiring until it either terminates succesfully, with the output written on the tape, or terminates unsuccessfully because the input was ill-formed. 
 
 Given our informal definition of computation above, we can see that this matches what something /computable/ should be. There's a finite amount of data that's used on the tape at any finite time. There's a finite number of rules in that there's only a finite number of things the Turing machine can do in any configuration. Also, if the Turing machine finishes successfully it must only take a finite number of operations.
 
@@ -168,7 +168,7 @@ Second, an informal description is more portable. You, or more likely someone el
 These informal descriptions of solutions are generally called "algorithms" and the ability to clearly write down an algorithm in an understandable way is a valued skill in both academic and commercial programming.
 *** 								       :meta:
     We need to flesh this section out with information about keywords. The idea here is that we have simple keywords in our informal descriptions that help us flesh out the structure of our programs. 
-** A First Problem
+** A First Problem				:project:informaldescription:
    The very first task we're going try to solve is to ask the user for the title of a book and printing it back out in proper title case. 
 
    Our informal description of our solution is 
@@ -365,8 +365,26 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 **** Naming functions
 **** Calling functions
 **** Function scope
-** Project 1
-   The first project should 
+** Project 1						 :project:assignment:
+   Now we can actually turn our attention to our first problem. Let's start by restating the description in English
+
+#+BEGIN_QUOTE
+First we prompt the user for the name of a book. If they didn't enter a title, then we should print "goodbye" and end the program, otherwise we should convert the book into title case. To convert the book into title case, we need to check each letter and, if it starts a word that isn't article, preposition, or conjunction then we capitalize it. When we reach the end of the title we print it out and say "goodbye" to the user.
+#+END_QUOTE
+
+  and now we implement this in code.
+
+  First, we need look at how to /ask/ for input which is the only piece we haven't covered until now. For now, we're going to piggy back on the functionality of JavaScript in the browser and say 
+** Libraries   
+*** What are libraries?
+    To this point in the book, you've been writing code /from scratch/. You've been starting with basic JavaScript and writing everything you need. This works for small programs, but imagine if you want to make an entire game in the browser, or code a complicated website that handles shopping online, or visualize data as pretty charts and graphs. Other programmers have already solved many of these difficult problems. 
+
+    Other programmers have already figured out how to handle the physics of liquids moving in a video game, or how to securely encrypt data to keep credit card numbers safe in a transaction, or how to render a pie chart in the browser. The details of how to do these tasks are probably not important to you and, in the case of things like cryptography so hard to get right with such a high cost for a mistake, that you ideally want to rely on someone else who's put in the hard work to *get it right*. 
+
+    Thankfully, essentially every programming language has /some way/
+
+** Project 2
+   
 ** Closures
    (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
 *** Closures provide stateful programming
@@ -374,22 +392,27 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 *** Closures can mimick modules
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
 ** Objects
-*** 								       :meta:
-    This probably needs to be moved earlier
 *** Objects-as-Containers
     (objects can be used to group data together for being passed around, like for JSON or returning multiple values or as a hash-table etc. ) 
     Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported
 *** Objects-for-Organizing
 *** this
+*** Prototypes
+*** Classes
+**** Faking classes with prototyping
+**** ES6 classes
 ** ADTs and Projects
 *** Importance of Abstraction
-*** Lists and Doubly Linked Lists
-    So obviously lists can just be arrays in JavaScript, but we can analyze the difference in efficiency between using arrays and using a true linked list implementation that uses objects to hold a value and a pointer to the next object.
+*** Lists
+    (So obviously lists can just be arrays in JavaScript, but we can analyze the difference in efficiency between using arrays and using a true linked list implementation that uses objects to hold a value and a pointer to the next object.
+
+    We'll be explaining the /interface/ of a list and then we'll talk about the ways to actually implement these interfaces as /arrays/, as /singly linked lists/, and as /doubly linked lists/ and we'll explain the pros and cons of each as well as having programming projects for each of these.
+
+    One thing I want to do in this and the subsequent sections is going to involve )
 *** Stacks
     Stacks as having only push and pop as an interface. We can show a few different ways of implementing stacks. For example, we can do both an array and a linked list implementation.
-*** Queues and Priority Queues
+*** Queues
 *** Trees
-
 ** Testing and Error handling
 *** Checking types
     (An important way to deal with preventing mistakes is to ensure that you're getting the right kind of data)
@@ -404,6 +427,7 @@ the first two are pretty similar, and the typical form of =var v = val= is, in s
 **** Red-Black
 **** 2-3 Trees
 *** Heaps
+*** Hash tables
 ** Reading Code 
    (In this section we need to discuss how to actually read code and the strategies and exercises for that. 
 
