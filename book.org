@@ -292,6 +292,17 @@ We've informally used numbers and arithmetic in the previous section, but now we
 
      Conceptual questions on the use of NaN and Infinity and why they should or shouldn't be in the language
 *** Booleans
+    Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
+
+    Real programs do much more complicated things that involve choices or repetition. Think about logging into a computer and having it check your password. This involves making a comparison, is the password entered the same as the password expected, and then making a /decision/ about whether to let you use the computer. 
+
+    The important pieces there are that the program needs to determine whether something is /true/ and then do one thing if it's true and another thing if it's not.
+
+    To do these things we need to introduce the concept of /booleans/. There are *two* boolean values: =true= and =false=. We also have comparison operators that test for things such as "is this number bigger than that number" or "are these two things equal". 
+
+    Below we have our table of boolean operations
+    (insert table here)
+
 **** Real life examples and analogues
      Conditions and questions: is it raining? Am I taller than her? Am I enjoying this book? Yes or no => true/false
 **** Syntax
@@ -390,13 +401,19 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
    First, let's give a description in /words/ of what we want our program to do.
 
    #+BEGIN_QUOTE
-   The program should prompt for the angle (in degrees), the initial speed of the ball (in meters per second), and the 
+   The program should prompt for the angle (in degrees), the initial speed of the ball (in meters per second), the time step (in seconds) for the simulation, and the number of points to calculate.
+
+   The program will then calculate the position at the ball the required number of times and produce a line graph of the ball's trajectory.
    #+END_QUOTE
 
 ** Project 2 Redux   
 ** Closures
-   (the point of this section is to cover just a few of the ways lambdas + mutable state lead to really powerful abstractions)
+   Another deceptively powerful technique in programming is the /closure/.
+
+   The basic idea is that when you return functions from 
+*** An aside on etymology of closure
 *** Closures provide stateful programming
+    
 *** Closures provide privacy
 *** Closures can mimick modules
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
