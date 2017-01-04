@@ -303,6 +303,21 @@ We've informally used numbers and arithmetic in the previous section, but now we
     Below we have our table of boolean operations
     (insert table here)
 
+    With these very /simple/ operations in hand, how do we make /decisions/? The most basic way to make a choice in programming is to use the /if statement/.
+
+    The most basic if-statements in JavaScript have the following shape
+
+    #+BEGIN_SRC js :exports code 
+      if (condition) {
+         ...
+      }
+      else {
+         ...
+      }
+    #+END_SRC
+
+Here you have a condition that should evaluate to either =true= or =false= 
+
 **** Real life examples and analogues
      Conditions and questions: is it raining? Am I taller than her? Am I enjoying this book? Yes or no => true/false
 **** Syntax
@@ -316,6 +331,8 @@ We've informally used numbers and arithmetic in the previous section, but now we
       Shortcircuited operations
 **** Truthy and Falsy
      Discuss what counts as "true" and what counts as "false" to JavaScript
+**** Exercises
+     (include exercises on diagramming programs based on choice)
 ** Variables
 *** Variables-as-placeholders
    Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
