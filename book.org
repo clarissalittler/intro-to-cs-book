@@ -204,15 +204,23 @@ If you run this file using the following command you should see the output indic
 
 We need to discuss what's happened here. First off, we've introduced the syntax ~console.log(v)~, whose semantics is to print out to the console the value of its argument, this means that it prints out the result of Javascript evaluating ~v~ and not just the literal syntax of ~v~ as we'll see shortly. This will be very useful for us in testing out our programs and checking that we understand the semantics of our constructs.
 
-The second piece of syntax we've implicitly introduced is the /semi-colon/ and the /line break/. Javascript separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ and ~console.log(10)~ are expressions but ~console.log(10);~ is a statement. We can run a series of statements by separting them as new lines in the program. Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. As such, Python doesn't use the semicolon convention and instead just uses linebreaks and indentation to naturally divide code. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~console.log(v);~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
+The second piece of syntax we've implicitly introduced is the /semi-colon/ and the /line break/. Javascript separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ and ~console.log(10)~ are expressions but ~console.log(10);~ is a statement. For readability it's best to put statements on new lines, even though technically you could have written the above code as 
 
-Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in Python all the basic operations you're familiar with, including +,*, and -. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.js
+#+BEGIN_SRC js :exports code :results output 
+  console.log(10);console.log(100);console.log(300);
+#+END_SRC
+
+but this isn't recommended as it makes code much harder to read.[fn:4]
+
+Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~console.log(v);~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
+
+Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in JavaScript all the basic operations you're familiar with, including +,*, and -. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.js
 
 #+BEGIN_SRC js :exports code :results output  :tangle ArithmeticExpressions.js
-  console.log(10 + 10)
-  console.log(10 * 10)
-  console.log(10 - 10)
-  console.log(10 / 10)
+  console.log(10 + 10);
+  console.log(10 * 10);
+  console.log(10 - 10);
+  console.log(10 / 10);
 #+END_SRC
 
 #+RESULTS:
@@ -291,6 +299,30 @@ We've informally used numbers and arithmetic in the previous section, but now we
      2. Infinity and Nan
 
      Conceptual questions on the use of NaN and Infinity and why they should or shouldn't be in the language
+*** Variables
+    The next important piece we need to learn is 
+**** Variables-as-placeholders
+    Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
+**** Variables-as-containers
+     Variables can be used to hold values that are allowed to change later 
+**** Syntax
+     Explain both variable creation and assignment
+**** Evaluation
+     Using the name of a variable means three separate things in the three contexts they can show up
+     1. creation
+     2. assignment
+     3. use
+ the first two are pretty similar, and the typical form of =var v = val= is, in some sense, both of those first two at once. 
+
+     The important detail is that there's if the variable is on the left hand side of an equals sign then it's referring to the container, but if the variable name is on the right hand side of an equals or in any other context but variable creation it means the /value/ that's stored in the container. I think that might confuse people when they first see it.
+
+     Need to explain by-hand evaluation rules, where you right down on a piece of paper all the variables and make a little table of their values
+**** Undefined
+     Undefined comes up naturally when we're discussing variables
+**** Exercises
+     Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
+
+     Short exercises showing that variables can be assigned to each other and quizzing on what the final value is to make sure that the way referencing works is properly understood
 *** Booleans
     Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
 
@@ -307,21 +339,30 @@ We've informally used numbers and arithmetic in the previous section, but now we
 
     The most basic if-statements in JavaScript have the following shape
 
+   (* we should probably use some kind of fancy verbatim environment for these pseudo-code segments *)
     #+BEGIN_SRC js :exports code 
       if (condition) {
-         ...
+         /statements/
       }
       else {
-         ...
+         /statements/
       }
     #+END_SRC
 
-Here you have a condition that should evaluate to either =true= or =false= 
+    As an example, we could have something like 
+    #+BEGIN_SRC js :exports code
+      if (10 > 3) {
+          console.log("ten is greater than three");
+      }
+      else {
+          console.log("oh dear ten is smaller than three?!");
+      }
+    #+END_SRC
+
+Here you have a condition that should evaluate to either =true= or =false= and if it is =true= then the first set of instructions, and only the first set of instructions, will be executed
 
 **** Real life examples and analogues
      Conditions and questions: is it raining? Am I taller than her? Am I enjoying this book? Yes or no => true/false
-**** Syntax
-     true and false
 **** Evaluation
      true and false evaluate to themselves
 **** Operations
@@ -333,29 +374,15 @@ Here you have a condition that should evaluate to either =true= or =false=
      Discuss what counts as "true" and what counts as "false" to JavaScript
 **** Exercises
      (include exercises on diagramming programs based on choice)
-** Variables
-*** Variables-as-placeholders
-   Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
-*** Variables-as-containers
-    Variables can be used to hold values that are allowed to change later 
-*** Syntax
-    Explain both variable creation and assignment
-*** Evaluation
-    Using the name of a variable means three separate things in the three contexts they can show up
-    1. creation
-    2. assignment
-    3. use
-the first two are pretty similar, and the typical form of =var v = val= is, in some sense, both of those first two at once. 
+***** Evaluating by hand
+      Evaluate the following programs by pen and paper the way we've described
 
-    The important detail is that there's if the variable is on the left hand side of an equals sign then it's referring to the container, but if the variable name is on the right hand side of an equals or in any other context but variable creation it means the /value/ that's stored in the container. I think that might confuse people when they first see it.
+      #+BEGIN_SRC js :exports code
+        if (10 + 10 > 19) {
 
-    Need to explain by-hand evaluation rules, where you right down on a piece of paper all the variables and make a little table of their values
-*** Undefined
-    Undefined comes up naturally when we're discussing variables
-*** Exercises
-    Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
-
-    Short exercises showing that variables can be assigned to each other and quizzing on what the final value is to make sure that the way referencing works is properly understood
+        }
+        else if (
+      #+END_SRC
 ** Control Flow
    (We need to explain how control flow constructs are the "verbs" of a programming language, they describe what to do with the data. There's three classes of control flow for the purposes of teaching. 
 
@@ -687,6 +714,8 @@ You evaluate this by treating it as equivalent to
 *** Data in the Lambda Calculus
 *** An Interpeter in Javascript
 * Footnotes
+
+[fn:4] I actually once worked with a person who /insisted/ that a program was at its best when all extraneous space was taken out and it was all written on a single line. He believed this so strongly that he would smugly edit other people's code to remove all readability because it made code "real". I beg you to never do this.
 
 [fn:3] Further information of visualization in JavaScript can be found in the book [[http://jsdatav.is/intro.html][Data Visualization in JavaScript]]
 
