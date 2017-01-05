@@ -300,7 +300,15 @@ We've informally used numbers and arithmetic in the previous section, but now we
 
      Conceptual questions on the use of NaN and Infinity and why they should or shouldn't be in the language
 *** Variables
-    The next important piece we need to learn is 
+    The next important piece we need to learn is how to store the results of our operations. We store data in something called /variables/. 
+**** An aside on algebra
+     If you've ever had an algebra course, you might be familiar with variables in /that/ context. Variables in mathematics are things like what we see in the defintions of functions, e.g. $f(x) = x + 10$, or when solving equations such as $x^2 - 2x + 1 = 0$. In both of these cases they're "variable" in the sense that you can /vary/ what you feed to the function $f(x)$ or what value you check to solve the equation $x^2 - x2 + 1 = 0$.
+
+     This is like the variables-as-names use, but not at all like variables-as-containers.
+
+     Variables-as-containers is a uniquely computer science use of the term. Some computer scientists argue that /reference/ is the right word for variables-as-containers and that we should treat these two concepts as different in our programming languages, but very few languages actually do this. 
+
+     Confusing or not, references will probably always be called variables.
 **** Variables-as-placeholders
     Imagine you're telling a story but you want a placeholder for the actual name of the person in the story. You might say something like "So a friend of mine, call her Sandra, used to be a lion groomer"
 **** Variables-as-containers
