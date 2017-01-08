@@ -336,7 +336,16 @@ What happened with that last one? You got the other odd number =NaN= which stand
 
      Need to explain by-hand evaluation rules, where you right down on a piece of paper all the variables and make a little table of their values
 **** Undefined
-     Undefined comes up naturally when we're discussing variables
+     We've skirted around one bit of weirdness until now: what happens if you attempt to use a variable that you haven't assigned a value to?
+
+     Let's try this quickly and type the following lines in your console:
+
+#+BEGIN_EXAMPLE
+var x
+x
+#+END_EXAMPLE
+
+     Surprisingly, there /is/ a value in the variable, =undefined=: a very special value that represents "there's no value here"
 **** Exercises
      Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
 
