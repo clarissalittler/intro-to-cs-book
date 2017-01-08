@@ -285,14 +285,24 @@ We've informally used numbers and arithmetic in the previous section, but now we
 **** Exercises
      Short exercises on 
 *** Numbers
-**** Real life examples and analogues
-     We see numbers all the time in our lives
-**** Syntax
-     Syntax of numbers is exactly as we usually use them, also two special numbers Infinity and NaN
-**** Evaluation
-     Numbers evaluate to themselves
-**** Operations
-     +, - , /, %
+     We see numbers all the time, so they are probably the most familiar datatype you'll see in any programming language. 
+
+     In JavaScript, numbers are written exactly like they normally are in mathematics: =1=, =10=, =-5000=, =3.14= etc. If you have any experience with other programming languages such as C or Java, it's notable that there's only /one/ form of number in JavaScript and not separate kinds of numbers for whole numbers or fractional numbers. 
+
+     You can perform most of the operations on numbers you may have seen: =+=, =-=, =*=, and =/=. These all behave like you'd expect =+= is addition, =-= is subtraction, =*= is multiplication, and =/= is division. There's even the =%= operator which you may not have seen before. We call =%= the /remainder/ operation which, for =a%b=, returns the number left after you subtract =b= from =a= as many times as you can without going negative. Examples are in order. For =5 % 2= you can subtract =2= /twice/ from =5= which leaves =1= as a remainder. Similarly for =14 % 4= then =4= only goes into =14= three times, leaving =2= as a remainder. 
+
+     There are, however, two special kinds of numbers in JavaScript: =Infinity= and =NaN=. Why does JavaScript have them though? Start running node or open the console in your browser and type the following expression: =1 / 0=.
+
+     Most programming languages will throw an error or even *crash* when you divide by 0, but in JavaScript you instead get a result of =Infinity=. You can even use =Infinity= like it /was/ a number. Try typing the following expressions in your console:
+
+     + =Infinity * Infinity=
+     + =Infinity + 0=
+     + =Infinity - Infinity=
+
+What happened with that last one? You got the other odd number =NaN= which stands for "not a number". =NaN= is used in JavaScript to mean that the result was technically a /number/ but it doesn't have a well-defined value. Doing something like =Infinity - Infinity= doesn't have a well defined mathematical value. Neither does =Infinity * 0= or =Infinity / Infinity=. 
+
+=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console.
+
 **** Exercises
      Include simple exercises on
      1. precedence of operations
