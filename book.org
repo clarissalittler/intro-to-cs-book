@@ -532,11 +532,39 @@ What if we changed this function slightly, though, to the following example that
 : 2
 : undefined
 
-Here, rather than calling =innerFunction= from within =outerFunction= we /return/ =innerFunction=. Whenever =innerFunction= is called, where does it look to get the value of the variable =a=?
+Here, rather than calling =innerFunction= from within =outerFunction= we /return/ =innerFunction=. Whenever =innerFunction= is called, where does it look to get the value of the variable =a=? If you try this by hand you'll see that even though =innerFunction= is being called /outside/ the =outerFunction= it still looks at the =a= declared inside of it. 
 
-*** Closures provide stateful programming
-    
+This might just seem like a weird trick, but it's actually the key to some pretty neat programming tricks.
+
+We can use closures to control /how/ data is seen, stored, and controlled. 
+*** Closures can mimic objects
+    Closures can be used to mimic objects
 *** Closures provide privacy
+    One thing closures can do is create truly "private" data that can't be accessed by any means other than the interface the closure function provides. Imagine the following program, where you want some data to be accessible in an object but you want /some/ to be unchangeable, like a special user ID. This example will actually be a /closure/ that's a function that makes new objects.
+
+#+BEGIN_SRC js :exports code
+  function makePersonMaker() {
+      var id = 0;
+      return function (name) {
+	  var myId = id;
+	  var myName = name;
+	  id = id + 1;
+	  this.getId = function () {return myId}
+	  this.name = function () {return myName}
+	  this.sayHi = function () {
+	      console.log("Hi there! I'm " + myName + " and my ID is: " + myId);
+	  }
+      }
+  }
+
+  var Person = makePersonMaker();
+
+  var person1 = new Person("Mikey");
+  var person2 = new Person("Annalise");
+
+  person1.sayHi();
+  person2.sayHi();
+#+END_SRC
 *** Closures can mimick modules
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
 ** Objects
