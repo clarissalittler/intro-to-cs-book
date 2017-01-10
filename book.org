@@ -260,13 +260,16 @@ Now, we take the pieces of syntax we've seen so far in order:
   2. numbers are evaluated simply: a number ~n~ written in decimal notation evaluates to itself, i.e. numbers are already values
   3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
 ** Basic Types
-We've informally used numbers and arithmetic in the previous section, but now we need to describe what /kinds/ of data that we can use in Javascript. We'll start with the simplest of all kinds of data. 
-*** 								       :meta:
-    Include some text about how this section can be skimmed the first time for reference and then the students can go onto the parts that actually evaluate code
+We've informally used numbers and arithmetic in the previous section, but now we need to describe what /kinds/ of data that we can use in JavaScript. In this and the next several sections we'll be covering the fundamental constructs of JavaScript, how they're used, and ways to understand them. In each section we'll be explaining also how to evaluate the code by hand and providing exercises where can do just that. It's completely valid to simply skim this section and jump into the projects, going back and reading about the constructs you need as you go. 
+
+We'll start with the simplest of all kinds of data. 
+
 *** Strings
      Even though it's fairly transparent, words themselves are a kind of data we constantly deal with: our texts, our emails, our social media posts are all text-as-data that our computers interact with.
      
      Given that our programs are also /text/, we need some way to distinguish between text-as-data and text-as-instructions for the computer. Text-as-data are called /strings/. We denote strings with quotation marks, either "like this" or 'possibly like this'. This mimics what we do in English all the time: there's a difference between this sentence and "this sentence". It's like the old playground joke "Say 'Mississippi five times fast'" to which you're supposed to respond "Mississippi five times fast". In fact, Javascript allows us to do exactly that. If we want to include quotation marks within a string we can either "do something 'like this'" or 'maybe something "like this"'.
+
+     We can 
 **** Evaluation
      Strings, like all primitive data evaluate to themselves. You can test this yourself by starting up the Node command line and typing a string, like in the following example
      #+BEGIN_EXAMPLE
@@ -279,7 +282,6 @@ We've informally used numbers and arithmetic in the previous section, but now we
      'this is a string "with" quotations'
      > 
      #+END_EXAMPLE
-
 **** Operations
      There's a number of operations on strings in JavaScript. The first one involves connecting strings together, called concatenation. 
 **** Exercises
@@ -301,7 +303,7 @@ We've informally used numbers and arithmetic in the previous section, but now we
 
 What happened with that last one? You got the other odd number =NaN= which stands for "not a number". =NaN= is used in JavaScript to mean that the result was technically a /number/ but it doesn't have a well-defined value. Doing something like =Infinity - Infinity= doesn't have a well defined mathematical value. Neither does =Infinity * 0= or =Infinity / Infinity=. 
 
-=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console.
+=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console. Once you have =NaN= there's nothing else 
 
 **** Exercises
      Include simple exercises on
@@ -481,8 +483,57 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
 ** Closures
    Another deceptively powerful technique in programming is the /closure/.
 
-   The basic idea is that when you return functions from 
-*** An aside on etymology of closure
+   First, let's review how scope works with functions. Each function has its own scope, its own set of variables. These variables are searched from the inside out, with the most recently created scope being checked first. 
+
+   The variables in these inner scopes work just like any other variables: they can be changed and referenced by any expression or function that can /see/ them.
+
+   Let's consider the following code:
+
+#+BEGIN_SRC js :exports code
+  function outerFunction () {
+      var a = 0;
+      function innerFunction() {
+	  a = a + 1;
+      }
+      innerFunction();
+      innerFunction();
+      console.log(a);
+  }
+
+  outerFunction();
+#+END_SRC
+
+#+RESULTS:
+: 2
+: undefined
+
+This simple program defines a function called =outerFunction= that declares a variable called =a= and an "inner" function that increments the variable =a=. =outerFunction= then calls =innerFunction= twice and prints out the resulting value of =a=, which should be =2=. If you run this code on computer or paper you can confirm this is true.
+
+What if we changed this function slightly, though, to the following example that is functionally similar:
+
+#+BEGIN_SRC js :exports code
+  function outerFunction() {
+      var a = 0;
+      function innerFunction() {
+	  a = a + 1;
+	  console.log(a);
+      }
+      return innerFunction;
+  }
+
+  fun = outerFunction();
+
+  fun();
+  fun();
+#+END_SRC
+
+#+RESULTS:
+: 1
+: 2
+: undefined
+
+Here, rather than calling =innerFunction= from within =outerFunction= we /return/ =innerFunction=. Whenever =innerFunction= is called, where does it look to get the value of the variable =a=?
+
 *** Closures provide stateful programming
     
 *** Closures provide privacy
