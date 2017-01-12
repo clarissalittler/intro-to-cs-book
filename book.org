@@ -558,13 +558,27 @@ We can use closures to control /how/ data is seen, stored, and controlled.
   }
 
   var Person = makePersonMaker();
+  var OtherPeople = makePersonMaker();
 
   var person1 = new Person("Mikey");
   var person2 = new Person("Annalise");
+  var otherperson = new OtherPeople("Timulty");
 
   person1.sayHi();
   person2.sayHi();
+  otherperson.sayHi();
 #+END_SRC
+
+#+RESULTS:
+: Hi there! I'm Mikey and my ID is: 0
+: Hi there! I'm Annalise and my ID is: 1
+: Hi there! I'm Timulty and my ID is: 0
+: undefined
+
+Note that we actually have two layers of closures to make everything work the way we want. First, we are making our constructor function as a closure /around/ the =id=. We do this so we can have a separate =id= counter for each constructor we make with the =makePersonMaker= function. This allows for Timulty to be isssued an ID that's unconnected to the IDs either Mikey or Annalise. Second, the actual /object/ created when you say =new Person("Mikey")= has methods =getId=, =name=, and =sayHi= that are all /closures/ over the variables =myId= and =myName= in the constructor. This makes Mikey's name and ID private to only Mikey. They can't be changed by anyone else. That's what we mean by "privacy" in programming. 
+
+Now, what if you are *really* sure that you're not ever going to need to different tracks of people in your program? 
+
 *** Closures can mimick modules
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
 ** Objects
