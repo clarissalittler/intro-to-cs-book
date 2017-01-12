@@ -577,7 +577,36 @@ We can use closures to control /how/ data is seen, stored, and controlled.
 
 Note that we actually have two layers of closures to make everything work the way we want. First, we are making our constructor function as a closure /around/ the =id=. We do this so we can have a separate =id= counter for each constructor we make with the =makePersonMaker= function. This allows for Timulty to be isssued an ID that's unconnected to the IDs either Mikey or Annalise. Second, the actual /object/ created when you say =new Person("Mikey")= has methods =getId=, =name=, and =sayHi= that are all /closures/ over the variables =myId= and =myName= in the constructor. This makes Mikey's name and ID private to only Mikey. They can't be changed by anyone else. That's what we mean by "privacy" in programming. 
 
-Now, what if you are *really* sure that you're not ever going to need to different tracks of people in your program? 
+Now, what if you are *really* sure that you're not ever going to need to different tracks of people in your program? Then you can employ a little JavaScript /idiom/ that you might sometimes see called an "immediately invoked function expression" or IIFE (iffy). Whether or not you think it deserves it's own special name, the concept is fairly simple: write your code as an *anonymous* function that you then immediately call. Turning our code above into an IIFE would look like
+
+#+BEGIN_SRC js :exports code
+  var Person = (function () {
+      var id = 0;
+      return function (name) {
+	  var myId = id;
+	  var myName = name;
+	  id = id + 1;
+	  this.getId = function () {return myId}
+	  this.name = function () {return myName}
+	  this.sayHi = function () {
+	      console.log("Hi there! I'm " + myName + " and my ID is: " + myId);
+	  }
+      }
+  })();
+
+  var person1 = new Person("Mikey");
+  var person2 = new Person("Annalise");
+
+  person1.sayHi();
+  person2.sayHi();
+#+END_SRC
+
+#+RESULTS:
+: Hi there! I'm Mikey and my ID is: 0
+: Hi there! I'm Annalise and my ID is: 1
+: undefined
+
+We still get the same privacy as before, but without the ability to create separate Person constructors that are disentangled from each other. 
 
 *** Closures can mimick modules
     Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
@@ -586,6 +615,7 @@ Now, what if you are *really* sure that you're not ever going to need to differe
     Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported.
 *** Objects-for-Organizing
 *** this
+
 *** Prototypes
 *** Classes
 **** Faking classes with prototyping
