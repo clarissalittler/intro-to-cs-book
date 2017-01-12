@@ -302,14 +302,16 @@ We'll start with the simplest of all kinds of data.
 
 What happened with that last one? You got the other odd number =NaN= which stands for "not a number". =NaN= is used in JavaScript to mean that the result was technically a /number/ but it doesn't have a well-defined value. Doing something like =Infinity - Infinity= doesn't have a well defined mathematical value. Neither does =Infinity * 0= or =Infinity / Infinity=. 
 
-=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console. Once you have =NaN= there's nothing else 
+=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console. Once you have =NaN= there's no way to get back to the world of simple numbers. You can try something like =NaN * 0= or =NaN + Infinity= but the answer will *always* be =NaN=.
+
+Finally, all arithmetic operations work by the normal presedence rules: expressions in parentheses are evaluated before multiplications which are evaluated before division which are evaluated before remainders which are evaluated before addition which are evaluated before subtraction.
+
+A short visual way to look at it is =() > * > / > % > + > -=. So, for example, if you see the JavaScript expression =10 * 11 % 10= will this evaluate like =(10 * 11) % 10=, which is equal to 0, or like =10 * (11 % 10)= which is equal to 1? We can see that 
 
 **** Exercises
-     Include simple exercises on
-     1. precedence of operations
-     2. Infinity and Nan
+***** Exercise 1
+    Look at the following arithmetic expressions and calculate the result without typing them into the console:
 
-     Conceptual questions on the use of NaN and Infinity and why they should or shouldn't be in the language
 *** Variables
     The next important piece we need to learn is how to store the results of our operations. We store data in something called /variables/. 
 **** An aside on algebra
