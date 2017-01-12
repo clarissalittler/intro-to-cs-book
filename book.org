@@ -1,5 +1,6 @@
 #+LATEX_CLASS: book
 #+LATEX_HEADER: \usepackage{proof}
+#+LATEX_HEADER: \newcommand{\key}[1]{\textcolor{blue}{#1}}
 #+AUTHOR: Clarissa Littler
 #+TITLE: Introduction to Computer Science in Javascript
 #+EXCLUDE_TAGS: meta
@@ -165,15 +166,14 @@ Second, an informal description is more portable. You, or more likely someone el
 
 (insert diagram of one to many to one relationship here)
 
-These informal descriptions of solutions are generally called "algorithms" and the ability to clearly write down an algorithm in an understandable way is a valued skill in both academic and commercial programming.
-*** 								       :meta:
-    We need to flesh this section out with information about keywords. The idea here is that we have simple keywords in our informal descriptions that help us flesh out the structure of our programs. 
+These informal descriptions of solutions are generally called "algorithms" and the ability to clearly write down an algorithm in an understandable way is a valued skill in both academic and commercial programming. In our descriptions of algorithms we'll be introducing key words formatting like \key{this}. These \key{key} words are going to map directly onto programming concepts. 
+
 ** A First Problem				:project:informaldescription:
    The very first task we're going try to solve is to ask the user for the title of a book and printing it back out in proper title case. 
 
    Our informal description of our solution is 
 #+BEGIN_QUOTE
-First we prompt the user for the name of a book. If they didn't enter a title, then we should print "goodbye" and end the program, otherwise we should convert the book into title case. To convert the book into title case, we need to check each letter and, if it starts a word that isn't article, preposition, or conjunction then we capitalize it. When we reach the end of the title we print it out and say "goodbye" to the user.
+First we \key{prompt} the user for the name of a book. \key{If} they didn't enter a title, \key{then} we should \key{print} "goodbye" and end the program, \key{otherwise} we should convert the book into title case. To convert the book into title case, we need to check each letter and, \key{if} it starts a word that isn't article, preposition, or conjunction \key{then} we capitalize it. \key{When} we reach the end of the title we \key{print} it out and say "goodbye" to the user.
 #+END_QUOTE
 
 The next several sections are going to outline all the syntax we need in order to implement this algorithm. We'll introduce a number of smaller problems to illustrate how each piece of syntax and we'll tie all of it together by showing how we translate the above description into an actual program.
@@ -282,10 +282,9 @@ We'll start with the simplest of all kinds of data.
      'this is a string "with" quotations'
      > 
      #+END_EXAMPLE
-**** Operations
-     There's a number of operations on strings in JavaScript. The first one involves connecting strings together, called concatenation. 
+
 **** Exercises
-     Short exercises on 
+     
 *** Numbers
      We see numbers all the time, so they are probably the most familiar datatype you'll see in any programming language. 
 
@@ -425,16 +424,16 @@ Here you have a condition that should evaluate to either =true= or =false= and i
 )
 *** If-statements
 **** Real life examples and analogues
-     If statements are represented by our notion of decisions in our directions. Keywords are /if/ or /when/. Whenever your informal description includes /if/ or /when/, you're going to have some kind of if-statement
+     If statements are represented by our notion of decisions in our directions. The keywords to look out for are /if/ or /when/. Whenever your informal description includes /if/ or /when/ or /then/ or /else/, you're going to have some kind of if-statement in your code. 
 **** Syntax
-     Explain the standard if-else form first, then explain that it can be either just if or if else-if form as well in order to properly chain 
+     The first form of /if-statement/ we'll see has three parts to it: a /condition/ that you're testing
 **** Evaluation
      if-statements /first/ evaluate their condition, /then/ run the appropriate block of code (if any). This is where truthy and falsy data is important. 
 *** Iteration
     The idea of doing things multiple times is something we're generally comfortable with. There's two basic kinds of iteration: doing something a set number of times or for each item in a collection  
 **** for-statements
 ***** Real life examples and analogues
-      In real life we do 
+      In real life we do things like
       + dust /each/ shelf on the bookcase
       + chop /three/ onions
 ***** Syntax
@@ -444,7 +443,7 @@ Here you have a condition that should evaluate to either =true= or =false= and i
 ***** Syntax
 ***** Evaluation
 *** Functions and Function Calls
-    (we need to talk about how functions are reified programs, but without really saying something that opaque. the idea is that functions can be called within the language the same way we can call programs outside the language)
+    
 **** Declaring functions
 **** Naming functions
 **** Calling functions
