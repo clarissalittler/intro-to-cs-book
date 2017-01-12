@@ -480,6 +480,43 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
    #+END_QUOTE
 
 ** Project 2 Redux   
+** Objects
+*** Objects-as-Containers
+    Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported.
+
+    The basic syntax of making objects involves wrapping up pairs of "properties" and "values" between curly braces. Like the following ={age : 10, name : "Chicken", occupation : "Clucking"}=. 
+
+    Now, what happens if we want to look information up in an object, retrieving the corresponding value by handing it the key? You can follow along in the following code snippet:
+    #+BEGIN_SRC js :exports code
+      var chicken = {age : 10, name : "Chicken", occupation : "Clucking"};
+
+      console.log(chicken.age);
+      console.log(chicken.name);
+      console.log(chicken.occupation);
+      console.log(chicken.homeOwnership);
+    #+END_SRC
+
+    #+RESULTS:
+    : 10
+    : Chicken
+    : Clucking
+    : undefined
+    : undefined
+
+    Much like with arrays, there's symmetry between how we /select/ elements and how we /set/ elements. You'll notice that our poor chicken doesn't have a home. We can easily give this chicken a home by typing the following into the console: =chicken.homeOwnership = true;= Now if you try typing =chicken.homeOwnership= you should see that this property is now set to =true=. 
+
+*** Evaluating objects by hand
+*** Constructors
+   
+*** this
+    
+*** Prototypes and inheritance
+    It's almost impossibly to spend any amount of time learning to code without coming across the term /object-oriented programming/. Object oriented programming is, in short, about using objects as the primary metaphor for organizing your code. Now, this doesn't just mean /using/ objects as collections the way we've seen til now
+*** Classes
+    
+**** Faking classes with prototyping
+
+**** ES6 classes
 ** Closures
    Another deceptively powerful technique in programming is the /closure/.
 
@@ -609,17 +646,6 @@ Now, what if you are *really* sure that you're not ever going to need to differe
 We still get the same privacy as before, but without the ability to create separate Person constructors that are disentangled from each other. 
 
 *** Closures can mimick modules
-    Need to explain the idea of "modules" and namespaces here. Maybe explain the idea of hiding code and having qualified names.
-** Objects
-*** Objects-as-Containers
-    Objects are directories, telephone books, dictionaries. They map names to items. They're like a collection of containers all labled with a name. Well how's that better than just using variables, a student might ask? The same way, if you're moving to a new home, you wouldn't just keep all your possessions loose and unorganized, an object is a way to organize the data in a way that can be moved around and transported.
-*** Objects-for-Organizing
-*** this
-
-*** Prototypes
-*** Classes
-**** Faking classes with prototyping
-**** ES6 classes
 ** ADTs and Projects
 *** Importance of Abstraction
 *** Lists
