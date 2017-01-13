@@ -357,10 +357,12 @@ x
 
      Surprisingly, there /is/ a value in the variable, =undefined=: a very special value that represents "there's no value here".
 
-     
+     =undefined= is like a number or string in that it /evaluates to itself/ and has no other special rules.
 **** Exercises
-     Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
-
+***** Exercise 1
+      Explain how variables work in your own words and your own metaphors. Do you think "variable" is a good name for this concept? If you could choose any other word for it, what would it be?
+***** Exercise 2
+     After the following 
      Short exercises showing that variables can be assigned to each other and quizzing on what the final value is to make sure that the way referencing works is properly understood
 *** Booleans
     Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
@@ -482,11 +484,11 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
    In this project we'll be writing a program that simulates throwing a ball and plots out the position of the ball over time. We'll be making use of the =flotr2= library in order to make these relatively simple plots [fn:3].
 
    First, let's give a description in /words/ of what we want our program to do.
-
+  (this description isn't information rich enough)
    #+BEGIN_QUOTE
-   The program should prompt for the angle (in degrees), the initial speed of the ball (in meters per second), the time step (in seconds) for the simulation, and the number of points to calculate.
+   The program should \key{prompt} for the angle (in degrees), the initial speed of the ball (in meters per second), the time step (in seconds) for the simulation, and the number of points to calculate.
 
-   The program will then calculate the position at the ball the required number of times and produce a line graph of the ball's trajectory.
+   The program will then calculate the position at the ball the required \key{number of times} and produce a line graph of the ball's trajectory.
    #+END_QUOTE
 
 ** Project 2 Redux   
@@ -516,9 +518,37 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
     Much like with arrays, there's symmetry between how we /select/ elements and how we /set/ elements. You'll notice that our poor chicken doesn't have a home. We can easily give this chicken a home by typing the following into the console: =chicken.homeOwnership = true;= Now if you try typing =chicken.homeOwnership= you should see that this property is now set to =true=. 
 
 *** Evaluating objects by hand
+*** Methods and this
+    Since functions are just a different kind of data in JavaScript, you can have object properties that have functions as values. For example, let's say we go with the most cliche of examples [fn:5] and represents /squares/ as objects. We'll want the square object to hold its side length and have functions that will return its area and circumference, as in the following code snippet.
+
+#+BEGIN_SRC js :exports code
+  var square = {side : 10,
+		circum : function () {
+		    return 4 * square.side;
+		},
+		area : function () {
+		    return square.side * square.side;
+		}};
+
+  console.log(square.circum());
+  console.log(square.area());
+#+END_SRC
+
+#+RESULTS:
+: 40
+: 100
+: undefined
+
+If you run this code you'll see that, indeed, the functions =square.circum= and =square.area= correctly output the 
+
 *** Constructors
+   Imagine that you want to create the same /kind/ of object again and again, for example you have a social media program that needs to keep track of people's accounts. 
    
-*** this
+   You can make a single account like this
+#+BEGIN_SRC js :exports code
+  var person = {name : "Samael", screenname : "RadicalPoison", numberOfPosts : 300};
+#+END_SRC
+  but then you'd need to keep making individual accounts with this literal syntax every single time. Not only is that inconvenient, it also 
     
 *** Prototypes and inheritance
     It's almost impossibly to spend any amount of time learning to code without coming across the term /object-oriented programming/. Object oriented programming is, in short, about using objects as the primary metaphor for organizing your code. Now, this doesn't just mean /using/ objects as collections the way we've seen til now
@@ -900,6 +930,8 @@ You evaluate this by treating it as equivalent to
 *** Data in the Lambda Calculus
 *** An Interpeter in Javascript
 * Footnotes
+
+[fn:5] Shapes as examples of object oriented programming are ubiquitous to the point of being a joke in and of themselves. I promise that almost every book you ever read about programming in a language with objects /will/ mention squares and circles and rectangles at some point. Who am I to buck the trend?
 
 [fn:4] I actually once worked with a person who /insisted/ that a program was at its best when all extraneous space was taken out and it was all written on a single line. He believed this so strongly that he would smugly edit other people's code to remove all readability because it made code "real". I beg you to never do this.
 
