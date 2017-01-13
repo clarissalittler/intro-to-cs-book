@@ -518,7 +518,7 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
     Much like with arrays, there's symmetry between how we /select/ elements and how we /set/ elements. You'll notice that our poor chicken doesn't have a home. We can easily give this chicken a home by typing the following into the console: =chicken.homeOwnership = true;= Now if you try typing =chicken.homeOwnership= you should see that this property is now set to =true=. 
 
 *** Evaluating objects by hand
-*** Methods and this
+*** Methods
     Since functions are just a different kind of data in JavaScript, you can have object properties that have functions as values. For example, let's say we go with the most cliche of examples [fn:5] and represents /squares/ as objects. We'll want the square object to hold its side length and have functions that will return its area and circumference, as in the following code snippet.
 
 #+BEGIN_SRC js :exports code
@@ -539,17 +539,71 @@ First we prompt the user for the name of a book. If they didn't enter a title, t
 : 100
 : undefined
 
-If you run this code you'll see that, indeed, the functions =square.circum= and =square.area= correctly output the 
+If you run this code you'll see that, indeed, the functions =square.circum= and =square.area= correctly output the circumference and area of the square respectively.
 
-*** Constructors
+*** Constructors and this
    Imagine that you want to create the same /kind/ of object again and again, for example you have a social media program that needs to keep track of people's accounts. 
    
    You can make a single account like this
 #+BEGIN_SRC js :exports code
   var person = {name : "Samael", screenname : "RadicalPoison", numberOfPosts : 300};
 #+END_SRC
-  but then you'd need to keep making individual accounts with this literal syntax every single time. Not only is that inconvenient, it also 
-    
+  but then you'd need to keep making individual accounts with this literal syntax every single time. That's pretty inconvenient, though. It'd be nice if we could make a function that constructs accounts from the necessary data.
+
+We can do that like
+#+BEGIN_SRC js :exports code 
+  function Person(name,screenname){
+      return {name : name, screenname : screenname, numberOfPosts : 0};
+  }
+#+END_SRC
+and we can call this function whenever we want to make new objects to represent people. 
+
+This very simple method starts to fall down, though, when we want to include methods. Let's go back to our example of the /square/. If we just straightforwardly translated our code from above it would look vaguely like:
+
+#+BEGIN_SRC js :exports code
+  function Square (side) {
+      return {side : side,
+	      circum : function () {
+		  return 4 * ???.side;
+	      },
+	      area : function () {
+		  return ???.side * ???.side;
+	      }
+	     }
+  }
+#+END_SRC   
+ 
+but wait, what do we put in place of the =???=? Before we used =square= because that was the name of the square we were making. We don't have a concrete square to reference here! We're making a machine to make squares and trying to include, in the machine, a way for functions to reference the properties of a still hypothetical object.
+
+This would be like trying to write civil rights law by naming, in advance, all the people it would apply to before they're ever born. 
+
+Clearly, some other feature is needed and JavaScript has =this=. Literally, the key is the word =this=. The =this= keyword is a very special one in JavaScript that, in the context of methods of an object, is allowed to refer to the object executing the method in the first place. So fixing the above example we get
+
+#+BEGIN_SRC js :exports code
+  function Square (side) {
+      return {side : side,
+	      circum : function () {
+		  return 4 * this.side;
+	      },
+	      area : function () {
+		  return this.side * this.side;
+	      }
+	     }
+  }
+
+  square1 = Square(10);
+
+  console.log(square1.area());
+#+END_SRC
+
+#+RESULTS:
+: 100
+: undefined
+
+This is great! With functions and =this= we're able to make little factories that make new objects.
+
+There's still some things 
+
 *** Prototypes and inheritance
     It's almost impossibly to spend any amount of time learning to code without coming across the term /object-oriented programming/. Object oriented programming is, in short, about using objects as the primary metaphor for organizing your code. Now, this doesn't just mean /using/ objects as collections the way we've seen til now
 *** Classes
