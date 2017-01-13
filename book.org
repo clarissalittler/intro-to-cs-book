@@ -306,12 +306,19 @@ What happened with that last one? You got the other odd number =NaN= which stand
 
 Finally, all arithmetic operations work by the normal presedence rules: expressions in parentheses are evaluated before multiplications which are evaluated before division which are evaluated before remainders which are evaluated before addition which are evaluated before subtraction.
 
-A short visual way to look at it is =() > * > / > % > + > -=. So, for example, if you see the JavaScript expression =10 * 11 % 10= will this evaluate like =(10 * 11) % 10=, which is equal to 0, or like =10 * (11 % 10)= which is equal to 1? We can see that 
+A short visual way to look at it is =() > * > / > % > + > -=. So, for example, if you see the JavaScript expression =10 * 11 % 10= will this evaluate like =(10 * 11) % 10=, which is equal to 0, or like =10 * (11 % 10)= which is equal to 1? Since multiplication beats calculating the remainder, then this means we should first turn =10 * 11 % 10= into =110 % 10= and then finish the remainder, leaving us with =0=. If we're dealing with multiple expressions, such as =10 / 3 / 2= the expressions are evaluated in pieces from left-to-right: ~10 / 3 / 2 = 3.3333333 / 2 = 1.6666667~
 
 **** Exercises
 ***** Exercise 1
-    Look at the following arithmetic expressions and calculate the result without typing them into the console:
+    Look at the following arithmetic expressions and calculate the result without typing them into the console, then check your answers afterward:
 
+    1. =10 / 3 - 3=
+    2. =10 / (3 - 3)=
+    3. =5 % 4 % 3=
+    4. =1 / 0 / 0=
+    5. =Infinity + NaN=
+***** Exercise 2
+     Try to imagine three different situations where you might encounter =Infinity= or =NaN= and they should be handled if detected.
 *** Variables
     The next important piece we need to learn is how to store the results of our operations. We store data in something called /variables/. 
 **** An aside on algebra
@@ -348,7 +355,9 @@ var x
 x
 #+END_EXAMPLE
 
-     Surprisingly, there /is/ a value in the variable, =undefined=: a very special value that represents "there's no value here"
+     Surprisingly, there /is/ a value in the variable, =undefined=: a very special value that represents "there's no value here".
+
+     
 **** Exercises
      Conceptual questions about explaining variables in their own words. Do they think "variable" is a good name for this concept? Would anything else work better? 
 
