@@ -669,7 +669,7 @@ This might just seem like a weird trick, but it's actually the key to some prett
 
 We can use closures to control /how/ data is seen, stored, and controlled. 
 *** Closures can mimic objects
-    Closures can be used to mimic objects
+    Even if we didn't /have/ objects in JavaScript, we could mimic them with closures alone
 *** Closures provide privacy
     One thing closures can do is create truly "private" data that can't be accessed by any means other than the interface the closure function provides. Imagine the following program, where you want some data to be accessible in an object but you want /some/ to be unchangeable, like a special user ID. This example will actually be a /closure/ that's a function that makes new objects.
 
@@ -749,7 +749,48 @@ We still get the same privacy as before, but without the ability to create separ
 
     One thing I want to do in this and the subsequent sections is going to involve showing how you can use prototypes in order to organize this code since I don't think there's a lot of good examples of prototypes that aren't just being shoved into class-forms )
 *** Stacks
-    Stacks as having only push and pop as an interface. We can show a few different ways of implementing stacks. For example, we can do both an array and a linked list implementation.
+    Another abstract data type that's both simple and /useful/ is the *stack*. The mental image of a stack is like a stack of handouts or plates or napkins. Each item is data in the stack but you have to pull them off from the top before you can get to the bottom. [fn:6]
+
+    This stack has two basic operations, =push= and =pop=. You can =push= new data down on top of the stack and =pop= it back off the stack. For convenience, we also have the ability to ask the stack how many elements it has inside it. 
+
+    We have several equations we can test our data against: namely that ~x===s.push(x).pop()~ and (TODO)
+
+    There are a couple of ways we'll implement this: the first is going to involve using an array to store the elements. The second involves a linked list like we saw above in the list ADT.
+
+**** Array implementation
+**** Linked list implementation
+     First we revist the /linked list/ objects
+     
+     #+BEGIN_SRC js :exports code
+       function Node (x) {
+           this.data = x;
+           this.next = null;
+           this.length = function () {
+     	  if (this.next) {
+     	      return (1 + this.next.length());
+     	  }
+     	  else {
+     	      return 1;
+     	  }
+           }
+       }
+
+       function Stack () {
+           this.head = null;
+           this.add = function (x) {
+     	  var newNode = new Node(x);
+     	  newNode.next = this.head;
+     	  this.head = newNode;
+     	  return this;
+           }
+           this.rem = function () {
+     	  var old = this.head.data;
+     	  this.head = this.head.next;
+     	  return this;
+           }
+           this.length  = 
+       }
+     #+END_SRC
 *** Queues
 *** Trees
 ** Testing and Error handling
@@ -984,6 +1025,8 @@ You evaluate this by treating it as equivalent to
 *** Data in the Lambda Calculus
 *** An Interpeter in Javascript
 * Footnotes
+
+[fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
 
 [fn:5] Shapes as examples of object oriented programming are ubiquitous to the point of being a joke in and of themselves. I promise that almost every book you ever read about programming in a language with objects /will/ mention squares and circles and rectangles at some point. Who am I to buck the trend?
 
