@@ -1037,7 +1037,16 @@ You evaluate this by treating it as equivalent to
 
    What's good about this chapter? It'll talk about how to build something practical from scratch and learn more about how the modern internet works. That'd probably be useful for explaining a lot about interacting with websites and demystifying a number of things that I think feel like "magic" to beginning programmers.
 ** A bug finding program
-   The goal of this project is to learn a little bit of how static analysis works. Not very deep, but little things like analyzing whether every branch in a function has a return statement or things like that. Checking to make sure every variable used was defined first. Things like that. 
+   The goal of this project is to learn a little bit of how static analysis works. Not very deep, but little things like analyzing whether every branch in a function has a return statement or things like that. Checking to make sure every variable used was defined first. Things like that. The main idea is to get across the idea that programs are things that can be /analyzed/ and understood in their own right.
+
+   The corresponding chapters will cover over the idea of /parsing/, the limits of computation, and how to design datastructures for a complicated task like that. 
+
+   Maybe we could even introduce graph problems by putting together graphs of where variables are used in a program? That could potentially be interesting. 
+
+   I suppose there could be some kind of working in dead code elimination. At least a simple one. 
+
+   After that, then we can talk about why we can't find /all/ possible bugs in code by discussing the halting problem. Heck, we could even maybe propose a way to do "halting analysis" and show why it can't work in general.
+** Creating shapes for 3D printing
 
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
@@ -1051,6 +1060,7 @@ You evaluate this by treating it as equivalent to
    * A console-based Tumblr client: APIs, modules, and creating your own libraries
    * A bug finding program: programs that read programs and the limits of code
    * Making a simple assembly language: how computers work under the hood
+   * Generating 3D Printer Designs
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
