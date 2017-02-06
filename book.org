@@ -1047,7 +1047,15 @@ You evaluate this by treating it as equivalent to
 
    After that, then we can talk about why we can't find /all/ possible bugs in code by discussing the halting problem. Heck, we could even maybe propose a way to do "halting analysis" and show why it can't work in general.
 ** Creating shapes for 3D printing
+   This could involve writing a little library for writing STL files, for understanding STL format, and then for being able to simple shapes in code and do cool things like that and turn them into something physical.
+** A roguelike
+   The goal of this section is to describe a /complicated/ text based game. We'll introduce the concept of a roguelike and then build up the things we'll need to make it.
 
+   In this section of the book we'll introduce 
+   + the concept of data structures
+   + objects
+   + classic datastructures like lists and stacks and queues and trees and graphs
+   + introduce things like sorting problems and graph traversal to do things like display your inventory or figure out how to represent rooms in the game and how to move between them. We can even show how graph traversals can tell us about whether the procedurally generated map can actually be traversed from the beginning to the end. Heck, we can even include a bonus chapter about "challenge maps" in which doors can only be used once and then let that lead into a discussion of hamiltonian paths
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
 ** A project based organization
