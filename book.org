@@ -1036,6 +1036,8 @@ You evaluate this by treating it as equivalent to
    We'll cover the idea of APIs for websites, we'll talk about HTTP and communication over the internet, and we'll talk about how to read an API and discuss it.
 
    What's good about this chapter? It'll talk about how to build something practical from scratch and learn more about how the modern internet works. That'd probably be useful for explaining a lot about interacting with websites and demystifying a number of things that I think feel like "magic" to beginning programmers.
+** A bug finding program
+   The goal of this project is to learn a little bit of how static analysis works. Not very deep, but little things like analyzing whether every branch in a function has a return statement or things like that. Checking to make sure every variable used was defined first. Things like that. 
 
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
@@ -1044,8 +1046,11 @@ You evaluate this by treating it as equivalent to
 
    So in this case I think the book might look something like
    * Intro to Programming
-   * Physics simulation: iteration and control flow
-   * 
+   * Physics simulation: using libraries, iteration, and control flow
+   * A roguelike game: objects, datastructures, file formats, and parsing
+   * A console-based Tumblr client: APIs, modules, and creating your own libraries
+   * A bug finding program: programs that read programs and the limits of code
+   * Making a simple assembly language: how computers work under the hood
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
