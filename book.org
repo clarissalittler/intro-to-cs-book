@@ -449,6 +449,7 @@ Here you have a condition that should evaluate to either =true= or =false= and i
       In real life we do things like
       + dust /each/ shelf on the bookcase
       + chop /three/ onions
+      + go to each class
 ***** Syntax
 ***** Evaluation
 **** while-statements
@@ -602,10 +603,10 @@ Clearly, some other feature is needed and JavaScript has =this=. Literally, the 
 
 This is great! With functions and =this= we're able to make little factories that make new objects.
 
-There's still some things 
 
 *** Prototypes and inheritance
-    It's almost impossibly to spend any amount of time learning to code without coming across the term /object-oriented programming/. Object oriented programming is, in short, about using objects as the primary metaphor for organizing your code. Now, this doesn't just mean /using/ objects as collections the way we've seen til now
+    It's almost impossibly to spend any amount of time learning to code without coming across the term /object-oriented programming/. Object oriented programming is, in short, about using objects as the primary metaphor for organizing your code. 
+
 *** Classes
     
 **** Faking classes with prototyping
@@ -740,7 +741,8 @@ Now, what if you are *really* sure that you're not ever going to need to differe
 We still get the same privacy as before, but without the ability to create separate Person constructors that are disentangled from each other. 
 
 *** Closures can mimick modules
-** ADTs and Projects
+** Project: Processing file formats
+** ADTs
 *** Importance of Abstraction
 *** Lists
     (So obviously lists can just be arrays in JavaScript, but we can analyze the difference in efficiency between using arrays and using a true linked list implementation that uses objects to hold a value and a pointer to the next object.
@@ -793,6 +795,7 @@ We still get the same privacy as before, but without the ability to create separ
      #+END_SRC
 *** Queues
 *** Trees
+    
 ** Testing and Error handling
 *** Checking types
     (An important way to deal with preventing mistakes is to ensure that you're getting the right kind of data)
@@ -1024,6 +1027,25 @@ You evaluate this by treating it as equivalent to
 *** The Core Language
 *** Data in the Lambda Calculus
 *** An Interpeter in Javascript
+* Proposed projects
+  Since my urlminder goal can't change to look at multiple files (I guess?) then I want to just keep tracking my other writing for this book in this file but near the end! Neat!
+
+** Tumblr API                                                      :noexport:
+   In this project we'll go through and develop a simple library that allows you to post to Tumblr from your console program. 
+
+   We'll cover the idea of APIs for websites, we'll talk about HTTP and communication over the internet, and we'll talk about how to read an API and discuss it.
+
+   What's good about this chapter? It'll talk about how to build something practical from scratch and learn more about how the modern internet works. That'd probably be useful for explaining a lot about interacting with websites and demystifying a number of things that I think feel like "magic" to beginning programmers.
+
+* Meta Notes                                                       :noexport:
+  This section is for commentary that doesn't yet fit elsewhere in the book
+** A project based organization
+   I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
+
+   So in this case I think the book might look something like
+   * Intro to Programming
+   * Physics simulation: iteration and control flow
+   * 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
