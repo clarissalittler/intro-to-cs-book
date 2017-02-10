@@ -1056,6 +1056,7 @@ You evaluate this by treating it as equivalent to
    + objects
    + classic datastructures like lists and stacks and queues and trees and graphs
    + introduce things like sorting problems and graph traversal to do things like display your inventory or figure out how to represent rooms in the game and how to move between them. We can even show how graph traversals can tell us about whether the procedurally generated map can actually be traversed from the beginning to the end. Heck, we can even include a bonus chapter about "challenge maps" in which doors can only be used once and then let that lead into a discussion of hamiltonian paths
+
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
 ** A project based organization
@@ -1069,6 +1070,16 @@ You evaluate this by treating it as equivalent to
    * A bug finding program: programs that read programs and the limits of code
    * Making a simple assembly language: how computers work under the hood
    * Generating 3D Printer Designs
+** An argument for a polyglot book
+   Now, so far I've just been working from the assumption that this entire text will be using /JavaScript/ and no other language. Well, the very earliest versions were going to be Python but I ended up deciding that I didn't like Python as much as a first language. Nothing particularly against the language itself, but there's reasons why I didn't want to teach it as a very first language.
+
+   Now the advantage of teaching with only a single language is that there's automatic unity in presentation between concepts. Only one language means only set of syntax to teach and only one way you need to teach ideas. 
+
+   On the other hand...is that really a good thing?
+
+   Is it just my own biases that I think seeing how to program in multiple ways helps you get away from the particulars of a given language to understand the way to program in /any/ language?
+
+   That's how I feel at least, but is the project of writing a rosetta stone book that could exist in multiple languages, that could show how the same concepts could be expressed in multiple languages. We could then explain the /ideas/ of recursion, iteration, and of data abstraction and how they can be done in different languages. We could get at the core ideas, perhaps.
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
