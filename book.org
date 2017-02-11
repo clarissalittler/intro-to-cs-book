@@ -816,7 +816,12 @@ We still get the same privacy as before, but without the ability to create separ
 
    I think my own strategies for this are to skim the code and take notes on it. First, identity the main features of the code: what's the first thing called and what does it call within/after that, then take notes on all the other functions involved in that initial setup and take notes on their signatures and what they appear to do, then look at how the functions are called and the names of variables for clues etc. Whenever you really can't understand what something does, attempt to evaluate pieces of it by hand)
 ** Modules
-   The basic idea of modules and how they show up in computer science
+   (META: The basic idea of modules and how they show up in computer science.
+   The essential role of modules is /code sharing/. It's related to how you make libraries work.
+
+   You're trying to control the visibility of code in ways that will /preserve/ abstractions. Now one thing that I think is important is to not cast it as about code "safety" per se, which is what I was confused about when I was first learning programming and learned about things like public and private and protected methods. It was first explained to me as being about "protecting" your code, but then my first question was always "but can't someone else just change the code so its not protected?" and then answer is, of course, yes you *could* do that. It's not about protecting your code in the same way that you'd protect your bank account. It's making sure that the gears are shaped correctly before you fit them together. What I mean by that is that it's going to involve figuring out the right interface, the right exposed parts that you want to present so other people can use your data. I mean you could put in a big warning of "DON'T CHANGE THESE FIELDS THEY'RE FOR INTERNAL USE ONLY" but what's better than that? Making it so those parts aren't exposed. When you're operating a car you don't have  )
+
+  
 *** Modules in Node
 *** Modules in Future JavaScript
 *** Faking Modules with Closures
