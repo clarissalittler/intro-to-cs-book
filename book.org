@@ -831,8 +831,10 @@ We still get the same privacy as before, but without the ability to create separ
 *** Modules in Future JavaScript
 *** Faking Modules with Closures
 ** Refactoring, generalizing, and improving code
-   (META: In this section we'll include a lot of ideas on how to make code /better/ once it's already working. Now I've struggled a bit with the idea of this but I've seen it done with *one* intro book before and I thought it worked really well. I think even just taking the projects up to this point and trying to explain how to improve the code and break it into multiple pieces would be a really good idea. )
+   (META: In this section we'll include a lot of ideas on how to make code /better/ once it's already working. Now I've struggled a bit with the idea of this but I've seen it done with *one* intro book before and I thought it worked really well. I think even just taking the projects up to this point and trying to explain how to improve the code and break it into multiple, reusable, pieces would be a really good idea. Of course, that means we'd be having to explain a /bad/ way to do it first wouldn't we? I mean, I guess, but not entirely. It wouldn't necessarily be involving a bad solution, but rather a solution that just isn't as modular as it could. That isn't as general as it could be. The code could still be pedagogically solid while still having room for improvement.)
 ** Testing and proving
+** Polymorphism
+   (META: I'm not sure if an explanation of polymorphism would fit into a description about modularity, about functions, or about ideas of interfaces. It could be any of these, really. Ultimately though we want to talk about the idea of code being able to operate on many different types because it's really only requiring certain methods to exist for the data)
 * Classic Programming Problems
 ** Sorting
    We should include a few different kinds of sorting algorithms along with visualizations for them and how to analyze them
