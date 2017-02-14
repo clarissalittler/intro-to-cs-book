@@ -844,7 +844,7 @@ We still get the same privacy as before, but without the ability to create separ
 * Standards and formats: making the world go round
   (META: In this section, we'll discuss the ways in which file formats and various standards fit into how the world of programming actually works. We'll talk about things like SVG, XML, STL, OGG, and the like in terms of how they operate and how they affect things. We can talk about the general concept of standards, of how to read them, and of /why/ standards are necessary. 
 
-  It might be kinda dry but we'll tie it into projects and the like)
+  It might be kinda dry but we'll tie it into projects and the like. For example, we could do a small project that involves MIDI and actually make little songs programmatically. It'd be cute to be able to do something like that. Obviously it wouldn't be as intense as something like Sonic Pi, but it could still have some fun features. We could make a program with a little user interface that would let us type out music or even do something interactively. )
 * Indices
 ** Be The Interpreter
 *** General Rules and Setup for Interpreting a Program
