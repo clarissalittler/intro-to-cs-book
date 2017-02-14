@@ -841,6 +841,10 @@ We still get the same privacy as before, but without the ability to create separ
 ** Searching
 ** Graph Problems
    (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding)
+* Standards and formats: making the world go round
+  (META: In this section, we'll discuss the ways in which file formats and various standards fit into how the world of programming actually works. We'll talk about things like SVG, XML, STL, OGG, and the like in terms of how they operate and how they affect things. We can talk about the general concept of standards, of how to read them, and of /why/ standards are necessary. 
+
+  It might be kinda dry but we'll tie it into projects and the like)
 * Indices
 ** Be The Interpreter
 *** General Rules and Setup for Interpreting a Program
