@@ -1104,7 +1104,8 @@ You evaluate this by treating it as equivalent to
 
    So, for example, in the section of the book that's about modules and code hiding: we can talk about how closures, how classes, and how private fields and methods combine together to provide the ways we define our interfaces. Again, that's the key word that we need to address: interfaces and how to define them. I feel like that'd still make sense as a concept no matter which language you're using. If anything we could explain how different languages explain this. 
 
-   We could talk about functions *and* meta-programming as being about code reuse. : 
+   We could talk about functions *and* meta-programming as being about code reuse. We could talk about meta-programming as both macros and the kind of classes-as-first-class programmable objects that we have in Ruby or JavaScript. 
+ 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
