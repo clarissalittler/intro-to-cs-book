@@ -1105,6 +1105,8 @@ You evaluate this by treating it as equivalent to
    So, for example, in the section of the book that's about modules and code hiding: we can talk about how closures, how classes, and how private fields and methods combine together to provide the ways we define our interfaces. Again, that's the key word that we need to address: interfaces and how to define them. I feel like that'd still make sense as a concept no matter which language you're using. If anything we could explain how different languages explain this. 
 
    We could talk about functions *and* meta-programming as being about code reuse. We could talk about meta-programming as both macros and the kind of classes-as-first-class programmable objects that we have in Ruby or JavaScript. 
+
+   We could also include things like data abstraction and talk about tagged lists with or without symbols vs. objects vs. classes. All of these things accomplish the same task but in different ways with different strengths and weaknesses. Although, I'll confess, we could already explain some of these ideas by just picking a language and going with it.
  
 * Footnotes
 
