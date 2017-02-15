@@ -1099,6 +1099,12 @@ You evaluate this by treating it as equivalent to
    Is it just my own biases that I think seeing how to program in multiple ways helps you get away from the particulars of a given language to understand the way to program in /any/ language?
 
    That's how I feel at least, but is the project of writing a rosetta stone book that could exist in multiple languages, that could show how the same concepts could be expressed in multiple languages. We could then explain the /ideas/ of recursion, iteration, and of data abstraction and how they can be done in different languages. We could get at the core ideas, perhaps.
+
+   What languages would be good for a polyglot book? I'm thinking that JavaScript, Clojure, and maybe even a language like Ruby or, if we wanted to get creative /Erlang/ and then actually go through the material in multiple ways.
+
+   So, for example, in the section of the book that's about modules and code hiding: we can talk about how closures, how classes, and how private fields and methods combine together to provide the ways we define our interfaces. Again, that's the key word that we need to address: interfaces and how to define them. I feel like that'd still make sense as a concept no matter which language you're using. If anything we could explain how different languages explain this. 
+
+   We could talk about functions *and* meta-programming as being about code reuse. : 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
