@@ -839,6 +839,7 @@ We still get the same privacy as before, but without the ability to create separ
 ** Sorting
    We should include a few different kinds of sorting algorithms along with visualizations for them and how to analyze them
 ** Searching
+   (META: basic issues of search tie into sorting, and are indeed the best motivation for sorting. Beyond that, though, we'll talk about data structures that make search easy. We can talk about self-balancing trees, binary search trees, things like that. We could also talk about the problem of trying to find, say, relevant text in a document or something like that. It'd be a little similar to how search engines work online where we'd look at synonyms)
 ** Graph Problems
    (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding)
 * Standards and formats: making the world go round
@@ -1075,6 +1076,17 @@ You evaluate this by treating it as equivalent to
    + objects
    + classic datastructures like lists and stacks and queues and trees and graphs
    + introduce things like sorting problems and graph traversal to do things like display your inventory or figure out how to represent rooms in the game and how to move between them. We can even show how graph traversals can tell us about whether the procedurally generated map can actually be traversed from the beginning to the end. Heck, we can even include a bonus chapter about "challenge maps" in which doors can only be used once and then let that lead into a discussion of hamiltonian paths
+
+** A midi project
+   The midi file format is also very easy to read and understand. We could always take a page out of one of my favorite texts to deal with writing little mini-languages for music. We could show that it's possible to do things like
+   + generate music from sentences
+   + write music as a program
+   + write a programming language that will "compile" to music
+   + read in midi files and transform them in some way
+     + I'll be honest I often think of that project I heard about where a violinist working on his MFA did a rotation of a musical piece and then played it for his final project. It's a very cool idea and we could lead students in a project like this. 
+
+   http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html
+   https://en.wikipedia.org/wiki/MIDI
 
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
