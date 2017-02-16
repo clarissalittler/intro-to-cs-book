@@ -841,11 +841,19 @@ We still get the same privacy as before, but without the ability to create separ
 ** Searching
    (META: basic issues of search tie into sorting, and are indeed the best motivation for sorting. Beyond that, though, we'll talk about data structures that make search easy. We can talk about self-balancing trees, binary search trees, things like that. We could also talk about the problem of trying to find, say, relevant text in a document or something like that. It'd be a little similar to how search engines work online where we'd look at synonyms)
 ** Graph Problems
-   (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding)
+   (there's a million and one problems that come down to graph traversal and manipulation, and any two or three of them would be great for teaching how to deal with algorithms and think of coding. )
 * Standards and formats: making the world go round
   (META: In this section, we'll discuss the ways in which file formats and various standards fit into how the world of programming actually works. We'll talk about things like SVG, XML, STL, OGG, and the like in terms of how they operate and how they affect things. We can talk about the general concept of standards, of how to read them, and of /why/ standards are necessary. 
 
   It might be kinda dry but we'll tie it into projects and the like. For example, we could do a small project that involves MIDI and actually make little songs programmatically. It'd be cute to be able to do something like that. Obviously it wouldn't be as intense as something like Sonic Pi, but it could still have some fun features. We could make a program with a little user interface that would let us type out music or even do something interactively. )
+* A bit of theory
+  (One thing that would be nice is to include some real segments on the theory of computer science. I could always resurrect my old project on writing a simple programming language for Turing machines. The basic idea of that is to take informal descriptions of Turing machine algorithms and actually make them something you can write down and then "compile" it to the finite automata with tape that corresponds to the program. 
+
+  One reason why I think this idea could work is that it would create a really nice physical demonstration of how a Turing machine works. If you compile to a Turing machine configuration I think it'd explain a lot about how Turing machines can even do the same thing that the lambda calculus or a memory-instruction machine can do. It really wasn't obvious to *me* at least that they're /really/ the same thing in strength. 
+
+  Other things that might make sense in a theory section are: an introduction to the lambda calculus with an explanation of how it works and how it can model any function. The rules of the lambda calculus are so fundamentally simple that it's always a nice mindblowing experience to see what they can do.
+
+  Even beyond that? It might not be a bad idea to introduce a simple pseudo-assembly language that describes how the machine works. )
 * Indices
 ** Be The Interpreter
 *** General Rules and Setup for Interpreting a Program
