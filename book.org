@@ -1136,6 +1136,34 @@ You evaluate this by treating it as equivalent to
     What's lost if we don't include operational semantics? Well, the most obvious thing we'd lose is that we wouldn't have the intuition building of pen & paper exercises that show how to calculate from code to output. I think these exercises would be one of *the* most important and uniques aspects of this text. Admittedly, I haven't gotten to actually try out teaching a class this way which is unfortunate but I really do believe we could structure this book like a *good* math text. We show how calculations work. We demonstrate how to understand line-by-line evaluation of code. We demystify the entire programming process. That'd be a heck of a thing to give up from the text. 
 
     Speaking of exercises, though, there's also the argument that having multiple languages will also complicate the projects and the individual exercises. Do we provide exercises in just one language? In all of them? Do we have ssome exercises in one language and others in the other languages? It's not obvious that this'd be good for pedagogy rather than just adding a lot of confusion over time. 
+** Another outline
+   Here, let's take another shot at a new outline that focuses more on /projects/ and /concepts/ and less on introducing syntax
+*** Introduction
+**** What is programming?
+**** Why learn it?
+**** What are programming languages?
+**** Syntax vs. semantics
+*** Project 1: Description
+    Here we can include the description of the problem for the first project. There's a few possibilities here, like the physics simulation project where we can graph some data and show how useful functions are and even connect it to wanting to make games or more cool things like that.
+*** Basic programming
+**** Input and output
+**** Kinds of data
+**** Control flow
+***** Functions
+      Cover functions before for loops? Honestly, why not? I mean in some ways functions are the /most/ fundamental control concept and yet they're so rarely presented that way.
+
+      If we start with functions we can show that while loops and for loops are just syntactic conveniences for the way functions work.
+
+      We can also immediately explain anonymous functions and tie them into these other iteration constructs. 
+***** For-loops
+***** While-loops
+**** Project 1: Implementation
+     Here we can actually explain how thse basic concepts from before can be put together to make the full project. 
+*** Intermediate programming
+**** Project
+**** Arrays
+**** Objects
+**** 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
