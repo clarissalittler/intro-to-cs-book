@@ -1154,16 +1154,35 @@ You evaluate this by treating it as equivalent to
 
       If we start with functions we can show that while loops and for loops are just syntactic conveniences for the way functions work.
 
-      We can also immediately explain anonymous functions and tie them into these other iteration constructs. 
+      We can also immediately explain anonymous functions and tie them into these other iteration constructs.
+****** Functions by hand
+****** Scope
+       A lot of our description of scope will come /after/ we describe the by-hand evaluation rules, since it's going to make more sense I think to describe the implications of scoping rules if we've already seen physically how it works
+***** If-statements and booleans
+      We'll introduce booleans along with if-statements because they really don't make sense without the ability to define branching. We'll include all our basic booleans operators as well as introduce equality and comparison operators. It'll be a chunk of cognitive change, but I think it'll be good going forward
+****** Why we need branching
+       Explain the need to make choices and how to know when to start or stop an action. 
+****** Booleans and logical operators
+****** If-statements
+****** Recursion
+       How intuitive can we make the concept of functions calling themselves? I feel like it's not actually that bad of a concept if we don't present it as something scary.
+       Maybe comparison to how you might explain addition would be helpful: e.g. addition is repeatedly adding one with a recursive definition. Of course, recursion might not be useful until *after* we explain how branching works since without some form of branching you can't actually cut the recursive chain. 
+
 ***** For-loops
+      We'll cover very basic C-style for loops rather than the for-in or for-of loops. We can cover those later, but they're not necessarily important first contexts
+****** for loops by hand
+****** for loops with functions
+       this should be an aside how branching + functions can be used to replicate the use of a for-loop. Talk about why you might want to use one and not the other in different situations
 ***** While-loops
+      We'll be covering while loops only and not the do-while loop, since it's just redundant with the fragment of the language we're describing. 
 **** Project 1: Implementation
      Here we can actually explain how thse basic concepts from before can be put together to make the full project. 
 *** Intermediate programming
-**** Project
+**** Project 2: description
+     Project 2 should be a project that involves a /lot/ of data manipulation. This might be a good time to do something like the midi project or the stl project, where you're dealing with file formats and modelling data. 
 **** Arrays
 **** Objects
-**** 
+**** Closures
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
