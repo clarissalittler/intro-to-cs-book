@@ -1185,15 +1185,28 @@ You evaluate this by treating it as equivalent to
 **** Arrays
      Basic list-like operations
 **** Objects
+***** Objects as collections
+***** Constructors
+***** Methods
+***** =this=
 *** Data abstraction and interfaces
     This chunk of the book is going to be about data organization, designing interfaces, and why we "hide" implementation and exposure the interface instead. We'll be talking about /inheritance/, about /modules/, and about using closures to hide and control data. 
 
     We'll also talk about the idea of abstract data types and how they can have multiple implementations
+**** Project 3: Description
+     I think the thing to implement on this section is the rogue-like game. We'd be able to do some cool graph theory problems here as well as practical implemention of a REPL and include organizing our data into modules and interfaces. We can keep it fairly simple, but still include enough in terms of enemies and obstacles and about how to design maps that we can actually demonstrate a lot of these ideas. 
+**** Interfaces
+     Explain the basic idea of an "interface" and why you want to describe one. Now, JavaScript is a language that doesn't have a formal type-level notion of interface but interfaces still matter in terms of the collection of methods and properties that certain objects should have. Implicit interfaces is the very idea of "duck typing" as folks call it!
 **** Modules
-     
 **** Closures
      Explaining the idea of holding *state* with objects
-**** 
+***** Faking modules with closures
+***** Closures + Constructors
+**** Abstract Data Types
+***** Stacks & queues
+***** Trees
+***** Graphs
+**** Project 3: Implementation
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
