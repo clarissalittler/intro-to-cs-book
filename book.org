@@ -1147,6 +1147,7 @@ You evaluate this by treating it as equivalent to
     Here we can include the description of the problem for the first project. There's a few possibilities here, like the physics simulation project where we can graph some data and show how useful functions are and even connect it to wanting to make games or more cool things like that.
 *** Basic programming
 **** Input and output
+     One of the big decisions here is whether we want to be explaining console based methods of communication or 
 **** Kinds of data
 **** Control flow
 ***** Functions
@@ -1183,12 +1184,13 @@ You evaluate this by treating it as equivalent to
 **** The need for aggregate data
      Before we get into the next topics of aggregate data types such as arrays and objects we need to first talk about what it means for 
 **** Arrays
-     Basic list-like operations
+     Basic list-like operations and all of that. We can talk about the uses of lists for storing varying quantities of data and how arrays fit into iteration. We can probably even introduce things like folds at this point. 
 **** Objects
 ***** Objects as collections
 ***** Constructors
 ***** Methods
 ***** =this=
+      The hardest thing to explain here is going to be the fact that =this= scopes so completely differently. I think teaching the by-hand method of using =this= is probably the best bet for actually giving some intuition.
 *** Data abstraction and interfaces
     This chunk of the book is going to be about data organization, designing interfaces, and why we "hide" implementation and exposure the interface instead. We'll be talking about /inheritance/, about /modules/, and about using closures to hide and control data. 
 
@@ -1198,15 +1200,18 @@ You evaluate this by treating it as equivalent to
 **** Interfaces
      Explain the basic idea of an "interface" and why you want to describe one. Now, JavaScript is a language that doesn't have a formal type-level notion of interface but interfaces still matter in terms of the collection of methods and properties that certain objects should have. Implicit interfaces is the very idea of "duck typing" as folks call it!
 **** Modules
+     We can talk about two forms of modules here: the node-style modules and the new standard of modules. 
 **** Closures
      Explaining the idea of holding *state* with objects
 ***** Faking modules with closures
+      
 ***** Closures + Constructors
 **** Abstract Data Types
 ***** Stacks & queues
 ***** Trees
 ***** Graphs
 **** Project 3: Implementation
+**** A bit of theory
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
