@@ -1188,6 +1188,7 @@ You evaluate this by treating it as equivalent to
 **** Objects
 ***** Objects as collections
 ***** Constructors
+      We can't explain *everything* about constructors yet, at least not without =this=, but we can lead /into/ this by trying to first explain that a constructor is a function that /makes/ objects and then once we introduce =this= we can start using the =new= command to create objects and assign values
 ***** Methods
 ***** =this=
       The hardest thing to explain here is going to be the fact that =this= scopes so completely differently. I think teaching the by-hand method of using =this= is probably the best bet for actually giving some intuition.
@@ -1204,14 +1205,17 @@ You evaluate this by treating it as equivalent to
 **** Closures
      Explaining the idea of holding *state* with objects
 ***** Faking modules with closures
-      
+     The point here is that by having data hiding with closures then we can have a very specific /interface/ to the data. We can show that we don't technically *need* modules. 
 ***** Closures + Constructors
+      Closures and constructors together can do all of the cute tricks of making both public and private data.
 **** Abstract Data Types
 ***** Stacks & queues
 ***** Trees
 ***** Graphs
 **** Project 3: Implementation
+*** 
 **** A bit of theory
+
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
