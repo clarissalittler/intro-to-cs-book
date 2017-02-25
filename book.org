@@ -1213,8 +1213,17 @@ You evaluate this by treating it as equivalent to
 ***** Trees
 ***** Graphs
 **** Project 3: Implementation
-*** 
-**** A bit of theory
+*** Interacting with the real world: APIs and standards
+**** Project 4: Web app
+     I'm not sure what'd be good for this. Maybe something like Tumblr because it's complicated enough. We can walk through the idea of making posts and getting user information. Heck, we could even do something like the "bubble burster" app that finds people on the periphery of the social network for you to try following instead. 
+**** Web APIs
+     The general concept of an API as well as how it ties into the more common notion of an API for web-apps. 
+***** HTTP: the short version
+      All we really need to explain here is the basic structure of requests, what they mean, and how we need to make them. 
+***** An example API
+      Maybe tumblr and one or two others
+**** Project 4: Implemntation
+**** Project 5: 
 
 * Footnotes
 
