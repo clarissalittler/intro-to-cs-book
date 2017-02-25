@@ -1223,7 +1223,9 @@ You evaluate this by treating it as equivalent to
 ***** An example API
       Maybe tumblr and one or two others
 **** Project 4: Implemntation
-**** Project 5: 
+**** Project 5: STL and 3D printing
+**** File formats
+     Here we want to talk about things like what standards for file formats are and 
 
 * Footnotes
 
