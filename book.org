@@ -1228,7 +1228,9 @@ You evaluate this by treating it as equivalent to
 
      Beyond that, there's also the stl format we've discussed which is perhaps a bit harder to visualize but still interesting in its own right. What I think might be interesting is explaining how to read and maybe visualize the stl format from a file? To display something already made? That alone might be enough of a feat to be worth the price of admission of the chapters
 **** File formats
-     Here we want to talk about things like what standards for file formats are and how the structure of data in these standards decides so much about how technology communicates with each other. Now, this isn't material that's generally included much in introductory programming but I think it'd be useful for acting as a /pineal gland/ that connects the rareified world of pure computation with the world of 
+     Here we want to talk about things like what standards for file formats are and how the structure of data in these standards decides so much about how technology communicates with each other. Now, this isn't material that's generally included much in introductory programming but I think it'd be useful for acting as a /pineal gland/ that connects the rareified world of pure computation with the world of practical and useful programming. It's something that I found personally confusing when I was first learning to code. 
+
+     I suppose that's another thing to consider as we're writing this text: the best calculus books were the ones that had constant visualizations and small exercises and examples that could help you remember why the math was being used the way it was. I sometimes miss the feel of a good math or physics text when I'm learning more & more computer science. I feel like even books on algorithms aren't very good at this when they are literally /full/ of real world applications.
 
 * Footnotes
 
