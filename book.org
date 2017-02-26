@@ -1224,8 +1224,11 @@ You evaluate this by treating it as equivalent to
       Maybe tumblr and one or two others
 **** Project 4: Implemntation
 **** Project 5: STL and 3D printing
+     This is, I think, where it'd be great to talk about two different file formats. We can talk about SVG, since it has a beautiful and simple structure when you get right down to it. It's the legos of image construction which is why vector graphics programs have the form that they do. 
+
+     Beyond that, there's also the stl format we've discussed which is perhaps a bit harder to visualize but still interesting in its own right. What I think might be interesting is explaining how to read and maybe visualize the stl format from a file? To display something already made? That alone might be enough of a feat to be worth the price of admission of the chapters
 **** File formats
-     Here we want to talk about things like what standards for file formats are and 
+     Here we want to talk about things like what standards for file formats are and how the structure of data in these standards decides so much about how technology communicates with each other. Now, this isn't material that's generally included much in introductory programming but I think it'd be useful for acting as a /pineal gland/ that connects the rareified world of pure computation with the world of 
 
 * Footnotes
 
