@@ -1250,9 +1250,15 @@ You evaluate this by treating it as equivalent to
 
       The basic structure of the Turissembly lanuage would be something akin to describing the action on the tape in words like "move left until =cond=" or "if readCurr() then goto =lab= else goto =lab=" or things like that. 
 
-      As notes to myself, I'll say that it's probably best if we write the language in a compositional way where we can compose the turing machine automata pieces together as much as possible. I don't actually know if it'll be possible to stitch them together like that but at the very least it's a goal of the project. 
+      As notes to myself, I'll say that it's probably best if we write the language in a compositional way where we can compose the turing machine automata pieces together as much as possible. I don't actually know if it'll be possible to stitch them together like that but at the very least it's a goal of the project.
+
+      After the walkthrough of this "turing language" our project could be walking through the actual /implementation/ of this system and exercises of how to program in this language.
+
+      The other possibility, of course, is that we just *provide* the Turissembly implementation rather than walkingthrough how to write it in the first place.
 ***** The lambda calculi
+      So we *don't* want to spend a ton of time on lambda calculi because that's an incredibly deep topic in and of itself, but in just like 10-15 pages we could explain the entire lambda calculus and how things like the peano encodings of data actually work. Since we'll already be really familiar with operational semantics and all of that, it won't be hard for us to go ahead and introduce the rules for beta-reduction and how that works. 
 ***** Assembly languages
+      We can explain how assembly languages work, what it means for code to execute in the processor itself and 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
