@@ -1246,6 +1246,11 @@ You evaluate this by treating it as equivalent to
 ***** A simple proof 
      A diagonalization argument like in the talk I'm giving. We can present how the diagonalization argument works for numbers and then bump it up into programs that analyze other programs and from /there/ we can show how either there's uncountable programs (there's not) *or* the problem must have been assuming that being able to write a program that could analyze all other programs must have been false. 
 ***** Turing machines
+      A description of Turing machines in words, pictures, eventually leading to introducing a small little programming language that explains "what" is easily definable in the automata nature of a Turing machine. Part of my concern is giving better intuition. I think describing a language and turning it /into/ the automata would be a nice little demonstration of this fact. 
+
+      The basic structure of the Turissembly lanuage would be something akin to describing the action on the tape in words like "move left until =cond=" or "if readCurr() then goto =lab= else goto =lab=" or things like that. 
+
+      As notes to myself, I'll say that it's probably best if we write the language in a compositional way where we can compose the turing machine automata pieces together as much as possible. I don't actually know if it'll be possible to stitch them together like that but at the very least it's a goal of the project. 
 ***** The lambda calculi
 ***** Assembly languages
 * Footnotes
