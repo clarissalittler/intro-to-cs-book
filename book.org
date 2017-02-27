@@ -1258,7 +1258,7 @@ You evaluate this by treating it as equivalent to
 ***** The lambda calculi
       So we *don't* want to spend a ton of time on lambda calculi because that's an incredibly deep topic in and of itself, but in just like 10-15 pages we could explain the entire lambda calculus and how things like the peano encodings of data actually work. Since we'll already be really familiar with operational semantics and all of that, it won't be hard for us to go ahead and introduce the rules for beta-reduction and how that works. 
 ***** Assembly languages
-      We can explain how assembly languages work, what it means for code to execute in the processor itself and 
+      We can explain how assembly languages work, what it means for code to execute in the processor itself and then go over what a simplified assembly language would look like and how it would be implemented. Even if we don't do the turissembly project from scratch (of close to it) I *definitely* think we should have a project where we go through how to implement the basic assembly language *from* it's operational semantics. 
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
