@@ -1235,7 +1235,19 @@ You evaluate this by treating it as equivalent to
 *** Reading code and Writing comments
     Here we need a good section on how to /read/ code. Ways to understand programs and how to explain to others how code works. I'd like to demphasize the whole mess of "long descriptive variable names", which I personally think can get pretty over the top once we're having to use multiWorldVariableNames that are hard to scan instead of making the code easy to scan and easy to understand the logic thereof. 
 
-    Yeah, I know this is a somewhat opinionated proposal but I have Strong Opinions about this. I suppose, though, the most important thing is to emphasize the idea that one should write code that is easy to read. We can give "soft skill" exercises like the ability 
+    Yeah, I know this is a somewhat opinionated proposal but I have Strong Opinions about this. I suppose, though, the most important thing is to emphasize the idea that one should write code that is easy to read. We can give "soft skill" exercises like the ability to write out what code does just from reading it carefully or suggesting that they write code and then, a week later, try to go back and read it and understand what it did without comments. 
+
+    That's a slightly odd exercise but one that I think would be very instructive. 
+*** Testing and proving
+    So this might be a neat section to both talk about ideas of /testing/, like unit testing and integration testing, vs. /proving/ via static analysis or tools like that. No, I won't delve into proof theory because I don't think that's a very good idea for a beginning book that's assuming no mathematics, but I think at least giving an indication of what can be known versus what can only merely have evidence for might be a good and interesting distinction. At the very least it's nothing that I can imagine has been done before in an introductory text.
+*** A bit of theory
+**** The limits of computation
+     Here we can cover one of my favorite topics, which is what the real limits of computation are. So we can explain what isn't possible and give intuition for /why/. 
+***** A simple proof 
+     A diagonalization argument like in the talk I'm giving. We can present how the diagonalization argument works for numbers and then bump it up into programs that analyze other programs and from /there/ we can show how either there's uncountable programs (there's not) *or* the problem must have been assuming that being able to write a program that could analyze all other programs must have been false. 
+***** Turing machines
+***** The lambda calculi
+***** Assembly languages
 * Footnotes
 
 [fn:6] You might be thinking "but of course I can grab wherever I want in a stack of handouts or plates", but think of it as what's /natural/ to do. If you're in a line at a cafeteria, you're going to grab the tray or plate on the top. If you're grabbing handouts for a class, you're going to grab the very first thing. 
