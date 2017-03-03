@@ -1204,12 +1204,15 @@ You evaluate this by treating it as equivalent to
 **** Modules
      We can talk about two forms of modules here: the node-style modules and the new standard of modules. 
 **** Closures
-     Explaining the idea of holding *state* with objects
+     Explaining the idea of holding *state* with closures. We explain how closures work pretty simply with the mechanics of scope in the by-hand operational semantics. 
+***** Inner and outer functions
+***** Closures are a consequence of scope
 ***** Faking modules with closures
      The point here is that by having data hiding with closures then we can have a very specific /interface/ to the data. We can show that we don't technically *need* modules. 
 ***** Closures + Constructors
       Closures and constructors together can do all of the cute tricks of making both public and private data.
 **** Abstract Data Types
+     The big things here are, again, about the idea of interfaces and specifying how types of data should behave in the /abstract/ and then provide a number of ways for how to implement them. 
 ***** Stacks & queues
 ***** Trees
 ***** Graphs
