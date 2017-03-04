@@ -1190,9 +1190,10 @@ You evaluate this by treating it as equivalent to
       The most basic use of objects is as a form of /map/ or /dictionary/ that associates keys with values. Now, obviously, there's a lot more to how objects work but there's a lot of ways you'd use objects that really just come down to objects-as-dictionaries
 ***** Constructors
       We can't explain *everything* about constructors yet, at least not without =this=, but we can lead /into/ this by trying to first explain that a constructor is a function that /makes/ objects and then once we introduce =this= we can start using the =new= command to create objects and assign values
-***** Methods
 ***** =this=
       The hardest thing to explain here is going to be the fact that =this= scopes so completely differently. I think teaching the by-hand method of using =this= is probably the best bet for actually giving some intuition.
+***** Methods
+      Once we've explained =this= I think we're in a good position to talk about the interesting aspects of defining methods and how they interact with =this=.
 *** Data abstraction and interfaces
     This chunk of the book is going to be about data organization, designing interfaces, and why we "hide" implementation and exposure the interface instead. We'll be talking about /inheritance/, about /modules/, and about using closures to hide and control data. 
 
@@ -1206,16 +1207,25 @@ You evaluate this by treating it as equivalent to
 **** Closures
      Explaining the idea of holding *state* with closures. We explain how closures work pretty simply with the mechanics of scope in the by-hand operational semantics. 
 ***** Inner and outer functions
+      The entire machinery of closures is fundamentally about the interaction within layers of functions
 ***** Closures are a consequence of scope
+      The by hand rules of scope will make it very obvious *why* the variables declared within the outer function are visible from the inner function 
 ***** Faking modules with closures
      The point here is that by having data hiding with closures then we can have a very specific /interface/ to the data. We can show that we don't technically *need* modules. 
 ***** Closures + Constructors
       Closures and constructors together can do all of the cute tricks of making both public and private data.
 **** Abstract Data Types
      The big things here are, again, about the idea of interfaces and specifying how types of data should behave in the /abstract/ and then provide a number of ways for how to implement them. 
-***** Stacks & queues
+***** Stacks, queues, and lists
+      We can show how to implement these with arrays as well as linked lists. We'll explain here how to do linked list data structures in JavaScript. Now that's a concrete data structure not an abstract, but it demonstrates an important technique for understanding references and complex data structure implementation 
 ***** Trees
+****** Binary search trees
+****** Self-balancing trees
+******* Red-black trees
+	We don't have to spend a *massive* time on red-black trees, but I think at least showing that this is the kind of thing that programmers have to invent for specific purposes is, I think, a good idea.
 ***** Graphs
+****** Hamiltonian paths
+****** Connected components
 **** Project 3: Implementation
 *** Interacting with the real world: APIs and standards
 **** Project 4: Web app
