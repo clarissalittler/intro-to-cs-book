@@ -1227,6 +1227,9 @@ You evaluate this by treating it as equivalent to
 ****** Hamiltonian paths
 ****** Connected components
 **** Project 3: Implementation
+*** Classic problems
+**** Sort
+**** Search
 *** Interacting with the real world: APIs and standards
 **** Project 4: Web app
      I'm not sure what'd be good for this. Maybe something like Tumblr because it's complicated enough. We can walk through the idea of making posts and getting user information. Heck, we could even do something like the "bubble burster" app that finds people on the periphery of the social network for you to try following instead. 
@@ -1257,8 +1260,11 @@ You evaluate this by treating it as equivalent to
 
     Also, as a note to myself I should look into what's considered the "best practices" in terms of JavaScript testing frameworks right now. Mocha, Jasmine, and QUnit *seem* to be ones folks use but I'm not sure which would be useful for this book. I'd want something that demonstrates the /principles/ without getting bogged down in too much overhead. There's probably some kind of quickcheck or fuzz testing type framework that we could easily use. 
 **** Unit tests
+     So we need to explain the concept of unit tests, go through at /least/ one framework for it, and then explain how they relate to the basic concept of "interfaces". 
 **** Fuzz testing
+     What happens when your program is hit with arbitrary data? Does it behave appropriately or does it choke and die? The best way to know is to just throw data at it and /see what happens/. We'll cover a framework if we can find one, and we could always run through the idea of creating one from scratch.
 **** Project: Creating a unit test framework
+     Yeah, I'm stealing a bit from Peter Seibel in that I think creating a little unit test project would be a just *fantastic* way to get some more advanced coding techniques in there. It doesn't have to be a fully featured framework but even just something that allows you to take a function, supply a condition for what the result should be, and then coalate the results together in some useful way. 
 *** A bit of theory
 **** The limits of computation
      Here we can cover one of my favorite topics, which is what the real limits of computation are. So we can explain what isn't possible and give intuition for /why/. 
