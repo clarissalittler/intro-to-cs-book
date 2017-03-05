@@ -1228,6 +1228,7 @@ You evaluate this by treating it as equivalent to
 ****** Connected components
 **** Project 3: Implementation
 *** Classic problems
+    This might get blended into other sections, to be honest. What I want is to include some of the classic "you're taking a class on algorithms" problems. We can include topics like sorting and search through data structures, but I think those are also topics that are just so /very/ close to what we'd cover in the ADT sections themselves
 **** Sort
 **** Search
 *** Interacting with the real world: APIs and standards
