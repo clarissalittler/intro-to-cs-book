@@ -1216,6 +1216,8 @@ You evaluate this by treating it as equivalent to
       Closures and constructors together can do all of the cute tricks of making both public and private data.
 **** Abstract Data Types
      The big things here are, again, about the idea of interfaces and specifying how types of data should behave in the /abstract/ and then provide a number of ways for how to implement them. 
+***** Complexity and asymptotics
+      Ah, yes, no book would be complete without having to deal with big-O notation and analyzing algorithmic complexity. It's not a terribly interesting topic, but it's an important one to teach. Rather than having dedicated sections on it maybe it'd just be nice to figure out ways to slowly work it into our operational semantics approach
 ***** Stacks, queues, and lists
       We can show how to implement these with arrays as well as linked lists. We'll explain here how to do linked list data structures in JavaScript. Now that's a concrete data structure not an abstract, but it demonstrates an important technique for understanding references and complex data structure implementation 
 ***** Trees
