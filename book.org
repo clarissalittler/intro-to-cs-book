@@ -1219,11 +1219,22 @@ You evaluate this by treating it as equivalent to
 ***** Stacks, queues, and lists
       We can show how to implement these with arrays as well as linked lists. We'll explain here how to do linked list data structures in JavaScript. Now that's a concrete data structure not an abstract, but it demonstrates an important technique for understanding references and complex data structure implementation 
 ***** Trees
+****** Trees as ADT
+       This will also be a big case study of how ADTs work because we'll explain the /interface/ of trees and then we'll talk about the implementations therein.
 ****** Binary search trees
+       What we need to cover here is the use of trees in storing and retrieving data. We can talk about the efficiency difference when it comes to finding data.  
 ****** Self-balancing trees
 ******* Red-black trees
 	We don't have to spend a *massive* time on red-black trees, but I think at least showing that this is the kind of thing that programmers have to invent for specific purposes is, I think, a good idea.
+******* B-trees
+	I don't know if we really need both red-black trees /and/ b-trees but it might not be a bad thing to write both sections and then figure out what we want.
 ***** Graphs
+****** Graphs-as-adts
+       So we need to explain the /interface/ of graphs and then about the various ways you can represent graphs (inductive definitions, adjacency matrices, or linked like the way we deal with linked lists) and how this effects the kinds of things that we can do efficiently with graphs. I'll concede this is an area of programming I don't have a ton of experience with but I think we can come up with some interesting things. It's going to depend a lot on the motivation.
+
+       Motivation? Perhaps something like understanding social networks? In some of the texts I've read on social networks there were neat examples of figuring out who's actually the most important person in the network or things like that. There's delivery routes as well. 
+
+       Oh, right, I had an idea of explaining how to figure out if you were generating proper maps for a rogue-like game. Like figuring out what the connected components are and if the exit and entrance are both in the same connected component. Or if you've got a messed up setting that involves a bunch of "one way" passages using Hamiltonian paths to determine if the path is even solvable. Those kinds of things. 
 ****** Hamiltonian paths
 ****** Connected components
 **** Project 3: Implementation
