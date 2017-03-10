@@ -1294,6 +1294,32 @@ You evaluate this by treating it as equivalent to
      After the walkthrough of this "turing language" our project could be walking through the actual /implementation/ of this system and exercises of how to program in this language.
 
      The other possibility, of course, is that we just *provide* the Turissembly implementation rather than walkingthrough how to write it in the first place.
+
+***** A turing language
+      So we need a programming language that can easily map down to the state machine description of Turing machine. 
+
+      We need 
+        + case statements (over the alphabet of the language)
+	+ a statement for reading the current data
+	+ a statement for creating a loop
+	+ a statement for writing into the current place
+	+ statements for moving right and left
+
+We need to do something like
+
+#+BEGIN_SRC haskell :exports code
+  data Dir = Left | Right
+
+  data Val = Char Char | 
+
+  data Expr = Case [(Char,Expr)]
+            | 
+#+END_SRC
+
+Okay, so part of what I'm trying to figure out is what the structure of this language would be. I think a program is going to need to be a group of /functions/. The different functions are going to be, essentially, "clusters" of states. Each function will involve calling other functions. I was going to suggest having a built in operation that "reads" in the data in the current cell, but I realize now that's not really necessary just because it can only be used once per function. Instead, I think it just needs to be used in the "case" statements. I think one thing I'm having trouble picturing is how the hierarchy of syntactic forms is going to have to look.
+
+So I guess we could do a thing of having every function start with a case statement and then the end of the sequence of statements for each case statement has to be moving in a direction and then (optionally) another function to call. You could have a thing, though, of a function /either/ has to be a case or a loop around a case or just calling another function. Maybe that'd work?
+      
 **** The lambda calculi
      So we *don't* want to spend a ton of time on lambda calculi because that's an incredibly deep topic in and of itself, but in just like 10-15 pages we could explain the entire lambda calculus and how things like the peano encodings of data actually work. Since we'll already be really familiar with operational semantics and all of that, it won't be hard for us to go ahead and introduce the rules for beta-reduction and how that works. 
 **** Assembly languages
