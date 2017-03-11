@@ -1305,6 +1305,8 @@ You evaluate this by treating it as equivalent to
 	+ a statement for writing into the current place
 	+ statements for moving right and left
 
+I want something like what we see in the old Sipser theory of computation. In that book they present a number of cute examples like determining if two strings are equal. The Sipser view of turing machines is very focused on accepting or rejecting strings in order to decide/recognize languages. The problem with this view is that it doesn't /really/ translate well to what I want to present in this book (and other media where I'm trying a similar thing) of having the turing machine form some kind of computation and, if it can, finish the computation by just halting and then you read out the final state of the tape. I don't /think/ it really matters to anything if we have our two end states either be "accept" or "diverge". At the same time, I guess, we *could* just keep the accept/reject/diverge three part outcome where we instead interpret accept as succesful termination, reject as an error state, and divergeing is obviously still divergeing.
+
 We need to do something like
 
 #+BEGIN_SRC haskell :exports none
@@ -1314,7 +1316,7 @@ We need to do something like
 
   data Def = Case [(Char,Block)]
            | Loop Def
-           | Call
+           | Call 
 #+END_SRC
 
 Okay, so part of what I'm trying to figure out is what the structure of this language would be. I think a program is going to need to be a group of /functions/. The different functions are going to be, essentially, "clusters" of states. Each function will involve calling other functions. I was going to suggest having a built in operation that "reads" in the data in the current cell, but I realize now that's not really necessary just because it can only be used once per function. Instead, I think it just needs to be used in the "case" statements. I think one thing I'm having trouble picturing is how the hierarchy of syntactic forms is going to have to look.
@@ -1323,7 +1325,9 @@ So I guess we could do a thing of having every function start with a case statem
 
 Okay, so we need a descriptor of Turing machines in code so we can translate our language to
 
-The first file we need is going to be a bit of a common file between all of our 
+The first file we need is going to be a bit of a common file for representing the tape and directions and things like that. So one thing we need to note is that the Tape is baaasically a list zipper where we've actually reversed the left list in the Tape representation is ordered by its closeness to the current focus. 
+
+ 
 #+BEGIN_SRC haskell :exports none :tangle TuringCommon.hs
   module TuringCommon where
 
@@ -1334,7 +1338,10 @@ The first file we need is going to be a bit of a common file between all of our
   data Tape = Tape [Val] Val [Val]
 
   moveLeft :: Tape -> Tape
-  moveLeft (Tape ls c rs) = 
+  moveLeft (Tape (l:ls) c rs) = Tape ls l (c:rs)
+
+  moveRight :: Tape -> Tape
+  moveright (Tape ls c (r : rs)) = Tape (c:ls) r rs
 #+END_SRC
 
 #+BEGIN_SRC haskell :exports none :tangle Turing.hs
