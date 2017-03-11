@@ -1307,18 +1307,48 @@ You evaluate this by treating it as equivalent to
 
 We need to do something like
 
-#+BEGIN_SRC haskell :exports code
-  data Dir = Left | Right
+#+BEGIN_SRC haskell :exports none
+  module TuringLang where
 
-  data Val = Char Char | 
+  import TuringCommon
 
-  data Expr = Case [(Char,Expr)]
-            | 
+  data Def = Case [(Char,Block)]
+           | Loop Def
+           | Call
 #+END_SRC
 
 Okay, so part of what I'm trying to figure out is what the structure of this language would be. I think a program is going to need to be a group of /functions/. The different functions are going to be, essentially, "clusters" of states. Each function will involve calling other functions. I was going to suggest having a built in operation that "reads" in the data in the current cell, but I realize now that's not really necessary just because it can only be used once per function. Instead, I think it just needs to be used in the "case" statements. I think one thing I'm having trouble picturing is how the hierarchy of syntactic forms is going to have to look.
 
 So I guess we could do a thing of having every function start with a case statement and then the end of the sequence of statements for each case statement has to be moving in a direction and then (optionally) another function to call. You could have a thing, though, of a function /either/ has to be a case or a loop around a case or just calling another function. Maybe that'd work?
+
+Okay, so we need a descriptor of Turing machines in code so we can translate our language to
+
+The first file we need is going to be a bit of a common file between all of our 
+#+BEGIN_SRC haskell :exports none :tangle TuringCommon.hs
+  module TuringCommon where
+
+  data Val = Blank | Char Char
+
+  data Dir = DLeft | DRight
+
+  data Tape = Tape [Val] Val [Val]
+
+  moveLeft :: Tape -> Tape
+  moveLeft (Tape ls c rs) = 
+#+END_SRC
+
+#+BEGIN_SRC haskell :exports none :tangle Turing.hs
+  module Turing where
+
+  import TuringCommon
+
+  type State = Int
+
+
+  data TM = TM (State -> Val -> (State,Maybe Dir, Maybe Val))
+
+  runMachine :: TM -> Tape
+#+END_SRC
       
 **** The lambda calculi
      So we *don't* want to spend a ton of time on lambda calculi because that's an incredibly deep topic in and of itself, but in just like 10-15 pages we could explain the entire lambda calculus and how things like the peano encodings of data actually work. Since we'll already be really familiar with operational semantics and all of that, it won't be hard for us to go ahead and introduce the rules for beta-reduction and how that works. 
