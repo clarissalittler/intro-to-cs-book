@@ -1253,6 +1253,10 @@ You evaluate this by treating it as equivalent to
      The reason why I want to spend time on this topic is that it's /really/ important for understanding how the modern web behaves.
 
      Like being able to write apps that can pull data from websites has become a completely ubiquitous task. 
+
+     Now, actually writing android apps is way outside the scope of this text. Well, at least it most likely is. Instead we'll be focusing on coding /in/ the browser. 
+
+     The big question, though, is are we going to explain how to run servers in JavaScript in order to explain the server side mess of /providing/ an API or do we just want to leave it opaquely and only focus on writing the code that will fetch the data? That's already not a trivial amount of code because we need to explain networking.
 ***** HTTP: the short version
       All we really need to explain here is the basic structure of requests, what they mean, and how we need to make them. 
 ***** An example API
