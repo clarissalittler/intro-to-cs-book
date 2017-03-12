@@ -1249,6 +1249,10 @@ You evaluate this by treating it as equivalent to
      I'm not sure what'd be good for this. Maybe something like Tumblr because it's complicated enough. We can walk through the idea of making posts and getting user information. Heck, we could even do something like the "bubble burster" app that finds people on the periphery of the social network for you to try following instead. 
 **** Web APIs
      The general concept of an API as well as how it ties into the more common notion of an API for web-apps. 
+
+     The reason why I want to spend time on this topic is that it's /really/ important for understanding how the modern web behaves.
+
+     Like being able to write apps that can pull data from websites has become a completely ubiquitous task. 
 ***** HTTP: the short version
       All we really need to explain here is the basic structure of requests, what they mean, and how we need to make them. 
 ***** An example API
@@ -1294,7 +1298,10 @@ You evaluate this by treating it as equivalent to
      After the walkthrough of this "turing language" our project could be walking through the actual /implementation/ of this system and exercises of how to program in this language.
 
      The other possibility, of course, is that we just *provide* the Turissembly implementation rather than walkingthrough how to write it in the first place.
+***** Turing machines and classes of problems
+      So one thing we /might/ want to talk about are the classic notions of difficulty classes for programming problems. Like P vs. NP etc. The problem is that do to that properly we'd probably have to spend way too much time trying to describe deterministic vs. non-deterministic turing machines. At the same time, it's just such an interesting little footnote on the history of computation. 
 
+      
 ***** A turing language
       So we need a programming language that can easily map down to the state machine description of Turing machine. 
 
