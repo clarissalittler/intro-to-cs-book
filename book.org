@@ -1257,6 +1257,8 @@ You evaluate this by treating it as equivalent to
      Now, actually writing android apps is way outside the scope of this text. Well, at least it most likely is. Instead we'll be focusing on coding /in/ the browser. 
 
      The big question, though, is are we going to explain how to run servers in JavaScript in order to explain the server side mess of /providing/ an API or do we just want to leave it opaquely and only focus on writing the code that will fetch the data? That's already not a trivial amount of code because we need to explain networking.
+
+     How much will we need to explain in order to get through this? I mean there's the basics of HTTP requests and how they're formed as text (because we should definitely explain that it's ultimately text being sent back and forth, just text that's been organized in a standardized way)
 ***** HTTP: the short version
       All we really need to explain here is the basic structure of requests, what they mean, and how we need to make them. 
 ***** An example API
