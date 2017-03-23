@@ -1243,6 +1243,20 @@ You evaluate this by treating it as equivalent to
 *** Classic problems
     This might get blended into other sections, to be honest. What I want is to include some of the classic "you're taking a class on algorithms" problems. We can include topics like sorting and search through data structures, but I think those are also topics that are just so /very/ close to what we'd cover in the ADT sections themselves
 **** Sort
+     In a short chapter on sorting, we'd probably talk about how to analyze the various ways of doing sorts in terms of expected time vs. worst case time. We can also talk about things like divide & conquer strategies. 
+
+     At the same time? One of the issues I have is that when I was first reading intro to CS books these were /really/ boring topics. I mean super boring. So what should we do instead? Is there a good way to motivate things like search and sorting?
+
+     There's an issue here of trying to make introductory computer science and programming compelling. Projects are good for that, but is there *really* a project that motivates this? I mean *really*?
+
+     I've been hoping that something like inventory management or something like that could be useful for motivating sorting and searching, but is that good enough? Does it really do anything useful? 
+
+     Well, let me argue with myself for a bit. It's quite possible that what'll be motivating is just going *extra* hard in the project based structure of the text. We could really introduce all of these topics *only* in the context of discussing how to do various tasks for making the projects work. That's more intensive than I was even thinking, to be honest. I'd sorta been planning to just 
+     + state the projects with their specification
+     + do a bunch of topics
+     + come back to the specification and tie our topics together by going through their implementation
+
+    But maybe the chapters just need to /be/ the implementation? The problem with that approach is that it can so easily get cornered and slogged down by explaining only what's enough to get through the next part of the implementation. If we get slogged down like that, then I think the book will end up being a wreck. No, I think the instructional sections and the implementation sections need to be kept fairly separate. You should be able to just skip around and read the sections 
 **** Search
 *** Interacting with the real world: APIs and standards
 **** Project 4: Web app
