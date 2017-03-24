@@ -1098,6 +1098,18 @@ You evaluate this by treating it as equivalent to
 
 * Meta Notes                                                       :noexport:
   This section is for commentary that doesn't yet fit elsewhere in the book
+** An issue of audience
+   So one of the questions I don't know if I've entirely answered is /who the heck is this book for/
+
+   The idea is that this should be for someone who has maybe a middle school math background and not necessarily any programming experience. What does that /mean/, though, I'm asking myself.
+
+   One of the things I'm wondering about is what /skills/ I actually want someone to come out of this book with.
+
+   So, obviously, I think one of the main things is that they should have a basic understanding of JavaScript. For example, we need to ensure that they understand concepts like iteration, variables, functions, scope etc. 
+
+   That's not all, though. What I want students to come away with is a general sense of computation. I'd been initially thinking of trying to run the book as a polyglot text, but I think at this point I've convinced myself that's not really a good idea. Why? Because I think that it will just reduce us to a lowest common denominator text. One where we might be just including only things that are easily expressed in other languages.
+
+   Of course, what we *could* do is include little snippets explaining how different languages can express some of the same concepts
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
@@ -1256,7 +1268,15 @@ You evaluate this by treating it as equivalent to
      + do a bunch of topics
      + come back to the specification and tie our topics together by going through their implementation
 
-    But maybe the chapters just need to /be/ the implementation? The problem with that approach is that it can so easily get cornered and slogged down by explaining only what's enough to get through the next part of the implementation. If we get slogged down like that, then I think the book will end up being a wreck. No, I think the instructional sections and the implementation sections need to be kept fairly separate. You should be able to just skip around and read the sections 
+    But maybe the chapters just need to /be/ the implementation? The problem with that approach is that it can so easily get cornered and slogged down by explaining only what's enough to get through the next part of the implementation. If we get slogged down like that, then I think the book will end up being a wreck. No, I think the instructional sections and the implementation sections need to be kept fairly separate. You should be able to just skip around and read the sections and still learn as much as possible.
+
+    So. What's our conclusion?
+
+    Well I don't think there's honestly an entertaining way to introduce topics like search and sorting per se. This means, though, that at some point we're just going to have to bite the bullet and just introduce some of these "eat this, it's good for you" topics just because they're sorta standard. Is that a cop out, though?
+
+    That's what I keep struggling with. I feel like there's an organic and natural way of trying to introduce ideas that doesn't feel like a list of topics nor like an artificial tour.
+
+    
 **** Search
 *** Interacting with the real world: APIs and standards
 **** Project 4: Web app
