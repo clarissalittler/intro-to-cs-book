@@ -1109,7 +1109,29 @@ You evaluate this by treating it as equivalent to
 
    That's not all, though. What I want students to come away with is a general sense of computation. I'd been initially thinking of trying to run the book as a polyglot text, but I think at this point I've convinced myself that's not really a good idea. Why? Because I think that it will just reduce us to a lowest common denominator text. One where we might be just including only things that are easily expressed in other languages.
 
-   Of course, what we *could* do is include little snippets explaining how different languages can express some of the same concepts
+   Of course, what we *could* do is include little snippets explaining how different languages can express some of the same concepts. The more I'm thinking about it the more I think this might be a good idea. I could format it cleverly by having something like little inset segments that show how different languages will actually work.
+
+   So, for example, if we're talking about how to define functions we could have something like we're describing how functions work in JavaScript and then we have a block called "In other languages" and we have the syntax for declaring a function in, I don't know, Java, Ruby, and Clojure. We can even do a thing of changing /which/ languages we show in order to only include which languages are relevant rather than forcing ourselves into the least-common-denominator approach that I really was worried about. 
+
+   Further examples:
+   How objects work in Ruby, Java, and...Smalltalk?
+   Iteration in Ruby (using maps and blocks all that) and Python
+   Reading from the console vs. printing to the console in Ruby and Pythong 
+   Modules and namespaces in 
+   Closures and higher order functions in Ruby and C# and clojure
+   
+These kinds of things would demonstrate the idea that whatever we're doing isn't /just/ located to a specific language but is, instead, a part of how the fundamental concepts of computation are expressed in any language. Again, these are just like human languages, where the same things can be expressed in different ways but they're all expressing the same fundamental, universal, notion of computation that is separate from all of these notions of specific language and syntax.
+
+So, stepping back a little bit the question is then /what do I want students to come out of this book knowing/ and the question is still hazier than it probably should be. 
+
+For starters, we want them to know the basics of javascript-the-good-parts. What I mean is that I really just want to cover the parts of the language that show up in Crockford's book plus some extras that come from more modern standards. Like, for example, arrow functions and modules. For the most part, I'm going to try and leave out as many unnecessary edges of JavaScript as possible. This isn't a standard nor a definition of the language. I don't need to pretend it is. This is a dang book about programming and computer science.
+
+Next, I want to convey that the basic /structure/ of programming looks the same no matter what language you're using. There's always a way to do the same set of actions multiple times. There's always a way to branch in your code. There's always a way to control the visibility of code. There's always a way to reify sequences of code into functions. There's always a way to store data and control state. All of these things exist in every programming language, no matter what. Some languages may make tasks easier in some cases and harder than others. That's okay and ends up being a personal preference to everyone. I want to convey my own extremely blase attitude about what makes a good language, because fundamentally /I don't care/ and I don't think other people should particularly care either unless there is *a very specific use case*.
+
+Beyond those general lessons, what skills do I want to teach?
+
+I want to teach soft skills about reading and writing code, about understanding code and writing specifications. Even having exercises on all of those skills. Beyond that, I also want to explain how 
+   
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
