@@ -1119,6 +1119,7 @@ You evaluate this by treating it as equivalent to
    Reading from the console vs. printing to the console in Ruby and Pythong 
    Modules and namespaces in 
    Closures and higher order functions in Ruby and C# and clojure
+   Code flexability and metaprogramming in multiple languages
    
 These kinds of things would demonstrate the idea that whatever we're doing isn't /just/ located to a specific language but is, instead, a part of how the fundamental concepts of computation are expressed in any language. Again, these are just like human languages, where the same things can be expressed in different ways but they're all expressing the same fundamental, universal, notion of computation that is separate from all of these notions of specific language and syntax.
 
@@ -1130,7 +1131,9 @@ Next, I want to convey that the basic /structure/ of programming looks the same 
 
 Beyond those general lessons, what skills do I want to teach?
 
-I want to teach soft skills about reading and writing code, about understanding code and writing specifications. Even having exercises on all of those skills. Beyond that, I also want to explain how 
+I want to teach soft skills about reading and writing code, about understanding code and writing specifications. Even having exercises on all of those skills. Beyond that, I also want to explain how to test code and how to have some confidence in how it works. I want to give readers the ability to understand code and check what it does in small cases by simply trying it out by hand in order to get intuition. I know that my ability to do that partly comes from using languages like Haskell for most of my life, but it's not /entirely/ because of that. I think evaluating code by hand is just a good way to get intution. 
+
+This goes back to my long standing rants that we should teach programming more like we teach arithmetic than like we teach languages. We should teach these things in terms of how they operate, how they behave, rather than by just explaining "this is the word that's used here" style. Natural languages are weird and irregular because they evolved, for lack of a better word, /naturally/. Programming languages are *designed*. As *designed* languages, there are reasons for why everything is there the way it is: because someone chose it! Now, that doesn't mean there's necessarily a /good/ reason for it, but it does mean there's some kind of reason. There's "I'm lazy in how I write my parser". There's "this is how C did it". There's "I want my syntax to be simply for metaprogramming". We shuld never treat programming languages as though they simply exist and don't involve so many choices about how every piece of it works. Every piece of the language has some kind use, and we should teach the syntax by its semantics. This is something I've shamefully /not/ done in some of my intro to programming classes, but I still think it's a good idea. Present the computational idea, then the way it's expressed. 
    
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
