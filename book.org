@@ -1174,9 +1174,19 @@ So let's try this outline /yet again/
      We have some simple exercises that do things like present a variable table and ask you to write code that will create that table. 
 **** Functions
      Explain the need for functions in terms of reifying code. That's not the term I would use, but the idea is that we want to save code and be able to use it later. 
+
+     We need to explain how to evaluate functions by hand. We'll explain how they introduce their own variable tables when they start and, if those tables aren't being referenced, they disappear when the function exits. 
+**** Branching
+     Next, we need to talk about how to do branching and if statements. 
 **** Iteration
+     Here we need to explain that it's necessary to take blocks of code and do them multiple times. So what we have are several basic concepts for how to do that. So there's definite iteration, which is for-loops, which can be described as "iteration where you knew how many times you want to do it" and there's also /indefinite/ iteration which is when you don't know how many times you'll be going but you'll know when you're done.
+
+     We can explain this in terms of instructions we follow in real life all the time. 
+
+     We can explain definite iteration in terms of walking down a number of blocks. Indefinite iteration is more like "turn left at the blue house on the corner". Running functions is more like having a set recipe that you know how to execute and being able to call it. Or maybe something like "tying your shoes". It's so rote that you can just treat it as a packaged operation rather than a series of steps that has to be described each time. To do something multiple times with a function, that's something like /recursion/. In order to actually do recursion  
 ***** Definite iteration
 ***** Indefinite iteration
+***** Functions and recursion
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
