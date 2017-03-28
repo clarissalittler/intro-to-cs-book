@@ -1144,8 +1144,39 @@ This helps me think a little better. Maybe the reason why things like classic CS
 
 I think cutting out any topic that isn't about making programming /clear/ would help a lot with trying to make my outline not stink. So far I've been so frustrated by every attempt to outline because it keeps turning into something else. Something I don't want. 
 
+So let's try this outline /yet again/
 
-   
+** Outline again   
+*** Introduction
+**** What is programming?
+**** Why learn it?
+**** What are programming languages?
+**** Why JavaScript
+**** Syntax vs. semantics
+     The general concept of syntax vs. semantics and how every bit of the language has meaning in terms of data and computation.
+*** JavaScript and Basic Computation
+**** Arithmetic
+     The basic concepts of numbers. Show that it's just like arithmetic in math class. Special weird numbers like NaN and Infinity. How those work.
+
+     Explain about evaluating code by hand by piggybacking on things like experience with arithmetic. 
+***** Numbers
+***** Operators
+***** Special numbers
+****** NaN
+****** Infinity
+**** Sequencing
+     The need to sequence code into multiple steps is obvious. This just needs to be s short section showing how to evaluate code by hand.
+
+     We need to explain the difference between sequences and statements.
+**** Storing data: variables
+     Holding onto data. Variables as general pronouns. Variables as storage. The concept of scope and variable tables in handwritten.
+
+     We have some simple exercises that do things like present a variable table and ask you to write code that will create that table. 
+**** Functions
+     Explain the need for functions in terms of reifying code. That's not the term I would use, but the idea is that we want to save code and be able to use it later. 
+**** Iteration
+***** Definite iteration
+***** Indefinite iteration
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
