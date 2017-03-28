@@ -1154,6 +1154,8 @@ So let's try this outline /yet again/
 **** Why JavaScript
 **** Syntax vs. semantics
      The general concept of syntax vs. semantics and how every bit of the language has meaning in terms of data and computation.
+**** Specifications
+     So we should explain how we want to /describe/ the programs we want to write. We want to establish a basic pattern of keywords for how to describe specifications. One of the things that we'll be introducing are keywords that correspond to all of the computational concepts.
 *** JavaScript and Basic Computation
 **** Arithmetic
      The basic concepts of numbers. Show that it's just like arithmetic in math class. Special weird numbers like NaN and Infinity. How those work.
@@ -1177,7 +1179,11 @@ So let's try this outline /yet again/
 
      We need to explain how to evaluate functions by hand. We'll explain how they introduce their own variable tables when they start and, if those tables aren't being referenced, they disappear when the function exits. 
 **** Branching
-     Next, we need to talk about how to do branching and if statements. 
+     Next, we need to talk about how to do branching and if statements. If-statements, along with their else variants, are the basic operations of branching. We can explain informally what it means to do branching in terms of any form of direction. If it's raining, use an umbrella and things like that. We can explain boolean true and false. We can tie that into the notion of expressions
+***** Booleans
+***** Boolean operators
+***** Arithmetic comparisons
+***** If-statements
 **** Iteration
      Here we need to explain that it's necessary to take blocks of code and do them multiple times. So what we have are several basic concepts for how to do that. So there's definite iteration, which is for-loops, which can be described as "iteration where you knew how many times you want to do it" and there's also /indefinite/ iteration which is when you don't know how many times you'll be going but you'll know when you're done.
 
