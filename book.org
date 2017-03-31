@@ -1195,7 +1195,9 @@ So let's try this outline /yet again/
 
      One possibility is to just put it with iteration /here/ because it's yet another form of iteration, but I don't know if that's helpful. We might run into an issue of explaining Too Many Ways to do just one thing and losing the plot early on in the text. 
 
-     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? By now we should hopefully be no more than the first 20-30 pages of the text. Enough that you can have gotten your rough introduction in a single sitting. After iteration is probably time for our first project. Oh, I suppose another reason for having an /advanced iteration/ section is that we just don't have the data structures yet to talk about mappings. We have to introduce arrays first. 
+     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? By now we should hopefully be no more than the first 20-30 pages of the text. Enough that you can have gotten your rough introduction in a single sitting. After iteration is probably time for our first project. Oh, I suppose another reason for having an /advanced iteration/ section is that we just don't have the data structures yet to talk about mappings. We have to introduce arrays first.
+
+     For recursion, I think all we want to try and do is explain that you can use the simple notion of functions calling themselves with changing arguments as a way of simply expressing how iteration is done. I personally don't think there's really a need to talk about blowing the stack and things like that in a modern language. I know that JavaScript doesn't have (yet?) tail-call optimization but that's also a topic that I think isn't worth mentioning in this text. Once you've had solid fundamentals then I think you can absorb it just fine when you need it. Although I'm questioning myself a bit now and wondering if maybe it should be an appendix on how functions are called and all of that. 
 ***** Definite iteration
 ***** Indefinite iteration
 ***** Functions and recursion
