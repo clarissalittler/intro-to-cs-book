@@ -1189,10 +1189,17 @@ So let's try this outline /yet again/
 
      We can explain this in terms of instructions we follow in real life all the time. 
 
-     We can explain definite iteration in terms of walking down a number of blocks. Indefinite iteration is more like "turn left at the blue house on the corner". Running functions is more like having a set recipe that you know how to execute and being able to call it. Or maybe something like "tying your shoes". It's so rote that you can just treat it as a packaged operation rather than a series of steps that has to be described each time. To do something multiple times with a function, that's something like /recursion/. In order to actually do recursion  
+     We can explain definite iteration in terms of walking down a number of blocks. Indefinite iteration is more like "turn left at the blue house on the corner". Running functions is more like having a set recipe that you know how to execute and being able to call it. Or maybe something like "tying your shoes". It's so rote that you can just treat it as a packaged operation rather than a series of steps that has to be described each time. To do something multiple times with a function, that's something like /recursion/. In order to actually do recursion we need to have branching first, so that's an obvious dependency that we have in the game order. 
+
+     Where do we explain mapping though? Because it's really not obvious where that should be introduced. 
+
+     One possibility is to just put it with iteration /here/ because it's yet another form of iteration, but I don't know if that's helpful. We might run into an issue of explaining Too Many Ways to do just one thing and losing the plot early on in the text. 
+
+     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? 
 ***** Definite iteration
 ***** Indefinite iteration
 ***** Functions and recursion
+
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
