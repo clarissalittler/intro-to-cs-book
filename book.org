@@ -1195,7 +1195,7 @@ So let's try this outline /yet again/
 
      One possibility is to just put it with iteration /here/ because it's yet another form of iteration, but I don't know if that's helpful. We might run into an issue of explaining Too Many Ways to do just one thing and losing the plot early on in the text. 
 
-     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? 
+     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? By now we should hopefully be no more than the first 20-30 pages of the text. Enough that you can have gotten your rough introduction in a single sitting. After iteration is probably time for our first project. Oh, I suppose another reason for having an /advanced iteration/ section is that we just don't have the data structures yet to talk about mappings. We have to introduce arrays first. 
 ***** Definite iteration
 ***** Indefinite iteration
 ***** Functions and recursion
