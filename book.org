@@ -1210,8 +1210,17 @@ So let's try this outline /yet again/
       
       We want to get across the pattern of iterating over them. For each form of data we should introduce the way it's used. 
 
-      So we've introduced booleans/if-statements as a pair, we can explain that the normal for-loop "definite iteration" is the corresponding operation on numbers, and now we can show the for-loop version that corresponds to using arrays 
+      So we've introduced booleans/if-statements as a pair, we can explain that the normal for-loop "definite iteration" is the corresponding operation on numbers, and now we can show the for-loop version that corresponds to using arrays.
+
+      After that, there's really not much to say about arrays other than ensuring it's clear that we can have arrays of arrays or indeed of any data type you want
 ***** Objects
+      Now there's a lot to talk about with objects here. There's an explanation of /methods/. There's an explanation of =this=, there's an explanation of /constructors/. There's just a ton of material that needs to be covered in all of this. 
+
+      I don't /really/ want to introduce it in stages but I think explaining the need for constructors and prototypes and all of that may take us out of the initial scope of using objects. Prototypes are going to belong in our sections on how to organize and reuse code, more than anything else. 
+
+      The first way of introducing objects should maybe be focused on them as key/value pairs and on the methods they can have and basic constructor/this manipulation.
+
+      We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
