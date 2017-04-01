@@ -1198,10 +1198,20 @@ So let's try this outline /yet again/
      So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? By now we should hopefully be no more than the first 20-30 pages of the text. Enough that you can have gotten your rough introduction in a single sitting. After iteration is probably time for our first project. Oh, I suppose another reason for having an /advanced iteration/ section is that we just don't have the data structures yet to talk about mappings. We have to introduce arrays first.
 
      For recursion, I think all we want to try and do is explain that you can use the simple notion of functions calling themselves with changing arguments as a way of simply expressing how iteration is done. I personally don't think there's really a need to talk about blowing the stack and things like that in a modern language. I know that JavaScript doesn't have (yet?) tail-call optimization but that's also a topic that I think isn't worth mentioning in this text. Once you've had solid fundamentals then I think you can absorb it just fine when you need it. Although I'm questioning myself a bit now and wondering if maybe it should be an appendix on how functions are called and all of that. 
+
+     So back to the matter at hand. Recursion is useful to explain because it's helpful for having iteration go across the /structure/ of the data. Rigid iteration constructs are too linear. The non-linear call structure is what let's you do cute and interesting things. 
 ***** Definite iteration
 ***** Indefinite iteration
 ***** Functions and recursion
+**** Aggregate data
+     There are two basic forms of aggregate data in JavaScript. There's objects and there's arrays. Arrays in Javascript function as lists. 
+***** Arrays
+      The things we want to cover in terms of arrays are the basic interface for adding and removing elements, modifying elements, etc.
+      
+      We want to get across the pattern of iterating over them. For each form of data we should introduce the way it's used. 
 
+      So we've introduced booleans/if-statements as a pair, we can explain that the normal for-loop "definite iteration" is the corresponding operation on numbers, and now we can show the for-loop version that corresponds to using arrays 
+***** Objects
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
