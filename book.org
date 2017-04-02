@@ -1226,8 +1226,10 @@ So let's try this outline /yet again/
      So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
 
      For example, /file formats/. That's actually kind of a cool topic. Way cooler than it might seem. The point is that structured data is how programs can talk to each other. So, for example, we can talk about STL for 3D printers. We can talk about SVG and how it's something programmable. We can talk about cvs as a way of writing and storing data that can  be used in other contexts. 
+**** Understanding algorithms
+     I think there should actually be a section on understanding classic problems for the purpose of formulating /how/ we come up with algorithms and how they work. Now, didn't we say that we shouldn't be focusing so much on classic CS problems? Yes, and I still stand by that. Rather than systematically doing old problems like the books I learned from, what I think would be a lot better is picking truly /interesting/ problems and examples of how data is structured. Like /graphs/. Graphs and how we represent them affects how all of our algorithms work and their computational complexity. 
 
-     
+     Yes, I do think we need to spend some time on big-O notation and about time/space usage. 
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
