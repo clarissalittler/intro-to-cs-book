@@ -1220,7 +1220,14 @@ So let's try this outline /yet again/
 
       The first way of introducing objects should maybe be focused on them as key/value pairs and on the methods they can have and basic constructor/this manipulation.
 
-      We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept
+      We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept of organizing data and modularity. Closures + objects are a great little namespace hack and one that controls private data. 
+**** Organizing data
+**** Connecting to the real world
+     So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
+
+     For example, /file formats/. That's actually kind of a cool topic. Way cooler than it might seem. The point is that structured data is how programs can talk to each other. So, for example, we can talk about STL for 3D printers. We can talk about SVG and how it's something programmable. We can talk about cvs as a way of writing and storing data that can  be used in other contexts. 
+
+     
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
