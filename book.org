@@ -1222,6 +1222,24 @@ So let's try this outline /yet again/
 
       We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept of organizing data and modularity. Closures + objects are a great little namespace hack and one that controls private data. 
 **** Organizing data
+     Here's where we should probably start talking about ideas like how to do things like code hiding and controlling what's visible. We should also be talking about prototypes and how they can be used to provide common interfaces to code. 
+
+     Once we're talking about prototyping then we need to deal with more details about how /this/ works and all of that. By the outline as it stands we've spent very little time talking about /how/ objects work. 
+
+     We'll need to go back to constructors and talk about how
+     + every object has a constructor
+     + every constructor has a prototype
+     + and we'll need to give the basic outline of how properties are found in objects by ascending the prototype tree
+
+We'll need to talk about object oriented design patterns of organization. I'm mostly familiar with gang-of-four style patterns, but in order to write this section I'll try to come up with some examples based on the flexibility of the prototype model. I suppose one thing that's very true of prototypes is that they can be modified during the execution of the program, unlike the very static notion of classes that you have in something like c++ or java. 
+
+Now, that being said you can futz with class structure in Ruby just as much (or maybe even more?) than you can with prototypes but I think the /nature/ of prototypes makes for a really easy to understand the methods of inheritance. 
+
+IIRC the right way to do things like class variables in JavaScript is as properties of the prototype. 
+
+Is it here or later when we should do the whole "closures can simulate objects" thing. I'm not sure how much detail to go into on that one, though. There's the cute examples at the beginning of Let over Lambda on the connection between objects and closures. I think Graham's book on ANSI common lisp also had some examples on this topic, despite some of the idiosynractic code that I know the book has. 
+
+This is probably a good section to have a number of puzzles in terms of how to write code to achieve certain results. So to give, say, some form of trace of how the program should execute and then partial code and ask everyone to fill in what the code should be. We can do this to demonstrate what it means for properties to be private or for there to be class methods and properties and things like that. 
 
 *** Connecting to the real world
     So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
