@@ -1222,27 +1222,47 @@ So let's try this outline /yet again/
 
       We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept of organizing data and modularity. Closures + objects are a great little namespace hack and one that controls private data. 
 **** Organizing data
-**** Connecting to the real world
-     So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
 
-     For example, /file formats/. That's actually kind of a cool topic. Way cooler than it might seem. The point is that structured data is how programs can talk to each other. So, for example, we can talk about STL for 3D printers. We can talk about SVG and how it's something programmable. We can talk about cvs as a way of writing and storing data that can  be used in other contexts. 
-**** Understanding algorithms
-     I think there should actually be a section on understanding classic problems for the purpose of formulating /how/ we come up with algorithms and how they work. Now, didn't we say that we shouldn't be focusing so much on classic CS problems? Yes, and I still stand by that. Rather than systematically doing old problems like the books I learned from, what I think would be a lot better is picking truly /interesting/ problems and examples of how data is structured. Like /graphs/. Graphs and how we represent them affects how all of our algorithms work and their computational complexity. 
+*** Connecting to the real world
+    So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
 
-     Yes, I do think we need to spend some time on big-O notation and about time/space usage. It's not /that/ huge of a topic for an intro book, but we could actually iteratively go through trying to solve some problems like connectedness and discuss how representations of data affect how efficient our algorithms can be. I mean you might think "hey, let's represent a graph as a generalized linked list" but it doesn't actually work like that efficiently. 
+    For example, /file formats/. That's actually kind of a cool topic. Way cooler than it might seem. The point is that structured data is how programs can talk to each other. So, for example, we can talk about STL for 3D printers. We can talk about SVG and how it's something programmable. We can talk about cvs as a way of writing and storing data that can  be used in other contexts. 
 
-     We can talk about memoization and dynamic programming. We can talk about tricks to make your code more efficient and the kinds of things that would be good practice for understanding algorithms. We don't want to /teach/ a class on algorithms, which is a just massive task, but we want to give an understanding on how you representation of data structures matters, how to /read pseudo code/ and translate it into different languages. Actually the more I think about it the more I think that might be a good idea. We can sit there and go through some simple problems like, say, quicksort or connectedness of graphs or reversing linked lists and show the pseudo-code and how to translate that by explaining it in terms of our already established key words and things. I think this could be a really useful way of getting across how computation works.
-**** Theory
-     In the theory chapters of the book, which I actually think should be spread out throughout the text, we want to do something like introduce the idea that computation is a thing that exists independent of a particular design of hardware or of a particular way of describing how computation works. So, for example, we can first introduce the lambda calculus which is the simplest "programming language" as a way of describing computation.
+    We also want to talk about things like APIs for websites, so that we can give an example of how to write code that will interact with a site.
 
-     In the lambda calculus we can do some cute things involving representations of data, church encodings, which I think is helpful for teaching you about how data can in some sense be defined by how it's used. I mean, that's what the church encoding *is*. It's the idea that you can represent data by simply describing a function to deconstruct it. 
+    This means, though, that we'll need to introduce the topics of requests work over the internet. One of the big elements there is going to be HTTP and how it works. So we'll cover the various request types and how the handshake works in order to talk to a website. We'll cover the idea of HTTP being a stateless protocol and how to the typical notion of api-keys or authorization tokens works. We can come up with some cute examples of programs that, say, using twitter or tumblr's api to put together some kind of data about slices of social media as graphs or, say, what the most popular posts in your own friend's list is. 
 
-     Later on, once we talk about things like assembly languages and how code executes on a computer we can talk about how the Turing machine works and how to describe algorithms for it and how to simulate it. We can talk about its role in the history of computation. We can use it to talk about the complexity of algorithms and about the P vs. NP problem. We don't have to spend a lot of time on this topic, but even just 10-20 pages I think could do a lot of good for making these topics clear even without a formal CS education.
+    There's also things like flickr's api (https://www.flickr.com/services/api/) which I've heard good things about. No matter what, we need some *cute* examples of using website APIs. 
 
-     Finally, I want a short chapter on the limits of computation. I want it to be a self-contained explanation of some of the paradoxes that show there /are/ problems that a computer can never solve. When I was teaching theoretical computer science, one of the things that was pretty hard to get across was exactly /how/ the limits of computation affect things and how you know some problems are unsolvable. I think introducing it early on in someone's programming education would probably be helpful. We can just drop this in, maybe even early on or once we start talking about real projects and algorithms, and we can get across some ideas of limitations. The most accessible version of the argument I've given involves arguing about the finiteness of programs and creating the infinite table for the diagonalization argument. There's also the liar paradox version, which could still work but for some reason I think causes a lot of consternation. Eh, now that I'm thinking about it I think it'd probably be useful to just /start/ the chapter with the liar paradox, then explain the concept of programs that can read in other programs and execute them, and then we can do a thing where we show how to write a program that executes the liar paradox. 
-***** Lambda calculus
-***** Turing machines
-***** Limits of computation
+    One question I'm torn on is how much time to really spend on communication over the internet. It's a deep topic and we could go arbitrarily deep onto this. We could cover the level of sockets and tcp vs. udp, or we could just start at a high level Node interface for making these connections.
+     
+    Mostly, the goal here is to always keep things from being /more/ mystified. We need to make the technology if not completely elcudiated then at least no longer feel magical. We could include a little appendix that goes into more detail about how these connections across the internet work under the hood, but let the main body of the text be more streamlined.
+
+    There's probably a stream and/or request handling library that's as simple as Python's requests library or their urllib2 library. I'll just have to figure that out before writing this section, obviously.
+**** File formats
+**** Making programs talk to websites
+***** HTTP
+***** The hardware that makes the internet tick
+***** Node libraries for HTTP requests
+***** Website API
+*** Reading and writing code
+*** Understanding algorithms
+    I think there should actually be a section on understanding classic problems for the purpose of formulating /how/ we come up with algorithms and how they work. Now, didn't we say that we shouldn't be focusing so much on classic CS problems? Yes, and I still stand by that. Rather than systematically doing old problems like the books I learned from, what I think would be a lot better is picking truly /interesting/ problems and examples of how data is structured. Like /graphs/. Graphs and how we represent them affects how all of our algorithms work and their computational complexity. 
+
+    Yes, I do think we need to spend some time on big-O notation and about time/space usage. It's not /that/ huge of a topic for an intro book, but we could actually iteratively go through trying to solve some problems like connectedness and discuss how representations of data affect how efficient our algorithms can be. I mean you might think "hey, let's represent a graph as a generalized linked list" but it doesn't actually work like that efficiently. 
+
+    We can talk about memoization and dynamic programming. We can talk about tricks to make your code more efficient and the kinds of things that would be good practice for understanding algorithms. We don't want to /teach/ a class on algorithms, which is a just massive task, but we want to give an understanding on how you representation of data structures matters, how to /read pseudo code/ and translate it into different languages. Actually the more I think about it the more I think that might be a good idea. We can sit there and go through some simple problems like, say, quicksort or connectedness of graphs or reversing linked lists and show the pseudo-code and how to translate that by explaining it in terms of our already established key words and things. I think this could be a really useful way of getting across how computation works.
+*** Theory
+    In the theory chapters of the book, which I actually think should be spread out throughout the text, we want to do something like introduce the idea that computation is a thing that exists independent of a particular design of hardware or of a particular way of describing how computation works. So, for example, we can first introduce the lambda calculus which is the simplest "programming language" as a way of describing computation.
+
+    In the lambda calculus we can do some cute things involving representations of data, church encodings, which I think is helpful for teaching you about how data can in some sense be defined by how it's used. I mean, that's what the church encoding *is*. It's the idea that you can represent data by simply describing a function to deconstruct it. 
+
+    Later on, once we talk about things like assembly languages and how code executes on a computer we can talk about how the Turing machine works and how to describe algorithms for it and how to simulate it. We can talk about its role in the history of computation. We can use it to talk about the complexity of algorithms and about the P vs. NP problem. We don't have to spend a lot of time on this topic, but even just 10-20 pages I think could do a lot of good for making these topics clear even without a formal CS education.
+
+    Finally, I want a short chapter on the limits of computation. I want it to be a self-contained explanation of some of the paradoxes that show there /are/ problems that a computer can never solve. When I was teaching theoretical computer science, one of the things that was pretty hard to get across was exactly /how/ the limits of computation affect things and how you know some problems are unsolvable. I think introducing it early on in someone's programming education would probably be helpful. We can just drop this in, maybe even early on or once we start talking about real projects and algorithms, and we can get across some ideas of limitations. The most accessible version of the argument I've given involves arguing about the finiteness of programs and creating the infinite table for the diagonalization argument. There's also the liar paradox version, which could still work but for some reason I think causes a lot of consternation. Eh, now that I'm thinking about it I think it'd probably be useful to just /start/ the chapter with the liar paradox, then explain the concept of programs that can read in other programs and execute them, and then we can do a thing where we show how to write a program that executes the liar paradox. 
+**** Lambda calculus
+**** Turing machines
+**** Limits of computation
 ** A project based organization
    I'm thinking that we should reorganize the text to be "by project". Like different sections introduce projects and then we give all of the concepts and skills that are needed for the project and /then/ we actually explain how the project works at the end. 
 
@@ -1384,7 +1404,7 @@ So let's try this outline /yet again/
        Oh, right, I had an idea of explaining how to figure out if you were generating proper maps for a rogue-like game. Like figuring out what the connected components are and if the exit and entrance are both in the same connected component. Or if you've got a messed up setting that involves a bunch of "one way" passages using Hamiltonian paths to determine if the path is even solvable. Those kinds of things. 
 ****** Hamiltonian paths
 ****** Connected components
-**** Project 3: Implementation
+**** Project 3: Implementation 
 *** Classic problems
     This might get blended into other sections, to be honest. What I want is to include some of the classic "you're taking a class on algorithms" problems. We can include topics like sorting and search through data structures, but I think those are also topics that are just so /very/ close to what we'd cover in the ADT sections themselves
 **** Sort
@@ -1410,7 +1430,7 @@ So let's try this outline /yet again/
     That's what I keep struggling with. I feel like there's an organic and natural way of trying to introduce ideas that doesn't feel like a list of topics nor like an artificial tour.
 
     
-**** Search
+**** Searcht
 *** Interacting with the real world: APIs and standards
 **** Project 4: Web app
      I'm not sure what'd be good for this. Maybe something like Tumblr because it's complicated enough. We can walk through the idea of making posts and getting user information. Heck, we could even do something like the "bubble burster" app that finds people on the periphery of the social network for you to try following instead. 
