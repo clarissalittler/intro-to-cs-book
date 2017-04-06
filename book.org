@@ -1147,6 +1147,18 @@ I think cutting out any topic that isn't about making programming /clear/ would 
 So let's try this outline /yet again/
 
 ** Outline again   
+*** Exercise styles
+    Okay, one of the things that's going to be different about this book versus most books on computer science or programming is a plethora of problems of varying size. There'll be smaller exercises as well as larger projects. 
+
+    So what kinds of exercises are we going to have? 
+
+    First, we'll have multiple choice questions where it'll be showing an example of code or a concept and ask some question about it. Multiple choice questions, when done right, can actually force you to think really hard about how things work. They're fast but meaningful.
+
+    Next, we'll have "fill in the blank" questions where you'll be dealing with partial listings of code and are given some kind of data about what happens when the code is run. Once you have that the question is to fill in all of the blanks in the code that are needed to make that happen. These will probably also be some of the easier exercises, just hammering home the concepts so that you can get more comfortable with the syntax and concepts of the language. 
+
+    Third, there's going to be 
+
+
 *** Introduction
 **** What is programming?
 **** Why learn it?
