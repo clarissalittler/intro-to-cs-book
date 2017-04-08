@@ -1156,7 +1156,9 @@ So let's try this outline /yet again/
 
     Next, we'll have "fill in the blank" questions where you'll be dealing with partial listings of code and are given some kind of data about what happens when the code is run. Once you have that the question is to fill in all of the blanks in the code that are needed to make that happen. These will probably also be some of the easier exercises, just hammering home the concepts so that you can get more comfortable with the syntax and concepts of the language. 
 
-    Third, there's going to be 
+    Third, there's going to be small programming exercises where we'll be asking them to solve a particular programming problem with certain parameters around it. 
+
+    I think combining a few different styles of exercise would be useful for learning. Mostly because good exercises are always the part you remember from math and science texts. Like, I still remember the problem of figuring out the time it takes a chain with a given density \delta to fall off a ledge if the ledge was frictionless. I remember problems like that from homework even ten fifteen years later. Why? Because it's the homework questions and the test questions where everything would end up clicking in my head. So that being said I think it'd be really great to *finally* write a CS text that does something similar. I mean, the closest I've ever seen was SICP but SICP isn't very accessible to people without a heavy math background. As I've said elsewhere, I think targeting higher level audiences is cheating for an intro textbook
 
 
 *** Introduction
