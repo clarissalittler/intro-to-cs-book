@@ -1146,7 +1146,7 @@ I think cutting out any topic that isn't about making programming /clear/ would 
 
 So let's try this outline /yet again/
 
-** Outline again   
+** Outline again
 *** Exercise styles
     Okay, one of the things that's going to be different about this book versus most books on computer science or programming is a plethora of problems of varying size. There'll be smaller exercises as well as larger projects. 
 
@@ -1163,6 +1163,7 @@ So let's try this outline /yet again/
 
 *** Introduction
 **** What is programming?
+     One thing I keep debating on is just *how* much we should be talking about 
 **** Why learn it?
 **** What are programming languages?
 **** Why JavaScript

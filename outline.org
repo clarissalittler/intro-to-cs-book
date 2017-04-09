@@ -1,0 +1,199 @@
+* Outlining
+** An issue of audience
+   So one of the questions I don't know if I've entirely answered is /who the heck is this book for/
+
+   The idea is that this should be for someone who has maybe a middle school math background and not necessarily any programming experience. What does that /mean/, though, I'm asking myself.
+
+   One of the things I'm wondering about is what /skills/ I actually want someone to come out of this book with.
+
+   So, obviously, I think one of the main things is that they should have a basic understanding of JavaScript. For example, we need to ensure that they understand concepts like iteration, variables, functions, scope etc. 
+
+   That's not all, though. What I want students to come away with is a general sense of computation. I'd been initially thinking of trying to run the book as a polyglot text, but I think at this point I've convinced myself that's not really a good idea. Why? Because I think that it will just reduce us to a lowest common denominator text. One where we might be just including only things that are easily expressed in other languages.
+
+   Of course, what we *could* do is include little snippets explaining how different languages can express some of the same concepts. The more I'm thinking about it the more I think this might be a good idea. I could format it cleverly by having something like little inset segments that show how different languages will actually work.
+
+   So, for example, if we're talking about how to define functions we could have something like we're describing how functions work in JavaScript and then we have a block called "In other languages" and we have the syntax for declaring a function in, I don't know, Java, Ruby, and Clojure. We can even do a thing of changing /which/ languages we show in order to only include which languages are relevant rather than forcing ourselves into the least-common-denominator approach that I really was worried about. 
+
+   Further examples:
+   How objects work in Ruby, Java, and...Smalltalk?
+   Iteration in Ruby (using maps and blocks all that) and Python
+   Reading from the console vs. printing to the console in Ruby and Pythong 
+   Modules and namespaces in 
+   Closures and higher order functions in Ruby and C# and clojure
+   Code flexability and metaprogramming in multiple languages
+   
+These kinds of things would demonstrate the idea that whatever we're doing isn't /just/ located to a specific language but is, instead, a part of how the fundamental concepts of computation are expressed in any language. Again, these are just like human languages, where the same things can be expressed in different ways but they're all expressing the same fundamental, universal, notion of computation that is separate from all of these notions of specific language and syntax.
+
+So, stepping back a little bit the question is then /what do I want students to come out of this book knowing/ and the question is still hazier than it probably should be. 
+
+For starters, we want them to know the basics of javascript-the-good-parts. What I mean is that I really just want to cover the parts of the language that show up in Crockford's book plus some extras that come from more modern standards. Like, for example, arrow functions and modules. For the most part, I'm going to try and leave out as many unnecessary edges of JavaScript as possible. This isn't a standard nor a definition of the language. I don't need to pretend it is. This is a dang book about programming and computer science.
+
+Next, I want to convey that the basic /structure/ of programming looks the same no matter what language you're using. There's always a way to do the same set of actions multiple times. There's always a way to branch in your code. There's always a way to control the visibility of code. There's always a way to reify sequences of code into functions. There's always a way to store data and control state. All of these things exist in every programming language, no matter what. Some languages may make tasks easier in some cases and harder than others. That's okay and ends up being a personal preference to everyone. I want to convey my own extremely blase attitude about what makes a good language, because fundamentally /I don't care/ and I don't think other people should particularly care either unless there is *a very specific use case*.
+
+Beyond those general lessons, what skills do I want to teach?
+
+I want to teach soft skills about reading and writing code, about understanding code and writing specifications. Even having exercises on all of those skills. Beyond that, I also want to explain how to test code and how to have some confidence in how it works. I want to give readers the ability to understand code and check what it does in small cases by simply trying it out by hand in order to get intuition. I know that my ability to do that partly comes from using languages like Haskell for most of my life, but it's not /entirely/ because of that. I think evaluating code by hand is just a good way to get intution. 
+
+This goes back to my long standing rants that we should teach programming more like we teach arithmetic than like we teach languages. We should teach these things in terms of how they operate, how they behave, rather than by just explaining "this is the word that's used here" style. Natural languages are weird and irregular because they evolved, for lack of a better word, /naturally/. Programming languages are *designed*. As *designed* languages, there are reasons for why everything is there the way it is: because someone chose it! Now, that doesn't mean there's necessarily a /good/ reason for it, but it does mean there's some kind of reason. There's "I'm lazy in how I write my parser". There's "this is how C did it". There's "I want my syntax to be simply for metaprogramming". We shuld never treat programming languages as though they simply exist and don't involve so many choices about how every piece of it works. Every piece of the language has some kind use, and we should teach the syntax by its semantics. This is something I've shamefully /not/ done in some of my intro to programming classes, but I still think it's a good idea. Present the computational idea, then the way it's expressed. 
+
+Stepping back for a few notches here: 
+  So we've argued that we need to present a combination of "soft" and "hard" skills. Why? Why try and do that in just one book? Well, I'd argue because I want to provide a book that will demystify. That might be one of unifying themes of the text: to make technology feel less mysterious. Maybe rather than trying to make a massively comprehensive text, instead I need to just go with covering what's needed to make it feel /less mysterious/. See, my problem lately has been that I've been feeling like my plans for the book are just growing and growing and growing. It's been going from a small and reasonable book to being a book that's trying to cover everything possible. 
+
+So, instead, let's go back to the big picture: we want to demystify programming. We want to make it clear how to write code and how to read code and what it all means. We want to teach /a/ programming language in a way that makes it very clear how to use /any/ programming language. We also want to demystify programming in the real world by showing how things like web APIs and file formats work. We want to explain how the technology works on some level. 
+
+This helps me think a little better. Maybe the reason why things like classic CS problems like searching and sorting and path-finding in graphs didn't feel like they fit very well was because, well, they *didn't*. They don't fit into a book that's trying to teach programming on some very fundamental level and attempting to demystify how all of this works. On the other hand, chapters about some of the theory of computer science would absolutely fit into this because they're about what programming /is/.
+
+I think cutting out any topic that isn't about making programming /clear/ would help a lot with trying to make my outline not stink. So far I've been so frustrated by every attempt to outline because it keeps turning into something else. Something I don't want. 
+
+So let's try this outline /yet again/
+
+** Outline again
+*** Exercise styles
+    Okay, one of the things that's going to be different about this book versus most books on computer science or programming is a plethora of problems of varying size. There'll be smaller exercises as well as larger projects. 
+
+    So what kinds of exercises are we going to have? 
+
+    First, we'll have multiple choice questions where it'll be showing an example of code or a concept and ask some question about it. Multiple choice questions, when done right, can actually force you to think really hard about how things work. They're fast but meaningful.
+
+    Next, we'll have "fill in the blank" questions where you'll be dealing with partial listings of code and are given some kind of data about what happens when the code is run. Once you have that the question is to fill in all of the blanks in the code that are needed to make that happen. These will probably also be some of the easier exercises, just hammering home the concepts so that you can get more comfortable with the syntax and concepts of the language. 
+
+    Third, there's going to be small programming exercises where we'll be asking them to solve a particular programming problem with certain parameters around it. 
+
+    I think combining a few different styles of exercise would be useful for learning. Mostly because good exercises are always the part you remember from math and science texts. Like, I still remember the problem of figuring out the time it takes a chain with a given density \delta to fall off a ledge if the ledge was frictionless. I remember problems like that from homework even ten fifteen years later. Why? Because it's the homework questions and the test questions where everything would end up clicking in my head. So that being said I think it'd be really great to *finally* write a CS text that does something similar. I mean, the closest I've ever seen was SICP but SICP isn't very accessible to people without a heavy math background. As I've said elsewhere, I think targeting higher level audiences is cheating for an intro textbook
+
+
+*** Introduction
+**** What is programming?
+     One thing I keep debating on is just *how* much we should be talking about 
+**** Why learn it?
+**** What are programming languages?
+**** Why JavaScript
+**** Syntax vs. semantics
+     The general concept of syntax vs. semantics and how every bit of the language has meaning in terms of data and computation.
+**** Specifications
+     So we should explain how we want to /describe/ the programs we want to write. We want to establish a basic pattern of keywords for how to describe specifications. One of the things that we'll be introducing are keywords that correspond to all of the computational concepts.
+*** JavaScript and Basic Computation
+**** Arithmetic
+     The basic concepts of numbers. Show that it's just like arithmetic in math class. Special weird numbers like NaN and Infinity. How those work.
+
+     Explain about evaluating code by hand by piggybacking on things like experience with arithmetic. 
+***** Numbers
+***** Operators
+***** Special numbers
+****** NaN
+****** Infinity
+**** Sequencing
+     The need to sequence code into multiple steps is obvious. This just needs to be s short section showing how to evaluate code by hand.
+
+     We need to explain the difference between sequences and statements.
+**** Storing data: variables
+     Holding onto data. Variables as general pronouns. Variables as storage. The concept of scope and variable tables in handwritten.
+
+     We have some simple exercises that do things like present a variable table and ask you to write code that will create that table. 
+**** Functions
+     Explain the need for functions in terms of reifying code. That's not the term I would use, but the idea is that we want to save code and be able to use it later. 
+
+     We need to explain how to evaluate functions by hand. We'll explain how they introduce their own variable tables when they start and, if those tables aren't being referenced, they disappear when the function exits. 
+**** Branching
+     Next, we need to talk about how to do branching and if statements. If-statements, along with their else variants, are the basic operations of branching. We can explain informally what it means to do branching in terms of any form of direction. If it's raining, use an umbrella and things like that. We can explain boolean true and false. We can tie that into the notion of expressions
+***** Booleans
+***** Boolean operators
+***** Arithmetic comparisons
+***** If-statements
+**** Iteration
+     Here we need to explain that it's necessary to take blocks of code and do them multiple times. So what we have are several basic concepts for how to do that. So there's definite iteration, which is for-loops, which can be described as "iteration where you knew how many times you want to do it" and there's also /indefinite/ iteration which is when you don't know how many times you'll be going but you'll know when you're done.
+
+     We can explain this in terms of instructions we follow in real life all the time. 
+
+     We can explain definite iteration in terms of walking down a number of blocks. Indefinite iteration is more like "turn left at the blue house on the corner". Running functions is more like having a set recipe that you know how to execute and being able to call it. Or maybe something like "tying your shoes". It's so rote that you can just treat it as a packaged operation rather than a series of steps that has to be described each time. To do something multiple times with a function, that's something like /recursion/. In order to actually do recursion we need to have branching first, so that's an obvious dependency that we have in the game order. 
+
+     Where do we explain mapping though? Because it's really not obvious where that should be introduced. 
+
+     One possibility is to just put it with iteration /here/ because it's yet another form of iteration, but I don't know if that's helpful. We might run into an issue of explaining Too Many Ways to do just one thing and losing the plot early on in the text. 
+
+     So why don't we do a "revisiting iteration" maybe a bit later on when we're doing more advanced coding? By now we should hopefully be no more than the first 20-30 pages of the text. Enough that you can have gotten your rough introduction in a single sitting. After iteration is probably time for our first project. Oh, I suppose another reason for having an /advanced iteration/ section is that we just don't have the data structures yet to talk about mappings. We have to introduce arrays first.
+
+     For recursion, I think all we want to try and do is explain that you can use the simple notion of functions calling themselves with changing arguments as a way of simply expressing how iteration is done. I personally don't think there's really a need to talk about blowing the stack and things like that in a modern language. I know that JavaScript doesn't have (yet?) tail-call optimization but that's also a topic that I think isn't worth mentioning in this text. Once you've had solid fundamentals then I think you can absorb it just fine when you need it. Although I'm questioning myself a bit now and wondering if maybe it should be an appendix on how functions are called and all of that. 
+
+     So back to the matter at hand. Recursion is useful to explain because it's helpful for having iteration go across the /structure/ of the data. Rigid iteration constructs are too linear. The non-linear call structure is what let's you do cute and interesting things. 
+***** Definite iteration
+***** Indefinite iteration
+***** Functions and recursion
+**** Aggregate data
+     There are two basic forms of aggregate data in JavaScript. There's objects and there's arrays. Arrays in Javascript function as lists. 
+***** Arrays
+      The things we want to cover in terms of arrays are the basic interface for adding and removing elements, modifying elements, etc.
+      
+      We want to get across the pattern of iterating over them. For each form of data we should introduce the way it's used. 
+
+      So we've introduced booleans/if-statements as a pair, we can explain that the normal for-loop "definite iteration" is the corresponding operation on numbers, and now we can show the for-loop version that corresponds to using arrays.
+
+      After that, there's really not much to say about arrays other than ensuring it's clear that we can have arrays of arrays or indeed of any data type you want
+***** Objects
+      Now there's a lot to talk about with objects here. There's an explanation of /methods/. There's an explanation of =this=, there's an explanation of /constructors/. There's just a ton of material that needs to be covered in all of this. 
+
+      I don't /really/ want to introduce it in stages but I think explaining the need for constructors and prototypes and all of that may take us out of the initial scope of using objects. Prototypes are going to belong in our sections on how to organize and reuse code, more than anything else. 
+
+      The first way of introducing objects should maybe be focused on them as key/value pairs and on the methods they can have and basic constructor/this manipulation.
+
+      We can delay the sections on hiding data with closures and things like that until later, once we're talking about the concept of organizing data and modularity. Closures + objects are a great little namespace hack and one that controls private data. 
+**** Organizing data
+     Here's where we should probably start talking about ideas like how to do things like code hiding and controlling what's visible. We should also be talking about prototypes and how they can be used to provide common interfaces to code. 
+
+     Once we're talking about prototyping then we need to deal with more details about how /this/ works and all of that. By the outline as it stands we've spent very little time talking about /how/ objects work. 
+
+     We'll need to go back to constructors and talk about how
+     + every object has a constructor
+     + every constructor has a prototype
+     + and we'll need to give the basic outline of how properties are found in objects by ascending the prototype tree
+
+We'll need to talk about object oriented design patterns of organization. I'm mostly familiar with gang-of-four style patterns, but in order to write this section I'll try to come up with some examples based on the flexibility of the prototype model. I suppose one thing that's very true of prototypes is that they can be modified during the execution of the program, unlike the very static notion of classes that you have in something like c++ or java. 
+
+Now, that being said you can futz with class structure in Ruby just as much (or maybe even more?) than you can with prototypes but I think the /nature/ of prototypes makes for a really easy to understand the methods of inheritance. 
+
+IIRC the right way to do things like class variables in JavaScript is as properties of the prototype. 
+
+Is it here or later when we should do the whole "closures can simulate objects" thing. I'm not sure how much detail to go into on that one, though. There's the cute examples at the beginning of Let over Lambda on the connection between objects and closures. I think Graham's book on ANSI common lisp also had some examples on this topic, despite some of the idiosynractic code that I know the book has. 
+
+This is probably a good section to have a number of puzzles in terms of how to write code to achieve certain results. So to give, say, some form of trace of how the program should execute and then partial code and ask everyone to fill in what the code should be. We can do this to demonstrate what it means for properties to be private or for there to be class methods and properties and things like that. 
+
+*** Connecting to the real world
+    So as a part of clarifying the mysticism around programming, we should spend some time talking about how your isolated programs interact with systems in the real world. 
+
+    For example, /file formats/. That's actually kind of a cool topic. Way cooler than it might seem. The point is that structured data is how programs can talk to each other. So, for example, we can talk about STL for 3D printers. We can talk about SVG and how it's something programmable. We can talk about cvs as a way of writing and storing data that can  be used in other contexts. 
+
+    We also want to talk about things like APIs for websites, so that we can give an example of how to write code that will interact with a site.
+
+    This means, though, that we'll need to introduce the topics of requests work over the internet. One of the big elements there is going to be HTTP and how it works. So we'll cover the various request types and how the handshake works in order to talk to a website. We'll cover the idea of HTTP being a stateless protocol and how to the typical notion of api-keys or authorization tokens works. We can come up with some cute examples of programs that, say, using twitter or tumblr's api to put together some kind of data about slices of social media as graphs or, say, what the most popular posts in your own friend's list is. 
+
+    There's also things like flickr's api (https://www.flickr.com/services/api/) which I've heard good things about. No matter what, we need some *cute* examples of using website APIs. 
+
+    One question I'm torn on is how much time to really spend on communication over the internet. It's a deep topic and we could go arbitrarily deep onto this. We could cover the level of sockets and tcp vs. udp, or we could just start at a high level Node interface for making these connections.
+     
+    Mostly, the goal here is to always keep things from being /more/ mystified. We need to make the technology if not completely elcudiated then at least no longer feel magical. We could include a little appendix that goes into more detail about how these connections across the internet work under the hood, but let the main body of the text be more streamlined.
+
+    There's probably a stream and/or request handling library that's as simple as Python's requests library or their urllib2 library. I'll just have to figure that out before writing this section, obviously.
+**** File formats
+**** Making programs talk to websites
+***** HTTP
+***** The hardware that makes the internet tick
+***** Node libraries for HTTP requests
+***** Website API
+*** Reading and writing code
+*** Understanding algorithms
+    I think there should actually be a section on understanding classic problems for the purpose of formulating /how/ we come up with algorithms and how they work. Now, didn't we say that we shouldn't be focusing so much on classic CS problems? Yes, and I still stand by that. Rather than systematically doing old problems like the books I learned from, what I think would be a lot better is picking truly /interesting/ problems and examples of how data is structured. Like /graphs/. Graphs and how we represent them affects how all of our algorithms work and their computational complexity. 
+
+    Yes, I do think we need to spend some time on big-O notation and about time/space usage. It's not /that/ huge of a topic for an intro book, but we could actually iteratively go through trying to solve some problems like connectedness and discuss how representations of data affect how efficient our algorithms can be. I mean you might think "hey, let's represent a graph as a generalized linked list" but it doesn't actually work like that efficiently. 
+
+    We can talk about memoization and dynamic programming. We can talk about tricks to make your code more efficient and the kinds of things that would be good practice for understanding algorithms. We don't want to /teach/ a class on algorithms, which is a just massive task, but we want to give an understanding on how you representation of data structures matters, how to /read pseudo code/ and translate it into different languages. Actually the more I think about it the more I think that might be a good idea. We can sit there and go through some simple problems like, say, quicksort or connectedness of graphs or reversing linked lists and show the pseudo-code and how to translate that by explaining it in terms of our already established key words and things. I think this could be a really useful way of getting across how computation works.
+*** Theory
+    In the theory chapters of the book, which I actually think should be spread out throughout the text, we want to do something like introduce the idea that computation is a thing that exists independent of a particular design of hardware or of a particular way of describing how computation works. So, for example, we can first introduce the lambda calculus which is the simplest "programming language" as a way of describing computation.
+
+    In the lambda calculus we can do some cute things involving representations of data, church encodings, which I think is helpful for teaching you about how data can in some sense be defined by how it's used. I mean, that's what the church encoding *is*. It's the idea that you can represent data by simply describing a function to deconstruct it. 
+
+    Later on, once we talk about things like assembly languages and how code executes on a computer we can talk about how the Turing machine works and how to describe algorithms for it and how to simulate it. We can talk about its role in the history of computation. We can use it to talk about the complexity of algorithms and about the P vs. NP problem. We don't have to spend a lot of time on this topic, but even just 10-20 pages I think could do a lot of good for making these topics clear even without a formal CS education.
+
+    Finally, I want a short chapter on the limits of computation. I want it to be a self-contained explanation of some of the paradoxes that show there /are/ problems that a computer can never solve. When I was teaching theoretical computer science, one of the things that was pretty hard to get across was exactly /how/ the limits of computation affect things and how you know some problems are unsolvable. I think introducing it early on in someone's programming education would probably be helpful. We can just drop this in, maybe even early on or once we start talking about real projects and algorithms, and we can get across some ideas of limitations. The most accessible version of the argument I've given involves arguing about the finiteness of programs and creating the infinite table for the diagonalization argument. There's also the liar paradox version, which could still work but for some reason I think causes a lot of consternation. Eh, now that I'm thinking about it I think it'd probably be useful to just /start/ the chapter with the liar paradox, then explain the concept of programs that can read in other programs and execute them, and then we can do a thing where we show how to write a program that executes the liar paradox. 
+**** Lambda calculus
+**** Turing machines
+**** Limits of computation
