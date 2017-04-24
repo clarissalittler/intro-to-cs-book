@@ -61,7 +61,6 @@ So let's try this outline /yet again/
 
     I think combining a few different styles of exercise would be useful for learning. Mostly because good exercises are always the part you remember from math and science texts. Like, I still remember the problem of figuring out the time it takes a chain with a given density \delta to fall off a ledge if the ledge was frictionless. I remember problems like that from homework even ten fifteen years later. Why? Because it's the homework questions and the test questions where everything would end up clicking in my head. So that being said I think it'd be really great to *finally* write a CS text that does something similar. I mean, the closest I've ever seen was SICP but SICP isn't very accessible to people without a heavy math background. As I've said elsewhere, I think targeting higher level audiences is cheating for an intro textbook
 
-
 *** Introduction
 **** What is programming?
      One thing I keep debating on is just *how* much we should be talking about 
@@ -195,5 +194,14 @@ This is probably a good section to have a number of puzzles in terms of how to w
 
     Finally, I want a short chapter on the limits of computation. I want it to be a self-contained explanation of some of the paradoxes that show there /are/ problems that a computer can never solve. When I was teaching theoretical computer science, one of the things that was pretty hard to get across was exactly /how/ the limits of computation affect things and how you know some problems are unsolvable. I think introducing it early on in someone's programming education would probably be helpful. We can just drop this in, maybe even early on or once we start talking about real projects and algorithms, and we can get across some ideas of limitations. The most accessible version of the argument I've given involves arguing about the finiteness of programs and creating the infinite table for the diagonalization argument. There's also the liar paradox version, which could still work but for some reason I think causes a lot of consternation. Eh, now that I'm thinking about it I think it'd probably be useful to just /start/ the chapter with the liar paradox, then explain the concept of programs that can read in other programs and execute them, and then we can do a thing where we show how to write a program that executes the liar paradox. 
 **** Lambda calculus
+     When it comes to the lambda calculus, we need to present as a simple set of rules that are capable of expressing all of computation. 
+
+     We can build up the basic three syntactic forms and then explain beta reduction. We don't need to worry about alpha or eta equivalence I think, just give the way of doing beta reduction and explaining how substitution works. 
+
+     I think the easiest way to show capture avoiding substition is to give very simple examples and build up to the question of "what happens if the variable names overlap". Yes, we'll be introducing an implicit notion of alpha-equivalence for the renaming but ehhhhh. I think we don't need to give more detail than is particularly necessary.
+
+     From there, we can start building our data structures. The simplest data structure to provide is the /boolean/ with its implicit if-statement structure. We can show the logical combinators and all of that. Then the next thing to introduce is the definite iteration of the natural numbers. We can show that the algorithmic content of natural numbers /is/ repeating actions over and over again. Heck, it just occurred to me though that the /integers/ encode the action of a case statement within iteration: you can take one action multiple times for the positive direction and a different action for the negative direction. Hmmm while that's the start of an inductive structure it needs to be hecka quotiented to actually have the structure of the integers. Really it's more like a natural number and a boolean paired together, which does---I think--- mean that it's a pair of actions and choices, an action to take if it's positive and an action to take if it's negative. Pairs are pretty simple. A pair *is* the projection functions. Lists /are/ the action on the head and the tail. 
+
+     I think having a simple project that actually involves creating a lambda calculus interpreter would be suitable. It's not hard, it's just tricky to get the dang substitution defiition correctly in code.
 **** Turing machines
 **** Limits of computation
