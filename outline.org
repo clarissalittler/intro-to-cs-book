@@ -205,5 +205,75 @@ This is probably a good section to have a number of puzzles in terms of how to w
      I think having a simple project that actually involves creating a lambda calculus interpreter would be suitable. It's not hard, it's just tricky to get the dang substitution defiition correctly in code.
 
      [2017-04-24 Mon] Okay, so I figured out something important. A lot of people aren't really able to just understand concepts like substitution and the kind of symbolic reasoning of that goes along with something like the lambda calculus. That means that I need to spend a lot of time working on /how/ to explain the ways to do calculations. 
+***** On symbolic reasoning
+      Syntax is just symbols. It's like with human languages. There isn't anything that inherently means we have to capitalize sentences or have periods or spaces between words. Heck, very old written languages were bad at this! theyjustwentonlikethisandyouhadtofigureoutwhattheymeantwherethepauseswentandwherethebeginningsmiddlesandendsofwordshappened
+
+      Syntax is also something you may have seen from arithmetic. There's no /inherent/ meaning to the way we write things like =5 + 4=, but we /know/ from practice that =5 + 4= means that we repeatedly add =1= to =4= until it there's nothing left to add. 
+
+      Hrmmm I'm not sure if this explanation is working, but I'll admit in this outline I'm throwing things at the wall to see if they stick. So, for example, if we explain something like the idea that you can build a term in the lambda calculus out of three syntactic forms, like 
+
+      + function creation =\x. l=, where =x= can be any name and =l= is another lambda term
+      + function application =l l=
+      + variables =x= where =x= can be any name
+
+     This may seem odd, but it's like how in arithmetic we could say: an expression is
+     + =n=, where =n= is any number
+     + =a1 + a2= where =a1= and =a2= are other arithmetic expressions
+     + =a1 - a2= where =a1= and =a2= are other arithmetic expressions
+     + =a1 / a2= where =a1= and =a2= are other arithmetic expressions
+     + =a1 * a2= where =a1= and =a2= are other arithmetic expressions
+     and we can add parentheses for clarity whenever is needed
+
+     Thus, =5 + (2 + 6)=, =0 - (100 - 200)=, etc. are all arithmetic expressions. 
+
+     So let's talk about what each of these pieces /are/
+
+     We read =\x . l= as "lambda x dot l" where the =.= is a "Church dot" that just serves to separate the variable declarations from the body of the function. It's like in JavaScript when you have something like 
+     #+BEGIN_SRC javascript :exports code
+       function (x) {
+           l
+       }
+     #+END_SRC
+     Now, applying functions in the lambda calculus is written as just having a space separating the function from the argument to the function. So you can read =l1 l2= as being more like =l1(l2)= in most programming languages. Now, we don't have multiple arguments like you might be used to in most programming languages. So, instead, you have nested functions like this adding function in Python
+     #+BEGIN_SRC python :exports code
+       def add1(x):
+           def add2(y):
+               return x+y
+           return add2
+     #+END_SRC 
+
+     Once we define addition in the lambda calculus we could write this as 
+
+     =\x. \y. x+y=
+
+     Notice that we don't have to use =return= or anything like that in the lambda calculus version and, there's no way to name functions.
+
+     (oh crud why didn't I explain that EARLIER? well now I'll include that part here and mine it later)
+
+     The lambda calculus is a programming language where all you have are /anonymous/, that is /unnamed/, functions. You may have already seen anonymous functions in other programming languages! Consider an anonymous function that takes a single argument that it then prints. In Ruby with blocks it looks like
+
+     #+BEGIN_SRC ruby :exports code
+       { |x| puts x}
+     #+END_SRC
+     or JavaScript's 
+     #+BEGIN_SRC javascript :exports code
+       function (x) {
+           console.log(x);
+       }
+     #+END_SRC
+     or Python's
+     #+BEGIN_SRC python :exports code
+       (lambda x: print(x))
+     #+END_SRC
+and you can see that some languages even /use/ the word "lambda" to describe these unnamed functions. 
+
+    What's different about the lambda calculus is that it's an entire language where all you /have/ are these unnamed functions. 
+
+    So how do you build an entire language out of just unnamed functions? Well, this means that the syntax of the language is very simple: there's function /declarations/, function /calls/, and variables.
+
+    While originally the lambda calculus was written with the greek letter lambda (\lambda) to represent the start of a function, we'll choose syntax that looks a little more like python's lambda syntax. 
+
+    So an anonymous function is built like =lambda x: l=, where =l= is another lambda term and =x= is the argument to the function. You can 
+
 **** Turing machines
 **** Limits of computation
