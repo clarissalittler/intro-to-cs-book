@@ -273,7 +273,24 @@ and you can see that some languages even /use/ the word "lambda" to describe the
 
     While originally the lambda calculus was written with the greek letter lambda (\lambda) to represent the start of a function, we'll choose syntax that looks a little more like python's lambda syntax. 
 
-    So an anonymous function is built like =lambda x: l=, where =l= is another lambda term and =x= is the argument to the function. You can 
+    So an anonymous function is built like =lambda x: l=, where =l= is another lambda term and =x= is the argument to the function. We'll let the syntax for /using/ a lambda term be very similar to the syntax in Church's version of the lambda calculus: =l1 l2=, where =l1= and =l2= are both lambda terms, means that you'll feed =l2= into =l1= as an argument.
+
+    If you're used to something like JavaScript's anonymous functions, you might expect that we can write functions with multiple arguments. Not in the lambda calculus, though! We restrict ourselves to just one argument at a time. 
+
+    When you call a function in the lambda calculus it's just like calling functions in a programming language. So in something like JavaScript if you called 
+
+    #+BEGIN_SRC js :exports code
+      function (x) {
+          return 3 + x;
+      }
+    #+END_SRC
+    and you called it with an argument of =5= then what happens in the code is
+    #+BEGIN_SRC js :exports code
+      function (5) {
+          return 3 + 5;
+      }
+    #+END_SRC
+    which then is going to return the number /8/. We call this /substitution/ and is *the* way that computation happens in the lambda calculus. In some sense, it's the only verb (oh that's too dorky to use in this context) 
 
 **** Turing machines
 **** Limits of computation
