@@ -290,7 +290,16 @@ and you can see that some languages even /use/ the word "lambda" to describe the
           return 3 + 5;
       }
     #+END_SRC
-    which then is going to return the number /8/. We call this /substitution/ and is *the* way that computation happens in the lambda calculus. In some sense, it's the only verb (oh that's too dorky to use in this context) 
+    which then is going to return the number /8/. We call this /substitution/ and is *the* way that computation happens in the lambda calculus. In some sense, it's the only verb (oh that's too dorky to use in this context) of the language, the only piece of machinery. Everything in the lambda calculus is substitution. 
 
+    So let's start doing specific examples of the lambda calculus.
+
+    First, there's the most basic function in the lambda caculus: the /identity/ function that takes an argument and gives it right back.
+
+    #+BEGIN_SRC python :exports code
+      lambda x: x
+    #+END_SRC
+    
+   
 **** Turing machines
 **** Limits of computation
