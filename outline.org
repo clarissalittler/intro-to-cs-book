@@ -303,3 +303,73 @@ and you can see that some languages even /use/ the word "lambda" to describe the
    
 **** Turing machines
 **** Limits of computation
+** Other ideas
+*** Simple computation
+**** Basic arithmetic
+**** Basic text and string operations
+**** Variables for storage and retrieval
+**** Functions as reified code
+**** Functions as data
+**** Booleans
+**** For-loops
+**** If-statements
+**** An aside on writing to/reading from files
+     Using the node api
+**** Walkthrough project: plotting a graph of throwing a ball
+     In this project we'll give a brief explanation of the project, show how to write the data to a file, and then open it in some freely available plotting engine like gnuplot and thus be able to draw a parabola.
+    
+     Is this too wonky or uninteresting? Mostly I'm sick of books that don't talk about /interesting/ things and just go off on "here's how we show a message!" or "here's a tiny fake video game!" and I just don't think those are terribly motivating or interesting but showing that you can actually calculate something interesting? 
+
+     I just think it'd be nice to do a thing of each mini-project demonstrating /something/ interesting algorithmically or computationally or just in terms of real life industry
+
+     In this case, you can write the code that simulates the effect of gravity and the initial velocity of the ball and how to approximate the laws of motion algorithmically.
+
+     Concepts needed:
+     + arithmetic
+     + function definitions
+     + iteration through recursion or iteration via for/while loops
+     + writing to files
+     + reading to files
+     + running other programs
+**** Walkthrough project: markov chains and generating text
+     Generating text from a basis
+**** Objects as collections
+***** Objects are dictionaries
+***** Why are they called objects
+      Explain the fundamental metaphor of an /object/ having qualities, attributes, that are the core abstraction for describing an object.
+
+      For example, a "table" with regards to trying to explain the layout of a house could be an /object/ that has a height, a width, a length, and a set of things that are sitting on it.
+
+      If, on the other hand, we're trying to simulate furniture in terms of packing them into a moving van then we care about weight as well but don't care about anything being on it.
+
+      Those are the kinds of thing that we need to care about when it comes to /modelling/ data. That's where the idea of object comes from in the first place
+**** Constructors and prototypes
+**** Walkthrough project: modifying web pages by interfacing with the DOM
+***** How to load code in the browser
+***** The basic DOM interface
+***** Adding event handlers
+**** Walkthrough project: making polygons for 3d printing
+***** Introduction to the STL file format and language
+ https://en.wikipedia.org/wiki/STL_(file_format)
+***** How to programmatically generate a polygon
+****** Representing shapes internally
+****** Converting it to the representation stl wants
+***** Writing it a file
+***** Loading it into a free program
+***** How to 3d print it
+**** Walkthrough project: The SVG file format and GCode
+     This can be a project that explains how to 
+**** Walkthrough project: Very simple neural networks
+     Teaching a neural network to classify images by...some...thing? I'm not entirely sure what would be a good thing to try: maybe a thing about noticing how many objects seem to be in an image?
+**** Walkthrough project: Developing a small programming language
+     Using a parsing library (that might come with the book) to read in text files in a small programming language and then evaluate the code with a simple interpreter.
+
+     The project can walk students through how the interpreter works and then how to add features to the language.
+
+     It can start as a simple little imperative programming language and then we can add things like recursive functions and types and things like that by the end of it.
+
+     We could even potentially have a little compiler to JavaScript at the end of the chapter.
+**** Walkthrough project: Ray tracing program
+**** Abstract data types
+***** Deciding upon the interface first
+***** Hiding the data representation
