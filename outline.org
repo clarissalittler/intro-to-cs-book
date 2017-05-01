@@ -373,3 +373,18 @@ and you can see that some languages even /use/ the word "lambda" to describe the
 **** Abstract data types
 ***** Deciding upon the interface first
 ***** Hiding the data representation
+*** Experience from teaching basic classes
+**** What's the difference between languages?
+     The more I've been teaching classes the more I've come to the conclusion that really newbie programmers don't really have a good sense for /what/ the difference between programming languages are. It's something that hadn't really occurred to me before, to be honest, but it's a serious issue for programmers. People who are first learning programming just have a vague conception that programming languages are things that are used to make computers work. Folks don't even seem to have a good sense of what their purpose is nor the fact that there's a deep underlying theoretical structure to programming languages and programming itself as a process.
+
+     So, to that end I think we need to spend early time in the book just explaining what /code/ is, the fact that code /runs/, and then the fact that people are the ones who create these languages and decide these rules. Heck, even the idea that there needs to be a consistent grammar within a language is foreign to people who are absolute total beginners, the idea /of/ syntax just doesn't make any sense. That's a thing I need to remember as I'm going forward. 
+
+     For example, when I've even just explained things like HTML, people who aren't used to programming ask questions like "what do the angle brackets *mean*?" or "what if I used a different kind of bracket?" or "does indentation matter?"
+
+     Questions like that reveal that the fundamental problem with bootstrapping into being able to write code is with understand that programming languages a) have rules and that b) these rule are arbitrary inventions of the language designer. It diesn't even occur to me that that's a thing that needs to be learned most of the time, but then when I think back to circa 2002 and I found programming just so weird because I felt like I didn't even know how to get started. It all felt way too mystical and strange. It might have hurt that my first book was Stroustrop's book on C++ which is a little idiosyncratic IIRC. 
+
+     Even by the time I was learning Ruby I think was having a lot of difficulty with these basic concepts of the /how/ and /why/ of syntax. This reinforces the fundamental message of this book which is to teach /computation/ rather than /programming/. That might sound really pretentious, but I think that's the fundamental goal. 
+**** Big or small examples?
+     This was an issue from a class I was teaching where there was a gentleman who was bothered by examples where they were /too large/ and he was being asked to type in a huge chunk of code without a clear idea of which parts matter and do what. 
+
+     To me that really smacks of bad book design, but I think the issue here is that you need to have both small and complete code segments for reading. You can do something like the minix book, the one that included the FULL source code in the back while only including small amounts of code where it was necessary within the body of the text. I think I should probably do something like that, where I go ahead and have end-of-chapter and end-of-book sections that show /all/ the code including all the boiler plate while trying to keep the code as simple and literate as possible within the body of the text. 
