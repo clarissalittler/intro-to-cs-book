@@ -189,6 +189,10 @@ This is probably a good section to have a number of puzzles in terms of how to w
 Having recently explained to kids, literally, how P vs. NP works I think it'd be pretty easy to include at least a five page section in the text about measuring the complexity of algorithms, about how what P and NP mean, about determinstic vs. non-deterministic machines, etc.
 
 It's a cute topic and one that's rather thought provoking, even though it's /pretty/ clear that these two classes aren't the same it's still fascinating that it's such a hard thing to prove.
+**** Sorting
+     So I keep going back and forth about things like long elaborate discussions of sorting. I think this could also go along with the P/NP discussion because sorting algorithms are some of those things that are just /so/ simple to analyze and explain that we can use them to teach the basic concepts of structuring algorithms.
+
+     The downside, of course, is that it's a bit far-afield in terms of teaching basic programming. 
 *** Theory
     In the theory chapters of the book, which I actually think should be spread out throughout the text, we want to do something like introduce the idea that computation is a thing that exists independent of a particular design of hardware or of a particular way of describing how computation works. So, for example, we can first introduce the lambda calculus which is the simplest "programming language" as a way of describing computation.
 
