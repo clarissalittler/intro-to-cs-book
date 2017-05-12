@@ -182,7 +182,6 @@ This is probably a good section to have a number of puzzles in terms of how to w
     This is, I think, probably one of the more unique sections we'll be including in the text. I'll need to come up with some general techniques and tips, though, and then test them out myself. First off, I think a good technique is just to get a quick survey of what important functions are in the code and then starting to put together a top-down map of what code does what job and /then/ diving into the functions and figuring out how the algorithms are conveyed.
 
     Things to look for are for-loops, which are frequently for traversing data structures, while-loops are often where serious logic happens since they tend to be used for anything from event-polling, to main bodies of algorithms, or interactive code.
-
     
 *** Understanding algorithms
     I think there should actually be a section on understanding classic problems for the purpose of formulating /how/ we come up with algorithms and how they work. Now, didn't we say that we shouldn't be focusing so much on classic CS problems? Yes, and I still stand by that. Rather than systematically doing old problems like the books I learned from, what I think would be a lot better is picking truly /interesting/ problems and examples of how data is structured. Like /graphs/. Graphs and how we represent them affects how all of our algorithms work and their computational complexity. 
@@ -316,6 +315,16 @@ and you can see that some languages even /use/ the word "lambda" to describe the
    
 **** Turing machines
 **** Limits of computation
+  Paradoxes are hecka neat. Chaitin's constant is neater. There's a lot of things I could say about all of these topics when you get right down to it. 
+
+*** The heart of computation
+
+    + indefinite iteration
+    + definite iteration
+    + storing and retrieving information
+    + reifying code
+    + aggregation of data
+
 ** Other ideas
 *** Simple computation
 **** Basic arithmetic
