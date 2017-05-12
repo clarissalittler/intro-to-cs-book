@@ -324,7 +324,15 @@ and you can see that some languages even /use/ the word "lambda" to describe the
     + storing and retrieving information
     + reifying code
     + aggregation of data
+    + abstraction/hiding of information
 
+I know we've talked /a lot/ about organization of this book and how we need to set it up and, ultimately, I think I've decided to take a mixture of project/concept organization. The first part of the text is going to be introducing the heart of computation before jumping onto deepening these ideas with more and more projects and exercises. Part of the problem is that there aren't interesting projects that involve only a few pieces of syntax. I think my issue with structuring has been trying to interleave the projects into the early parts of the syntax.
+
+Oh, shoot though, I do still want to include the whole keyword structure for informal descriptions of algorithms and the translation from informal to formal.
+
+Naming parts of the algorithm means creating functions. For each or a number of times means for loops. While/Until means while loops. Describing what goes into aggregate data means that you're specifying an object. Describing what a thing should do means describing its methods.
+
+Things like that. I don't actually think it'll be that complicated to structure projects like that. I'll just need to develop a consistent style in writing. 
 ** Other ideas
 *** Simple computation
 **** Basic arithmetic
