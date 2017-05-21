@@ -449,4 +449,17 @@ Part 2 of the book will be more advanced topics including:
   + the use of data structures such as dequeues, graphs, and heaps
 
 Part 3 of the book will be a sequence of programming projects that will help connect all of the main topics together.
-** Getting Started in Javascript
+** What is Computation?
+*** Computation in everyday life
+*** The limits of computation: part I
+*** Real life examples
+*** The heart of computation
+** Getting Started in JavaScript
+*** Loading code in the browser
+*** Downloading node
+*** Running code in node
+** Learning a language
+*** Programming languages are different
+*** Why learning programming is hard
+*** The common features of every programming language
+
