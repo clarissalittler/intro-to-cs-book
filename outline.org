@@ -461,5 +461,10 @@ Part 3 of the book will be a sequence of programming projects that will help con
 ** Learning a language
 *** Programming languages are different
 *** Why learning programming is hard
-*** The common features of every programming language
+    As we get into the real meat of writing code, there'll probably be a number of frustrating moments. This is perfectly natural! 
 
+    Programming isn't easy. It's actually pretty hard to learn at first. Why? Because programming requires you to be /precise/ in ways that we never are otherwise. When we talk to each other we can express ideas without having to explain every little detail. 
+*** The common features of every programming language
+    We talked before about the /heart of computation/. These were the kinds of things building blocks for every recipe, every set of directions, and every *program* that will ever exist. 
+
+    While programming languages may differ in many respects, they'll always have some way of expressing these basic tasks. So, for example, the way we represent 
