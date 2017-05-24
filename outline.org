@@ -454,12 +454,16 @@ Part 3 of the book will be a sequence of programming projects that will help con
 *** The limits of computation: part I
 *** Real life examples
 *** The heart of computation
+    We've established that computation is something that exists in the universe itself, not just in computers. One way we can connect what computers do to the physical nature of computation is with /3D printers/. 3D printers, if you haven't gotten to see how one works, are devices that create three-dimensional shapes from specialized programs that describe how to perform the construction. 
+    
+    Many 3D printers use a moveable "head" that can extrude a hot plastic. The 3D object is built layer-by-layer putting down new hot plastic on top of already solidified plastic to build up the shape. A fundamental question to ask is: what are the limits of 3D printers? 
 ** Getting Started in JavaScript
 *** Loading code in the browser
 *** Downloading node
 *** Running code in node
 ** Learning a language
 *** Programming languages are different
+    
 *** Why learning programming is hard
     As we get into the real meat of writing code, there'll probably be a number of frustrating moments. This is perfectly natural! 
 
@@ -470,3 +474,17 @@ Part 3 of the book will be a sequence of programming projects that will help con
     While programming languages may differ in many respects, they'll always have some way of expressing these basic tasks. So, for example, there's always going to be a way to do something /repeatedly/. There's always going to be a way to form some kind of "loop" that will be able to run potentially forever. There will always be a way of storing information for later. 
 
     Different languages can express these things constructs different. There are languages where data can never be changed once stored. There's languages where programs are described by separate "actors" in the code sending each other messages. There's languages that are focused entirely on the concept of "functions", recipes that are 
+** The basics of JavaScript
+*** Numbers
+*** Strings
+*** Sequencing code
+*** Variables
+** Control flow
+*** Making choices
+**** Booleans
+**** If statements
+*** Repetition
+**** Definite vs. indefinite
+     The ability to repeat actions is something we named as a key concept in computation. 
+**** For loops
+**** 
