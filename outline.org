@@ -450,13 +450,29 @@ Part 2 of the book will be more advanced topics including:
 
 Part 3 of the book will be a sequence of programming projects that will help connect all of the main topics together.
 ** What is Computation?
+   Before we start learning about how to make computers do things, we should first talk about what computers /can/ do.
+
+   That may sound like an odd question at first. I know that when I was first learning to code it never even occurred to me that there were things a computer *couldn't* do!
+
+   There are limits to computation and they're pretty strange and profound. I hope I can convey even a fraction of the fascination these questions inspire in me. 
 *** Computation in everyday life
+   First off, the things can do are what we'll call /computation/. Computation has a real meaning beyond the actual computers and electronic devices we use. 
+
+   Have you ever used a recipe to cook? Followed a friend's directions to get to their place?
+
+   Can you remember learning to add the first time with a pencil & paper? You may have written down something like this:
+
+   (insert latex code)
+
+   You would add these numbers one by one, starting from the righthand side and moving to the left. This process isn't particularly any different than knitting patterns, recipes, or directions to get somewhere. They're all examples of algorithms. 
 *** The limits of computation: part I
 *** Real life examples
 *** The heart of computation
     We've established that computation is something that exists in the universe itself, not just in computers. One way we can connect what computers do to the physical nature of computation is with /3D printers/. 3D printers, if you haven't gotten to see how one works, are devices that create three-dimensional shapes from specialized programs that describe how to perform the construction. 
     
-    Many 3D printers use a moveable "head" that can extrude a hot plastic. The 3D object is built layer-by-layer putting down new hot plastic on top of already solidified plastic to build up the shape. A fundamental question to ask is: what are the limits of 3D printers? 
+    Many 3D printers use a moveable "head" that can extrude a hot plastic. The 3D object is built layer-by-layer putting down new hot plastic on top of already solidified plastic to build up the shape. A fundamental question to ask is: what are the limits of 3D printers? Are there things they can't make?
+
+    The answer to that question is simple and interesting: anything that can be described with a program can be made with a 3D printer. 
 ** Getting Started in JavaScript
 *** Loading code in the browser
 *** Downloading node
