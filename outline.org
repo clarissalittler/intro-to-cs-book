@@ -465,6 +465,8 @@ Part 3 of the book will be a sequence of programming projects that will help con
    (insert latex code)
 
    You would add these numbers one by one, starting from the righthand side and moving to the left. This process isn't particularly any different than knitting patterns, recipes, or directions to get somewhere. They're all examples of algorithms. 
+
+   Algorithms are processes for /doing/ something. I want to be clear on a distinction here. The /concept/ of addition of two numbers isn't an algorithm and isn't computation. There is, however, a *way* to compute. 
 *** The limits of computation: part I
 *** Real life examples
 *** The heart of computation
