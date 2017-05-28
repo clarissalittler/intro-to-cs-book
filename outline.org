@@ -496,6 +496,18 @@ Part 3 of the book will be a sequence of programming projects that will help con
 *** Numbers
 *** Strings
 *** Sequencing code
+    Obviously if you could only run a single step of code in a program, you'd barely have a program at all.
+
+    Think back to informal descriptions and our discussion of algorithms. When you're describing directions you often use
+    + bullet
+    + points
+    + like
+    + these
+or  
+    1. maybe
+    2. numbered
+    3. steps
+Sometimes you just separate the steps in a description by having each step be its own sentence! No matter what, though, there's some way to distinguish steps as they're supposed to go in order. 
 *** Variables
 ** Control flow
 *** Making choices
