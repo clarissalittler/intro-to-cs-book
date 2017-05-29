@@ -494,6 +494,41 @@ Part 3 of the book will be a sequence of programming projects that will help con
     Different languages can express these things constructs different. There are languages where data can never be changed once stored. There's languages where programs are described by separate "actors" in the code sending each other messages. There's languages that are focused entirely on the concept of "functions", recipes that are 
 ** The basics of JavaScript
 *** Numbers
+     We see numbers all the time, so they are probably the most familiar datatype you'll see in any programming language. 
+
+     In JavaScript, numbers are written exactly like they normally are in mathematics: =1=, =10=, =-5000=, =3.14= etc. If you have any experience with other programming languages such as C or Java, it's notable that there's only /one/ form of number in JavaScript and not separate kinds of numbers for whole numbers or fractional numbers. 
+
+     You can perform most of the operations on numbers you may have seen: =+=, =-=, =*=, and =/=. These all behave like you'd expect =+= is addition, =-= is subtraction, =*= is multiplication, and =/= is division. There's even the =%= operator which you may not have seen before. We call =%= the /remainder/ operation which, for =a%b=, returns the number left after you subtract =b= from =a= as many times as you can without going negative. Examples are in order. For =5 % 2= you can subtract =2= /twice/ from =5= which leaves =1= as a remainder. Similarly for =14 % 4= then =4= only goes into =14= three times, leaving =2= as a remainder. 
+
+     There are, however, two special kinds of numbers in JavaScript: =Infinity= and =NaN=. Why does JavaScript have them though? Start running node or open the console in your browser and type the following expression: =1 / 0=.
+
+     Most programming languages will throw an error or even *crash* when you divide by 0, but in JavaScript you instead get a result of =Infinity=. You can even use =Infinity= like it /was/ a number. Try typing the following expressions in your console:
+
+     + =Infinity * Infinity=
+     + =Infinity + 0=
+     + =Infinity - Infinity=
+
+What happened with that last one? You got the other odd number =NaN= which stands for "not a number". =NaN= is used in JavaScript to mean that the result was technically a /number/ but it doesn't have a well-defined value. Doing something like =Infinity - Infinity= doesn't have a well defined mathematical value. Neither does =Infinity * 0= or =Infinity / Infinity=. 
+
+=NaN= shows up in more cases than just doing math with =Infinity=, though. =NaN= is returned whenever you are attempting arithmetic operations on something that doesn't make sense like, say, multiplying a string by a number. For example, try typing =3 * "3"= into the console. Once you have =NaN= there's no way to get back to the world of simple numbers. You can try something like =NaN * 0= or =NaN + Infinity= but the answer will *always* be =NaN=.
+
+Finally, all arithmetic operations work by the normal presedence rules: expressions in parentheses are evaluated before multiplications which are evaluated before division which are evaluated before remainders which are evaluated before addition which are evaluated before subtraction.
+
+A short visual way to look at it is =() > * > / > % > + > -=. So, for example, if you see the JavaScript expression =10 * 11 % 10= will this evaluate like =(10 * 11) % 10=, which is equal to 0, or like =10 * (11 % 10)= which is equal to 1? Since multiplication beats calculating the remainder, then this means we should first turn =10 * 11 % 10= into =110 % 10= and then finish the remainder, leaving us with =0=. If we're dealing with multiple expressions, such as =10 / 3 / 2= the expressions are evaluated in pieces from left-to-right: ~10 / 3 / 2 = 3.3333333 / 2 = 1.6666667~
+
+**** Exercises
+***** Exercise 1
+    Look at the following arithmetic expressions and calculate the result without typing them into the console, then check your answers afterward:
+
+    1. =10 / 3 - 3=
+    2. =10 / (3 - 3)=
+    3. =5 % 4 % 3=
+    4. =1 / 0 / 0=
+    5. =Infinity + NaN=
+***** Exercise 2
+     Try to imagine three different situations where you might encounter =Infinity= or =NaN= and they should be handled if detected.
+
+
 *** Strings
 *** Sequencing code
     Obviously if you could only run a single step of code in a program, you'd barely have a program at all.
