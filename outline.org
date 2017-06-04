@@ -530,6 +530,10 @@ A short visual way to look at it is =() > * > / > % > + > -=. So, for example, i
 
 
 *** Strings
+     Even though it's fairly transparent, words themselves are a kind of data we constantly deal with: our texts, our emails, our social media posts are all text-as-data that our computers interact with.
+     
+     Given that our programs are also /text/, we need some way to distinguish between text-as-data and text-as-instructions for the computer. Text-as-data are called /strings/. We denote strings with quotation marks, either "like this" or 'possibly like this'. This mimics what we do in English all the time: there's a difference between this sentence and "this sentence". It's like the old playground joke "Say 'Mississippi five times fast'" to which you're supposed to respond "Mississippi five times fast". In fact, Javascript allows us to do exactly that. If we want to include quotation marks within a string we can either "do something 'like this'" or 'maybe something "like this"'.
+
 *** Sequencing code
     Obviously if you could only run a single step of code in a program, you'd barely have a program at all.
 
