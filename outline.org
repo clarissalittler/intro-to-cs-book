@@ -548,6 +548,21 @@ or
     3. steps
 Sometimes you just separate the steps in a description by having each step be its own sentence! No matter what, though, there's some way to distinguish steps as they're supposed to go in order. 
 *** Variables
+    One of the things that most programming languages give you to use is some way to /store/ data. These are called /variables/, because 
+**** Undefined
+     We've skirted around one bit of weirdness until now: what happens if you attempt to use a variable that you haven't assigned a value to?
+
+     Let's try this quickly and type the following lines in your console:
+
+#+BEGIN_EXAMPLE
+var x
+x
+#+END_EXAMPLE
+
+     Surprisingly, there /is/ a value in the variable, =undefined=: a very special value that represents "there's no value here".
+
+     =undefined= is like a number or string in that it /evaluates to itself/ and has no other special rules.
+
 ** Control flow
 *** Making choices
 **** Booleans
