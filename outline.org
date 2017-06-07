@@ -548,7 +548,7 @@ or
     3. steps
 Sometimes you just separate the steps in a description by having each step be its own sentence! No matter what, though, there's some way to distinguish steps as they're supposed to go in order. 
 *** Variables
-    One of the things that most programming languages give you to use is some way to /store/ data. These are called /variables/, because 
+    One of the things that most programming languages give you to use is some way to /store/ data. These are called /variables/ in JavaScript and essentially every other language. 
 **** Undefined
      We've skirted around one bit of weirdness until now: what happens if you attempt to use a variable that you haven't assigned a value to?
 
@@ -566,7 +566,25 @@ x
 ** Control flow
 *** Making choices
 **** Booleans
+    Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
+
+    Real programs do much more complicated things that involve choices or repetition. Think about logging into a computer and having it check your password. This involves making a comparison, is the password entered the same as the password expected, and then making a /decision/ about whether to let you use the computer. 
+
+    The important pieces there are that the program needs to determine whether something is /true/ and then do one thing if it's true and another thing if it's not.
+
+    To do these things we need to introduce the concept of /booleans/. There are *two* boolean values: =true= and =false=. We also have comparison operators that test for things such as "is this number bigger than that number" or "are these two things equal". 
+
+    Below we have our table of boolean operations
+    (insert table here)
+
+    With these very /simple/ operations in hand, how do we make /decisions/? The most basic way to make a choice in programming is to use the /if statement/.
+
+    The most basic if-statements in JavaScript have the following shape
+
 **** If statements
+***** Real life examples and analogues
+      If statements are represented by our notion of decisions in our directions. The keywords to look out for are /if/ or /when/. Whenever your informal description includes /if/ or /when/ or /then/ or /else/, you're going to have some kind of if-statement in your code. 
+
 *** Repetition
 **** Definite vs. indefinite
      The ability to repeat actions is something we named as a key concept in computation. 
