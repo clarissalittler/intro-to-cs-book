@@ -492,6 +492,88 @@ Part 3 of the book will be a sequence of programming projects that will help con
     While programming languages may differ in many respects, they'll always have some way of expressing these basic tasks. So, for example, there's always going to be a way to do something /repeatedly/. There's always going to be a way to form some kind of "loop" that will be able to run potentially forever. There will always be a way of storing information for later. 
 
     Different languages can express these things constructs different. There are languages where data can never be changed once stored. There's languages where programs are described by separate "actors" in the code sending each other messages. There's languages that are focused entirely on the concept of "functions", recipes that are 
+** First Steps
+ The /very/ first piece of syntax we're going to introduce in Javascript is how to print out values within a program. 
+
+ Write the following lines of code in a file called ~FirstSteps.js~.
+ #+BEGIN_SRC js :exports code :results output :tangle FirstSteps.js
+   console.log(10);
+   console.log(100);
+   console.log(300);
+ #+END_SRC
+
+ #+RESULTS:
+ : 10
+ : 100
+ : 300
+
+If you run this file using the following command you should see the output indicated.
+#+BEGIN_SRC sh :exports both :results output
+  node FirstSteps.js
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 100
+: 300
+
+We need to discuss what's happened here. First off, we've introduced the syntax ~console.log(v)~, whose semantics is to print out to the console the value of its argument, this means that it prints out the result of Javascript evaluating ~v~ and not just the literal syntax of ~v~ as we'll see shortly. This will be very useful for us in testing out our programs and checking that we understand the semantics of our constructs.
+
+The second piece of syntax we've implicitly introduced is the /semi-colon/ and the /line break/. Javascript separates its syntax into /statements/ and /expressions/. We'll make more clear what the distinction between these two, but at first let's just say that statements are things that are separated by lines and expressions are things that can be fed as arguments. So, for example, ~10~ and ~console.log(10)~ are expressions but ~console.log(10);~ is a statement. For readability it's best to put statements on new lines, even though technically you could have written the above code as 
+
+#+BEGIN_SRC js :exports code :results output 
+  console.log(10);console.log(100);console.log(300);
+#+END_SRC
+
+but this isn't recommended as it makes code much harder to read.[fn:4]
+
+Some other languages that use semicolons are Java, C, C++, C#, and PHP. The use of semicolons is one of those historic conventions that's good for the person writing the implementation of the programming language, but less so for the programmers who need to work in that language. Going back to our analogy about recipes, think of an expression as a thing like "a cup of flour" or "six onions" but a /statement/ is a step in the recipe such as "sautee six onions until soft". So in the example above each line that has ~console.log(v);~ in it is a separate statement that is executed in order, just like you'd execute the steps of a recipe in order. 
+
+Now that we have a way to print out values and are starting to understand the difference between expressions and statements, we can start introducing operations on numbers as a first step. We have in JavaScript all the basic operations you're familiar with, including +,*, and -. We can see how they work in the following code, which you can copy into a file called ArithmeticExpressions.js
+
+#+BEGIN_SRC js :exports code :results output  :tangle ArithmeticExpressions.js
+  console.log(10 + 10);
+  console.log(10 * 10);
+  console.log(10 - 10);
+  console.log(10 / 10);
+#+END_SRC
+
+#+RESULTS:
+: 20
+: 100
+: 0
+: 1
+
+If you run this code with the following snippet then you should see the same results as below.
+
+#+BEGIN_SRC sh :exports both :results output
+  node ArithmeticExpressions.js
+#+END_SRC
+
+#+RESULTS:
+: 20
+: 100
+: 0
+: 1
+
+It's important to note that the number that's printed out is the /result/ of the expression that's passed into the ~console.log~. 
+*** Evaluating Code By Hand
+    One of the themes of this book is going to be how to take a pen and paper and evaluate your code. This might seem like an odd skill to learn, but it's useful for getting rid of some of the "magic" feeling that comes with writing code for the first time. If you're not sure how a piece of code works, it's really helpful to be able to sit down and go through it step-by-step for yourself. 
+
+So far, we've seen three pieces of syntax: 
+    1. the ability to print using ~console.log~
+    2. numbers represented using the normal decimal representation
+    3. basic arithmetic operations on numbers
+and two classes of syntax
+    1. expressions
+    2. statements
+
+First, as we've aluded there's a notion of *values*. What makes an expression an expression is that it returns a *value* when evaluated. Statements, on the other hand, are useful for their control flow. When we coerce an expression into being a statement via ~expression;~ what we are doing is inherently throwing away the value returned by the expression. This is useful for things like ~console.log~ where we're not actually returning anything particularly useful and just using the /side effects/ of the expression. Side effects are all the ways an expression can affect the world other than through the value they return. So far the only side-effect we've seen is the ability to print output. We'll point out other side-effects as we're introduced to them.
+
+Now, we take the pieces of syntax we've seen so far in order:
+  1. ~console.log(e)~ is evaluated by first evaluating ~e~ until it yields a value ~v~ and then writing that value down under a column labeled "Output" on your paper
+  2. numbers are evaluated simply: a number ~n~ written in decimal notation evaluates to itself, i.e. numbers are already values
+  3. basic arithmetic operations are evaluated as the normal arithmetic rules you've learned, i.e. ~+~ is addition, ~-~ is substraction etc.
 ** The basics of JavaScript
 *** Numbers
      We see numbers all the time, so they are probably the most familiar datatype you'll see in any programming language. 
