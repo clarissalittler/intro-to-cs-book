@@ -418,6 +418,14 @@ Things like that. I don't actually think it'll be that complicated to structure 
      This was an issue from a class I was teaching where there was a gentleman who was bothered by examples where they were /too large/ and he was being asked to type in a huge chunk of code without a clear idea of which parts matter and do what. 
 
      To me that really smacks of bad book design, but I think the issue here is that you need to have both small and complete code segments for reading. You can do something like the minix book, the one that included the FULL source code in the back while only including small amounts of code where it was necessary within the body of the text. I think I should probably do something like that, where I go ahead and have end-of-chapter and end-of-book sections that show /all/ the code including all the boiler plate while trying to keep the code as simple and literate as possible within the body of the text. 
+** Which JavaScript?
+   One thing I should probably consider is that ES2015 is getting more and more common all the time. Is there really a reason to keep teaching basic JavaScript?
+
+   Well, at the moment the argument is that while it /will/ be used in the future it's not currently supported in all browsers. 
+
+   Okay, but counterpoint: it /is/ supported in Node now, which is definitely a big deal. Maybe I could start with the most basic of JavaScript features and eventually move on to the ES2015 extensions? 
+
+   For example, I don't /really/ want to talk about classes because I like prototypes just fine. 
 * New text
 ** Introduction
 ** The Goals of This Book
