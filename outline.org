@@ -426,6 +426,8 @@ Things like that. I don't actually think it'll be that complicated to structure 
    Okay, but counterpoint: it /is/ supported in Node now, which is definitely a big deal. Maybe I could start with the most basic of JavaScript features and eventually move on to the ES2015 extensions? 
 
    For example, I don't /really/ want to talk about classes because I like prototypes just fine. 
+
+   So in terms of arguments for and against I think I'm starting to convince myself that we should probably talk about this in terms of ES2015 though not necessarily any of the proposals that are newer than that. Why? Because I really don't think anything else is likely to be completely adopted in a convenient way for this audience, meanwhile it's not actually going to be that long before ES2015 is actually just standard and things like Babel aren't going to be needed anymore, y'know? 
 * New text
 ** Introduction
 ** The Goals of This Book
