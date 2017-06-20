@@ -418,6 +418,10 @@ Things like that. I don't actually think it'll be that complicated to structure 
      This was an issue from a class I was teaching where there was a gentleman who was bothered by examples where they were /too large/ and he was being asked to type in a huge chunk of code without a clear idea of which parts matter and do what. 
 
      To me that really smacks of bad book design, but I think the issue here is that you need to have both small and complete code segments for reading. You can do something like the minix book, the one that included the FULL source code in the back while only including small amounts of code where it was necessary within the body of the text. I think I should probably do something like that, where I go ahead and have end-of-chapter and end-of-book sections that show /all/ the code including all the boiler plate while trying to keep the code as simple and literate as possible within the body of the text. 
+
+     It occurs to me that I was a little silly up above because there's absolutely no reason to even include code in the back of the book. Code should live in a github repo that people can access. I don't think I'd want to publish with any company that *wouldn't* allow me to set up a github repo where everything can live. 
+
+     So, yes, at some point I should probably start using this repository in order to store the code for examples. I also realize that I should probably include examples for things like machine learning as well as some of my more maker/art project oriented ideas.
 ** Which JavaScript?
    One thing I should probably consider is that ES2015 is getting more and more common all the time. Is there really a reason to keep teaching basic JavaScript?
 
