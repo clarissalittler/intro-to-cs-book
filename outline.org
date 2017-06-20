@@ -428,6 +428,10 @@ Things like that. I don't actually think it'll be that complicated to structure 
    For example, I don't /really/ want to talk about classes because I like prototypes just fine. 
 
    So in terms of arguments for and against I think I'm starting to convince myself that we should probably talk about this in terms of ES2015 though not necessarily any of the proposals that are newer than that. Why? Because I really don't think anything else is likely to be completely adopted in a convenient way for this audience, meanwhile it's not actually going to be that long before ES2015 is actually just standard and things like Babel aren't going to be needed anymore, y'know? 
+
+   So what I think we should do for this is include base JavaScript whenever possible and then have perhaps inserts and other segments for explaining things like the new class system and arrow functions (also, gracious, it's really awkward to have the phrase arrows like this because I associate that with haskell arrows). 
+
+   Now I don't think there's any point to showing things like JSX. That's pretty specific to a framework and isn't really useful for general computation. 
 * New text
 ** Introduction
 ** The Goals of This Book
