@@ -628,7 +628,6 @@ A short visual way to look at it is =() > * > / > % > + > -=. So, for example, i
 ***** Exercise 2
      Try to imagine three different situations where you might encounter =Infinity= or =NaN= and they should be handled if detected.
 
-
 *** Strings
      Even though it's fairly transparent, words themselves are a kind of data we constantly deal with: our texts, our emails, our social media posts are all text-as-data that our computers interact with.
      
@@ -664,6 +663,7 @@ x
      =undefined= is like a number or string in that it /evaluates to itself/ and has no other special rules.
 
 ** Control flow
+   The next several topics are all related together because they involve how we /build/ a program. These parts of the language are often called "control flow" in programming and computer science because we can imagine the program chugging along down different paths through the program.
 *** Making choices
 **** Booleans
     Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
@@ -685,8 +685,15 @@ x
 ***** Real life examples and analogues
       If statements are represented by our notion of decisions in our directions. The keywords to look out for are /if/ or /when/. Whenever your informal description includes /if/ or /when/ or /then/ or /else/, you're going to have some kind of if-statement in your code. 
 
+*** Functions
+    Here we come upon one of the most important pieces of data and important tools for controlling a program. 
 *** Repetition
 **** Definite vs. indefinite
      The ability to repeat actions is something we named as a key concept in computation. 
+
+     It shows up all the time in our day to day life. Walking 10 blocks, reading three chapters, and solving five homework problems are all obviously examples of performing the same task multiple times. These are all examples of what we call /definite/ iteration. 
+
+     Definite in this context means "an exact number". Definite iteration is the ability to 
+
 **** For loops
 **** 
