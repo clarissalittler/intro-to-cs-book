@@ -663,7 +663,9 @@ x
      =undefined= is like a number or string in that it /evaluates to itself/ and has no other special rules.
 
 ** Control flow
-   The next several topics are all related together because they involve how we /build/ a program. These parts of the language are often called "control flow" in programming and computer science because we can imagine the program chugging along down different paths through the program.
+   The next several topics are all related together because they involve how we /build/ a program. These parts of the language are often called "control flow" in programming and computer science because we can imagine the program chugging along down different paths through the program. 
+
+   Why do we nee to be able to do this? Because it's the only way to write complex, general programs. For example, if we wanted a program that could perform a task five times and only five times then that's simple enough. You can just repeat the code five times. Imagine that you had a program to make a rectangle for a 3D print design. If you wanted to a single  
 *** Making choices
 **** Booleans
     Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
