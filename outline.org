@@ -438,6 +438,10 @@ Things like that. I don't actually think it'll be that complicated to structure 
    Now I don't think there's any point to showing things like JSX. That's pretty specific to a framework and isn't really useful for general computation. 
 * New text
 ** Introduction
+   If you've picked up this text, you're probably interested in learning to program. There's a lot of books about programming but, I hope, this one will feel different. We'll be teaching how to code using one of the most popular programming languages in the world: JavaScript. 
+
+   The emphasis, though, is that we'll be teaching /programming/ not just /programming in JavaScript/. Throughout this book there will be inserts and asides about how our code examples look in different languages. We'll be talking about the most general concepts whenever possible and make clear the distinction between the underlying core ideas that are the same in every language vs. the ones that are just accidents of JavaScript.
+
 ** The Goals of This Book
    The fundamental goal of this book is to teach the basic ideas of programming and computation in a way that's both mathematically rigorous and still understandable to anyone who's had even a single term of algebra. 
 
@@ -666,6 +670,8 @@ x
    The next several topics are all related together because they involve how we /build/ a program. These parts of the language are often called "control flow" in programming and computer science because we can imagine the program chugging along down different paths through the program. 
 
    Why do we nee to be able to do this? Because it's the only way to write complex, general programs. For example, if we wanted a program that could perform a task five times and only five times then that's simple enough. You can just repeat the code five times. Imagine that you had a program to make a rectangle for a 3D print design. Now what if you wanted to have /multiple/ rectangles in the design? You could copy and paste the code multiple times, but that's obvious a bad idea. 
+
+   Instead, your code needs to be /flexible/. You don't want to repeat the same concepts over and over. Imagine that you want to be flexible 
 *** Making choices
 **** Booleans
     Until now, all we've seen are operations akin to what you'd see on a calculator. Whether strings or numbers, we're merely performing simple operations on data and returning the result: adding numbers, concatenating strings. 
@@ -679,13 +685,28 @@ x
     Below we have our table of boolean operations
     (insert table here)
 
-    With these very /simple/ operations in hand, how do we make /decisions/? The most basic way to make a choice in programming is to use the /if statement/.
-
-    The most basic if-statements in JavaScript have the following shape
-
 **** If statements
 ***** Real life examples and analogues
       If statements are represented by our notion of decisions in our directions. The keywords to look out for are /if/ or /when/. Whenever your informal description includes /if/ or /when/ or /then/ or /else/, you're going to have some kind of if-statement in your code. 
+
+    With these very /simple/ operations in hand, how do we make /decisions/? The most basic way to make a choice in programming is to use the /if statement/.
+
+    The most basic if-statements in JavaScript have the following shape
+    #+BEGIN_SRC js :exports code
+      if (condition) {
+    	  ...
+      }
+    #+END_SRC
+    for example you could have
+    #+BEGIN_SRC js :exports code
+      if (itsRaining) {
+          deployUmbrella();
+      }
+    #+END_SRC
+    or 
+    #+BEGIN_SRC js :exports code
+    
+    #+END_SRC
 
 *** Functions
     Here we come upon one of the most important pieces of data and important tools for controlling a program. 
