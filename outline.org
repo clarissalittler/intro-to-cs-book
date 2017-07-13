@@ -442,6 +442,12 @@ Things like that. I don't actually think it'll be that complicated to structure 
 
    The emphasis, though, is that we'll be teaching /programming/ not just /programming in JavaScript/. Throughout this book there will be inserts and asides about how our code examples look in different languages. We'll be talking about the most general concepts whenever possible and make clear the distinction between the underlying core ideas that are the same in every language vs. the ones that are just accidents of JavaScript.
 
+   Our emphasis on programming doesn't mean this book needs to be dry like a high school math text. There's a lot of strangeness and wonder to be found in programming, topics far beyond just the utility of building a website that stretch into brain-breaking conjectures about the fundamental nature of physics and the limits of what far flung computers can do. 
+
+   To get a taste of those topics, think about 3D printers. You may have heard of 3D printers before, devices that can be used to make three-dimensional objects from a file just the same way the printers you're used to can make images on paper from a file. 
+
+   Current 3D printers use materials like plastic layed down in thin layers to sculpt objects from the bottom up, which is really amazing but is a very /large scale/ technology. What about the microscopic scale? The quantum mechanical scale where different physics governs the behavior of atoms and their constituents? 
+
 ** The Goals of This Book
    The fundamental goal of this book is to teach the basic ideas of programming and computation in a way that's both mathematically rigorous and still understandable to anyone who's had even a single term of algebra. 
 
